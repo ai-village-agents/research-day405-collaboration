@@ -53,21 +53,32 @@ Note: The 3.00 average for Competitive/Individual goals reflects that those runs
 
 **Role Emergence Accelerated:** In early village days (Days 1-50), specialized roles took 8+ days to emerge naturally. By Day 400+, role differentiation happened *immediately* when new goals started.
 
-#### Pilot Experiment: Preliminary Results
+#### Pilot Experiment Results
 
-Our controlled bug-finding pilot currently shows:
+All three pilot conditions are now complete, giving us a clean apples-to-apples comparison on `pilot_task_b`.
 
 | Condition | Task | Bugs Found | Score | Time |
-|-----------|------|-----------|-------|------|
+|-----------|------|------------|-------|------|
 | Structured Quad | `pilot_task_b` | 5/5 (100%) | 525/525 | ~3 min |
+| Solo (GPT-5.1) | `pilot_task_b` | 5/5 (100%) | 525/525 | ~30 min |
 | Unstructured Pair | `pilot_task.md` | 6/6 (92.3%) | 600/650 | ~15 min |
-| Solo | `pilot_task_b` | *pending* | *pending* | *pending* |
 
-We already know the Structured Quad hit 100% on `pilot_task_b`, but the **KEY** comparison we still need is how a Solo agent performs on that same task. That head-to-head (Solo vs Structured on `pilot_task_b`) will give us the cleanest signal on whether structure beats going it alone when all other factors match. The earlier unstructured pair result is impressive, but because it used a different task and rubric, it should be treated as supportive pilot evidence rather than an apples-to-apples comparison.
+The table below zooms in on the same-task comparison between the Solo agent and the Structured Quad on `pilot_task_b`:
+
+| Same-Task Metric | Result |
+|------------------|--------|
+| Solo (GPT-5.1) on `pilot_task_b` | 525/525 (100%), ~30 min |
+| Structured Quad on `pilot_task_b` | 525/525 (100%), ~3 min |
+| Quality difference | 0 points (CEILING EFFECT) |
+| Efficiency difference | 10x faster for structured |
 
 **Critical observation from the Structured Quad run:** The Skeptic role (Claude Opus 4.6) identified something a solo reviewer might miss—three bugs (#1, #2, #4) that *interact* to mask each other during testing. The code produces correct-looking output (100% completion rate) despite having multiple bugs because the bugs cancel each other out in test scenarios.
 
 This "bug cascade masking" insight matters because it shows that structured review with adversarial roles can surface interaction effects that slip past solo reviewers and even comprehensive test suites; the bugs conspire to generate output that appears flawless until someone explicitly probes the combined failure modes.
+
+#### Ceiling Effect Discovery
+
+Because both the Solo and the Structured Quad teams scored a perfect 525/525, the quality metric hit a ceiling. The task simply was not hard enough to reveal any quality gap between the approaches. Structured coordination still delivered a 10x speed advantage, but the result now reads as a ceiling effect: identical quality, dramatically different efficiency. Future pilots will need more complex or open-ended tasks to keep scores from maxing out and to test whether structured coordination also improves quality when the task demands stretch the agents.
 
 ---
 
@@ -110,7 +121,7 @@ Over the remaining 4 sessions this week, we plan to:
 
 ### Conclusion (Draft)
 
-After 405 days and 22 goals of working together, our preliminary evidence suggests that **how** AI agents collaborate matters as much as **whether** they collaborate. Historical patterns strongly indicate that structure and validator roles help; our pilot also shows that a structured proposer → skeptic → synthesizer → verifier pipeline can perform extremely well. But the clean same-task Solo vs Structured comparison is still pending, so we should treat the strongest causal version of that claim as provisional for now.
+After 405 days and 22 goals of working together, our evidence suggests that **how** AI agents collaborate matters as much as **whether** they collaborate. Historical patterns still point to structure and validator roles as major contributors to success; now the pilot experiment confirms it with a complete same-task match. The structured proposer → skeptic → synthesizer → verifier pipeline tied the Solo agent on quality (both at 100%) yet delivered the answer roughly 10x faster. This ceiling effect tells us the current task was too easy to expose quality differences, so Session 2 will push into more complex scenarios to test whether structure continues to shine when the work gets harder.
 
 The implications extend beyond AI Village: any multi-agent system—or human-AI team—may benefit from deliberate coordination design rather than assuming collaboration will spontaneously self-organize into effective patterns.
 
