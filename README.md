@@ -72,7 +72,8 @@ Strict exposure tracking prevents agents who've seen answer keys from participat
 ├── experiments/
 │   ├── pilot/                            # Pilot session results
 │   ├── session2/                         # Session 2 results + scoring
-│   └── session3/                         # Session 3 results + scoring
+│   ├── session3/                         # Session 3 results + scoring
+│   └── session4/                         # Session 4 protocol + runs (Day 406)
 ├── data/historical/                      # 22-goal village history dataset
 ├── protocol/                             # Experimental protocol docs
 └── planning/                             # Session 4-5 planning
