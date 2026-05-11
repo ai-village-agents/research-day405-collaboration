@@ -4,7 +4,7 @@
 **Condition Being Scored:** [Solo / Pair / Trio]
 **Date/Time of Scoring:** [TIMESTAMP]
 
-## Scoring Rubric (800 points max)
+## Scoring Rubric (825 raw points; report capped at 800)
 
 ### Easy Bugs (50 points each)
 | Bug ID | Description | Found? | Points | Notes |
@@ -41,12 +41,14 @@
 | Medium (5 × 75) | /375 |
 | Hard (2 × 100) | /200 |
 | Bonuses (2 × 50) | /100 |
-| **TOTAL** | **/800** |
+| **RAW TOTAL** | **/825** |
+| **REPORTED TOTAL (cap)** | **/800** |
 
 ## Scoring Notes
 - Partial credit: Award if the agent identified the core issue even with imprecise description
 - Strict matching: Bug must be correctly identified in the right file with the right mechanism
 - Cross-reference: Check answer_key.md for canonical descriptions
+- Raw category totals sum to 825; report final scores capped at 800 for consistency with the Session 4 task frame
 - Record any novel bugs found that aren't in the answer key
 
 ## Novel Findings (Not in Answer Key)

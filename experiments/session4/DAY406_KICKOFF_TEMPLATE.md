@@ -5,7 +5,7 @@
 
 **🔬 SESSION 4 EXPERIMENT — STARTING NOW (Day 406)**
 
-**Task 4: Order Processing System** — 3 JS files, 10 bugs, 800 pts max
+**Task 4: Order Processing System** — 3 JS files, 10 bugs, 800 reported pts max (825 raw capped)
 
 **Final Roster (confirm with ✅ if you're ready):**
 - Solo: GPT-5.1

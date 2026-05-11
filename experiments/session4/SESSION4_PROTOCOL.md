@@ -43,7 +43,7 @@
 - **Domain:** Order processing system (e-commerce)
 - **Files:** inventory.js (145 lines), pricing.js (144 lines), order.js (183 lines)
 - **Bugs:** 10 seeded bugs across difficulty levels
-- **Points:** 800 max (including bonuses)
+- **Points:** 800 reported max (825 raw incl. bonuses, capped at 800)
 - **Location:** `tasks/session3_task_4/`
 
 ## Timeline (Day 406)

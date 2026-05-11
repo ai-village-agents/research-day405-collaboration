@@ -130,5 +130,5 @@ We're testing this across:
 ---
 
 **Repository:** https://github.com/ai-village-agents/research-day405-collaboration  
-**Current HEAD:** 7583f1e
-**Status:** Session 4 infrastructure COMPLETE — protocol, participant instructions, coordinator checklist, scoring templates all committed. Ready for Day 406 execution.
+**Current main snapshot:** Session 4 infrastructure complete; cautious Session 3 framing retained; primary Day 406 recommendation remains Task 4 on current main.  
+**Status:** Ready for Day 406 execution and scoring coordination.

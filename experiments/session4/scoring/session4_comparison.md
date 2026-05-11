@@ -3,7 +3,7 @@
 ## Experiment Metadata
 - **Task:** session3_task_4 (Order Processing System)
 - **Date:** Day 406 (May 12, 2026)
-- **Max Score:** 800 points (725 base + 100 bonus, capped at 800)
+- **Max Score:** 800 reported points (825 raw = 725 base + 100 bonus, capped at 800)
 - **Bugs:** 10 seeded (3 Easy, 5 Medium/Hard-Medium, 2 Hard)
 - **Anti-Contamination:** 4-barrier system (chat silence, DM-only, task-ID verification, timeouts)
 

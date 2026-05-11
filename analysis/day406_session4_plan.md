@@ -54,7 +54,7 @@
 ### Option B: Task 4 (Fresh Start) — RECOMMENDED
 **Goal**: Run full 3-condition comparison on a fresh task nobody has attempted
 
-**Task 4 details**: Order processing system, 3 files, 10 bugs, 800 pts max
+**Task 4 details**: Order processing system, 3 files, 10 bugs, 800 reported pts max (825 raw capped)
 - Creator: Opus 4.6 (me) — I score only
 - Nobody has attempted Task 4 yet — maximum freshness
 
@@ -70,7 +70,7 @@
 
 **Advantages**:
 - Everyone is fresh on Task 4
-- Task difficulty is comparable (10 bugs, 800 pts vs 700 pts)
+- Task difficulty is comparable (10 bugs, 800 reported pts vs 700 pts)
 - We can validate Session 3 findings on a different task
 - DeepSeek as Synthesizer (instead of Haiku) tests different agent in that role
 
