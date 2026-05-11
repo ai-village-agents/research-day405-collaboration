@@ -210,3 +210,57 @@ Both conditions found all 5 seeded bugs and the bonus observation, suggesting a 
 3. **Task difficulty calibration needed:** Session 2 should use more complex tasks or subtler bugs to avoid ceiling effects. Metrics should capture analysis depth (e.g., interaction effects identified, severity accuracy) not just binary bug detection.
 
 4. **Complementary insight types:** Solo produced deeper semantic analysis; structured produced deeper interaction analysis. This suggests different coordination modes may be better suited to different aspects of code review.
+
+---
+
+## 12. Updated Findings with Complete 22-Goal Dataset
+
+### Finding 11: Role Emergence Acceleration (Quantified)
+With complete data across all 22 goals, the role emergence acceleration is now the most dramatic temporal pattern:
+
+| Era | Example Goal | Role Emergence Time |
+|-----|-------------|-------------------|
+| Early (Day ~146) | Goal 5: Free Choice | No formal roles needed |
+| Middle (Day ~251) | Goal 12: Choose Own Goal | 1-2 days |
+| Late (Day ~391) | Goal 20: Build Own World | <1 day |
+| Latest (Day ~398) | Goal 21: Connect Worlds | <5 minutes |
+
+This represents an acceleration from days → minutes — approximately a 2,000x improvement in organizational speed. The village learned to self-organize not through explicit instruction but through accumulated experience.
+
+### Finding 12: Spontaneous Coordination is Inevitable
+Both "free choice" goals (5 and 12) demonstrated that agents converge on shared coordination problems even when explicitly told to work independently. Infrastructure coupling (shared chat, shared repos, localhost isolation) creates inevitable interdependence. This suggests that the distinction between "individual" and "collaborative" work may be less meaningful than the distinction between "structured" and "unstructured" collaboration.
+
+### Finding 13: Scale Explosion Pattern
+When agents optimize for visible output without quality constraints:
+- Goal 20: 600K+ secrets, 70K+ stations (1 week)
+- Goal 21: 13,750+ cosmic sights, 1M+ drift stations (1 week)
+- Goal 19 (MSF charity): Only $270 raised (quality-gated by external conversion)
+
+This pattern suggests agents naturally optimize for quantity when quality metrics are absent or when the output domain allows it (digital content vs. real-world fundraising).
+
+### Finding 14: Complete Validator Effect (22 Goals)
+Updated with all goals:
+- Goals WITH validators (7, 14, 15, 16, 17, 21): Mean outcome 2.83, 100% fast error recovery
+- Goals WITHOUT validators (1, 2, 5, 7, 10, 12): Mean outcome 1.83, 17% fast error recovery
+- Goals 20 (individual, partial validators via Bridge Index): Outcome 3
+- Goal 21 (validators GPT-5.5, GPT-5.4): Outcome 3, fastest error recovery observed
+
+The validator effect is now the single most robust finding across all 22 goals: having at least one agent dedicated to quality checking predicts both higher outcomes and faster recovery from errors.
+
+### 12.1 Complete Historical Dataset Status
+All 22 goals now have enriched data with:
+- Coordination mode classification
+- Team size
+- Outcome score (0-3)
+- Structure present (Y/N)
+- Validators present (Y/N)
+- Role emergence time
+- Error recovery speed
+- Key qualitative insights
+
+Enriched data files:
+- `data/historical/enriched_goals_8_13.md` (Goals 8-13)
+- `data/historical/enriched_goals_14_16.md` (Goals 14-16)
+- `data/historical/enriched_goals_17_19.md` (Goals 17-19)
+- `data/historical/enriched_goals_5_12_20_21.md` (Goals 5, 12, 20, 21)
+- Goals 1-7 enriched in initial comprehensive analysis above
