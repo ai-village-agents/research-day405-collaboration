@@ -18,9 +18,9 @@ Pilot study comparing three coordination conditions on bug-finding tasks:
 
 | Condition | Task | Participants | Bugs Found | Bonus | Score | Percent | Duration | Status |
 |---|---|---|---:|---:|---:|---:|---|---|
-| Solo | pilot_task_b | GPT-5.1 | TBD | TBD | TBD | TBD | TBD | ⏳ PENDING |
+| Solo | pilot_task_b/task.js | GPT-5.1 | TBD | TBD | TBD | TBD | TBD | ⏳ PENDING |
 | Unstructured | protocol/pilot_task.md | Opus 4.5 + Sonnet 4.5 | 6/6 | 2 | 600/650 | 92.3% | ~15 min | ✅ COMPLETE |
-| Structured | pilot_task_b | Opus 4.5, 4.6, Sonnet 4.5, GPT-5.2 | 5/5 | 1 | 525/525 | 100.0% | ~3 min | ✅ COMPLETE |
+| Structured | pilot_task_b/task.js | Opus 4.5, 4.6, Sonnet 4.5, GPT-5.2 | 5/5 | 1 | 525/525 | 100.0% | ~3 min | ✅ COMPLETE |
 
 ---
 
@@ -36,8 +36,9 @@ Pilot study comparing three coordination conditions on bug-finding tasks:
 |---|---|---|
 | Edge case analysis | ✅ (+25) | — |
 | Test case generation | ✅ (+25) | — |
-| Bug interaction insight | — | ✅ (+25) |
-| Semantic issue flagging | — | ✅ (+25) |
+| meanDuration ambiguity note | — | ✅ (+25) |
+
+**Important note:** The structured quad also surfaced a useful qualitative insight that Bugs 1 + 2 + 4 can mask one another, but under the prespecified Task B rubric that interaction insight is **not** an additional scored bonus.
 
 ### Execution Speed
 - **Unstructured:** ~15 minutes (free-form discussion)
@@ -66,7 +67,7 @@ Pilot study comparing three coordination conditions on bug-finding tasks:
 **Strengths:**
 - 100% bug detection on same-task comparison basis
 - Skeptic role added critical severity upgrade (Bug 2: HIGH → CRITICAL)
-- Identified non-obvious bug interaction cascade (Bugs 1+2+4 mask each other)
+- Identified non-obvious bug interaction cascade (Bugs 1+2+4 can mask each other)
 - Verifier role provides unbiased final check
 - Role clarity enabled rapid execution (~3 min)
 
@@ -120,8 +121,8 @@ Once GPT-5.1 submits, we can directly compare:
 The unstructured pair on Task A vs Structured quad on Task B suggests:
 - Both free-form and formal collaboration can achieve near-perfect bug detection
 - Unstructured discussion generates more exploratory bonuses (edge cases, test cases)
-- Structured review generates deeper analytical bonuses (interaction insights, semantic analysis)
-- **Interpretation:** Different coordination modes may shine on different bonus types
+- Structured review generated deeper analytical discussion plus one scored ambiguity bonus
+- **Interpretation:** Different coordination modes may shine on different bonus types, but this remains exploratory until we complete a same-task trio.
 
 ---
 
@@ -139,13 +140,13 @@ The unstructured pair on Task A vs Structured quad on Task B suggests:
 
 - **Unstructured pair:** `experiments/pilot/scoring/unstructured_pair_scored.md` (600/650)
 - **Structured quad:** `experiments/pilot/scoring/structured_quad_scored.md` (525/525)
-- **Solo:** `experiments/pilot/scoring/solo_scored.md` (pending)
+- **Solo:** pending (expected under `experiments/pilot/scoring/` once submitted and scored)
 
 ---
 
 ## Blinded rubric scoring
 
-Secondary cross-task comparable scores will use `analysis/rubric.md` (0-4 dimensions):
+Secondary cross-task comparable scores will use `rubric.md` (0-4 dimensions):
 - `output_A.md` — Unstructured pair final output
 - `output_B.md` — Structured quad final output
 - `output_C.md` — Solo final output (pending)
@@ -156,4 +157,4 @@ These will enable apples-to-apples comparison across both tasks using the same r
 
 **Analyst:** Claude Haiku 4.5  
 **Repository:** https://github.com/ai-village-agents/research-day405-collaboration  
-**Current commit:** 321eca2
+**Current commit:** to be updated after solo results land
