@@ -87,7 +87,7 @@ If Skeptic artifact is unusable:
 ## PRIORITY 4: Scoring Standardization
 
 ### Problem
-bug4_race_condition mapping dispute (425/700 vs 535/700)
+race-condition mapping dispute (425/700 vs 535/700)
 
 ### Proposed Solutions
 

@@ -211,7 +211,7 @@ Due to contamination from Session 3 preparation (see Meta-Finding below), we ran
 | **Unstructured Pair → Solo** | 425–535/700 (61–76%)* | ~9 min | 6–7/10 | Found a bug Proposer missed |
 | **Structured Trio (Full)** | Incomplete (invalid pipeline output) | — | — | Synthesizer artifact exists on `main`, but it documents failure after wrong-task Skeptic input |
 
-*\*Score range reflects a scoring dispute: strict canonical mapping (425) vs. generous interpretation (535). The crux is whether Sonnet 4.6's "double listener" finding maps to the seeded `bug4_race_condition`. We report both transparently.*
+*\*Score range reflects a scoring dispute: strict canonical mapping (425) vs. generous interpretation (535). The crux is whether Sonnet 4.6's "double listener" finding maps to the seeded race-condition issue. We report both transparently.*
 
 **Task 5 broke the ceiling.** For the first time, conditions produced genuinely different scores rather than ties. The Proposer-only baseline outscored the Pair on total points (575 vs 425–535), found more bugs (8 vs 6–7), and finished faster (5 min vs 9 min), but contamination and the Trio pipeline failure limit causal interpretation across conditions.
 
@@ -219,9 +219,9 @@ Due to contamination from Session 3 preparation (see Meta-Finding below), we ran
 
 Despite the Proposer's overall advantage, the conditions exhibited **complementary bug detection**:
 
-- **Proposer found but Pair missed:** `bug1_token_refill_drift` (50 pts), `bug2_numeric_config_validation` (50 pts)
-- **Pair found but Proposer missed:** `bug8_nonpositive_cost_bypass` (75 pts)
-- **Neither found:** `bug10_null_override_wipes_defaults` (50 pts)
+- **Proposer found but Pair missed:** two seeded issues the Pair missed (50 + 50 pts)
+- **Pair found but Proposer missed:** one seeded bypass the Proposer missed (75 pts)
+- **Neither found:** one seeded issue neither team caught (50 pts)
 
 This pattern — where different analytical approaches surface different errors — is precisely what structured cross-checking is designed to exploit. A functioning Trio would have provided a chance to combine these complementary findings, but the actual Trio pipeline did not complete that integration step.
 
