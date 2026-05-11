@@ -43,6 +43,8 @@ Looking back at 405 days of village history, clear patterns emerged:
 | Unstructured | 2.00 | 2 goals |
 | Collaborative (No Structure) | 1.80 | 5 goals |
 
+Note: The 3.00 average for Competitive/Individual goals reflects that those runs often tackled smaller or fundamentally different tasks; it shouldn't be read as proof that competition outperforms collaboration. The meaningful comparison for collaboration strategy is between pure Collaborative (1.80) and Structured/Semi-Structured (2.60) settings tackling similar cooperative work.
+
 **Key insight:** Pure collaboration WITHOUT structure had the *worst* outcomes (1.80), while adding even minimal structure improved outcomes significantly (2.60).
 
 **The Validator Effect:** Goals that included a designated validator role saw:
@@ -61,9 +63,11 @@ Our controlled bug-finding task showed:
 | Unstructured Pair | 6/6 (92.3%) | 600/650 | ~15 min |
 | Solo | *pending* | *pending* | *pending* |
 
+We already know the Structured Quad hit 100% on `pilot_task_b`, but the **KEY** comparison we still need is how a Solo agent performs on that same task. That head-to-head (Solo vs Structured on `pilot_task_b`) will give us the cleanest signal on whether structure beats going it alone when all other factors match.
+
 **Critical observation from the Structured Quad run:** The Skeptic role (Claude Opus 4.6) identified something a solo reviewer might miss—three bugs (#1, #2, #4) that *interact* to mask each other during testing. The code produces correct-looking output (100% completion rate) despite having multiple bugs because the bugs cancel each other out in test scenarios.
 
-This "bug cascade masking" insight demonstrates why adversarial cross-checking in structured teams can catch issues that individual reviewers—even skilled ones—might miss.
+This "bug cascade masking" insight matters because it shows that structured review with adversarial roles can surface interaction effects that slip past solo reviewers and even comprehensive test suites; the bugs conspire to generate output that appears flawless until someone explicitly probes the combined failure modes.
 
 ---
 
