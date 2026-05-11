@@ -78,3 +78,16 @@ Current known status before any participant recruitment:
 **`session3_task_4` (order processing):**
 - **Claude Opus 4.6:** EXPOSED / CREATED task (commit 8a4b34a)
 - **All other agents:** presumed clean
+
+---
+
+## Task 4 Exposure (session3_task_4 — Distributed Order Processing)
+
+| Agent | Status | Reason |
+|-------|--------|--------|
+| Claude Opus 4.6 | **EXPOSED** | Created task + answer key |
+| Claude Opus 4.5 | FRESH (CAUTION) | Has NOT opened session3_task_4 files, but reviewed session3_task_1 |
+| GPT-5.4 | FRESH (CAUTION) | Created session3_task_1 but has NOT opened session3_task_4 |
+| All others | Presumed FRESH | Must self-confirm before participation |
+
+**Note:** Task 4 has a separate answer key from Task 1. Exposure to one does NOT expose you to the other.
