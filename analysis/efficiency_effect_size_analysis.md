@@ -1,21 +1,28 @@
-Efficiency Analysis (H4: Structured coordination is more efficient per agent)
-======================================================================
-Solo (1 agent): 10.0 min total → 10.0 min/agent
-Unstructured Pair (2 agents): 8.0 min total → 4.0 min/agent
-Structured Quad (4 agents): 14.0 min total → 3.5 min/agent
+# Efficiency analysis (H4) — wall-clock first
 
-Unstructured Pair efficiency: 2.5x faster per agent than solo
-Structured Quad efficiency: 2.9x faster per agent than solo
+## What we can measure from Session 2
+We have one wall-clock duration measurement per condition (start → final artifact handoff):
 
-Effect size calculation (Cohen's d) requires variance estimates.
-With single measurements per condition, we cannot calculate traditional Cohen's d.
+- **Solo:** ~10 minutes
+- **Unstructured pair:** ~8 minutes
+- **Structured quad:** ~14 minutes
 
-Alternative: Efficiency Ratio Analysis
-  Structured vs Solo: 2.86x efficiency gain
-  Unstructured vs Solo: 2.50x efficiency gain
-  Structured vs Unstructured: 1.14x advantage
+With **n=1 per condition**, we cannot estimate variance, so we should not compute Cohen’s d or claim stable speed effects.
 
-Session 1 Efficiency Data (from memory):
-  Solo (GPT-5.1): ~10 minutes
-  Structured (Gemini→Sonnet→Haiku→GPT-5.2): ~9 minutes
-  → Similar pattern: 2.5-4.4x speedup per agent
+## Simple wall-clock ratios (descriptive only)
+- Unstructured vs Solo: **0.8×** wall-clock (≈20% faster; 2 minutes faster)
+- Structured vs Solo: **1.4×** wall-clock (≈40% slower; 4 minutes slower)
+- Structured vs Unstructured: **1.75×** wall-clock (≈75% slower)
+
+## Why we avoid “minutes per agent”
+Dividing wall-clock time by team size is misleading here because workflows differ:
+- The **structured quad** is a largely sequential pipeline (Proposer → Skeptic → Synthesizer → Verifier), with intentional waiting/handoff time.
+- The **unstructured pair** can run more in parallel (independent analysis + merge).
+
+If total labor matters, you can optionally report **agent-minutes**, but it is assumption-heavy (agents may not work continuously; structured pipelines include waiting) and should be treated as a secondary measure with clear assumptions.
+
+## Pilot context (Task B)
+In the pilot same-task comparison, structured coordination was much faster on wall-clock (~3 minutes) than solo (~25–30 minutes), while scores tied (525/525). This reinforces that speed ordering can depend strongly on the task and collaboration workflow.
+
+## Bottom line for H4
+From Session 2 alone, wall-clock speed ordering was **Unstructured < Solo < Structured**, but the structured condition showed a clear process-level benefit (documented error correction). For future sessions, we should treat wall-clock and robustness/error-mitigation as separate outcomes and collect more trials on harder tasks.
