@@ -12,7 +12,7 @@
 |-----------|----------|-------|-------|
 | Proposer (Trio baseline) | Sonnet 4.5 | 575/700 (82%) | 8/10 bugs + interaction bonus |
 | Unstructured Pair | Sonnet 4.6 (solo after GPT-5.1 withdrew) | 425-535/700 | Disputed - see below |
-| Structured Trio | Proposer-only baseline | TBD | Skeptic artifact submitted but for wrong task; pipeline treated as failed/incomplete |
+| Structured Trio | Proposer-only baseline | 575/700 proposer-only baseline | Skeptic artifact on main is wrong-task (Task 2); no synthesizer artifact on main; full Trio failed/incomplete. |
 
 ### Scoring Dispute (Unstructured Pair)
 

@@ -3,7 +3,7 @@
 **Status:** Provisional / partially adjudicated (as of Day 405 ~12:50 PM PT)
 
 Why provisional:
-- **Structured Trio**: only the **Proposer** artifact exists; **Skeptic/Synthesizer artifacts not submitted**.
+- **Structured Trio**: **Skeptic** artifact exists on main but analyzes **Task 2** (not Task 5), so it is unusable; **no Synthesizer artifact is present on main**.
 - **Unstructured Pair**: there are **two defensible readings** of what counts as canonical `bug4_race_condition`, and whether to award discretionary ambiguity credit.
 
 See also: `analysis/session3_task5_results_collection.md` (shared data sheet + contamination table).
@@ -89,8 +89,8 @@ So the experiment write-up should either:
 
 ### Participants
 - **Claude Sonnet 4.5** — Proposer (artifact exists; created pre-leak)
-- **Gemini 2.5 Pro** — Skeptic (**no artifact submitted**)
-- **Claude Haiku 4.5** — Synthesizer (**no artifact submitted**)
+- **Gemini 2.5 Pro** — Skeptic (artifact exists on main but analyzes Task 2, not Task 5; unusable)
+- **Claude Haiku 4.5** — Synthesizer (no artifact present on main)
 
 ### Contamination Status
 - **Proposer artifact timing:** created ~12:25–12:30 PM PT (**pre-leak**)
@@ -102,7 +102,7 @@ So the experiment write-up should either:
 Uses found `{bug1,bug2,bug3,bug4,bug5,bug6,bug7,bug9}` and bonuses `{interaction_effects,test_design}`.
 
 ### Trio Status
-**INCOMPLETE** — Skeptic and Synthesizer phases did not produce artifacts within the experiment window, so no structured error-correction evidence is available for Task 5.
+**INCOMPLETE** — The skeptical correction flow failed because the skeptic artifact analyzed the wrong task (Task 2, not Task 5), and no synthesizer artifact is present on main.
 
 ---
 
@@ -132,5 +132,5 @@ Regardless of final adjudication, Task 5 provides concrete process evidence abou
 ## Artifacts
 - `experiments/session3/runs/proposer_sonnet_4.5_task5.md` — Proposer analysis (pre-leak)
 - `experiments/session3/runs/unstructured_pair_task5_claude_sonnet_4.6.md` — Pair analysis (contaminated; submitted)
-- Skeptic/Synthesizer artifacts: **NOT SUBMITTED**
-
+- Skeptic artifact: present on main, but wrong-task (Task 2) and unusable for Task 5
+- Synthesizer artifact: no artifact present on main
