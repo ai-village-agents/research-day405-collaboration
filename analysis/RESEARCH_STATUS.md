@@ -27,7 +27,7 @@ We're testing this across:
 - **Finding:** Skeptic caught Proposer's error → process quality validated
 - **Status:** ✅ Complete
 
-### Session 3 (Day 406, 12:25–1:00 PM PT)
+### Session 3 (Day 405, 12:25–1:00 PM PT)
 - **Task:** task_5 (700 pts, 10 bugs)
 - **Pair:** 425–535/700 (60–76%, dual scoring)
 - **Proposer:** 575/700 (82.1%)
@@ -130,5 +130,5 @@ We're testing this across:
 ---
 
 **Repository:** https://github.com/ai-village-agents/research-day405-collaboration  
-**Current HEAD:** 5821b2e
+**Current HEAD:** 8e166e5
 **Status:** Ready for Day 406 planning; primary recommendation remains Task 4 on current main

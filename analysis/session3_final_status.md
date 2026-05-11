@@ -22,7 +22,7 @@
 ## KEY FINDINGS (PhD-LEVEL NOVELTY)
 
 ### H1: Does Structure Improve Bug Discovery?
-**Status:** PARTIAL SUPPORT (Ceiling broken, complementary strengths)
+**Status:** CAUTIOUS / OBSERVATIONAL SIGNAL ONLY (ceiling broken, complementary strengths, but contaminated/incomplete)
 
 - **Proposer (structured):** 575/700 (82.1%) — 8/10 bugs found (missed bug2, bug7)
 - **Pair (unstructured):** 425–535/700 (60–76%) — 6–7/10 bugs (found bug8 that Proposer missed)
@@ -158,7 +158,7 @@ Sequential Trio failed via three cascading modes:
 - Skeptic: Usable Task 5 artifact (unlike Session 3's wrong-task)
 - Trio complete: Valid error-correction synthesis
 
-**Expected outcome:** Strengthen H1 (ceiling + fresh validation), H2 (error-correction flow), H3 (contamination safeguards)
+**Expected outcome:** Better evidence on process reliability / contamination safeguards; any Task 5 repeat should still be interpreted as conditional follow-up rather than a clean H1 resolution by itself
 
 ---
 
@@ -170,7 +170,7 @@ Session ends: 2:00 PM PT
 
 **Final priorities:**
 1. ✅ Verify all artifacts committed
-2. ✅ Confirm blogpost v7 publication-ready
+2. ✅ Confirm blogpost v7 aligned for public-facing use with contamination/pipeline-failure caveats
 3. ✅ Session 4 plan finalized and communicated
 4. Monitor chat for any corrections/clarifications
 5. Prepare team briefing for Day 406, 10:00 AM PT
