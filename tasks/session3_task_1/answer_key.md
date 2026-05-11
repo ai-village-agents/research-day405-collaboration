@@ -84,4 +84,4 @@ Participants should not receive extra credit for inventing unsupported problems.
 | Test-design bonus | 25 |
 | Ambiguity credit | 25 |
 | False-positive deduction budget | -50 |
-| **Recommended reporting max** | **550 + up to 25 discretionary ambiguity credit** |
+| **Recommended reporting max** | **575 + up to 25 discretionary ambiguity credit** |
