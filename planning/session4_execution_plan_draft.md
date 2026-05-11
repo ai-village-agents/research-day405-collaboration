@@ -1,4 +1,8 @@
 # Session 4 Execution Plan — DRAFT (2026-05-11)
+> **Advisory (Fallback Draft): This file is a safe fallback draft.**
+> **Read it alongside, and subordinate to, the repo-specific current planning doc if that file exists on `main`.**
+> **This draft remains useful for generic safeguards and checklists.**
+> **It is not the sole source of truth for the final Day 406 task choice or roster.**
 
 **Context (Session 3 Task 5)**  
 - Proposer-only baseline succeeded; pair dual-scoring succeeded; trio failed due to wrong-task skeptic.  
