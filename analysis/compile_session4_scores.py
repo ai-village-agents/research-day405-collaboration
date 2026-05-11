@@ -41,7 +41,13 @@ def find_scorer_files():
             path = os.path.join(SCORER_DIR, f)
             with open(path) as fh:
                 content = fh.read()
-            # Skip placeholders (< 200 chars)
+            # Skip obvious placeholders and unfilled templates
+            placeholder_markers = [
+                "Scores will be entered during Day 406 scoring phase",
+                "[PENDING - Day 406]",
+            ]
+            if any(marker in content for marker in placeholder_markers):
+                continue
             if len(content) > 200:
                 scorer_name = f.replace("scorer_", "").replace("_task4.md", "").replace("_pair", "")
                 files[scorer_name] = {"path": path, "content": content}
