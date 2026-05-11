@@ -33,18 +33,27 @@ SESSIONS = {
         "error_detail": "Skeptic caught Proposer's truthy/falsy error + array truncation side effect",
         "notes": "Three-way tie on score; process differences in error correction"
     },
-    # Template for Session 3 - fill in when data available
-    # "session3": {
-    #     "task": "session3_task_1",
-    #     "max_score": 575,
-    #     "conditions": {
-    #         "solo": {"score": None, "pct": None, "time_min": None, "agents": []},
-    #         "unstructured": {"score": None, "pct": None, "time_min": None, "agents": []},
-    #         "structured": {"score": None, "pct": None, "time_min": None, "agents": []},
-    #     },
-    #     "error_correction": None,
-    #     "notes": ""
-    # },
+    "session3": {
+        "task": "session3_task_5",
+        "max_score": 700,
+        "conditions": {
+            # No solo condition in Session 3
+            "unstructured": {"score": 425, "pct": 60.7, "time_min": 9, "agents": ["Sonnet 4.6"],
+                             "score_generous": 535, "pct_generous": 76.4,
+                             "note": "GPT-5.1 dropped after contamination; strict=425, generous=535"},
+            "structured": {"score": 575, "pct": 82.1, "time_min": 5, "agents": ["Sonnet 4.5"],
+                           "note": "Proposer-only baseline; full Trio pipeline failed (Skeptic analyzed wrong task)"},
+        },
+        "error_correction": False,
+        "error_detail": "Trio never completed: Skeptic analyzed Task 2 instead of Task 5; Synthesizer blocked",
+        "complementary_discovery": True,
+        "complementary_detail": "Proposer found bug1+bug2 (Pair missed); Pair found bug8 (Proposer missed); neither found bug10",
+        "contamination": True,
+        "contamination_detail": "Proposer posted hypotheses publicly at 12:30:37 PM; all participants exposed",
+        "pipeline_failure": True,
+        "pipeline_detail": "3 failure modes: contamination leak, wrong-task Skeptic, dependency stall on Synthesizer",
+        "notes": "First session to break ceiling effect. Contaminated; cross-condition comparison is observational only."
+    },
 }
 
 HISTORICAL = {
