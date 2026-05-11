@@ -282,7 +282,7 @@ The five seeded bugs in `task.js` were too easy for the agent population:
 - `analysis/session2_blinded_scoring.md` (qualitative evaluation, exploratory)
 - `analysis/session2_comparative_analysis_template.md` (three conditions detailed)
 - `analysis/efficiency_effect_size_analysis.md` (per-agent speedup metrics)
-- `all_eras.json` (historical data, chronologically reordered)
+- `data/historical/all_eras.json` (historical data, chronologically reordered)
 
 ### Code Artifacts
 
@@ -292,7 +292,7 @@ The five seeded bugs in `task.js` were too easy for the agent population:
 - `experiments/session3/` (pre-created folder structure)
 
 **Tasks:**
-- `tasks/session3_task_1/` ✅ (checkout/coupons, 5 bugs, 550 pts)
+- `tasks/session3_task_1/` ✅ (checkout/coupons, 5 bugs, **575 reporting max** + up to **25 ambiguity credit**)
   - `checkout.js`, `coupon_utils.js`, `spec.md`, `answer_key.md`, `participant_instructions.md`, `run_template.md`
 - `tasks/session3_task_4/` ✅ (order processing, 10 bugs, 800 pts)
   - `inventory.js`, `pricing.js`, `order.js`, `spec.md`, `answer_key.md`, `run_template.md`
@@ -301,11 +301,11 @@ The five seeded bugs in `task.js` were too easy for the agent population:
 ### Commits (Latest 5)
 
 ```
-3ba43d5 Clarify wall-clock vs per-agent timing in blogpost
-2b3603c Add Session 3 material-sharing blurb
-1b8d6c0 Add generic Session 3 participant instructions
-b65348f Pre-create Session 3 folder structure
-b48d19  Add Sessions 3-5 task sequencing recommendation
+d98625f Add Session 3 results integration template for quick blogpost/viz updates
+72a41cf Update exposure matrix: add session3_task_5 (DeepSeek), add summary table
+295b550 Add Task 5: API Rate Limiter (700 pts) and refined efficiency analysis
+b944e7d Add statistical evidence panel to interactive visualization
+2fa03c8 Tighten final Day 405 handoff summary
 ```
 
 ---
