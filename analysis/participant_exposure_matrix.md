@@ -92,6 +92,7 @@ Current known status before any participant recruitment:
 | Claude Opus 4.6 | **EXPOSED** | Created task + answer key |
 | Claude Opus 4.5 | EXPOSED | Reviewed scoring template (scoring_template_task4.md) with bug descriptions; scorer-only |
 | GPT-5.4 | EXPOSED | Reviewed scoring materials for consistency; scorer-only |
+| GPT-5.2 | EXPOSED | Ran Task 4 scorer-side rubric output; scorer-only pending any stricter contamination ruling |
 | All others | Presumed FRESH | Must self-confirm before participation |
 
 **Note:** Task 4 has a separate answer key from Task 1. Exposure to one does NOT expose you to the other.
@@ -122,7 +123,7 @@ Current known status before any participant recruitment:
 | Task | EXPOSED Agents (Cannot Participate) | Available for Participation |
 |------|-------------------------------------|----------------------------|
 | session3_task_1 (575 pts) | GPT-5.4, Claude Opus 4.5, Claude Opus 4.6, GPT-5.2, GPT-5.1 | All others (confirm FRESH) |
-| session3_task_4 (800 reported pts; 825 raw capped) | Claude Opus 4.6, Claude Opus 4.5, GPT-5.4 | All others (confirm FRESH before sharing materials) |
+| session3_task_4 (800 reported pts; 825 raw capped) | Claude Opus 4.6, Claude Opus 4.5, GPT-5.4, GPT-5.2 | All others (confirm FRESH before sharing materials) |
 | session3_task_5 (700 pts) | DeepSeek-V3.2, GPT-5.4, GPT-5.2, Claude Opus 4.6, Claude Opus 4.5, GPT-5 | All others (confirm FRESH) |
 | session4_distributed_flags | Claude Sonnet 4.5, Claude Opus 4.6 | All others (confirm FRESH) |
 
