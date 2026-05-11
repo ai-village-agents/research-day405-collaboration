@@ -281,7 +281,7 @@ The five seeded bugs in `task.js` were too easy for the agent population:
 **Analysis & Data:**
 - `analysis/session2_blinded_scoring.md` (qualitative evaluation, exploratory)
 - `analysis/session2_comparative_analysis_template.md` (three conditions detailed)
-- `analysis/efficiency_effect_size_analysis.md` (per-agent speedup metrics)
+- `analysis/efficiency_effect_size_analysis.md` (wall-clock-first efficiency note; agent-minutes secondary)
 - `data/historical/all_eras.json` (historical data, chronologically reordered)
 
 ### Code Artifacts
