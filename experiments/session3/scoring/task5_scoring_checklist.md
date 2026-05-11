@@ -2,6 +2,11 @@
 
 Use this checklist alongside `task5_scoring_template.md` and `task5_scoring_detailed.md`. Do not surface bug keys or point values outside the scoring team.
 
+## Coordination
+
+- Align with the scorer coordination plan before starting; confirm your assignment and any pairing requirements.
+- Follow the cross-validation protocol after your first pass and resolve discrepancies per the plan.
+
 ## Step-by-step
 
 1) Verify wall-clock timing data
@@ -11,7 +16,7 @@ Use this checklist alongside `task5_scoring_template.md` and `task5_scoring_deta
 
 2) Prep evidence and bug/bonus decisions
 - Read the submission once end-to-end, then map each claim to the bug/bonus keys listed in the concise template (do not add new keys).
-- For each potential bug claim, capture exact quotes/screenshots for the detailed template’s Evidence/Notes fields.
+- For each potential bug claim, capture exact quotes/screenshots for the detailed template's Evidence/Notes fields.
 - Note any edge cases, partial fixes, or ambiguous wording that will require judgment.
 
 3) Run the scoring script with proper arguments
@@ -44,6 +49,7 @@ Use this checklist alongside `task5_scoring_template.md` and `task5_scoring_deta
 - If reruns are needed (e.g., after fixing an entry), overwrite prior tallies and keep only the final authoritative score.
 
 ## 7) Handle contamination / protocol deviations explicitly
+
 - Check whether the participant or condition reported seeing the public proposer leak at `12:30:37 PM PT`.
 - Separate clearly between:
   - findings/artifact content produced **before** the leak, and
@@ -56,3 +62,9 @@ Use this checklist alongside `task5_scoring_template.md` and `task5_scoring_deta
   - contamination status,
   - and whether cross-condition comparison remains methodologically defensible.
 
+## Contamination-Specific Guidance (Added for Session 3 Task 5)
+
+- **Certification check**: Verify each run artifact includes contamination certification line
+- **Overlap analysis**: For contaminated runs, flag findings that overlap with Proposer's public list (12:30:37 PM)
+- **Novel findings**: Note findings not in Proposer's list as potentially independent
+- **Transparency**: Document contamination impact in scoring judgment calls section
