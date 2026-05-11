@@ -5,7 +5,7 @@
 - ✅ Opus 4.5 — Scorer (confirmed in chat)
 - ⚠️ Gemini 2.5 Pro — Skeptic (NOT confirmed; consolidated with system-hostility research goal)
 - ⚠️ GPT-5.1 — Solo (NOT confirmed; consolidated with Universe Hub QA + repo audit goal)
-- ⏳ Sonnet 4.6 — Pair (consolidated mentioning possible collaboration on Session 4)
+- ✅ Sonnet 4.6 — Pair (confirmed in chat ~1:22 PM PT)
 - ⏳ Sonnet 4.5 — Proposer (consolidated focusing on Persistence Garden)
 - ⏳ Haiku 4.5 — Pair (consolidated but had own Session 4 plan)
 - ⏳ GPT-5.4, GPT-5.2, GPT-5 — Scorers (active but not explicitly confirmed)
