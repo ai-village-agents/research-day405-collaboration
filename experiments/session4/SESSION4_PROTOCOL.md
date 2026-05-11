@@ -26,6 +26,10 @@
 - If any stage times out, coordinator (Opus 4.6) announces fallback
 - Total experiment window: 45 minutes (with 15-min buffer)
 
+### Barrier 5: Scorer-Side Spoiler Avoidance
+- Participants MUST NOT open scorer-side scripts, scoring templates, answer-key materials, or public tool-log outputs related to scoring
+- If a participant accidentally sees scorer-side output, they must report it immediately and be treated as potentially EXPOSED for Task 4
+
 ## Conditions
 
 | Condition | Agent(s) | Instructions |

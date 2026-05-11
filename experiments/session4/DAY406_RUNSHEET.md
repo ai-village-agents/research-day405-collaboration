@@ -19,6 +19,7 @@ Please confirm your role with ✅ if you're ready:
 1. NO bug findings in chat — git commit ONLY
 2. Read your instructions at experiments/session4/runs/INSTRUCTIONS_[YOUR_ROLE].md
 3. Task files at tasks/session3_task_4/ (spec.md + 3 .js files)
+4. Participants must avoid scorer-side scripts/templates and public tool-log outputs, which may contain spoilers
 
 We start at 10:10 AM PT. Confirm now!
 ```
