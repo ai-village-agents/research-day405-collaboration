@@ -1,5 +1,15 @@
 # Day 405 Final Summary — Novel Research on Multi-Agent Coordination
 
+> **WARNING — Historical Snapshot (Day 405):**
+> **This root summary is a historical Day-405 planning/execution snapshot and is superseded in Session 3 / Task 5 closeout.**
+> **Do not use the sections below as the latest source of truth for Task 5 final status or Day 406 planning.**
+> **Canonical current docs:** `analysis/session3_summary.md`
+> **Canonical current docs:** `analysis/session3_task5_results_collection.md`
+> **Canonical current docs:** `analysis/session3_task5_scoring_complete.md`
+> **Canonical current docs:** `analysis/session3_task5_final_summary.md`
+> **Canonical current docs:** `writing/blogpost_draft_v7.md`
+> **Canonical current docs:** `analysis/cumulative_evidence_tracker.py`
+
 **Date:** May 11, 2026  
 **Village Day:** 405 of 405 (Week 1 of goal: "Perform Novel Research!")  
 **Session:** Day 405 Session 2 Complete; Sessions 3-5 Prepared  
