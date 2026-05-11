@@ -134,6 +134,9 @@ def compute_collision_features(prs: List[PR]) -> List[Dict]:
         p_range = (p.range_start, p.range_end)
         active_collisions = 0
         all_prior_overlaps = 0
+        overlap_merged_before_creation = 0
+        overlap_closed_unmerged_before_creation = 0
+        overlap_still_open_at_creation = 0
         overlapping_prior_numbers: List[int] = []
 
         for j in range(i):
@@ -142,8 +145,13 @@ def compute_collision_features(prs: List[PR]) -> List[Dict]:
             if not overlaps(p_range, q_range):
                 continue
             all_prior_overlaps += 1
+            if q.merged_at is not None and q.merged_at <= p.created_at:
+                overlap_merged_before_creation += 1
+            elif q.merged_at is None and q.closed_at is not None and q.closed_at <= p.created_at:
+                overlap_closed_unmerged_before_creation += 1
             # Concurrent-open collision: q still open when p opened.
             if q.end_time(now) > p.created_at:
+                overlap_still_open_at_creation += 1
                 active_collisions += 1
                 overlapping_prior_numbers.append(q.number)
 
@@ -161,6 +169,7 @@ def compute_collision_features(prs: List[PR]) -> List[Dict]:
             "already filled" in lc_body_lower or "already merged" in lc_body_lower or "collision" in lc_body_lower
         )
         label_any = label_stale or label_replacement or label_merge_conflict or label_collision_claimed
+        overlap_any_before_creation = overlap_merged_before_creation + overlap_closed_unmerged_before_creation
         rows.append(
             {
                 "number": p.number,
@@ -191,6 +200,11 @@ def compute_collision_features(prs: List[PR]) -> List[Dict]:
                 "label_merge_conflict": int(label_merge_conflict),
                 "label_collision_claimed": int(label_collision_claimed),
                 "label_any": int(label_any),
+                "overlapMergedBeforeCreationCount": overlap_merged_before_creation,
+                "overlapClosedUnmergedBeforeCreationCount": overlap_closed_unmerged_before_creation,
+                "overlapAnyBeforeCreationCount": overlap_any_before_creation,
+                "overlapStillOpenAtCreationCount": overlap_still_open_at_creation,
+                "staleRangeHeuristic": int(overlap_merged_before_creation > 0),
                 "activeCollisionCount": active_collisions,
                 "priorOverlapCount": all_prior_overlaps,
                 "overlappingPriorPRs": ",".join(map(str, overlapping_prior_numbers)),
@@ -234,6 +248,10 @@ def summarize(rows: List[Dict]) -> str:
     collided_merged_no_replacement_risk = sum(
         1 for r in collided_rows if (not int(r["replacementRiskHeuristic"])) and is_merged(r)
     )
+    stale_range = sum(int(r["staleRangeHeuristic"]) for r in rows)
+    stale_range_merged = sum(1 for r in rows if int(r["staleRangeHeuristic"]) and is_merged(r))
+    stale_range_merged_absent = sum(1 for r in rows if (not int(r["staleRangeHeuristic"])) and is_merged(r))
+    stale_range_collided = sum(1 for r in collided_rows if int(r["staleRangeHeuristic"]))
 
     def rate(num, den):
         return 0.0 if den == 0 else num / den
@@ -253,6 +271,10 @@ def summarize(rows: List[Dict]) -> str:
             f"Merge rate without append-like heuristic: {merged_no_append_like}/{n - append_like} ({rate(merged_no_append_like, n - append_like):.1%})",
             f"Collided PRs merge rate with replacement-risk heuristic: {collided_merged_replacement_risk}/{collided_replacement_risk} ({rate(collided_merged_replacement_risk, collided_replacement_risk):.1%})",
             f"Collided PRs merge rate with append-like heuristic: {collided_merged_append_like}/{collided_append_like} ({rate(collided_merged_append_like, collided_append_like):.1%})",
+            f"Stale-range heuristic prevalence: {rate(stale_range, n):.1%} ({stale_range}/{n})",
+            f"Merge rate with stale-range heuristic: {stale_range_merged}/{stale_range} ({rate(stale_range_merged, stale_range):.1%})",
+            f"Merge rate without stale-range heuristic: {stale_range_merged_absent}/{n - stale_range} ({rate(stale_range_merged_absent, n - stale_range):.1%})",
+            f"Collided-at-creation PRs with stale-range heuristic: {stale_range_collided}/{collided_count} ({rate(stale_range_collided, collided_count):.1%})",
         ]
     )
 
