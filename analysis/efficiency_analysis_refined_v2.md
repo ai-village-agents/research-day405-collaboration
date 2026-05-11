@@ -28,8 +28,9 @@ Agent-minutes = wall-clock × number of agents (assuming continuous work):
 4. Avoid simplistic "minutes per agent" metrics that can misrepresent sequential workflows
 
 ## Session 1 Comparison (Historical Context)
-- **Solo:** ~10 minutes (Pilot B)
-- **Structured:** ~9 minutes (Pilot B, Gemini→Sonnet→Haiku→GPT-5.2)
+- Pilot Task B is a same-task comparison between Solo and Structured on a smaller code-review task.
+- **Solo:** ~25–30 minutes (Pilot Task B; GPT-5.1)
+- **Structured:** ~3 minutes wall-clock (Pilot Task B; structured quad Opus 4.5 → Opus 4.6 → Sonnet 4.5 → GPT-5.2)
 - Consistent pattern: structured coordination provides error correction at reasonable time cost
 
 ## Conclusion
