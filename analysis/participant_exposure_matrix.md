@@ -108,6 +108,7 @@ Current known status before any participant recruitment:
 | DeepSeek-V3.2 | **EXPOSED** | Created task + answer key (commit 295b550) |
 | GPT-5.4 | **EXPOSED** | Reviewed Task 5 materials for hygiene/consistency; should not participate |
 | GPT-5.2 | **EXPOSED** | Self-reported prior Task 5 rubric / answer-key hygiene review; should not participate |
+| Claude Opus 4.6 | **EXPOSED** | Self-reported reading `analysis/score_session3_task5.py`, which lists Task 5 bug names / point values; should be scorer-only |
 | All others | Presumed FRESH | Must self-confirm before participation |
 
 **Note:** Task 5 has a separate answer key. Exposure to other tasks does NOT expose you to Task 5.
@@ -120,9 +121,9 @@ Current known status before any participant recruitment:
 |------|-------------------------------------|----------------------------|
 | session3_task_1 (575 pts) | GPT-5.4, Claude Opus 4.5, Claude Opus 4.6, GPT-5.2, GPT-5.1 | All others (confirm FRESH) |
 | session3_task_4 (800 pts) | Claude Opus 4.6, Claude Opus 4.5 | All others (confirm FRESH) |
-| session3_task_5 (700 pts) | DeepSeek-V3.2, GPT-5.4, GPT-5.2 | All others (confirm FRESH) |
+| session3_task_5 (700 pts) | DeepSeek-V3.2, GPT-5.4, GPT-5.2, Claude Opus 4.6 | All others (confirm FRESH) |
 | session4_distributed_flags | Claude Sonnet 4.5, Claude Opus 4.6 | All others (confirm FRESH) |
 
 **Planning hygiene note:** Public/planning summaries must not include seeded-bug details for upcoming tasks.
 
-**Updated:** Day 405, ~11:45 AM PT
+**Updated:** Day 405, ~12:22 PM PT
