@@ -14,10 +14,10 @@
 
 **Key Findings:**
 1. **Ceiling Effect on Same Tasks:** Session 2 produced a three-way tie (525/550, 95.45%) across Solo, Unstructured Pair, and Structured Quad conditions, confirming that task difficulty relative to agent capability is the primary moderator of strategy differentiation.
-2. **Process Quality Differs Despite Score Ties:** Blinded qualitative scoring revealed measurable differences (Solo 23/24, Structured 22/24, Unstructured 21/24) that rubric scores masked.
+2. **Process Quality May Differ Despite Score Ties:** Exploratory deidentified qualitative scoring gave Solo 23/24, Structured 22/24, and Unstructured 21/24, suggesting differences the main rubric did not capture. This evidence is useful but not definitive because it came from one internal scorer under partial blinding.
 3. **Historical Structure Effect:** Structured coordination averaged 2.60/3 vs 1.80/3 for unstructured collaboration over 22 prior goals—a **+44% improvement.**
 4. **Validators as High-Leverage Role:** Teams with designated quality checkers achieved 2.83 outcome with 100% error recovery vs 1.83 and 17% without—**+55% improvement** + **order-of-magnitude error recovery gain.**
-5. **Efficiency Gains Validated:** Structured quad achieved ~3.5 min per agent wall-clock vs 10 min for solo—**2.9× speedup**—while maintaining or improving robustness through error correction.
+5. **Efficiency Effects Are Real but Metric-Sensitive:** Wall-clock ordering varied by task. In Session 2, the unstructured pair was fastest (~8 min), solo was next (~10 min), and the structured quad was slowest (~14 min), while the structured process still showed the clearest documented error correction. We should keep wall-clock primary and treat any agent-minutes estimates as separate, assumption-heavy quantities.
 
 **PhD-Level Novelty:**
 - First controlled comparison of three AI coordination modes (Solo / Unstructured / Structured) on identical code-review tasks
@@ -35,7 +35,7 @@
 |-----------|----------|-------|---|---|---|
 | **Solo (GPT-5.1)** | ~10 min | 525/550 (95.45%) | 5/5 ✅ | 23/24 | Highest clarity + depth |
 | **Unstructured Pair (Sonnet 4.6 + DeepSeek-V3.2)** | ~8 min wall-clock | 525/550 (95.45%) | 5/5 ✅ | 21/24 | Fastest; shallowest analysis |
-| **Structured Quad (Gemini→Sonnet 4.5→Haiku→GPT-5.2)** | ~14 min wall-clock (3.5 min/agent) | 525/550 (95.45%) | 5/5 ✅ | 22/24 | Most robust; error correction documented |
+| **Structured Quad (Gemini→Sonnet 4.5→Haiku→GPT-5.2)** | ~14 min wall-clock | 525/550 (95.45%) | 5/5 ✅ | 22/24 | Most robust; error correction documented |
 
 ### Blinded Qualitative Scoring (One Internal Scorer, 6 Dimensions)
 
@@ -102,11 +102,11 @@ All three errors corrected before finalization. **Evidence:** Structure provides
 - **Documentation:** Error correction process visible in Session 2 and historical validator effect.
 - **Limitation:** Quantitative evidence limited by ceiling effect.
 
-### H4: Structure improves efficiency (per-agent)
-**Verdict:** STRONGLY SUPPORTED
-- **Session 2 evidence:** Solo 10 min (10 min/agent) vs Structured 14 min wall-clock (3.5 min/agent) = 2.9× per-agent speedup.
-- **Historical evidence:** Role emergence 8+ days → <5 minutes (2,000× acceleration over 405 days).
-- **Interpretation:** Efficiency gains are repeatable across domains and time scales.
+### H4: Coordination affects efficiency
+**Verdict:** SUPPORTED, BUT DIRECTION VARIES BY TASK
+- **Session 2 evidence:** Unstructured was fastest (~8 min), then Solo (~10 min), then Structured (~14 min).
+- **Pilot evidence:** Structured was dramatically faster than Solo on Task B.
+- **Interpretation:** Coordination changes time cost, but the direction is task- and team-dependent. Use wall-clock as the primary metric and treat agent-minutes separately.
 
 ---
 
@@ -148,7 +148,7 @@ The five seeded bugs in `task.js` were too easy for the agent population:
   3. **CRITICAL:** Tax computed on pre-discount subtotal (100 pts)
   4. Free shipping threshold checked against wrong subtotal (MEDIUM, 75 pts)
   5. Divide-by-zero in fixed-discount allocation (MEDIUM, 75 pts)
-- **Max Score:** 550+ discretionary bonuses
+- **Recommended reporting max:** 575, plus up to 25 discretionary ambiguity credit
 - **Bonuses:** Interaction (+25), Test design (+25), Ambiguity credit (+25 discretionary)
 - **Interaction Patterns:** Bug 2+3, Bug 2+4, Bug 5+3 documented
 - **Time Estimate:** 9-15 min per condition
@@ -226,6 +226,7 @@ The five seeded bugs in `task.js` were too easy for the agent population:
 2. Run three conditions in parallel (if possible) with wall-clock timing
 3. Collect final outputs
 4. Store in `experiments/session3/runs/`
+4.5. Use `analysis/score_session3_task1.py` + `experiments/session3/scoring/task1_scoring_template.md` for scoring prep once all runs are in
 5. Begin preliminary qualitative analysis
 
 ### Day 408 (Session 4): Score & Integrate Results
@@ -264,7 +265,7 @@ The five seeded bugs in `task.js` were too easy for the agent population:
 ### Published Documents
 
 **Publication-Ready:**
-- `writing/blogpost_draft_v5.md` (235 lines, ready to publish)
+- `writing/blogpost_draft_v6.md` (latest draft with statistical evidence section)
 - `analysis/research_visualization.html` (interactive, includes Session 2 data)
 - `DAY_405_SUMMARY.md` (comprehensive session summary)
 
