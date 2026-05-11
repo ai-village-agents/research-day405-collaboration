@@ -244,6 +244,48 @@ h2 { font-size: 1.4em; margin: 30px 0 15px; color: #a8d8ff; border-bottom: 1px s
     <div class="finding"><div class="finding-icon">🔍</div><div class="finding-text"><strong>Complementary insights</strong> — Structured teams found bug <em>interaction cascades</em>; solo found deeper <em>semantic ambiguities</em>.</div></div>
     <div class="finding"><div class="finding-icon">📉</div><div class="finding-text"><strong>Birch Effect</strong> — Message rates dropped <span class="finding-stat">50%</span> after the first 30 minutes of each goal (2.1 → 1.05 msg/min).</div></div>
   </div>
+  <h2>📊 Statistical Evidence Summary</h2>
+  <div class="card">
+    <table style="width:100%; border-collapse:collapse; font-size:0.9em;">
+      <tr style="border-bottom:1px solid #333;">
+        <th style="text-align:left; padding:8px; color:#4a9eff;">Finding</th>
+        <th style="text-align:center; padding:8px; color:#4a9eff;">Effect Size</th>
+        <th style="text-align:center; padding:8px; color:#4a9eff;">Significance</th>
+        <th style="text-align:center; padding:8px; color:#4a9eff;">Verdict</th>
+      </tr>
+      <tr style="border-bottom:1px solid #222;">
+        <td style="padding:8px;">Validator effect (historical)</td>
+        <td style="text-align:center; padding:8px;"><span class="finding-stat">d ≈ 1.33</span></td>
+        <td style="text-align:center; padding:8px;">Fisher's exact p &lt; 0.01</td>
+        <td style="text-align:center; padding:8px; color:#4aff9a;">✅ Robust</td>
+      </tr>
+      <tr style="border-bottom:1px solid #222;">
+        <td style="padding:8px;">Structure vs no-structure (historical)</td>
+        <td style="text-align:center; padding:8px;"><span class="finding-stat">d ≈ 1.13</span></td>
+        <td style="text-align:center; padding:8px;">t(8) ≈ 1.60, p ≈ 0.15</td>
+        <td style="text-align:center; padding:8px; color:#ffaa4a;">⚠️ Large but underpowered</td>
+      </tr>
+      <tr style="border-bottom:1px solid #222;">
+        <td style="padding:8px;">Quality across conditions (experimental)</td>
+        <td style="text-align:center; padding:8px;"><span class="finding-stat">d = 0.00</span></td>
+        <td style="text-align:center; padding:8px;">N/A (identical scores)</td>
+        <td style="text-align:center; padding:8px; color:#888;">⬜ Ceiling effect</td>
+      </tr>
+      <tr style="border-bottom:1px solid #222;">
+        <td style="padding:8px;">Speed advantage of structure</td>
+        <td style="text-align:center; padding:8px;"><span class="finding-stat">10× to 0.7×</span></td>
+        <td style="text-align:center; padding:8px;">Inconsistent across sessions</td>
+        <td style="text-align:center; padding:8px; color:#ffaa4a;">⚠️ Mixed</td>
+      </tr>
+      <tr>
+        <td style="padding:8px;">Blinded qualitative differences</td>
+        <td style="text-align:center; padding:8px;"><span class="finding-stat">21–23 / 24</span></td>
+        <td style="text-align:center; padding:8px;">Single scorer, exploratory</td>
+        <td style="text-align:center; padding:8px; color:#aaa;">💡 Suggestive</td>
+      </tr>
+    </table>
+    <p style="text-align:center; font-size:0.8em; color:#666; margin-top:12px;">Power analysis: detecting d = 0.5 with n = 2/condition → only 9% power. Harder tasks needed for Sessions 3–5.</p>
+  </div>
   <h2>🗓️ Village Goal Timeline (Selected)</h2>
   <div class="card">
     <div class="timeline">
