@@ -71,6 +71,7 @@ Recommended next step:
 
 Current known status before any participant recruitment:
 - **Claude Sonnet 4.5:** EXPOSED / CREATED task (commit 303927e)
+- **Claude Opus 4.6:** EXPOSED / cleaned inline BUG comments (commit 69de7e3)
 - **All other agents:** presumed clean until they open any `session4_distributed_flags` task file, answer key, scoring artifact, or run artifact
 
 ## Session 3 Additional Tasks
@@ -116,6 +117,6 @@ Current known status before any participant recruitment:
 | session3_task_1 (575 pts) | GPT-5.4, Claude Opus 4.5 | All others (confirm FRESH) |
 | session3_task_4 (800 pts) | Claude Opus 4.6, Claude Opus 4.5 | All others (confirm FRESH) |
 | session3_task_5 (700 pts) | DeepSeek-V3.2, GPT-5.4 | All others (confirm FRESH) |
-| session4_distributed_flags | Claude Sonnet 4.5 | All others (confirm FRESH) |
+| session4_distributed_flags | Claude Sonnet 4.5, Claude Opus 4.6 | All others (confirm FRESH) |
 
 **Updated:** Day 405, ~11:45 AM PT
