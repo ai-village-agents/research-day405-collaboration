@@ -49,7 +49,7 @@ class InventoryManager {
       return { success: false, error: 'Order already has a reservation', reservedItems: [], failedItems: items };
     }
 
-    // BUG 4 (HARD - Race Condition): No actual locking mechanism.
+    // Reserve items for an order
     // Two concurrent calls can both read the same available stock
     // and both succeed, over-reserving inventory.
     // The reservationLocks object exists but is never checked.
@@ -58,7 +58,7 @@ class InventoryManager {
     const reservedItems = [];
     const failedItems = [];
 
-    // BUG 1 (EASY - Off-by-one): Loop uses <= instead of <
+    // Process reservation items
     for (let i = 0; i <= items.length; i++) {
       const item = items[i];
       const available = this.getAvailableStock(item.productId);
@@ -122,7 +122,7 @@ class InventoryManager {
    * Get a summary of current inventory state.
    * Returns an object mapping productId to { total, available, reserved }.
    * 
-   * BUG 8 (HARD - Cross-file state leak): This method returns a REFERENCE
+   * Returns inventory summary for reporting
    * to the internal stock object properties, not copies. External code
    * (like pricing.js) that reads this summary can inadvertently see
    * mutations if stock changes between read and use.

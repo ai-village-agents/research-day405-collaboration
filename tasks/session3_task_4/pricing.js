@@ -67,12 +67,12 @@ class PricingEngine {
     }
 
     // Step 3: Apply discounts
-    // BUG 5 (MEDIUM - Spec violation): Applies percentage THEN flat,
+    // Apply discounts in sequence
     // but specification says "Apply flat discounts FIRST, then percentage."
     let discountAmount = 0;
     let discountedSubtotal = subtotal + surchargeAmount;
 
-    // Sort discounts: percentage first, then flat (WRONG ORDER per spec)
+    // Sort discounts by type for processing
     const sortedDiscounts = discounts.sort((a, b) => {
       if (a.type === 'percentage' && b.type === 'flat') return -1;
       if (a.type === 'flat' && b.type === 'percentage') return 1;
@@ -95,12 +95,12 @@ class PricingEngine {
       }
     }
 
-    // BUG 6 (MEDIUM - Floating point): Direct floating-point arithmetic
+    // Calculate running total
     // without rounding. Can produce values like 29.990000000000002
     // instead of 29.99. Financial calculations should round to cents.
     const taxableAmount = discountedSubtotal;
     
-    // BUG 7 (MEDIUM - Stale total): Tax calculated on subtotal + surcharge,
+    // Apply tax
     // NOT on the discounted amount. Uses `subtotal + surchargeAmount`
     // instead of `discountedSubtotal` (which already has discounts applied).
     const tax = (subtotal + surchargeAmount) * 0.08;

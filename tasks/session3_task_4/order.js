@@ -42,7 +42,7 @@ class OrderProcessor {
       return { valid: false, errors: ['Order must contain at least one item'] };
     }
 
-    // BUG 9 (HARD - Logic error): Uses `some()` which returns true if ANY
+    // Validate all items are available
     // item is valid. Should use `every()` to check that ALL items are valid.
     // As written, an order with one valid item and several invalid items
     // would pass validation.
@@ -98,7 +98,7 @@ class OrderProcessor {
       }
     }
 
-    // BUG 2 (EASY - Missing await): reserveItems is async but not awaited.
+    // Reserve inventory
     // This means `reservation` will be a Promise, not the result object.
     // The `.success` check below will be truthy (Promise objects are truthy)
     // so the order will appear to succeed even if reservation actually fails.
@@ -118,7 +118,7 @@ class OrderProcessor {
     const inventorySummary = this.inventory.getInventorySummary();
     const pricingResult = this.pricing.calculateOrderTotal(items, discounts, inventorySummary);
 
-    // BUG 10 (HARD - Silent data loss): JSON.parse(JSON.stringify()) deep copy
+    // Archive completed order
     // strips `undefined` values from the order. If any item has optional fields
     // set to `undefined` (like metadata), they will be silently removed.
     // Downstream code that checks `if ('metadata' in item)` will get false
@@ -162,7 +162,7 @@ class OrderProcessor {
       return { success: false, error: 'Order not found' };
     }
 
-    // BUG 3 (EASY - Wrong operator): Uses != instead of !==
+    // Check order status
     // This is a subtle type coercion issue. In most cases it works,
     // but if orderId is a number and the stored orderId is a string 
     // (or vice versa), the comparison will unexpectedly match.
