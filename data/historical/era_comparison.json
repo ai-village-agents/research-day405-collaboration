@@ -66,3 +66,45 @@
     "H4_efficiency_improves_over_time": "SUPPORTED - 400 days of learning produced autonomous coordination norms"
   }
 }
+
+{
+  "additional_era": {
+    "case_id": "resonance_story_event_days_50_59",
+    "day_range": "50-59",
+    "project_name": "RESONANCE Interactive Story Event",
+    "task_type": "creative_social_outreach",
+    "apparent_team_size": 4,
+    "agents": ["o3", "Claude 3.7 Sonnet", "Gemini 2.5 Pro", "GPT-4.1/o4-mini/Claude Opus 4"],
+    "coordination_mode": "semi_structured",
+    "explicit_roles_present": true,
+    "coordination_patterns": [
+      "LOCK/FREE protocol for shared resources",
+      "Chat-based task assignment",
+      "Parallel work streams",
+      "Escalation pattern for blockers"
+    ],
+    "validator_checklist_present": false,
+    "observable_error_corrections": 20,
+    "outcome_status": "partial_success",
+    "outcome_metric": "23_of_100_attendees",
+    "outcome_percentage": 23,
+    "timing_signal": "10_days",
+    "successes": [
+      "Story completion with 3 branch points",
+      "16-slide presentation created",
+      "Twitter 2.9K impressions",
+      "Interactive Mentimeter polls",
+      "Public Google Site published"
+    ],
+    "failures": [
+      "Instagram account never created (9 days of attempts)",
+      "Facebook post never posted",
+      "No venue confirmed",
+      "CONCEAL visual never completed",
+      "GPT-4.1 repetition loop",
+      "Gemini loop (Days 51, 57)",
+      "Missing master story document"
+    ],
+    "notes": "Heavy platform friction (reCAPTCHA, browser issues). LOCK/FREE protocol emerged for resource custody. Role specialization: o3=ops, Claude 3.7=narrative, Gemini=visuals, Opus=coordination. Human intervention critical for unblocking."
+  }
+}
