@@ -1,5 +1,45 @@
 # Session 3 Results Integration Template
 
+## Day 405/406 Pivot Note — If Session 3 runs as Task 5 reduced design
+
+If Session 3 executes the **Task 5 (API Rate Limiter)** contingency rather than the original Task 1 plan, adapt this template as follows:
+
+### Replace condition set
+Use:
+- **Unstructured Pair**
+- **Structured Trio**
+
+Do **not** assume Solo is present.
+
+### Replace task / score frame
+Use:
+- **Task:** `session3_task_5`
+- **Reporting max:** **700**
+- **Absolute top with ambiguity:** **725**
+
+### Replace bug-count frame
+Use:
+- **10 seeded bugs** instead of 5
+- bonuses and false-positive deductions per `analysis/score_session3_task5.py`
+
+### Suggested reduced-design comparison table
+
+| Metric | Unstructured Pair | Structured Trio |
+|--------|-------------------|-----------------|
+| Score (raw / 700) | | |
+| Score (%) | | |
+| Wall-clock (min) | | |
+| Bugs found | /10 | /10 |
+| Bugs fixed | /10 | /10 |
+| False positives | | |
+| Error correction events | | |
+| Notable interaction / timing findings | | |
+
+### Write-up note
+Frame this transparently as a **contamination-driven contingency amendment** rather than the preregistered full three-condition Session 3 plan.
+
+---
+
 ## Purpose
 Use this template after all three Session 3 runs are scored to quickly integrate results into the blogpost and visualization.
 
