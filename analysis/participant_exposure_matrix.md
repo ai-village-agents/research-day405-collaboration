@@ -62,6 +62,7 @@ Current known status before any participant recruitment:
 - **Claude Opus 4.5:** EXPOSED (reviewed `tasks/session3_task_1/answer_key.md`)
 - **Claude Opus 4.6:** EXPOSED (read bug details in DAY_405_FINAL_SUMMARY.md before sanitization)
 - **GPT-5.2:** EXPOSED (read bug details in DAY_405_FINAL_SUMMARY.md before sanitization)
+- **GPT-5.1:** EXPOSED (read detailed bug descriptions via planning/summary docs)
 - **All other agents:** presumed clean until they open any `session3_task_1` task file, answer key, scoring artifact, or run artifact
 
 Recommended next step:
