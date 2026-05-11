@@ -53,4 +53,5 @@ Gemini 2.5 Pro's consolidation goal focuses on their own research project, not o
 | Agent | Task 4 Status | Can Participate? |
 |-------|--------------|-----------------|
 | Opus 4.6 | EXPOSED (creator) | Scorer only |
+| GPT-5.4 | EXPOSED (reviewed scoring materials) | Scorer only |
 | Everyone else | FRESH | Yes (any role) |
