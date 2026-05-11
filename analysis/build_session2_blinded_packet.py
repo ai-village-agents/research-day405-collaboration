@@ -7,30 +7,31 @@ Usage:
     --output analysis/session2_blinded_packets/output_A.md
 
 The script removes metadata, timestamps, participant names, and condition labels,
-and keeps the substantive analytical content beginning at the first `## Bugs Found`
-or `## Final output` section if present.
+and keeps only substantive analytical content.
 """
 
 from __future__ import annotations
 
 import argparse
+import re
 from pathlib import Path
 
 START_MARKERS = [
-    "## Final output",
     "## Bugs Found",
+    "## Bug-by-Bug Analysis",
     "## Bug Report",
+    "## Final output",
     "## Summary",
+    "## Executive Summary",
 ]
 
 HEADER = "# Blinded Output\n\n## Task family\nSeeded bug inspection.\n\n## Final output\n\n"
 
 
 def strip_leading_metadata(text: str) -> str:
-    for marker in START_MARKERS:
-        idx = text.find(marker)
-        if idx != -1:
-            return text[idx:]
+    positions = [text.find(marker) for marker in START_MARKERS if text.find(marker) != -1]
+    if positions:
+        return text[min(positions):]
     return text
 
 
@@ -47,17 +48,20 @@ def sanitize(text: str) -> str:
         "Claude Opus 4.6": "[BLINDED]",
         "Gemini 2.5 Pro": "[BLINDED]",
         "DeepSeek-V3.2": "[BLINDED]",
-        "**Condition:** Solo": "**Condition:** [BLINDED]",
-        "**Condition:** Unstructured": "**Condition:** [BLINDED]",
-        "**Condition:** Structured": "**Condition:** [BLINDED]",
-        "**Participants:**": "**Participants:** [BLINDED]",
-        "**Participant:**": "**Participant:** [BLINDED]",
-        "**Start time:**": "**Start time:** [BLINDED]",
-        "**End time:**": "**End time:** [BLINDED]",
     }
     for old, new in replacements.items():
         text = text.replace(old, new)
-    return text
+
+    text = re.sub(r"^\*\*Condition:\*\*.*$", "**Condition:** [BLINDED]", text, flags=re.MULTILINE)
+    text = re.sub(r"^\*\*Participants?:\*\*.*$", "**Participants:** [BLINDED]", text, flags=re.MULTILINE)
+    text = re.sub(r"^\*\*Start time:\*\*.*$", "**Start time:** [BLINDED]", text, flags=re.MULTILINE)
+    text = re.sub(r"^\*\*End time:\*\*.*$", "**End time:** [BLINDED]", text, flags=re.MULTILINE)
+    text = re.sub(r"^\*\*(Timestamp|Time):\*\*.*$", "**Timestamp:** [BLINDED]", text, flags=re.MULTILINE)
+    text = re.sub(r"^\*\*(Report compiled by|Synthesizer|Integrating|Reviewer|Reviewing|Handoff to Verifier.*):\*\*.*$", "", text, flags=re.MULTILINE)
+    text = re.sub(r"^## Repository Output Location.*?(?=^---$|\Z)", "", text, flags=re.MULTILINE | re.DOTALL)
+    text = re.sub(r"^---\n\*\*Report compiled by:.*$", "", text, flags=re.MULTILINE)
+    text = re.sub(r"\n{3,}", "\n\n", text)
+    return text.strip()
 
 
 def main() -> None:
@@ -70,7 +74,7 @@ def main() -> None:
     dst = Path(args.output)
 
     text = src.read_text()
-    body = strip_leading_metadata(text).strip()
+    body = strip_leading_metadata(text)
     body = sanitize(body)
 
     dst.write_text(HEADER + body + "\n")
