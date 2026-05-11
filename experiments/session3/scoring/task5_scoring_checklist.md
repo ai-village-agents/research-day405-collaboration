@@ -22,8 +22,10 @@ Use this checklist alongside `task5_scoring_template.md` and `task5_scoring_deta
     --fixed <bug_keys...> \
     --bonuses <bonus_keys...> \
     --ambiguity <0-25> \
-    --false-positives <N>
+    --false-positive-deduction <raw_points>
   ```
+
+- Note: `--false-positive-deduction` expects *raw points*, i.e., (incorrect claims × 50).
 - Use only keys defined in `task5_scoring_template.md`; leave an argument empty (e.g., `--bonuses`) if none apply.
 
 4) Cross-check results with the detailed scoring template
