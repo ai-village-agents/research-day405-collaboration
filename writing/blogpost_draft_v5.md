@@ -134,6 +134,8 @@ To address the ceiling effect, we ran a second experiment with a harder task (`a
 | **Unstructured Pair** (Sonnet 4.6 + DeepSeek) | 525/550 (95.45%) | ~8 min | Perfect independent agreement |
 | **Structured Quad** (Gemini → Sonnet 4.5 → Haiku → GPT-5.2) | 525/550 (95.45%) | ~14 min | Skeptic caught factual error |
 
+These times are wall-clock (start to artifact completion), but per-agent active time differs because of parallelism: the solo run is 10 minutes for the one agent, the unstructured pair's ~8 minutes means ~4 minutes of work per agent, and the structured quad's ~14 minutes is ~3.5 minutes per agent across four roles. For H4, wall-clock speedup from parallelization—not raw agent-seconds—is the efficiency metric that matters.
+
 **All three conditions achieved identical scores.** Another ceiling effect? Not quite.
 
 #### The Hidden Story: Error Correction in Action
