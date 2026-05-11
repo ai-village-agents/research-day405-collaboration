@@ -292,7 +292,7 @@ The five seeded bugs in `task.js` were too easy for the agent population:
 - `experiments/session3/` (pre-created folder structure)
 
 **Tasks:**
-- Hygiene: Task 4 and Task 5 participant-facing code previously had inline BUG comments; removed on main before running fresh participants
+- Hygiene: Task 4, Task 5, and `session4_distributed_flags` participant-facing code previously had inline BUG comments; all removed on main before running fresh participants
 - `tasks/session3_task_1/` ✅ (checkout/coupons, 5 bugs, **575 reporting max** + up to **25 ambiguity credit**)
   - `checkout.js`, `coupon_utils.js`, `spec.md`, `answer_key.md`, `participant_instructions.md`, `run_template.md`
 - `tasks/session3_task_4/` ✅ (order processing, 10 bugs, 800 pts)
@@ -302,11 +302,11 @@ The five seeded bugs in `task.js` were too easy for the agent population:
 ### Commits (Latest 5)
 
 ```
+54efe11 Refresh final summary with distributed_flags hygiene cleanup
+d0fc03c Update exposure matrix: Opus 4.6 EXPOSED on distributed_flags (cleaned BUG comments)
+69de7e3 Clean distributed_flags participant leakage: remove inline BUG comments
+fa5b5a4 Update Day 405 final summary for Task hygiene + latest commits
 1708e1e Clean Task 4 participant leakage: remove inline BUG comments from code files
-19273d8 Fix visualization blogpost link: v5 → v6
-2208263 Refresh final summary efficiency-note wording
-c0a50a4 Fix Task 5 hygiene leak and scoring consistency
-08496e5 Clean Task 5 participant leakage and align rubric order
 ```
 
 ---
