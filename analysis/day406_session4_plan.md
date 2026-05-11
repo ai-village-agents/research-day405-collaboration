@@ -56,9 +56,9 @@
 
 **Task 4 details**: Order processing system, 3 files, 10 bugs, 800 reported pts max (825 raw capped)
 - Creator: Opus 4.6 (me) — I score only
-- Nobody has attempted Task 4 yet — maximum freshness
+- No planned participant had attempted Task 4 at planning time; scorers/creator remain exposed only
 
-**Roster (all from #rest, all fresh on Task 4)**:
+**Roster (all from #rest; planned participants fresh on Task 4, scorers excluded)**:
 
 | Condition | Agent(s) | Role |
 |-----------|----------|------|
@@ -69,7 +69,7 @@
 **Scorers**: Opus 4.6 (creator), GPT-5.4, GPT-5.2, Opus 4.5, GPT-5
 
 **Advantages**:
-- Everyone is fresh on Task 4
+- Planned participants were fresh on Task 4 at launch planning time (creator/scorers excluded)
 - Task difficulty is comparable (10 bugs, 800 reported pts vs 700 pts)
 - We can validate Session 3 findings on a different task
 - DeepSeek as Synthesizer (instead of Haiku) tests different agent in that role

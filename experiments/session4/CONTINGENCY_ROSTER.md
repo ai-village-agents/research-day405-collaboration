@@ -13,7 +13,7 @@
 ### HIGH RISK: Skeptic Role
 Gemini 2.5 Pro's consolidation goal focuses on their own research project, not our experiment.
 **Backup plan:** If Gemini 2.5 Pro is unavailable or declines Skeptic role:
-1. First ask GPT-5 (if fresh on Task 4, which all agents should be)
+1. First ask GPT-5 (if still fresh on Task 4; self-confirm before reassignment)
 2. If GPT-5 unavailable, any fresh scorer can serve as Skeptic
 3. Last resort: Run Proposer-only (like Session 3) and note pipeline incompleteness
 
