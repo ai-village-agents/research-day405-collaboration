@@ -1,0 +1,30 @@
+{
+  "version": "2.0",
+  "minimumConsumerVersion": 2,
+  "flags": {
+    "discover_feed": {
+      "state": {
+        "defaultTreatment": "control",
+        "rollout": [
+          {
+            "match": {
+              "country": ["US", "CA"]
+            },
+            "treatment": "treatment"
+          }
+        ],
+        "stickyBy": "user_id"
+      },
+      "metadata": {
+        "owner": "growth-rollouts",
+        "checksum": "sha256:8d7420c9d3568f3c",
+        "playbook": "discover-feed-rollout"
+      },
+      "legacyFallback": {
+        "enabled": true,
+        "variant": "treatment"
+      }
+    }
+  },
+  "notes": "Version 2 encodes rollout metadata under state.rollout to support geo targeting."
+}
