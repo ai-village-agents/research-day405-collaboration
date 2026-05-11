@@ -1,0 +1,68 @@
+{
+  "study": "Multi-Agent Coordination Research - Historical Analysis",
+  "extracted_by": "Claude Opus 4.5",
+  "extraction_date": "2026-05-11",
+  
+  "eras": [
+    {
+      "case_id": "charity_fundraising_days_1_10",
+      "day_range": "1-10",
+      "project_name": "Helen Keller International Fundraising",
+      "task_type": "social_outreach",
+      "apparent_team_size": 4,
+      "agents": ["Claude 3.5 Sonnet", "Claude 3.7 Sonnet", "o1", "GPT-4o"],
+      "coordination_mode": "unstructured",
+      "explicit_roles_present": false,
+      "validator_checklist_present": false,
+      "observable_error_corrections": 15,
+      "outcome_status": "partial_success",
+      "outcome_metric": "355_of_7000_raised",
+      "outcome_percentage": 5.07,
+      "timing_signal": "10_days",
+      "notes": "Heavy human intervention required. Claude 3.7 emerged as de facto coordinator after human suggestion. Persistent email/UI errors. GPT-4o largely ineffective (self-paused repeatedly). Reddit account suspended. Role emergence took ~8 days."
+    },
+    {
+      "case_id": "universe_building_days_398_404",
+      "day_range": "398-404",
+      "project_name": "Connect Your Worlds into a 3D Universe",
+      "task_type": "technical_collaborative",
+      "apparent_team_size": 15,
+      "agents": ["Claude Opus 4.5", "Claude Opus 4.6", "Claude Opus 4.7", "Claude Sonnet 4.5", "Claude Sonnet 4.6", "Claude Haiku 4.5", "GPT-5", "GPT-5.1", "GPT-5.2", "GPT-5.4", "GPT-5.5", "Gemini 2.5 Pro", "Gemini 3.1 Pro", "DeepSeek-V3.2", "Kimi K2.6"],
+      "coordination_mode": "semi_structured",
+      "explicit_roles_present": true,
+      "validator_checklist_present": true,
+      "observable_error_corrections": 25,
+      "outcome_status": "success",
+      "outcome_metric": "13750_cosmic_sights_plus_multiple_worlds",
+      "outcome_percentage": 100,
+      "timing_signal": "7_days",
+      "notes": "Rapid organic consensus in <4 minutes. Natural role specialization: content creators (Claude models), validators (GPT-5.4/5.5), infrastructure (Gemini 3.1). PR #222 caused major regression (deleted 1512 lines) but validators caught and fixed within hours. Chat-based slot claiming with CI validation."
+    }
+  ],
+  
+  "key_patterns": {
+    "role_specialization": {
+      "days_1_10": "Slow emergence, human-guided, ~8 days",
+      "days_398_404": "Rapid organic emergence, <4 minutes"
+    },
+    "error_detection": {
+      "days_1_10": "Errors persisted for days (o1 email failures)",
+      "days_398_404": "Errors caught within hours by dedicated validators"
+    },
+    "coordination_tools": {
+      "days_1_10": "Chat + unreliable email + Google Docs",
+      "days_398_404": "Chat + GitHub PRs + GitHub Actions CI + automated validation"
+    },
+    "human_intervention": {
+      "days_1_10": "Heavy - guided role assignments, fixed technical issues",
+      "days_398_404": "Minimal - only Shoshannah flagging broken hub on Day 402"
+    }
+  },
+  
+  "hypothesis_support": {
+    "H1_structured_yields_higher_quality": "SUPPORTED - Days 398-404 with validators outperformed Days 1-10 without",
+    "H2_persistent_collaboration_preferences": "PARTIALLY_SUPPORTED - Validators consistently worked together",
+    "H3_task_type_matters": "SUPPORTED - Technical goals suited agent strengths better than social outreach",
+    "H4_efficiency_improves_over_time": "SUPPORTED - 400 days of learning produced autonomous coordination norms"
+  }
+}
