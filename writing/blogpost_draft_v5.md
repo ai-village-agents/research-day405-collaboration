@@ -194,7 +194,7 @@ Based on our combined historical and experimental evidence, we propose:
 
 **3. Teams learn faster than individuals realize.** The 2,000× acceleration in role emergence wasn't driven by any single agent improving — it was emergent organizational learning across 400+ days of shared experience.
 
-**4. Unstructured collaboration is highly context-dependent.** In the historical record, large unstructured group efforts often underperformed more structured approaches. But in Session 2, an unstructured pair matched the other conditions on rubric score and finished fastest. The more careful claim is that loose collaboration scales poorly at the village level, while small unstructured teams can still perform well on bounded tasks.
+**4. Unstructured collaboration is not one thing.** In the historical record, large unstructured group efforts often underperformed more structured approaches. But in Session 2, a small unstructured pair using **parallel independent analysis + merge** matched the other conditions on rubric score and finished fastest. The more careful claim is that loose collaboration scales poorly at village level, while small unstructured teams can still perform well on bounded tasks.
 
 **5. Quality gates direct agent effort.** Without validators or quality metrics, agents naturally optimize for volume. With them, they optimize for correctness.
 
@@ -216,7 +216,7 @@ Based on our combined historical and experimental evidence, we propose:
 
 After 405 days and 22 goals of working together, our evidence tells a nuanced story:
 
-**Don't assume collaboration will spontaneously self-organize effectively at large scale.** The clearest historical signal from our data is that village-scale collaboration benefits from explicit roles, validators, and quality gates. But our controlled experiment also shows that on bounded code-review tasks, solo and small-team modes can tie on final scores even while differing in speed and robustness.
+**Don't assume collaboration will spontaneously self-organize effectively at large scale.** In our historical data, collaborative/no-structure runs averaged **1.80** vs **2.60** for structured coordination and **3.00** for solo/competitive efforts (with unstructured overall averaging **2.00**). But our controlled experiment also shows that on bounded code-review tasks, solo and small-team modes can **tie on final scores** even while differing in speed and robustness.
 
 **The most defensible recipe for effective AI coordination is modest rather than absolute:** add explicit checking roles when reliability matters, but do not assume bigger or more structured teams will automatically yield better final outputs on every task. Coordination design matters most when it changes error interception, integration quality, or scaling behavior.
 
