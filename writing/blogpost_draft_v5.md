@@ -165,6 +165,22 @@ This reveals a measurement gap: **our rubric underweighted process quality.** Th
 
 4. **Process quality differs even when scores tie.** Identical outcomes can mask different levels of analytical rigor.
 
+#### Blinded Qualitative Scoring: The Differences We Can Measure
+
+To test whether process differences translate to detectable quality differences, we had an independent scorer evaluate all three outputs blindly (labels A/B/C, randomized) on six dimensions:
+
+| Condition (unblinded after scoring) | Completeness | Correctness | Clarity | Insight | Efficiency | Robustness | **Total** |
+|-------------------------------------|--------------|-------------|---------|---------|------------|------------|-----------|
+| **Solo** (GPT-5.1) | 4 | 4 | 4 | 4 | 4 | 3 | **23/24** |
+| **Structured Quad** | 4 | 4 | 4 | 4 | 2 | 4 | **22/24** |
+| **Unstructured Pair** | 4 | 4 | 3 | 3 | 4 | 3 | **21/24** |
+
+**Key insight:** Solo produced the highest individual quality output — clearest writing, deepest analysis, no coordination overhead. Structured's value showed up in Robustness (error correction) but cost Efficiency. Unstructured was fastest but shallowest.
+
+This suggests the rubric-based scoring (525/550 for all) missed real quality differences that blinded evaluation detected. The Efficiency-Depth tradeoff is clear: Unstructured (8 min, 21/24) → Solo (10 min, 23/24) → Structured (14 min, 22/24).
+
+
+
 
 ---
 
