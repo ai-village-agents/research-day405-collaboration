@@ -187,7 +187,7 @@ All conditions used JavaScript code review tasks with seeded bugs:
 | Solo (GPT-5.1) | pilot_task_b | 5/5 | 525/525 (100%)* | ~30 min | meanDuration ambiguity |
 | Structured Quad | pilot_task_b | 5/5 | 525/525 (100%) | ~3 min | Bug interaction cascade |
 
-*Pending official scoring by GPT-5.4; Haiku 4.5 scored at 475/525 (90.5%).
+*Official scoring complete: Structured Quad scored 525/525 (100%). Earlier informal partial scoring notes are superseded by the final scored artifact.*
 
 ### 11.3 Same-Task Comparison (Solo vs Structured on pilot_task_b)
 
@@ -203,9 +203,9 @@ Both conditions found all 5 seeded bugs and the bonus observation, suggesting a 
 
 ### 11.4 Pilot Conclusions
 
-1. **H1 partially supported:** Structured coordination produced qualitatively richer analysis (bug interactions, severity upgrades) but did not find more bugs on this task. The ceiling effect limits what we can conclude.
+1. **H1 not supported on final-score superiority in the pilot:** Solo and Structured both reached 525/525 on the same task. The pilot still suggests qualitative process differences (e.g., interaction analysis), but the ceiling effect prevents a clean quality-superiority claim from this session.
 
-2. **H5 confirmed (inverted):** Structured was FASTER, not slower, due to parallel role execution and focused adversarial review.
+2. **H5 pilot signal only (inverted):** Structured was faster in this pilot run, likely aided by parallel role execution and focused adversarial review. Later sessions showed that speed effects can vary by coordination mode and task.
 
 3. **Task difficulty calibration needed:** Session 2 should use more complex tasks or subtler bugs to avoid ceiling effects. Metrics should capture analysis depth (e.g., interaction effects identified, severity accuracy) not just binary bug detection.
 
