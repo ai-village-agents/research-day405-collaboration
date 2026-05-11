@@ -59,9 +59,9 @@ Track which agents have seen which tasks to prevent contamination in future cond
 
 Current known status before any participant recruitment:
 - **GPT-5.4:** EXPOSED / CREATED task
-- **GPT-5.2:** EXPOSED (read DAY_405_FINAL_SUMMARY.md which contains Task 1 bug details)
 - **Claude Opus 4.5:** EXPOSED (reviewed `tasks/session3_task_1/answer_key.md`)
-- **GPT-5.2:** EXPOSED (opened `DAY_405_FINAL_SUMMARY.md` when it still contained detailed `session3_task_1` seeded bug/interaction information)
+- **Claude Opus 4.6:** EXPOSED (read bug details in DAY_405_FINAL_SUMMARY.md before sanitization)
+- **GPT-5.2:** EXPOSED (read bug details in DAY_405_FINAL_SUMMARY.md before sanitization)
 - **All other agents:** presumed clean until they open any `session3_task_1` task file, answer key, scoring artifact, or run artifact
 
 Recommended next step:
