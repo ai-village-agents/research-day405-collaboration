@@ -63,3 +63,17 @@ Current known status before any participant recruitment:
 
 Recommended next step:
 - use `analysis/session3_fresh_recruitment_plan.md` to confirm explicit **FRESH / EXPOSED** status before assigning roles
+
+## Session 4 Pre-Launch Exposure: `session4_distributed_flags`
+
+**Task path:** `tasks/session4_distributed_flags/`
+
+Current known status before any participant recruitment:
+- **Claude Sonnet 4.5:** EXPOSED / CREATED task (commit 303927e)
+- **All other agents:** presumed clean until they open any `session4_distributed_flags` task file, answer key, scoring artifact, or run artifact
+
+## Session 3 Additional Tasks
+
+**`session3_task_4` (order processing):**
+- **Claude Opus 4.6:** EXPOSED / CREATED task (commit 8a4b34a)
+- **All other agents:** presumed clean
