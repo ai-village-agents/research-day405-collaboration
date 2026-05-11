@@ -58,6 +58,24 @@ SESSIONS = {
         "pipeline_detail": "3 failure modes: contamination leak, wrong-task Skeptic, dependency stall on Synthesizer",
         "notes": "First session to break ceiling effect. Contaminated; cross-condition comparison is observational only."
     },
+    "session4": {
+        "task": "session3_task_4",
+        "max_score": 800,
+        "conditions": {
+            "solo": {"score": None, "pct": None, "time_min": None, "agents": ["GPT-5.1"],
+                     "note": "PLACEHOLDER — fill after experiment"},
+            "unstructured": {"score": None, "pct": None, "time_min": None, "agents": ["Sonnet 4.6", "Haiku 4.5"],
+                             "note": "PLACEHOLDER — fill after experiment"},
+            "structured": {"score": None, "pct": None, "time_min": None, "agents": ["Sonnet 4.5", "Gemini 2.5", "DeepSeek-V3.2"],
+                           "note": "PLACEHOLDER — fill after experiment"},
+        },
+        "error_correction": None,
+        "error_detail": "PLACEHOLDER",
+        "complementary_discovery": None,
+        "complementary_detail": "PLACEHOLDER",
+        "contamination": False,
+        "notes": "Session 4: Task 4 Order Processing with 4-barrier anti-contamination protocol. AWAITING EXECUTION."
+    },
 }
 
 HISTORICAL = {
@@ -86,7 +104,8 @@ def cohens_d(m1, sd1, n1, m2, sd2, n2):
 
 def print_cumulative_report():
     print("# Cumulative Evidence Report")
-    print(f"# Sessions analyzed: {len(SESSIONS)}")
+    completed = sum(1 for s in SESSIONS.values() if any(c["score"] is not None for c in s["conditions"].values()))
+    print(f"# Sessions analyzed: {completed} ({len(SESSIONS)} total, {len(SESSIONS) - completed} awaiting data)")
     print()
     
     # Aggregate scores by condition
@@ -132,9 +151,14 @@ def print_cumulative_report():
         h1_meta = sdata.get("h1_aggregate", {})
         include_clean = h1_meta.get("include_in_clean_structured_vs_solo", True)
         if include_clean and "solo" in sdata["conditions"] and "structured" in sdata["conditions"]:
-            h1_solo_pcts.append(sdata["conditions"]["solo"]["pct"])
-            h1_struct_pcts.append(sdata["conditions"]["structured"]["pct"])
-            h1_included_sessions.append(sname)
+            solo_pct = sdata["conditions"]["solo"]["pct"]
+            struct_pct = sdata["conditions"]["structured"]["pct"]
+            if solo_pct is not None and struct_pct is not None:
+                h1_solo_pcts.append(solo_pct)
+                h1_struct_pcts.append(struct_pct)
+                h1_included_sessions.append(sname)
+                continue
+            h1_excluded_sessions.append((sname, "Awaiting data"))
         elif not include_clean:
             h1_excluded_sessions.append((sname, h1_meta.get("reason", "Excluded from clean H1 aggregate.")))
 
@@ -184,8 +208,8 @@ def print_cumulative_report():
     print(f"Current experimental N per condition: solo={len(solo_pcts)}, unstructured={len(pcts.get('unstructured', []))}, structured={len(struct_pcts)}")
     print("For d=0.5 (medium), need n≈26 per group for 80% power")
     print("For d=1.0 (large), need n≈3-5 per group for 80% power")
-    print(f"Sessions remaining: ~3 (Sessions 3-5)")
-    print(f"Projected final N per condition: ~{len(solo_pcts) + 3}")
+    print(f"Sessions remaining: ~1 (Session 5)")
+    print(f"Projected final N per condition: ~{len(solo_pcts) + 1}")
     
     # Session details
     print("\n## Session Details")
@@ -194,7 +218,10 @@ def print_cumulative_report():
         print(f"Task: {sdata['task']} (max {sdata['max_score']} pts)")
         for cond, cdata in sdata["conditions"].items():
             agents = ", ".join(cdata["agents"]) if cdata["agents"] else "TBD"
-            print(f"  {cond}: {cdata['score']}/{sdata['max_score']} ({cdata['pct']}%) in {cdata['time_min']} min — [{agents}]")
+            if cdata['score'] is not None:
+                print(f"  {cond}: {cdata['score']}/{sdata['max_score']} ({cdata['pct']}%) in {cdata['time_min']} min — [{agents}]")
+            else:
+                print(f"  {cond}: AWAITING DATA — [{agents}]")
         if sdata.get("error_correction"):
             print(f"  ⚡ Error correction: {sdata.get('error_detail', 'Yes')}")
         if sdata.get("notes"):
