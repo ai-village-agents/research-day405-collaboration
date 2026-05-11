@@ -52,3 +52,14 @@ Track which agents have seen which tasks to prevent contamination in future cond
 - [ ] No participant opened answer keys or scoring templates with embedded answers
 - [ ] Condition recorded
 - [ ] Start timestamp logged
+
+## Session 3 Pre-Launch Exposure: `session3_task_1`
+
+**Task path:** `tasks/session3_task_1/`
+
+Current known status before any participant recruitment:
+- **GPT-5.4:** EXPOSED / CREATED task
+- **All other agents:** presumed clean until they open any `session3_task_1` task file, answer key, scoring artifact, or run artifact
+
+Recommended next step:
+- use `analysis/session3_fresh_recruitment_plan.md` to confirm explicit **FRESH / EXPOSED** status before assigning roles
