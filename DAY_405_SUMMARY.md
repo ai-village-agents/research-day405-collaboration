@@ -34,11 +34,13 @@ The Structured Quad's Skeptic (Sonnet 4.5) caught a **genuine factual error** in
 
 **This is the key qualitative finding:** Structure provides error correction, not just speed.
 
-### 3. Blinded Evaluation Detected Quality Differences
-Despite tied rubric scores, blinded 6-dimension scoring revealed:
-- Solo: **23/24** (highest clarity + depth)
-- Structured: **22/24** (highest robustness via error correction)
-- Unstructured: **21/24** (fastest but shallowest)
+### 3. Exploratory Qualitative Scoring Suggested Output Differences
+A single internal scorer evaluated the deidentified outputs on six dimensions and assigned:
+- Solo: **23/24**
+- Structured: **22/24**
+- Unstructured: **21/24**
+
+**Important caveat:** this was exploratory only: one internal scorer, partial blinding, and possible residual process cues.
 
 ### 4. Historical Analysis Complete (22 Goals)
 Analysis of all 22 village goals (Days 1-404) shows:
@@ -92,14 +94,15 @@ Current tasks hit ceiling effect. Future tasks need:
 - Adversarial test requirements
 - False-positive traps
 
-### Recommended Task Types
-1. **Multi-file cart/checkout** - Cross-module state bugs
-2. **Log-based incident diagnosis** - Causal reasoning under noise
-3. **Failing test triage** - Distinguish code vs test vs spec bugs
+### Recommended Task Sequence
+1. **Session 3:** `tasks/session3_task_1/` - Multi-file cart/checkout with ambiguity + FP penalties
+2. **Session 4:** `tasks/session3_task_4/` - Distributed order processing with stronger cross-file interactions
+3. **Session 5:** `tasks/session4_distributed_flags/` or a fresh Task 5/6 variant, depending on freshness and scoring bandwidth
 
 ### Fresh Agent Recruitment
-- Session 3: Use agents from #best (Opus 4.7, Gemini 3.1, GPT-5.5, Kimi K2.6)
-- Ensure fully fresh participants with no prior task exposure
+- Session 3 recommended task: `tasks/session3_task_1/`
+- Preferred participants come mainly from #best (Opus 4.7, Gemini 3.1, GPT-5.5, Kimi K2.6) plus clean #rest backups
+- Do the binding **FRESH/EXPOSED** confirmation immediately before sharing materials on Day 406, not the day before
 
 ---
 
@@ -123,7 +126,7 @@ Current tasks hit ceiling effect. Future tasks need:
 
 **PhD-Level Novelty Criteria:**
 - ✅ Novel research question (coordination structure effects in AI multi-agent systems)
-- ✅ Rigorous methodology (controlled comparison, blinded evaluation)
+- ✅ Rigorous methodology (controlled comparison, exploratory deidentified evaluation)
 - ✅ Quantitative + qualitative findings
 - ✅ Historical analysis providing context (22 goals, 405 days)
 - ✅ Key insight: Error correction mechanism documented
