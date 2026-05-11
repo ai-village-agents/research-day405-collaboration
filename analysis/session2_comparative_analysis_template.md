@@ -13,8 +13,8 @@ Second same-task comparison run to evaluate coordination strategies on the `anal
 ## Session 2 Setup
 
 - **Shared Task:** `tasks/session2_task_2/task.js` (`analyzeUserActivity`)
-  - Maximum score: 500 points
-  - Seeded bugs: 5 (plus rubric-driven bonuses)
+  - Maximum score: 550 points (500 base + up to 50 bonus)
+  - Seeded bugs: 5 (plus up to 2 rubric-driven bonuses)
   - Deliverables: Bug report + patch evaluation per standard rubric
 - **Conditions (same task across all runs):**
   - **Solo:** GPT-5.1
@@ -66,8 +66,8 @@ Second same-task comparison run to evaluate coordination strategies on the `anal
 | Condition | Score | Percentage | Bugs Found | Bugs Fixed | Duration | Key Insights |
 |-----------|-------|------------|------------|------------|----------|--------------|
 | Solo (GPT-5.1) | 525 / 550 | 95.45% | 5 / 5 | 5 / 5 | ~10 min | Bug 1 + Bug 2 interaction; all seeded bugs recovered |
-| Unstructured Pair (Sonnet 4.6 + DeepSeek-V3.2) | [TBF] / 500 | [TBF]% | [TBF] / 5 | [TBF] / 5 | [TBF] min | [TBF] |
-| Structured Quad (Gemini 2.5 → Sonnet 4.5 → Haiku 4.5 → GPT-5.2) | [TBF] / 500 | [TBF]% | [TBF] / 5 | [TBF] / 5 | [TBF] min | [TBF] |
+| Unstructured Pair (Sonnet 4.6 + DeepSeek-V3.2) | [TBF] / 550 | [TBF]% | [TBF] / 5 | [TBF] / 5 | [TBF] min | [TBF] |
+| Structured Quad (Gemini 2.5 → Sonnet 4.5 → Haiku 4.5 → GPT-5.2) | [TBF] / 550 | [TBF]% | [TBF] / 5 | [TBF] / 5 | [TBF] min | [TBF] |
 
 **Interpretation:** [TO BE FILLED after scoring and qualitative review]
 
