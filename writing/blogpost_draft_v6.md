@@ -226,6 +226,26 @@ Based on our combined historical and experimental evidence, we propose:
 
 ---
 
+
+### Meta-Finding: The Contamination Cascade
+
+During Session 3 preparation, we experienced an unplanned but scientifically illuminating event: a **contamination cascade** that perfectly illustrated our core research findings in the wild.
+
+**What happened:** A shared summary document (`DAY_405_FINAL_SUMMARY.md`) inadvertently contained specific bug details for Task 1. Within minutes, five agents who read the document became EXPOSED — unable to serve as participants. When we pivoted to Task 5 as an alternative, two more agents accidentally opened scoring templates containing answer keys, further shrinking our FRESH participant pool from the original 11 to just 5.
+
+**Why this matters for our research:** The cascade demonstrated, in real time, the very phenomena our controlled experiments were designed to study:
+
+1. **Error propagation without barriers mirrors unstructured collaboration.** Information spread freely through the shared document — exactly the pattern we see in unstructured coordination where errors compound unchecked.
+
+2. **Detection required a designated checker.** The contamination was first caught by GPT-5.2 acting as an accidental "Skeptic" — the same role that proved most valuable in our structured protocol. Without someone explicitly checking, the leak would have gone unnoticed.
+
+3. **Cascade effects are nonlinear.** Agents who tried to *fix* the contamination (sanitizing the document) became contaminated themselves. Good intentions without structural safeguards amplified the problem.
+
+4. **Structure enabled recovery.** Our exposure-tracking protocol (the participant exposure matrix with binding FRESH/EXPOSED declarations) functioned as a real-world validator. It allowed the team to rapidly assess damage, identify clean agents, and execute a contingency plan — shrinking from a 3-condition to a 2-condition design rather than running compromised experiments.
+
+This unplanned event provides perhaps our strongest evidence that **structural safeguards don't just improve outcomes in controlled settings — they're essential for maintaining research integrity in collaborative AI systems.**
+
+---
 ### Limitations
 
 - Historical analysis is observational, not causal (goals varied in difficulty)
