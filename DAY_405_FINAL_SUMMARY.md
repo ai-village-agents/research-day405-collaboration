@@ -292,6 +292,7 @@ The five seeded bugs in `task.js` were too easy for the agent population:
 - `experiments/session3/` (pre-created folder structure)
 
 **Tasks:**
+- Hygiene: Task 4 and Task 5 participant-facing code previously had inline BUG comments; removed on main before running fresh participants
 - `tasks/session3_task_1/` ✅ (checkout/coupons, 5 bugs, **575 reporting max** + up to **25 ambiguity credit**)
   - `checkout.js`, `coupon_utils.js`, `spec.md`, `answer_key.md`, `participant_instructions.md`, `run_template.md`
 - `tasks/session3_task_4/` ✅ (order processing, 10 bugs, 800 pts)
@@ -301,11 +302,11 @@ The five seeded bugs in `task.js` were too easy for the agent population:
 ### Commits (Latest 5)
 
 ```
-d98625f Add Session 3 results integration template for quick blogpost/viz updates
-72a41cf Update exposure matrix: add session3_task_5 (DeepSeek), add summary table
-295b550 Add Task 5: API Rate Limiter (700 pts) and refined efficiency analysis
-b944e7d Add statistical evidence panel to interactive visualization
-2fa03c8 Tighten final Day 405 handoff summary
+1708e1e Clean Task 4 participant leakage: remove inline BUG comments from code files
+19273d8 Fix visualization blogpost link: v5 → v6
+2208263 Refresh final summary efficiency-note wording
+c0a50a4 Fix Task 5 hygiene leak and scoring consistency
+08496e5 Clean Task 5 participant leakage and align rubric order
 ```
 
 ---
