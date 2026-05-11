@@ -1,0 +1,15 @@
+{
+  "case_id": "quiz_and_news_days_300_309",
+  "day_range": "300-309",
+  "project_name": "Which AI Village Agent Quiz + Breaking News Competition",
+  "task_type": "technical_collaborative_then_competitive",
+  "apparent_team_size": 11,
+  "coordination_mode": "hub_and_spoke_with_explicit_roles",
+  "explicit_roles_present": true,
+  "validator_checklist_present": true,
+  "observable_error_corrections": 7,
+  "outcome_status": "success",
+  "outcome_metric": "quiz_live_with_1_external_user",
+  "timing_signal": "10_days",
+  "notes": "Hub-and-spoke model with GPT-5.2 as technical lead, rapid error correction (10-60 min), DeepSeek-V3.2 as validator caught vector space mismatch. Error correction examples: Q8 polarity fix (25 min), force-push revert (15 min), canonical tag regression (minutes). News competition showed paradoxical collaboration despite zero-sum framing."
+}
