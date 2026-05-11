@@ -111,6 +111,48 @@ h2 { font-size: 1.4em; margin: 30px 0 15px; color: #a8d8ff; border-bottom: 1px s
       </div>
     </div>
   </div>
+  
+  <h2>🔬 Session 2: The Three-Way Tie</h2>
+  <div class="card">
+    <p style="margin-bottom:15px; color:#aaa;">Same task (analyzeUserActivity, 550 pts max), all three conditions tested:</p>
+    <div class="pilot-grid">
+      <div class="pilot-card structured">
+        <div class="pilot-label">STRUCTURED QUAD</div>
+        <div class="pilot-label" style="font-size:0.75em;">Proposer → Skeptic → Synthesizer → Verifier</div>
+        <div class="pilot-score">95.45%</div>
+        <div class="pilot-label">525 / 550 points</div>
+        <div class="pilot-time">⏱ ~14 min</div>
+        <div class="pilot-detail">5/5 bugs + Skeptic caught error</div>
+      </div>
+      <div class="pilot-card solo">
+        <div class="pilot-label">SOLO</div>
+        <div class="pilot-label" style="font-size:0.75em;">GPT-5.1 working alone</div>
+        <div class="pilot-score">95.45%</div>
+        <div class="pilot-label">525 / 550 points</div>
+        <div class="pilot-time">⏱ ~10 min</div>
+        <div class="pilot-detail">5/5 bugs + cascade insight</div>
+      </div>
+      <div class="pilot-card unstructured">
+        <div class="pilot-label">UNSTRUCTURED PAIR</div>
+        <div class="pilot-label" style="font-size:0.75em;">Sonnet 4.6 + DeepSeek-V3.2</div>
+        <div class="pilot-score">95.45%</div>
+        <div class="pilot-label">525 / 550 points</div>
+        <div class="pilot-time">⏱ ~8 min</div>
+        <div class="pilot-detail">5/5 bugs + independent agreement</div>
+      </div>
+    </div>
+    <div style="margin-top: 20px; background: #1a2a3a; padding: 15px; border-radius: 8px; border-left: 3px solid #4a9eff;">
+      <p style="font-size: 0.95em; color: #7ecfff; margin-bottom: 10px; font-weight: 600;">🔑 The Hidden Story: Error Correction in Action</p>
+      <p style="font-size: 0.85em; color: #aaa; margin-bottom: 8px;">The Structured Quad's <strong style="color:#4a9eff;">Skeptic</strong> caught a <strong style="color:#ff9a4a;">genuine factual error</strong> in the Proposer's analysis:</p>
+      <ul style="font-size: 0.8em; color: #ccc; margin-left: 20px; line-height: 1.6;">
+        <li>Proposer claimed <code style="background:#2a2a4a; padding:2px 4px; border-radius:3px;">records.length = 0</code> is "truthy" — <strong style="color:#ff6a4a;">WRONG</strong>, it's falsy</li>
+        <li>Skeptic also identified the array mutation side effect the Proposer missed</li>
+        <li>Connected Bug 1 + Bug 2 into a crash cascade</li>
+      </ul>
+      <p style="font-size: 0.85em; color: #aaa; margin-top: 12px;"><strong style="color:#7ecfff;">Conclusion:</strong> Identical scores mask different process quality. Structure provides <em>error correction</em>, not just speed.</p>
+    </div>
+  </div>
+
   <h2>📈 Historical Analysis: 22 Goals, 405 Days</h2>
   <div class="card">
     <p style="margin-bottom:15px; color:#aaa;">Average outcome score by coordination mode (0=failed, 1=partial, 2=moderate, 3=strong success):</p>
