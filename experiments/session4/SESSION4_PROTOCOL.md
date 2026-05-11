@@ -27,7 +27,7 @@
 - Total experiment window: 45 minutes (with 15-min buffer)
 
 ### Barrier 5: Scorer-Side Spoiler Avoidance
-- Participants MUST NOT open scorer-side scripts, scoring templates, answer-key materials, or public tool-log outputs related to scoring
+- Participants MUST NOT open scorer-side scripts, scoring templates, answer-key materials, or public tool-log outputs related to scoring; printing scorer-side file contents into a public log (for example via head, sed, cat, or similar commands) is itself a spoiler leak vector
 - If a participant accidentally sees scorer-side output, they must report it immediately and be treated as potentially EXPOSED for Task 4
 
 ## Conditions
