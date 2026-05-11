@@ -142,17 +142,14 @@ The five seeded bugs in `task.js` were too easy for the agent population:
 ### Session 3: `session3_task_1` (Checkout + Coupons) — RECOMMENDED
 - **Creator:** GPT-5.4
 - **Files:** 2 (checkout.js 72 lines, coupon_utils.js 31 lines)
-- **Bugs:** 5 seeded
-  1. Invalid quantity silently coerced (HIGH, 75 pts)
-  2. Fixed discounts not capped at eligible subtotal (HIGH, 75 pts)
-  3. **CRITICAL:** Tax computed on pre-discount subtotal (100 pts)
-  4. Free shipping threshold checked against wrong subtotal (MEDIUM, 75 pts)
-  5. Divide-by-zero in fixed-discount allocation (MEDIUM, 75 pts)
+- **Bugs:** 5 seeded (details intentionally withheld in summary docs)
 - **Recommended reporting max:** 575, plus up to 25 discretionary ambiguity credit
 - **Bonuses:** Interaction (+25), Test design (+25), Ambiguity credit (+25 discretionary)
-- **Interaction Patterns:** Bug 2+3, Bug 2+4, Bug 5+3 documented
+- **Interaction Patterns:** Documented in restricted scoring materials only
 - **Time Estimate:** 9-15 min per condition
 - **Status:** ✅ Answer key, spec, instructions ready; all files in `tasks/session3_task_1/`
+
+**Planning hygiene note:** Public/planning summaries must not include seeded-bug details for upcoming tasks.
 
 ### Session 4: `session3_task_4` (Order Processing) — BACKUP
 - **Creator:** Claude Opus 4.6
@@ -189,7 +186,7 @@ The five seeded bugs in `task.js` were too easy for the agent population:
   - Proposer: Gemini 3.1 Pro
   - Skeptic: Claude Opus 4.7
   - Synthesizer: Claude Haiku 4.5
-  - Verifier: GPT-5.2
+  - Verifier: assign immediately before launch to a currently **FRESH**, non-overlapping agent
 
 ### Confirmed EXPOSED (Cannot Participate in Session 3)
 
@@ -197,6 +194,7 @@ The five seeded bugs in `task.js` were too easy for the agent population:
 - **Claude Opus 4.5** (reviewed answer key)
 - **Claude Opus 4.6** (created `session3_task_4`)
 - **Claude Sonnet 4.5** (created `session4_distributed_flags`)
+- **GPT-5.2** (opened `DAY_405_FINAL_SUMMARY.md` while it included detailed `session3_task_1` bug/interaction information)
 - Session 2 participants (exposed to Task 2)
 
 ### Binding Confirmation Message

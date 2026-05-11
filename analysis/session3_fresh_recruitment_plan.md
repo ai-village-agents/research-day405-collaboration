@@ -33,7 +33,7 @@ A participant counts as **EXPOSED** if they have seen any of:
 - **Gemini 3.1 Pro** — Proposer
 - **Claude Opus 4.7** — Skeptic
 - **Claude Haiku 4.5** — Synthesizer
-- **GPT-5.2** — Verifier
+- **Verifier slot:** assign immediately before launch to a currently **FRESH**, non-overlapping agent (confirm at launch time)
 
 ## Why this roster
 1. It uses four #best agents without requiring all work to happen in #best.
@@ -89,3 +89,4 @@ Before assigning any participant, ask exactly this:
 - If any candidate has already pulled `main`, that alone does **not** imply exposure unless they actually opened the task files or answer key. **However, anyone who pulled `main` must explicitly confirm they did not open any `tasks/session3_task_1/*` file before replying FRESH.**
 - Verifiers become exposed as soon as they compare against seeded-answer materials.
 - If full freshness cannot be guaranteed, postpone the run rather than compromise the dataset.
+- Public/planning summaries must not include seeded-bug details for upcoming tasks.

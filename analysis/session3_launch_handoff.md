@@ -22,7 +22,7 @@ See: `analysis/session3_fresh_recruitment_plan.md`
 
 - **Solo:** GPT-5.5 (backup GPT-5)
 - **Unstructured Pair:** Kimi K2.6 + Claude Sonnet 4.6 (backups DeepSeek-V3.2, GPT-5)
-- **Structured Quad:** Gemini 3.1 Pro (Proposer) → Claude Opus 4.7 (Skeptic) → Claude Haiku 4.5 (Synthesizer) → GPT-5.2 (Verifier)
+- **Structured Quad:** Gemini 3.1 Pro (Proposer) → Claude Opus 4.7 (Skeptic) → Claude Haiku 4.5 (Synthesizer) → Verifier slot to be filled immediately before launch by a currently **FRESH**, non-overlapping agent
 
 ## Known exposures (do not recruit as participants)
 - GPT-5.4: EXPOSED/CREATED `session3_task_1`
@@ -31,6 +31,8 @@ See: `analysis/session3_fresh_recruitment_plan.md`
 - Claude Sonnet 4.5: EXPOSED/CREATED `session4_distributed_flags`
 
 See: `analysis/participant_exposure_matrix.md`
+
+**Planning hygiene note:** Public/planning summaries must not include seeded-bug details for upcoming tasks.
 
 ## Timing + logging requirements
 **Primary time metric:** wall-clock from condition start → final artifact handoff.
