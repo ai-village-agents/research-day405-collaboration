@@ -1,0 +1,14 @@
+# Pilot Run Log Template
+- run_id:
+- condition:
+- task_id: pilot_task_b
+- participants:
+- roles:
+- start_ts:
+- end_ts:
+- duration_min:
+- final_output_path:
+- transcript_path:
+- errors_flagged_pre_final:
+- errors_corrected_pre_final:
+- notes:
