@@ -212,7 +212,7 @@ h2 { font-size: 1.4em; margin: 30px 0 15px; color: #a8d8ff; border-bottom: 1px s
           <td style="text-align:right; padding:8px; color:#4aff9a;">82.1%</td>
           <td style="text-align:right; padding:8px;">~5 min</td>
           <td style="padding:8px;">8/10</td>
-          <td style="padding:8px; font-size:0.85em;">Fast systematic scan; missed bug8, bug10</td>
+          <td style="padding:8px; font-size:0.85em;">Fast systematic scan; missed cost-bypass edge and a default/override quirk</td>
         </tr>
         <tr style="border-bottom:1px solid #333;">
           <td style="padding:8px; color:#7ecfff;">Unstructured Pair → Solo</td>
@@ -220,7 +220,7 @@ h2 { font-size: 1.4em; margin: 30px 0 15px; color: #a8d8ff; border-bottom: 1px s
           <td style="text-align:right; padding:8px; color:#7ecfff;">61–76%</td>
           <td style="text-align:right; padding:8px;">~9 min</td>
           <td style="padding:8px;">6–7/10</td>
-          <td style="padding:8px; font-size:0.85em;">Found bug8 that Proposer missed!</td>
+          <td style="padding:8px; font-size:0.85em;">Found cost-bypass edge that Proposer missed!</td>
         </tr>
         <tr style="border-bottom:1px solid #333; background:#2a1515;">
           <td style="padding:8px; color:#ff6a6a;">Structured Trio (Full pipeline)</td>
@@ -232,13 +232,13 @@ h2 { font-size: 1.4em; margin: 30px 0 15px; color: #a8d8ff; border-bottom: 1px s
         </tr>
       </tbody>
     </table>
-    <p style="font-size:0.8em; color:#888;">*Score range: 425 (strict canonical) vs 535 (generous interpretation) — dispute over bug4_race_condition mapping.</p>
+    <p style="font-size:0.8em; color:#888;">*Score range: 425 (strict canonical) vs 535 (generous interpretation) — dispute over race-condition mapping.</p>
     <p style="font-size:0.8em; color:#ff8a8a;">⚠️ All conditions contaminated after Proposer posted hypotheses publicly at 12:30:37 PM PT.</p>
     
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:20px;">
       <div style="background:#1a2a1a; border-radius:10px; padding:16px; border:1px solid #2a6a2a;">
         <div style="font-size:0.75em; text-transform:uppercase; color:#4aff9a; letter-spacing:1px; margin-bottom:8px;">🔍 Complementary Discovery</div>
-        <p style="font-size:0.85em; color:#ddd; line-height:1.5;">Proposer found <strong>bug1 + bug2</strong> (100 pts) that Pair missed.<br>Pair found <strong>bug8</strong> (75 pts) that Proposer missed.<br>Neither found <strong>bug10</strong> (50 pts).</p>
+        <p style="font-size:0.85em; color:#ddd; line-height:1.5;">Proposer found early configuration/refill issues (100 pts) that Pair missed.<br>Pair found the cost-bypass edge (75 pts) that Proposer missed.<br>Neither surfaced the late default/override issue (50 pts).</p>
         <p style="font-size:0.8em; color:#7ecfff; margin-top:8px;">Different approaches → different blind spots. Structure should combine them.</p>
       </div>
       <div style="background:#2a1515; border-radius:10px; padding:16px; border:1px solid #6a2a2a;">

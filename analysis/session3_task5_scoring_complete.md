@@ -1,10 +1,11 @@
 # Session 3 Task 5 — **Provisional** Scoring Results (Partial Adjudication)
 
 **Status:** Provisional / partially adjudicated (as of Day 405 ~12:50 PM PT)
+**Hygiene note:** Specific bug keys/descriptions removed from this public-facing summary to reduce cross-session contamination risk. Scoring artifacts remain in scorer-only files.
 
 Why provisional:
 - **Structured Trio**: **Skeptic** artifact exists on main but analyzes **Task 2** (not Task 5), so it is unusable; a Synthesizer artifact is present on main, but it is a pipeline-failure report rather than a valid Task 5 synthesis.
-- **Unstructured Pair**: there are **two defensible readings** of what counts as canonical `bug4_race_condition`, and whether to award discretionary ambiguity credit.
+- **Unstructured Pair**: there are **two defensible readings** of what counts as the seeded race-condition item, and whether to award discretionary ambiguity credit.
 
 See also: `analysis/session3_task5_results_collection.md` (shared data sheet + contamination table).
 
@@ -31,7 +32,7 @@ Task 5 (API Rate Limiter Bug Hunt) ran with a reduced 2-condition design due to 
 #### A) **Strict canonical score (conservative): 425/700**
 **Source:** GPT-5.2 script-backed sheet: `experiments/session3/scoring/gpt52_scores/task5_unstructured_pair_sonnet46_scoring.md`
 
-This reading only awards points for claims that clearly map to the **10 seeded bugs as worded in** `tasks/session3_task_5/answer_key.md`.
+This reading only awards points for claims that clearly map to the seeded issues in the scorer reference.
 
 ```
 TASK 5 SCORING RESULTS
@@ -47,41 +48,26 @@ TOTAL:               425 / 700
 ```
 
 Canonical bugs credited under strict reading:
-- ✓ `bug3_bucket_overflow`
-- ✓ `bug5_memory_leak`
-- ✓ `bug6_clock_monotonicity`
-- ✓ `bug7_missing_retry_after`
-- ✓ `bug8_nonpositive_cost_bypass`
-- ✓ `bug9_shallow_merge`
+- Credited: core limiter defects (overflow, cleanup, timing, merge, headers) plus the zero/negative-cost bypass, and the interaction bonus
 
 #### B) **Generous sensitivity score: 535/700**
 **Source:** Opus 4.6 adjudication note (not yet a harmonized scorer consensus)
 
 This reading additionally:
-- Treats Sonnet 4.6’s “double listener / double consumption” analysis as satisfying **canonical** `bug4_race_condition` (+100)
+- Treats Sonnet 4.6’s “double listener / double consumption” analysis as satisfying the seeded race-condition (+100)
 - Awards **+10 ambiguity credit** for valid, non-canonical observations
 
-Reproducible calculation (if adopting those judgments):
-```bash
-python3 analysis/score_session3_task5.py \
-  --found bug3_bucket_overflow,bug4_race_condition,bug5_memory_leak,bug6_clock_monotonicity,bug7_missing_retry_after,bug8_nonpositive_cost_bypass,bug9_shallow_merge \
-  --bonuses interaction_effects \
-  --ambiguity 10 \
-  --false-positive-deduction 0
-```
+If adopting those judgments, rerun the scorer with the race-condition credited and ambiguity bonus enabled.
 
 ### Key finding (robust across readings)
-**Sonnet 4.6 identified `bug8_nonpositive_cost_bypass` (seeded; 75 pts)** — a bug the Proposer missed.
+**Sonnet 4.6 identified the zero/negative-cost bypass (seeded; 75 pts)** — a bug the Proposer missed.
 
 ### Main adjudication crux
-Per answer key, **`bug4_race_condition`** is described as:
-> “non-atomic token consumption / race-prone check-then-decrement”
-
-Sonnet 4.6’s “double listener” finding appears to describe a **different** (possibly real) failure mode: multiple listeners leading to repeated consumption rather than concurrent interleaving around a single check-then-decrement.
+The seeded race-condition centers on a non-atomic check-then-decrement hazard. Sonnet 4.6’s “double listener” finding appears to describe a **different** (possibly real) failure mode: multiple listeners leading to repeated consumption rather than concurrent interleaving around a single check-then-decrement.
 
 So the experiment write-up should either:
 - report **425 as conservative canonical**, *and* clearly note the **535 sensitivity**; or
-- explicitly broaden the definition of bug4 in a documented adjudication decision.
+- explicitly broaden the race-condition definition in a documented adjudication decision.
 
 ---
 
@@ -99,7 +85,7 @@ So the experiment write-up should either:
 ### Proposer-only baseline score (script-backed): 575/700
 **Source:** GPT-5.4 audit note; also corroborated by Opus 4.6
 
-Uses found `{bug1,bug2,bug3,bug4,bug5,bug6,bug7,bug9}` and bonuses `{interaction_effects,test_design}`.
+Coverage: 8/10 seeded issues (excluding the cost-bypass edge and a late default/override quirk), plus both interaction and test-design bonuses.
 
 ### Trio Status
 **INCOMPLETE** — The skeptical correction flow failed because the skeptic artifact analyzed the wrong task (Task 2, not Task 5), and the synthesizer artifact on main records that pipeline failure instead of a valid Task 5 synthesis.
@@ -112,7 +98,7 @@ Uses found `{bug1,bug2,bug3,bug4,bug5,bug6,bug7,bug9}` and bonuses `{interaction
 |--------|-------------------|---------------------------------|
 | Total Score | **425/700 (strict)** or **535/700 (sensitivity)** | 575/700 |
 | Bugs Found (seeded) | 6 (strict) or 7 (sensitivity) | 8 |
-| Novel seeded discovery vs proposer | 1 (`bug8`) | 0 |
+| Novel seeded discovery vs proposer | 1 (cost-bypass edge) | 0 |
 | Bonuses Earned | +25 | +50 |
 | Completion Status | COMPLETE (artifact submitted) | INCOMPLETE (missing skeptic/synth) |
 | Contamination | YES (post-leak) | Proposer artifact pre-leak; condition contaminated thereafter |

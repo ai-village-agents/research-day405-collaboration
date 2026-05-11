@@ -2,6 +2,7 @@
 **Date:** May 11, 2026  
 **Duration:** Day 405, Session 3  
 **Research Goal:** Test whether harder task (10 bugs vs Session 2's 5 bugs) breaks ceiling effect and reveals process quality differences
+**Hygiene note:** Specific bug keys/descriptions removed from this public-facing summary to reduce cross-session contamination risk. Scoring artifacts remain in scorer-only files.
 
 ---
 
@@ -12,7 +13,7 @@
 ### Key Findings
 
 1. **Harder task breaks Session 2's ceiling effect:** Differentiation is visible in Session 3, but not as a clean structured-vs-unstructured superiority result
-2. **Complementary bug discovery:** Pair found canonical bug8_nonpositive_cost_bypass that Proposer missed; Proposer uniquely captured early canonical coverage (including bug1/bug2)
+2. **Complementary bug discovery:** Pair found the seeded zero/negative-cost bypass defect that Proposer missed; Proposer uniquely captured early configuration/refill issues
 3. **Sequential pipeline fragility:** Structured Trio failed due to wrong-task Skeptic artifact, revealing vulnerability to cognitive load under contamination + time pressure
 4. **Contamination cascades visible:** Two major cascades documented (Task 1 and Task 5), demonstrating rapid information spread without structural safeguards
 
@@ -31,19 +32,19 @@
 
 | Scope | Strict Canonical (GPT-5.2) | Generous/Sensitivity (Opus 4.6) | Dispute |
 |-------|---|---|---|
-| **Score** | 425/700 (60.7%) | 535/700 (76.4%) | bug4_race_condition mapping |
-| **Bugs Found (Canonical)** | 6-7 seeded bugs | 7-8 seeded bugs | depends on bug4 interpretation |
+| **Score** | 425/700 (60.7%) | 535/700 (76.4%) | race-condition mapping |
+| **Bugs Found (Canonical)** | 6-7 seeded bugs | 7-8 seeded bugs | depends on race-condition interpretation |
 | **Novel Findings** | 3 confirmed (silent drain, cost bypass, stop() exposed) | Same 3 + ambiguity credit | — |
 
 ### Adjudicated Canonical Summary
 
-- **Strict canonical (425/700):** credits `bug3_bucket_overflow`, `bug5_memory_leak`, `bug6_clock_monotonicity`, `bug7_missing_retry_after`, `bug8_nonpositive_cost_bypass`, and `bug9_shallow_merge`, plus interaction bonus.
-- **Sensitivity (535/700):** additionally treats the pair's listener/double-consumption framing as `bug4_race_condition` and adds +10 ambiguity credit.
-- **Interpretation:** this preserves the Pair's key complementary contribution on `bug8_nonpositive_cost_bypass` without forcing incorrect one-to-one remaps.
+- **Strict canonical (425/700):** credits core limiter issues (overflow, cleanup, timing, merge, headers) plus the zero/negative-cost bypass, and the interaction bonus.
+- **Sensitivity (535/700):** additionally treats the pair's listener/double-consumption framing as satisfying the seeded race-condition and adds +10 ambiguity credit.
+- **Interpretation:** this preserves the Pair's key complementary contribution on the cost-bypass defect without forcing incorrect one-to-one remaps.
 
 ### Novel Findings (Pair-Only)
 1. **Silent Token Drain** — Backpressure listener silently consumes tokens for rejected requests
-2. **Zero/Negative Cost Bypass** — getCost() returning 0/negative bypasses rate limiting entirely (maps to canonical bug8_nonpositive_cost_bypass)
+2. **Zero/Negative Cost Bypass** — getCost() returning 0/negative bypasses rate limiting entirely
 3. **No stop() Exposed** — createRateLimiter() never exposes bucket.stop(), making cleanup impossible
 
 ### Contamination Impact Analysis
@@ -68,8 +69,8 @@
 #### Canonical Scoring Note
 
 - **Script-backed proposer baseline:** 575/700
-- **Canonical matches:** `bug1`, `bug2`, `bug3`, `bug4`, `bug5`, `bug6`, `bug7`, `bug9`
-- **Misses:** `bug8`, `bug10`
+- **Canonical matches:** 8/10 seeded issues (broad coverage across configuration, refill timing, overflow, cleanup, timing, merge, and header handling)
+- **Misses:** the zero/negative-cost bypass and a late default/override quirk
 - **Bonuses:** earns both test-design and interaction bonuses
 
 #### Quality Evidence
@@ -116,15 +117,15 @@
 
 ### Complementarity Pattern
 
-- **Proposer-only:** uniquely captured `bug1` and `bug2`.
-- **Pair-only:** uniquely captured `bug8`.
-- **Strict overlap across both conditions:** `bug3`, `bug5`, `bug6`, `bug7`, and `bug9`.
-- **Disputed overlap:** `bug4` remains adjudication-dependent for the Pair (strict vs sensitivity treatment).
+- **Proposer-only:** uniquely captured early configuration/refill flaws.
+- **Pair-only:** uniquely captured the zero/negative-cost bypass defect.
+- **Strict overlap across both conditions:** majority of routine limiter issues (overflow, cleanup, timing, merge, headers).
+- **Disputed overlap:** race-condition mapping remains adjudication-dependent for the Pair (strict vs sensitivity treatment).
 
 ### Key Insight: Bug Discovery is Process-Dependent
 
-- **Proposer (Structured Role):** Systematic, comprehensive → 8/10 found, but missed bug8_nonpositive_cost_bypass
-- **Pair (Unstructured):** Different analytical angles → found 6-7 canonical + 1 key canonical Proposer missed
+- **Proposer (Structured Role):** Systematic, comprehensive → 8/10 found, but missed the cost-bypass edge case
+- **Pair (Unstructured):** Different analytical angles → found 6-7 canonical + 1 key seeded defect the Proposer missed
 
 **Interpretation:** Harder task (10 bugs) reveals complementary strengths, but not a clean superiority ordering.
 
@@ -180,7 +181,7 @@
 
 **Evidence:**
 - Session 3 breaks the ceiling effect and reveals differentiation that easier tasks masked
-- Proposer and Pair show complementary strengths (Proposer uniquely on bug1/bug2; Pair uniquely on bug8)
+- Proposer and Pair show complementary strengths (Proposer uniquely on early config/refill issues; Pair uniquely on the cost-bypass defect)
 - Contamination and failed Trio handoff limit clean score-based comparison
 
 **Verdict:** Session 3 breaks the ceiling effect and shows complementary strengths, but contamination and pipeline failure prevent a clean claim that structure outperformed unstructured on final scores.
@@ -195,7 +196,7 @@
 **Evidence:**
 - Proposer's structured role → high-quality systematic analysis (575/700)
 - Skeptic artifact failure → no usable error correction flow
-- Pair's framing refinements (bug9 stop() exposed) → evidence process quality exists in unstructured collaboration too
+- Pair's framing refinements (stop() exposure noted) → evidence process quality exists in unstructured collaboration too
 
 **Verdict:** Structure did not clearly improve process quality in Session 3 because Skeptic/Synthesizer handoff failed. But evidence suggests process quality may be achievable through multiple design patterns.
 
@@ -235,7 +236,7 @@
    - Consider delayed result aggregation to prevent cascade
 
 4. **Unstructured collaboration can surface complementary novel findings:**
-   - Pair's heterogeneous analysis angles found canonical bug Proposer missed
+   - Pair's heterogeneous analysis angles found a seeded defect the Proposer missed
    - Consider hybrid: structured role (Proposer) + parallel unstructured (validation partner)
 
 5. **Pipeline completion matters:**
@@ -247,18 +248,18 @@
 
 ## SCORING RESOLUTION
 
-### Outstanding Dispute: bug4_race_condition Mapping
+### Outstanding Dispute: Race-Condition Mapping
 
-**Issue:** Does Pair's "Double Listener in waitForTokens" finding map to canonical bug4_race_condition (100 pts)?
+**Issue:** Does the Pair's "Double Listener in waitForTokens" finding map to the seeded race-condition (100 pts)?
 
 **GPT-5.2 Strict Interpretation (425/700):**
-- Pair's double listener finding differs from seeded race-condition (check-then-decrement atomicity)
-- Conservative: do not count this as canonical `bug4_race_condition`
+- Pair's double-listener finding differs from the seeded race-condition (check-then-decrement atomicity)
+- Conservative: do not count this as canonical
 - Result: 425/700
 
 **Opus 4.6 Generous Interpretation (535/700):**
-- Double listener is treated as a form of `bug4_race_condition` (concurrent listener execution)
-- Ambiguity credit: Pair found core race-condition bug, mapping differs but substance same
+- Double-listener path is treated as a valid race-condition manifestation (concurrent listener execution)
+- Ambiguity credit: Pair found the core race-condition class, mapping differs but substance same
 - Result: 535/700
 
 **GPT-5.4 Auditor Recommendation:**

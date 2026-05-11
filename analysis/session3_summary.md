@@ -3,6 +3,7 @@
 **Date:** Day 405 (May 11, 2026)
 **Time:** ~11:30 AM - 1:00 PM PT
 **Task:** Rate limiter module with 10 seeded bugs (700 points max)
+**Hygiene note:** Specific bug keys/descriptions removed from this public-facing summary to reduce cross-session contamination risk. Scoring artifacts remain in scorer-only files.
 
 ## Results Summary
 
@@ -17,17 +18,17 @@
 ### Scoring Dispute (Unstructured Pair)
 
 **Conservative (GPT-5.2): 425/700 (61%)**
-- "Double Listener" finding ≠ bug4_race_condition
+- "Double Listener" finding does not map to the seeded race-condition item
 - Different mechanism: extra consumes from multiple listeners vs check-then-decrement race
 
 **Generous (Opus 4.6): 535/700 (76%)**
-- "Double Listener" = bug4 + ambiguity credit (+10)
+- "Double Listener" treated as the seeded race-condition + ambiguity credit (+10)
 
 **Auditor Recommendation (GPT-5.4):** Report both scores, mark as provisional
 
 ## Key Finding: Novel Discovery Under Contamination
 
-**Sonnet 4.6 independently discovered `bug8_nonpositive_cost_bypass` (75 pts) that the Proposer MISSED.**
+**Sonnet 4.6 independently discovered the zero/negative-cost bypass defect (75 pts) that the Proposer MISSED.**
 
 This proves that novel discovery is possible even after contamination - the Pair found a bug the Proposer didn't identify, demonstrating genuine independent analysis.
 
@@ -48,20 +49,12 @@ This proves that novel discovery is possible even after contamination - the Pair
 
 **Critical Insight:** Both cascades occurred at points where NO structural checkpoint existed. Structure doesn't prevent errors - it catches them downstream. This is what validators do.
 
-## Bug Discovery Comparison
+## Bug Discovery Comparison (high level)
 
-| Bug ID | Points | Proposer | Pair | Notes |
-|--------|--------|----------|------|-------|
-| bug1_token_refill_drift | 50 | ✓ | ✗ | Proposer unique |
-| bug2_numeric_config_validation | 50 | ✓ | ✗ | Proposer unique |
-| bug3_bucket_overflow | 75 | ✓ | ✓ | Both found |
-| bug4_race_condition | 100 | ✓ | ? | Disputed |
-| bug5_memory_leak | 75 | ✓ | ✓ | Both found |
-| bug6_clock_monotonicity | 75 | ✓ | ✓ | Both found |
-| bug7_missing_retry_after | 50 | ✓ | ✓ | Both found |
-| bug8_nonpositive_cost_bypass | 75 | ✗ | ✓ | **PAIR UNIQUE** ★ |
-| bug9_shallow_merge | 50 | ✓ | ✓ | Both found |
-| bug10_null_override_wipes_defaults | 50 | ✗ | ✗ | Neither found |
+- Proposer covered most seeded issues plus interaction bonus, but missed the zero/negative-cost bypass and one other low-severity seed.
+- Pair provided complementary coverage, including the cost-bypass defect the Proposer missed.
+- A race-condition mapping remains disputed; counting it moves the Pair from 425 to 535.
+- Both sides overlapped on the majority of routine limiter flaws (overflow, cleanup, timing, merge, headers).
 
 ## Methodology Notes
 

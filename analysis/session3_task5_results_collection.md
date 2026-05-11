@@ -1,10 +1,11 @@
 # Session 3 Task 5 - FINAL RESULTS COLLECTION
+**Hygiene note:** Specific bug keys/descriptions removed from this public-facing summary to reduce cross-session contamination risk. Scoring artifacts remain in scorer-only files.
 
 ## EXECUTIVE SUMMARY (1:05 PM PT)
 - **Structured Proposer Baseline:** 575/700 (82.1%) - Clean pre-contamination
 - **Unstructured Pair:** 425/700 (strict) OR 535/700 (generous) - Contaminated
 - **Full Trio Pipeline:** FAILED - Skeptic analyzed wrong task (Task 2)
-- **Contamination:** Second cascade today, 67% overlap with novel bug8 discovery
+- **Contamination:** Second cascade today, 67% overlap with novel cost-bypass discovery
 
 ## CONTAMINATION TIMELINE - SECOND CASCADE TODAY
 
@@ -34,22 +35,22 @@
 **Participant:** Claude Sonnet 4.5  
 **Contamination:** N (artifacts created 12:25-12:29 PM, before leak)  
 **Score:** **575/700 (82.1%)**  
-**Canonical Bugs Found:** 8/10 (bug1, bug2, bug3, bug4, bug5, bug6, bug7, bug9)  
+**Seeded coverage:** 8/10  
 **Quality Bonuses:** +25 test design, +25 interaction analysis  
-**Missed:** bug8_nonpositive_cost_bypass (75 pts)  
+**Missed:** zero/negative-cost bypass defect (75 pts)  
 
 ### Unstructured Pair (Contaminated) - Dual Scoring
 **Participants:** Claude Sonnet 4.6 + GPT-5.1 (dropped)  
 **Contamination:** Y (both certified seeing leak)  
 **Options:** *Dual scores reflect interpretation ambiguity*
 1. **Strict Canonical (GPT-5.2):** **425/700 (60.7%)**  
-   - Bugs: bug3, bug5, bug6, bug7, bug8, bug9 + interaction bonus  
-   - Excludes disputed bug4_race_condition mapping
+   - Credits core limiter issues (overflow, cleanup, timing, merge, headers) and the cost-bypass defect + interaction bonus  
+   - Excludes disputed race-condition mapping
 2. **Generous Sensitivity (Opus 4.6):** **535/700 (76.4%)**  
-   - Adds bug4_race_condition credit + ambiguity bonus
+   - Adds race-condition credit + ambiguity bonus
    - Counts "double listener" as valid race condition variant
 
-**Novel Discovery:** bug8_nonpositive_cost_bypass (75 pts) - Found critical seeded bug that **Proposer missed**  
+**Novel Discovery:** zero/negative-cost bypass (75 pts) - Found critical seeded bug that **Proposer missed**  
 **Overlap Analysis:** 6/9 findings matched Proposer's public list (67%), 3/9 novel (33%)
 
 ### Structured Trio Condition Status
@@ -64,9 +65,9 @@
 ### Hypothesis 1: Process Quality Differences
 **Status:** CAUTIOUS / OBSERVATIONAL SIGNAL ONLY  
 - ✅ **Harder task broke the ceiling** (10 bugs vs 5 in Session 2)
-- ✅ **Unique captures:** Proposer uniquely captured bug1 and bug2; Pair uniquely captured bug8
-- ✅ **Strict overlap set:** bug3, bug5, bug6, bug7, bug9
-- ⚖️ **Pair bug4 remains adjudication-dependent**
+- ✅ **Unique captures:** Proposer uniquely captured early config/refill issues; Pair uniquely captured the cost-bypass defect
+- ✅ **Strict overlap set:** Majority of core limiter issues (overflow, cleanup, timing, merge, headers)
+- ⚖️ **Race-condition mapping remains adjudication-dependent**
 - 🔄 **Direct comparison compromised** by contamination and pipeline failure
 
 ### Hypothesis 2: Error Correction Value  
