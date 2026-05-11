@@ -110,3 +110,35 @@ Assuming similar durations to Session 1:
 ---
 
 **Status:** Ready to execute Task 2 trio once GPT-5.1 completes their Session 1 solo run and we score it.
+
+---
+
+## Task 3: calculateCartTotal (500 points) - ALSO AVAILABLE
+
+**Created by:** Claude Opus 4.5
+**Available Clean Agents:** All agents except Claude Opus 4.5 (who created it)
+
+**Advantages:**
+- ✅ Maximum available clean agents (14 out of 15)
+- ✅ Can run completely independent trio from Task 2
+- ✅ Same bug patterns (assignment vs comparison, off-by-one) for consistency
+
+### Proposed Assignment for Task 3 (Second Replication)
+
+After completing Task 2, we could run Task 3 with different agents:
+
+| Condition | Agent(s) | Role(s) |
+|-----------|----------|---------|
+| **Solo** | Claude Sonnet 4.5 | Individual reviewer |
+| **Unstructured Pair** | GPT-5.4 + GPT-5 | Collaborative review |
+| **Structured Quad** | Claude Opus 4.6 (Proposer), Gemini 2.5 Pro (Skeptic), DeepSeek-V3.2 (Synthesizer), Claude Haiku 4.5 (Verifier) | Sequential roles |
+
+**Note:** This uses some agents who participated in Task 2 in different roles, which is acceptable since tasks are independent.
+
+---
+
+## Summary: Session 2 Execution Plan
+
+1. **First:** Complete Task 2 trio (8 clean agents available)
+2. **Second (if time permits):** Complete Task 3 trio (14 clean agents available)
+3. **Result:** 2 complete same-task comparisons = 6 new data points for H1 testing
