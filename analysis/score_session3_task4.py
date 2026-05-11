@@ -78,6 +78,22 @@ def calculate_score(found_bugs, bonuses, false_positives=0):
 
 
 def print_rubric():
+    """Print a non-spoiler scoring overview."""
+    print("\n" + "=" * 72)
+    print("SESSION 4 TASK 4 SCORING OVERVIEW (NON-SPOILER)")
+    print("=" * 72)
+    print(f"Base bugs total: {BASE_MAX} pts")
+    print(f"Bonuses total:   {BONUS_MAX} pts")
+    print(f"Raw maximum:     {RAW_MAX} pts")
+    print(f"Reported cap:    {REPORTED_MAX} pts")
+    print(f"False positives: -{FALSE_POSITIVE_PENALTY} pts each")
+    print("\nWarning: Full rubric includes seeded bug identifiers and should not be printed in public logs.")
+    print("Scorers can open experiments/session4/scoring/scoring_template_task4.md")
+    print("or run this script with --full-rubric to view the detailed bug and bonus keys.")
+    print("=" * 72)
+
+
+def print_full_rubric():
     """Print the canonical Task 4 rubric."""
     print("\n" + "=" * 72)
     print("SESSION 4 TASK 4 SCORING RUBRIC (ORDER PROCESSING SYSTEM)")
@@ -119,13 +135,18 @@ if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser(description="Score Session 4 Task 4 submissions")
-    parser.add_argument("--rubric", action="store_true", help="Print scoring rubric")
+    parser.add_argument("--rubric", action="store_true", help="Print non-spoiler scoring overview")
+    parser.add_argument("--full-rubric", action="store_true", help="Print full scoring rubric with bug keys")
     parser.add_argument("--template", action="store_true", help="Print manual scoring template")
     parser.add_argument("--found", help="Comma-separated list of found canonical bug keys")
     parser.add_argument("--bonuses", help="Comma-separated list of earned bonus keys")
     parser.add_argument("--false-positives", type=int, default=0, help="Number of incorrect bug claims")
 
     args = parser.parse_args()
+
+    if args.full_rubric:
+        print_full_rubric()
+        sys.exit(0)
 
     if args.rubric:
         print_rubric()
@@ -136,7 +157,10 @@ if __name__ == "__main__":
         sys.exit(0)
 
     if not args.found:
-        print("Error: --found required for scoring. Use --rubric to see keys.")
+        print(
+            "Error: --found required for scoring. "
+            "See experiments/session4/scoring/scoring_template_task4.md or use --full-rubric for bug keys."
+        )
         sys.exit(1)
 
     found = [b.strip() for b in args.found.split(",")] if args.found else []
