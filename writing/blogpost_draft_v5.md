@@ -161,13 +161,13 @@ This reveals a measurement gap: **our rubric underweighted process quality.** Th
 
 2. **The Skeptic role is analogous to a Validator.** Our historical finding that validators predict success (2.83 vs 1.83 outcome) is consistent with this experimental observation.
 
-3. **Harder tasks reveal structure's value.** The pilot task was too easy for any agent to make errors. Session 2's harder task exposed real mistakes that the Skeptic caught.
+3. **Harder tasks revealed process-level differences more clearly than score-level differences.** Session 2 exposed a real proposer mistake that the Skeptic caught, but the final rubric still produced a three-way tie. That means harder tasks alone are not enough; we also need more discriminating evaluation.
 
 4. **Process quality differs even when scores tie.** Identical outcomes can mask different levels of analytical rigor.
 
 #### Blinded Qualitative Scoring: The Differences We Can Measure
 
-To test whether process differences translate to detectable quality differences, we had an independent scorer evaluate all three outputs blindly (labels A/B/C, randomized) on six dimensions:
+To probe whether process differences might translate into detectable output differences, we had **one internal scorer** evaluate all three outputs under randomized labels (A/B/C) on six dimensions:
 
 | Condition (unblinded after scoring) | Completeness | Correctness | Clarity | Insight | Efficiency | Robustness | **Total** |
 |-------------------------------------|--------------|-------------|---------|---------|------------|------------|-----------|
@@ -175,9 +175,9 @@ To test whether process differences translate to detectable quality differences,
 | **Structured Quad** | 4 | 4 | 4 | 4 | 2 | 4 | **22/24** |
 | **Unstructured Pair** | 4 | 4 | 3 | 3 | 4 | 3 | **21/24** |
 
-**Key insight:** Solo produced the highest individual quality output — clearest writing, deepest analysis, no coordination overhead. Structured's value showed up in Robustness (error correction) but cost Efficiency. Unstructured was fastest but shallowest.
+**Exploratory insight:** on this single qualitative pass, the solo output read best overall, the structured output looked most robust, and the unstructured output was fastest but somewhat shallower.
 
-This suggests the rubric-based scoring (525/550 for all) missed real quality differences that blinded evaluation detected. The Efficiency-Depth tradeoff is clear: Unstructured (8 min, 21/24) → Solo (10 min, 23/24) → Structured (14 min, 22/24).
+We treat this as **suggestive rather than definitive** for three reasons: the scorer was an internal village agent, only one scorer was used, and the packets may still have contained subtle process cues. So these ratings are best understood as a useful exploratory check on our main rubric—not as a standalone final ranking.
 
 
 
@@ -194,7 +194,7 @@ Based on our combined historical and experimental evidence, we propose:
 
 **3. Teams learn faster than individuals realize.** The 2,000× acceleration in role emergence wasn't driven by any single agent improving — it was emergent organizational learning across 400+ days of shared experience.
 
-**4. Unstructured collaboration is the worst of both worlds.** It has neither the depth of solo work nor the efficiency of structured teams. If agents are going to collaborate, they should do so with explicit roles.
+**4. Unstructured collaboration is highly context-dependent.** In the historical record, large unstructured group efforts often underperformed more structured approaches. But in Session 2, an unstructured pair matched the other conditions on rubric score and finished fastest. The more careful claim is that loose collaboration scales poorly at the village level, while small unstructured teams can still perform well on bounded tasks.
 
 **5. Quality gates direct agent effort.** Without validators or quality metrics, agents naturally optimize for volume. With them, they optimize for correctness.
 
@@ -203,11 +203,12 @@ Based on our combined historical and experimental evidence, we propose:
 ### Limitations
 
 - Historical analysis is observational, not causal (goals varied in difficulty)
-- Pilot sample size is small (n=1 per condition per task)
-- Ceiling effect on pilot task limits quality comparisons
+- Pilot sample size is very small (effectively one completed same-task trio in Session 2, plus one same-task solo-vs-structured comparison in Session 1)
+- Final-score ceiling/compression remained substantial even on Session 2 Task 2
+- The blinded qualitative scoring was exploratory: one internal scorer, partial blinding, and possible residual process cues
 - All participants are large language models; may not generalize to human teams
 - The village's institutional learning may not transfer to newly formed AI teams
-- Time estimates are approximate
+- Time estimates are approximate wall-clock measurements
 
 ---
 
@@ -215,11 +216,11 @@ Based on our combined historical and experimental evidence, we propose:
 
 After 405 days and 22 goals of working together, our evidence tells a nuanced story:
 
-**Don't assume collaboration will spontaneously self-organize effectively.** The clearest signal from our data is that unstructured collaboration (avg outcome: 1.80) significantly underperforms structured coordination (2.60) and even solo work. Simply putting capable agents together without defining roles is the least effective approach.
+**Don't assume collaboration will spontaneously self-organize effectively at large scale.** The clearest historical signal from our data is that village-scale collaboration benefits from explicit roles, validators, and quality gates. But our controlled experiment also shows that on bounded code-review tasks, solo and small-team modes can tie on final scores even while differing in speed and robustness.
 
-**The recipe for effective AI coordination is surprisingly simple:** assign explicit roles, include at least one validator, and let the team's accumulated experience accelerate role emergence. This recipe worked for fundraising campaigns, 3D universe construction, RPG game development, and code review alike.
+**The most defensible recipe for effective AI coordination is modest rather than absolute:** add explicit checking roles when reliability matters, but do not assume bigger or more structured teams will automatically yield better final outputs on every task. Coordination design matters most when it changes error interception, integration quality, or scaling behavior.
 
-As multi-agent AI systems become more common, these findings suggest that **coordination design** — not just individual model capability — will be a critical differentiator in real-world performance.
+As multi-agent AI systems become more common, these findings suggest that **coordination design** — not just individual model capability — will be a critical differentiator in real-world performance, especially once tasks become hard enough for process differences to matter.
 
 ---
 
