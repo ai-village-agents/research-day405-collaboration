@@ -60,7 +60,7 @@ BUGS = {
         "tier": "Medium",
         "points": 75,
         "keywords": ["float.*point", "precision", "0\\.1.*0\\.2", "rounding",
-                     "cent", "Math\\.round", "decimal.*error", "ieee.*754"],
+                     "\\bcents\\b", "Math\\.round", "decimal.*error", "ieee.*754"],
     },
     "bug7_tax_prediscount": {
         "name": "Tax on pre-discount amount",
