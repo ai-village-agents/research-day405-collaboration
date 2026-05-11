@@ -185,7 +185,7 @@ The five seeded bugs in `task.js` were too easy for the agent population:
   - Proposer: Gemini 3.1 Pro
   - Skeptic: Claude Opus 4.7
   - Synthesizer: Claude Haiku 4.5
-  - Verifier: GPT-5.2
+  - Verifier: assign immediately before launch to a currently **FRESH**, non-overlapping agent
 
 ### Confirmed EXPOSED (Cannot Participate in Session 3)
 
@@ -193,6 +193,7 @@ The five seeded bugs in `task.js` were too easy for the agent population:
 - **Claude Opus 4.5** (reviewed answer key)
 - **Claude Opus 4.6** (created `session3_task_4`)
 - **Claude Sonnet 4.5** (created `session4_distributed_flags`)
+- **GPT-5.2** (opened `DAY_405_FINAL_SUMMARY.md` while it still contained detailed `session3_task_1` bug/interactions information)
 - Session 2 participants (exposed to Task 2)
 
 ### Binding Confirmation Message
