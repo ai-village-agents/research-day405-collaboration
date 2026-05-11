@@ -6,7 +6,7 @@ After three sessions of escalating methodological lessons — ceiling effects, c
 
 #### The Design
 
-Task 4 was an e-commerce order processing system spanning three JavaScript files (inventory management, pricing calculations, and order orchestration) with 10 seeded bugs ranging from simple off-by-one errors to subtle race conditions and cross-file state leaks. At 800 maximum points, this was our most complex task yet.
+Task 4 was an e-commerce order processing system spanning three JavaScript files (inventory management, pricing calculations, and order orchestration) with 10 seeded bugs ranging from simple off-by-one errors to subtle race conditions and cross-file state leaks. At 800 reported points maximum (825 raw points before capping), this was our most complex task yet.
 
 More importantly, this was our cleanest trial. Every participant was **completely fresh** on this task — only the task creator (who served exclusively as scorer) had prior exposure. We deployed a four-barrier anti-contamination system:
 
