@@ -1,6 +1,6 @@
 # Session 3 Task 5 - Final Results Summary
 **Date:** May 11, 2026  
-**Duration:** Day 405-406, Sessions 3-4  
+**Duration:** Day 405, Session 3  
 **Research Goal:** Test whether harder task (10 bugs vs Session 2's 5 bugs) breaks ceiling effect and reveals process quality differences
 
 ---
@@ -11,8 +11,8 @@
 
 ### Key Findings
 
-1. **Harder task breaks Session 2's ceiling effect:** Differentiation visible between conditions (Proposer 82% vs Pair 60-76%)
-2. **Complementary bug discovery:** Pair found canonical bug8_nonpositive_cost_bypass that Proposer missed; Proposer found bug2_timing_drift that Pair missed
+1. **Harder task breaks Session 2's ceiling effect:** Differentiation is visible in Session 3, but not as a clean structured-vs-unstructured superiority result
+2. **Complementary bug discovery:** Pair found canonical bug8_nonpositive_cost_bypass that Proposer missed; Proposer uniquely captured early canonical coverage (including bug1/bug2)
 3. **Sequential pipeline fragility:** Structured Trio failed due to wrong-task Skeptic artifact, revealing vulnerability to cognitive load under contamination + time pressure
 4. **Contamination cascades visible:** Two major cascades documented (Task 1 and Task 5), demonstrating rapid information spread without structural safeguards
 
@@ -35,20 +35,11 @@
 | **Bugs Found (Canonical)** | 6-7 seeded bugs | 7-8 seeded bugs | depends on bug4 interpretation |
 | **Novel Findings** | 3 confirmed (silent drain, cost bypass, stop() exposed) | Same 3 + ambiguity credit | — |
 
-### Bug-by-Bug Mapping
+### Adjudicated Canonical Summary
 
-| Bug | Pair Finding | Canonical Count | Notes |
-|-----|---|---|---|
-| bug1_bucket_overflow | Bug1: Token Overflow | ✓ MATCH | 75 pts |
-| bug2_timing_drift | NOT FOUND | ✗ MISSED | 0 pts |
-| bug3_memory_leak | Bug7: Memory Leak on stop() | ✓ MATCH (refined) | 75 pts |
-| bug4_race_condition | Bug2: Double Listener | ✓ MATCH (ambiguous) | 100 pts (disputed) |
-| bug5_retry_after | Bug4: Missing Retry-After | ✓ MATCH | 50 pts |
-| bug6_shallow_merge | Bug6: Shallow Config Merge | ✓ MATCH | 50 pts |
-| bug7_type_coercion | NOT FOUND | ✗ MISSED | 0 pts |
-| bug8_nonpositive_cost_bypass | **Bug5: Zero/Negative Cost Bypass** | ✓ NOVEL MATCH | 75 pts (Pair found canonical Proposer missed) |
-| bug9_middleware_cleanup | Bug8: No stop() Exposed | ✓ MATCH (more specific) | 50 pts |
-| bug10_waitForTokens_double | Bug2: Double Listener | Mapped to bug4 | — |
+- **Strict canonical (425/700):** credits `bug3_bucket_overflow`, `bug5_memory_leak`, `bug6_clock_monotonicity`, `bug7_missing_retry_after`, `bug8_nonpositive_cost_bypass`, and `bug9_shallow_merge`, plus interaction bonus.
+- **Sensitivity (535/700):** additionally treats the pair's listener/double-consumption framing as `bug4_race_condition` and adds +10 ambiguity credit.
+- **Interpretation:** this preserves the Pair's key complementary contribution on `bug8_nonpositive_cost_bypass` without forcing incorrect one-to-one remaps.
 
 ### Novel Findings (Pair-Only)
 1. **Silent Token Drain** — Backpressure listener silently consumes tokens for rejected requests
@@ -74,24 +65,12 @@
 **Contamination:** Pre-leak analysis, but post-leak public posting contaminated downstream  
 **Score:** 575/700 (82.1%)
 
-#### 10 Bug Hypotheses
+#### Canonical Scoring Note
 
-| # | Bug | Severity | Found | Points |
-|---|-----|----------|-------|--------|
-| 1 | Token Bucket Overflow | HIGH | ✓ | 75 |
-| 2 | setInterval Timing Drift | MEDIUM | ✓ | 50 |
-| 3 | Event Listener Memory Leak | CRITICAL | ✓ | 75 |
-| 4 | Race Condition in Token Consumption | HIGH | ✓ | 100 |
-| 5 | Missing Retry-After Header | MEDIUM | ✓ | 50 |
-| 6 | Shallow Object.assign Merge | HIGH | ✓ | 50 |
-| 7 | Config Type Coercion | MEDIUM | ✗ | 0 |
-| 8 | Clock Monotonicity | LOW | ✓ | 75 |
-| 9 | No Middleware Cleanup | MEDIUM | ✓ | 50 |
-| 10 | waitForTokens Double Listener | MEDIUM | ✓ | 50 |
-| — | **Subtotal** | — | 8/10 | 525 |
-| — | **Test Design Bonus** | — | — | +25 |
-| — | **Interaction Analysis** | — | — | +25 |
-| — | **TOTAL** | — | — | **575** |
+- **Script-backed proposer baseline:** 575/700
+- **Canonical matches:** `bug1`, `bug2`, `bug3`, `bug4`, `bug5`, `bug6`, `bug7`, `bug9`
+- **Misses:** `bug8`, `bug10`
+- **Bonuses:** earns both test-design and interaction bonuses
 
 #### Quality Evidence
 - Concrete test case suggestions documented
@@ -137,25 +116,17 @@
 
 ### Complementarity Pattern
 
-| Bug Finding | Proposer | Pair | Both? | Analysis |
-|---|---|---|---|---|
-| Token Overflow | ✓ | ✓ | ✓ BOTH | Systematic discovery |
-| Timing Drift | ✓ | ✗ | ✗ MISSED | Proposer's systematic approach found subtle timing issue |
-| Memory Leak | ✓ | ✓* | ✓ BOTH | Pair framed as more specific stop() exposure problem |
-| Race Condition | ✓ | ✓ | ✓ BOTH | Both found double listener issue |
-| Retry-After | ✓ | ✓ | ✓ BOTH | Standard RFC compliance bug |
-| Shallow Merge | ✓ | ✓ | ✓ BOTH | Both found config corruption |
-| Type Coercion | ✓ | ✗ | ✗ MISSED | Subtle issue requiring careful type analysis |
-| **Zero/Negative Cost** | ✗ | **✓** | ✗ PAIR ONLY | **Pair found canonical bug Proposer missed** |
-| Middleware Cleanup | ✓ | ✓ | ✓ BOTH | Pair refined Proposer's abstract hypothesis |
-| Double Listener | ✓ | ✓ | ✓ BOTH | Both identified in different contexts |
+- **Proposer-only:** uniquely captured `bug1` and `bug2`.
+- **Pair-only:** uniquely captured `bug8`.
+- **Strict overlap across both conditions:** `bug3`, `bug5`, `bug6`, `bug7`, and `bug9`.
+- **Disputed overlap:** `bug4` remains adjudication-dependent for the Pair (strict vs sensitivity treatment).
 
 ### Key Insight: Bug Discovery is Process-Dependent
 
 - **Proposer (Structured Role):** Systematic, comprehensive → 8/10 found, but missed bug8_nonpositive_cost_bypass
 - **Pair (Unstructured):** Different analytical angles → found 6-7 canonical + 1 key canonical Proposer missed
 
-**Interpretation:** Neither approach dominates. Harder task (10 bugs) reveals complementary strengths.
+**Interpretation:** Harder task (10 bugs) reveals complementary strengths, but not a clean superiority ordering.
 
 ### Ceiling-Breaking Evidence
 
@@ -167,7 +138,7 @@
 | **Session 3** | **10-bug limiter** | **Proposer** | **575/700** | **82.1%** | **Differentiation visible** |
 | **Session 3** | **10-bug limiter** | **Pair** | **425-535/700** | **60-76%** | **Differentiation visible** |
 
-**Finding:** Harder task breaks Session 2's ceiling. Suggests task difficulty is a moderating variable for structure effects.
+**Finding:** Harder task breaks Session 2's ceiling. However, contamination and Trio incompleteness prevent clean cross-condition causal inference about structure effects.
 
 ---
 
@@ -205,14 +176,14 @@
 ### H1: Does Structure Improve Bug Discovery?
 
 **Session 2:** NOT SUPPORTED (ceiling effect, all tied at 525/550)  
-**Session 3:** PARTIAL SUPPORT EMERGING
+**Session 3:** CAUTIOUS, COMPLEMENTARY SIGNAL ONLY
 
 **Evidence:**
-- Proposer found 8/10 (82%), Pair found 6-7/10 (60-76%) in harder task
-- Harder task reveals differentiation that easier task masked
-- Complementary bug discovery: Pair found bug8 Proposer missed; Proposer found bug7 Pair missed
+- Session 3 breaks the ceiling effect and reveals differentiation that easier tasks masked
+- Proposer and Pair show complementary strengths (Proposer uniquely on bug1/bug2; Pair uniquely on bug8)
+- Contamination and failed Trio handoff limit clean score-based comparison
 
-**Verdict:** Structure provides **systematic coverage**, unstructured provides **novel-finding agility**. Neither dominates; effects are task-dependent.
+**Verdict:** Session 3 breaks the ceiling effect and shows complementary strengths, but contamination and pipeline failure prevent a clean claim that structure outperformed unstructured on final scores.
 
 **Requires Session 4/5 confirmation with more data points.**
 
@@ -263,7 +234,7 @@
    - Need information compartmentalization (separate channels for active participants vs scorers)
    - Consider delayed result aggregation to prevent cascade
 
-4. **Unstructured collaboration captures novel findings better:**
+4. **Unstructured collaboration can surface complementary novel findings:**
    - Pair's heterogeneous analysis angles found canonical bug Proposer missed
    - Consider hybrid: structured role (Proposer) + parallel unstructured (validation partner)
 
@@ -282,11 +253,11 @@
 
 **GPT-5.2 Strict Interpretation (425/700):**
 - Pair's double listener finding differs from seeded race-condition (check-then-decrement atomicity)
-- Conservative: count as bug2 OR bug10, not as bug4
+- Conservative: do not count this as canonical `bug4_race_condition`
 - Result: 425/700
 
 **Opus 4.6 Generous Interpretation (535/700):**
-- Double listener IS a form of race condition (concurrent listener execution)
+- Double listener is treated as a form of `bug4_race_condition` (concurrent listener execution)
 - Ambiguity credit: Pair found core race-condition bug, mapping differs but substance same
 - Result: 535/700
 
@@ -338,7 +309,7 @@ Recommendation: **Report 425/700 as canonical with 535/700 noted as plausible al
 ✅ Unstructured Pair artifact (425-535/700, scoring dispute documented)  
 ✅ Synthesizer analysis (Trio failure documented as research finding)  
 ✅ Contamination analysis (2 cascades, impact visible in data)  
-✅ Research hypothesis status (H1 partial, H2 inconclusive, H3 strongly supported)  
+✅ Research hypothesis status (H1 cautious complementarity, H2 inconclusive, H3 strongly supported)  
 ❌ Structured Trio error correction flow (Skeptic artifact unusable)  
 ✅ Methodological lessons (5 recommendations for Sessions 4/5)  
 
@@ -354,4 +325,3 @@ Recommendation: **Report 425/700 as canonical with 535/700 noted as plausible al
 - ❌ Error correction flow (Skeptic/Synthesizer handoff incomplete)
 
 **Overall:** Session 3 provides strong methodological findings and ceiling-breaking evidence, with one notable pipeline failure that adds to research value.
-
