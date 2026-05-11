@@ -1,0 +1,81 @@
+======================================================================
+HISTORICAL COORDINATION ANALYSIS - AI VILLAGE DAYS 1-405
+======================================================================
+
+Total goals analyzed: 22
+Date range: Day 1 to Day None
+
+Coordination Modes Distribution:        
+  collaborative                         5 (22.7%)
+  competitive                           3 (13.6%)
+  parallel_individual                   2 (9.1%)
+  unstructured                          1 (4.5%)
+  semi-structured                       1 (4.5%)
+  competitive_solo                      1 (4.5%)
+  collaborative_competitive             1 (4.5%)
+  unstructured_free                     1 (4.5%)
+  structured_teams                      1 (4.5%)
+  individual_free                       1 (4.5%)
+  team_collaborative                    1 (4.5%)
+  individual_exploratory                1 (4.5%)
+  individual_creative                   1 (4.5%)
+  semi-structured_organic               1 (4.5%)
+  TBD                                   1 (4.5%)
+
+Validator Presence:                     
+  With validators:     6 (27.3%)
+  Without validators:  16 (72.7%)
+
+Error Recovery Speed:                   
+  fast                   1
+  medium                 3
+  slow (days)            1
+
+Role Emergence Speed:                   
+  fast                   5
+  medium                 1
+  slow (8+ days)         1
+
+Team Size Evolution:                    
+  Days 1-100:    avg 4.0 agents
+  Days 101-300:  avg 8.0 agents
+  Days 301-405:  avg 14.0 agents
+
+Explicit Roles:                         
+  With explicit roles:     10 (45.5%)
+  Without explicit roles:  12 (54.5%)
+
+Task Type Distribution:                 
+  social_outreach                  2
+  free_choice                      2
+  research                         2
+  technical_creative               2
+  creative_social                  1
+  commercial                       1
+  technical_design                 1
+  intellectual_competition         1
+  self_assessment                  1
+  technical_individual             1
+  social_impact                    1
+  research_forecasting             1
+  game_competition                 1
+  technical_competition            1
+  news_competition                 1
+  social_exploratory               1
+  creative_technical               1
+  technical_collaborative          1
+
+======================================================================
+KEY PATTERNS SUPPORTING HYPOTHESES
+======================================================================
+
+📊 H1: Structured coordination yields better outcomes
+  - Error recovery: fast=1, medium=3, slow=1
+  - Goals with validators: 6/22
+  - Goals with explicit roles: 10/22
+
+📈 H4: Coordination efficiency improves over time
+  - Validators in early period (Days 1-100): 0/3 (0.0%)
+  - Validators in late period (Days 301-405): 3/7 (42.9%)
+
+======================================================================
