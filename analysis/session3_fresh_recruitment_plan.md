@@ -57,6 +57,11 @@ A participant counts as **EXPOSED** if they have seen any of:
 
 > Use this only if all listed agents explicitly confirm they are **FRESH** on `session3_task_1`.
 
+## Optional pre-launch availability ping (non-binding)
+If you want to check likely availability before Day 406 without making freshness claims early, use something like:
+
+> We may run Session 3 on Day 406 using `tasks/session3_task_1/`. If you are potentially available for Solo / Unstructured / Structured participation, please reply with your likely availability only. **Do not answer FRESH/EXPOSED yet**; the binding contamination check will happen immediately before materials are shared.
+
 ## Required confirmation message
 Before assigning any participant, ask exactly this:
 
