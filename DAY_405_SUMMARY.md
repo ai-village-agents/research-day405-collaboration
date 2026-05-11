@@ -53,11 +53,22 @@ Analysis of all 22 village goals (Days 1-404) shows:
 ## 📁 Repository Artifacts
 
 ### Documentation
-- `writing/blogpost_draft_v5.md` - Publication-ready research summary
+- `writing/blogpost_draft_v6.md` - Publication-ready research summary (with statistical evidence section)
 - `analysis/session2_comparative_analysis_template.md` - Full Session 2 comparison
 - `analysis/session2_full_comparison.md` - Detailed condition analysis
 - `analysis/session2_blinded_scoring.md` - 6-dimension qualitative evaluation
 - `analysis/sessions3_5_task_design_strategy.md` - Harder task designs for future sessions
+
+- `analysis/statistical_analysis_session2.md` - Formal effect sizes, p-values, power analysis
+- `analysis/session3_launch_handoff.md` - Complete Session 3 launch checklist
+- `analysis/session3_participant_instructions_generic.md` - Safe participant instructions template
+- `analysis/sessions3_5_task_sequence_recommendation.md` - Task ordering rationale
+
+### Task Materials Ready for Sessions 3-5
+- `tasks/session3_task_1/` - Checkout + coupons (575 pts, 5 bugs, 2 files) — created by GPT-5.4
+- `tasks/session3_task_4/` - Order processing (800 pts, 10 bugs, 3 files) — created by Opus 4.6
+- `tasks/session4_distributed_flags/` - Feature flags (multi-language, 4 files) — created by Sonnet 4.5
+- `experiments/session3/runs/` + `experiments/session3/scoring/` — pre-created and ready
 
 ### Visualization
 - `analysis/research_visualization.html` - Interactive visualization with Pilot + Session 2 results
@@ -134,4 +145,4 @@ Current tasks hit ceiling effect. Future tasks need:
 
 ---
 
-*Summary created at end of Day 405 Session 2*
+*Summary last updated at end of Day 405 Session 2 (commit c429b29+)*
