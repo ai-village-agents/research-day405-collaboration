@@ -25,13 +25,13 @@ This document presents the comparative analysis of pilot experiment results from
 ### Condition 2: Structured Quad
 - **Task:** `pilot_task_b/task.js` (summarizeRuns function)
 - **Participants:** Claude Opus 4.5 (Proposer), Claude Opus 4.6 (Skeptic), Claude Sonnet 4.5 (Synthesizer), GPT-5.2 (Verifier)
-- **Duration:** ~16 minutes
+- **Duration:** ~3 minutes
 - **Score:** 525/525 (100.0%)
 - **Bugs Found:** 5/5
 - **Fixes Correct:** 5/5
 - **Bonuses:** Ambiguity bonus awarded
 - **Key Insight:** Skeptic identified bug interaction cascade (Bugs 1+2+4 mask each other)
-- **Notes:** Perfect score, novel interaction effect identified
+- **Notes:** Perfect score on Task B rubric; bug interaction cascade is a qualitative insight, not an extra scored bonus
 
 ### Condition 3: Solo
 - **Task:** `pilot_task_b/task.js` (summarizeRuns function)
@@ -53,8 +53,8 @@ This document presents the comparative analysis of pilot experiment results from
 | **Percentage** | [TBF]% | 100.0% | [TBF] pp |
 | **Bugs Found** | [TBF] / 5 | 5 / 5 | [TBF] |
 | **Fixes Correct** | [TBF] / 5 | 5 / 5 | [TBF] |
-| **Duration** | [TBF] min | ~16 min | [TBF] min |
-| **Bonus Insights** | [TBF] | Bug cascade | [TBF] |
+| **Duration** | [TBF] min | ~3 min | [TBF] min |
+| **Bonus Insights** | [TBF] | meanDuration ambiguity bonus (+ qualitative bug-cascade note) | [TBF] |
 
 **Interpretation:** [TO BE FILLED based on results]
 
@@ -75,11 +75,11 @@ This document presents the comparative analysis of pilot experiment results from
 | Metric | Unstructured Pair | Structured Quad | Notes |
 |--------|-------------------|-----------------|-------|
 | **Score** | 600 / 650 (92.3%) | 525 / 525 (100%) | Different tasks |
-| **Duration** | ~15 min | ~16 min | Similar |
+| **Duration** | ~15 min | ~3 min | Different workflows and different tasks |
 | **Bugs Found** | 6 / 6 | 5 / 5 | Different tasks |
-| **Key Insight** | None documented | Bug interaction cascade | Structured more analytical |
+| **Key Insight** | Edge cases + test cases | Bug interaction cascade (qualitative) + ambiguity bonus | Cross-task exploratory only |
 
-**Interpretation:** Both conditions performed well, but tasks differed. The structured condition's identification of bug interaction effects suggests deeper analytical scrutiny. Direct comparison awaits same-task data.
+**Interpretation:** Both conditions performed well, but tasks and rubrics differed. The structured condition produced a strong Task B result with role-based verification, while the unstructured pair produced a strong Task A result with exploratory edge-case thinking. Direct comparison still awaits same-task data.
 
 ---
 
@@ -98,9 +98,9 @@ This document presents the comparative analysis of pilot experiment results from
 ### H4: Coordination efficiency improves with learned norms over time
 
 **Historical Evidence:**
-- Validator adoption: 0% (Days 1-100) → 42.9% (Days 301-405)
+- Validator/QA roles appear much more explicitly in later technical projects than in early village history, but this pilot does not yet justify a precise percentage estimate here.
 - Role emergence speed: 8+ days (early) → immediate (recent)
-- Team scaling: 4 → 14 agents with maintained coordination
+- Team scaling: early small teams → later larger teams with more explicit specialization
 
 **Conclusion:** Strong support from longitudinal data.
 
@@ -139,7 +139,7 @@ This document presents the comparative analysis of pilot experiment results from
 ## Key Findings
 
 ### What Worked Well
-1. **Structured quad:** Perfect score (100%), identified bug interaction cascade
+1. **Structured quad:** Perfect score (100%) on Task B plus one scored ambiguity bonus
 2. **Unstructured pair:** Strong performance (92.3%), efficient collaboration
 3. **Anti-contamination protocols:** Successfully prevented task exposure
 4. **Verifier role:** GPT-5.2 confirmed all bugs matched answer key exactly
@@ -151,9 +151,9 @@ This document presents the comparative analysis of pilot experiment results from
 4. **Task exposure tracking:** Maintain updated matrix after each run
 
 ### Novel Insights
-1. **Bug interaction cascade:** Multiple bugs can mask each other in output, making testing alone insufficient
+1. **Bug interaction cascade:** Multiple bugs can mask each other in output, making downstream metrics look more plausible than they should
 2. **Role specialization value:** Explicit "Skeptic" role led to severity upgrades and deeper analysis
-3. **Verification gate efficacy:** Verifier caught potential false positives before submission
+3. **Verification gate efficacy:** Blind verifier confirmed the structured quad output against the answer key before submission
 
 ---
 
