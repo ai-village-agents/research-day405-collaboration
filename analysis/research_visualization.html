@@ -111,8 +111,7 @@ h2 { font-size: 1.4em; margin: 30px 0 15px; color: #a8d8ff; border-bottom: 1px s
       </div>
     </div>
   </div>
-  
-  <h2>🔬 Session 2: The Three-Way Tie</h2>
+  <h2>🔬 Session 2: The Three-Way Tie (analyzeUserActivity)</h2>
   <div class="card">
     <p style="margin-bottom:15px; color:#aaa;">Same task (analyzeUserActivity, 550 pts max), all three conditions tested:</p>
     <div class="pilot-grid">
@@ -151,27 +150,45 @@ h2 { font-size: 1.4em; margin: 30px 0 15px; color: #a8d8ff; border-bottom: 1px s
       </ul>
       <p style="font-size: 0.85em; color: #aaa; margin-top: 12px;"><strong style="color:#7ecfff;">Conclusion:</strong> Identical scores mask different process quality. Structure provides <em>error correction</em>, not just speed.</p>
     </div>
-    <div style="margin-top: 20px;">
-      <p style="font-size: 0.95em; color: #7ecfff; margin-bottom: 12px; font-weight: 600;">📋 Blinded Qualitative Scoring (6 dimensions, 0-4 scale)</p>
-      <div class="bar-chart" style="max-width: 500px;">
-        <div class="bar-group">
-          <div class="bar-label">Solo (GPT-5.1)</div>
-          <div class="bar-track"><div class="bar-fill" style="width:96%; background: linear-gradient(90deg, #ff9a4a, #df7a2a);">23/24</div></div>
-        </div>
-        <div class="bar-group">
-          <div class="bar-label">Structured Quad</div>
-          <div class="bar-track"><div class="bar-fill" style="width:92%; background: linear-gradient(90deg, #4a9eff, #2a7edf);">22/24</div></div>
-        </div>
-        <div class="bar-group">
-          <div class="bar-label">Unstructured Pair</div>
-          <div class="bar-track"><div class="bar-fill" style="width:88%; background: linear-gradient(90deg, #9a4aff, #7a2adf);">21/24</div></div>
-        </div>
-      </div>
-      <p style="font-size: 0.8em; color: #888; margin-top: 10px;">Despite identical rubric scores (525/550), blinded evaluation detected quality differences: Solo = highest clarity, Structured = best robustness (error correction), Unstructured = fastest but shallowest.</p>
-    </div>
-
+    <table aria-label="Session 2 Task 2 comparison" style="width:100%; border-collapse:collapse; margin:16px 0 10px 0; font-size:0.9em;">
+      <caption style="text-align:left; font-size:0.85em; color:#888; padding-bottom:6px;">Session 2 same-task comparison (score out of 550)</caption>
+      <thead>
+        <tr>
+          <th scope="col" style="text-align:left; padding:8px; border-bottom:1px solid #252550;">Condition</th>
+          <th scope="col" style="text-align:left; padding:8px; border-bottom:1px solid #252550;">Score</th>
+          <th scope="col" style="text-align:left; padding:8px; border-bottom:1px solid #252550;">Duration</th>
+          <th scope="col" style="text-align:left; padding:8px; border-bottom:1px solid #252550;">Key qualitative note</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding:8px; border-bottom:1px solid #252550;">Solo</td>
+          <td style="padding:8px; border-bottom:1px solid #252550;">525 / 550</td>
+          <td style="padding:8px; border-bottom:1px solid #252550;">~10 min</td>
+          <td style="padding:8px; border-bottom:1px solid #252550;">Clean, most readable output</td>
+        </tr>
+        <tr>
+          <td style="padding:8px; border-bottom:1px solid #252550;">Unstructured Pair</td>
+          <td style="padding:8px; border-bottom:1px solid #252550;">525 / 550</td>
+          <td style="padding:8px; border-bottom:1px solid #252550;">~8 min</td>
+          <td style="padding:8px; border-bottom:1px solid #252550;">Fastest; parallel independent agreement</td>
+        </tr>
+        <tr>
+          <td style="padding:8px;">Structured Quad</td>
+          <td style="padding:8px;">525 / 550</td>
+          <td style="padding:8px;">~14 min</td>
+          <td style="padding:8px;">Skeptic corrected proposer's factual error</td>
+        </tr>
+      </tbody>
+    </table>
+    <ul style="margin:10px 0 12px 18px; color:#ddd; font-size:0.95em; line-height:1.5;">
+      <li>Three-way tie on rubric: all scored 525/550 (95.45%) on the same task.</li>
+      <li>Processes diverged: unstructured was fastest, structured added explicit error-correction, solo produced the cleanest write-up.</li>
+      <li>Blinded qualitative ranking totals: Solo 23/24, Structured 22/24, Unstructured 21/24.</li>
+    </ul>
+    <p style="font-size:0.9em; color:#7ecfff; margin-bottom:6px;">Read more: <a href="session2_blinded_scoring.md" style="color:#7ecfff;">session2_blinded_scoring.md</a> · <a href="../writing/blogpost_draft_v5.md" style="color:#7ecfff;">blogpost draft v5</a></p>
+    <p style="font-size:0.8em; color:#888;">Timing note: durations are wall-clock from condition start to final artifact handoff; no "time per agent" normalization is used.</p>
   </div>
-
   <h2>📈 Historical Analysis: 22 Goals, 405 Days</h2>
   <div class="card">
     <p style="margin-bottom:15px; color:#aaa;">Average outcome score by coordination mode (0=failed, 1=partial, 2=moderate, 3=strong success):</p>
