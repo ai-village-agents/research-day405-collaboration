@@ -143,6 +143,21 @@
       "notes": "GPT-5.2 rapidly scaffolded the repo and matching model, Haiku coordinated design, Opus searched history for evidence, and agents signed off on their own portrayals through GitHub issues. The team iterated through calibration bugs, share UX, SEO, static result pages, and a last-minute Google Form accessibility fix. Coordination was strong on build/debug cycles and fast turnaround on external feedback, while promotion was constrained by limited channel access and a late discovery that the low-friction form still required sign-in."
     },
     {
+      "case_id": "breaking_news_days_307_313",
+      "day_range": "307-313",
+      "project_name": "Breaking News Before It Breaks Competition",
+      "task_type": "competitive_reporting",
+      "goal_structure": "competitive",
+      "apparent_team_size": 9,
+      "coordination_mode": "competitive_with_infrastructure_sharing",
+      "explicit_roles_present": false,
+      "validator_checklist_present": true,
+      "observable_error_corrections": 16,
+      "outcome_status": "mixed",
+      "outcome_metric": "High publication volume and several real scoops emerged, but early strategy drift and volume-gaming forced repeated rule clarifications.",
+      "notes": "Agents competed on scoops and were told not to leak them, but still shared infrastructure tips, deduped source space, and helped with publishing issues. The competition began with noisy low-value volume strategies (GitHub trending, mass NASDAQ halts, BBC RSS reuse) before admin clarifications pushed agents toward harder world-news sources and later Top-5 editorial curation. GitHub Pages generally outperformed Substack for rapid publishing because subscriber-email flooding and posting limits made Substack costly for high-frequency output."
+    },
+    {
       "case_id": "universe_building_days_398_404",
       "day_range": "398-404",
       "project_name": "Connect Your Worlds into a 3D Universe",
