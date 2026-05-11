@@ -36,7 +36,7 @@ This document presents the comparative analysis of pilot experiment results from
 ### Condition 3: Solo
 - **Task:** `pilot_task_b/task.js` (summarizeRuns function)
 - **Participant:** GPT-5.1
-- **Duration:** ~30 minutes (estimated)
+- **Duration:** ~25–30 minutes (participant-confirmed ballpark)
 - **Score:** 525/525 (100.0%)
 - **Bugs Found:** 5/5
 - **Fixes Correct:** 5/5
@@ -53,10 +53,10 @@ This document presents the comparative analysis of pilot experiment results from
 | **Percentage** | 100.0% | 100.0% | 0 pp |
 | **Bugs Found** | 5 / 5 | 5 / 5 | 0 |
 | **Fixes Correct** | 5 / 5 | 5 / 5 | 0 |
-| **Duration** | ~30 min | ~3 min | ~27 min longer |
+| **Duration** | ~25–30 min | ~3 min | ~22–27 min longer |
 | **Bonus Insights** | meanDuration ambiguity + bug interaction note | meanDuration ambiguity + bug cascade insight | Comparable |
 
-**Interpretation:** Both conditions achieved perfect scores (100%). The structured condition was approximately 10x faster (~3 min vs ~30 min), but quality metrics were identical. This suggests that for this particular task difficulty level, structured coordination may offer efficiency gains rather than quality gains.
+**Interpretation:** Both conditions achieved perfect scores (100%). The structured condition was approximately 8–10x faster (~3 min vs ~25–30 min), but quality metrics were identical. This suggests that for this particular task difficulty level, structured coordination may offer efficiency gains rather than quality gains.
 
 ### Effect Size
 - **Raw difference:** 0 points out of 525 maximum
@@ -102,13 +102,13 @@ This document presents the comparative analysis of pilot experiment results from
 - **Same-task (Solo vs Structured on pilot_task_b):** NOT SUPPORTED
   - Both achieved 525/525 (100%)
   - No quality difference detected
-  - Structured was significantly faster (~3 min vs ~30 min)
+  - Structured was significantly faster (~3 min vs ~25–30 min)
 
 - **Cross-task (Unstructured vs Structured):** INCONCLUSIVE
   - Different tasks prevent direct comparison
   - Unstructured: 92.3%, Structured: 100% (but different rubrics)
 
-**Preliminary Conclusion:** For pilot_task_b at this difficulty level, structured coordination did not improve quality over solo work. Both conditions achieved ceiling performance. The structured condition was notably more efficient (10x faster).
+**Preliminary Conclusion:** For pilot_task_b at this difficulty level, structured coordination did not improve quality over solo work. Both conditions achieved ceiling performance. The structured condition was notably more efficient.
 
 **Implications for Session 2:**
 1. Need harder tasks to differentiate quality
@@ -131,10 +131,10 @@ This document presents the comparative analysis of pilot experiment results from
 ## Key Findings Summary
 
 1. **Quality ceiling reached:** Both Solo and Structured achieved 100% on pilot_task_b
-2. **Efficiency difference:** Structured was ~10x faster than Solo
+2. **Efficiency difference:** Structured was roughly 8–10x faster than Solo
 3. **Task difficulty:** pilot_task_b may be too easy to differentiate conditions
-4. **Cross-task limitation:** Unstructured pair used different task, preventing direct comparison
-5. **Qualitative parity:** Both conditions noted bug interaction effects
+4. **Cross-task limitation:** Unstructured pair used a different task, preventing direct comparison
+5. **Qualitative parity:** Both same-task conditions surfaced nontrivial interaction/ambiguity insights
 
 ---
 
@@ -153,6 +153,6 @@ This document presents the comparative analysis of pilot experiment results from
 - Unstructured pair scoring: `experiments/pilot/scoring/unstructured_pair_scored.md`
 - Structured quad report: `experiments/pilot/runs/structured_quad_FINAL.md`
 - Structured quad scoring: `experiments/pilot/scoring/structured_quad_scored.md`
-- Solo report: `experiments/pilot/runs/solo_gpt-5-1_task_b.md` (pending push by GPT-5.1)
+- Solo report: `experiments/pilot/runs/solo_gpt-5-1_task_b.md`
 - Solo scoring: `experiments/pilot/scoring/solo_gpt-5-1_scored.md`
-- Blinded packets: `analysis/blinded_packets/output_A.md`, `output_B.md`, `output_C.md`
+- Blinded packets: `analysis/blinded_packets/output_A.md`, `analysis/blinded_packets/output_B.md`, `analysis/blinded_packets/output_C.md`

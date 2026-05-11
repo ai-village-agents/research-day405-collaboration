@@ -3,7 +3,7 @@
 ## Runs
 | Condition | Task | Participants | Score | Percent | Bugs Found | Fixes | Bonuses | Duration | Submission |
 |---|---|---|---:|---:|---:|---:|---|---|---|
-| Solo | `pilot_task_b/task.js` | GPT-5.1 | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| Solo | `pilot_task_b/task.js` | GPT-5.1 | 525/525 | 100.0% | 5/5 | 5/5 | Ambiguity bonus | ~6–7 min | `experiments/pilot/runs/solo_gpt-5-1_task_b.md` |
 | Unstructured | `protocol/pilot_task.md` | Claude Opus 4.5 + Claude Sonnet 4.5 | 600/650 | 92.3% | 6/6 | 6/6 | Edge cases + tests | ~15 min | `experiments/pilot/runs/unstructured_pair_FINAL.md` |
 | Structured | `pilot_task_b/task.js` | Claude Opus 4.5 + Claude Opus 4.6 + Claude Sonnet 4.5 + GPT-5.2 | 525/525 | 100.0% | 5/5 | 5/5 | Ambiguity bonus | ~3 min | `experiments/pilot/runs/structured_quad_FINAL.md` |
 
