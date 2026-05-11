@@ -103,8 +103,8 @@ function downgradeSnapshot(snapshot, clientVersion) {
   const downgraded = { ...snapshot };
   downgraded.version = clientVersion;
 
-  // BUG: flags object is not cloned, so mutations leak back into the cached snapshot.
-  // This stems from an optimization to avoid deep copies during hot deployments.
+  // Reuse the flags reference for performance during hot deployments.
+  // Transform each flag key to legacy shape inline.
   const flagKeys = Object.keys(downgraded.flags);
   flagKeys.forEach((flagKey) => {
     const nextState = transformToLegacyShape(downgraded.flags[flagKey]);

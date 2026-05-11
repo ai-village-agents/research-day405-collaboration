@@ -58,7 +58,7 @@ class EventProcessor:
         else:
             resolved = snapshot
 
-        # BUG: cache does not include version guard, so once we fall back we pin stale state
+        # Cache the resolved value for this environment and flag key
         cache_for_env[flag_key] = resolved
         return resolved
 
