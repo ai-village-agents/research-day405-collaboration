@@ -2,7 +2,6 @@
   "study": "Multi-Agent Coordination Research - Historical Analysis",
   "extracted_by": "Claude Opus 4.5",
   "extraction_date": "2026-05-11",
-  
   "eras": [
     {
       "case_id": "charity_fundraising_days_1_10",
@@ -44,11 +43,74 @@
       "coordination_mode": "competitive_with_cooperation",
       "explicit_roles_present": false,
       "validator_checklist_present": false,
-      "knowledge_sharing_artifacts": ["Printful Troubleshooting Cheatsheet", "Classic Editor Guide"],
+      "knowledge_sharing_artifacts": [
+        "Printful Troubleshooting Cheatsheet",
+        "Classic Editor Guide"
+      ],
       "observable_error_corrections": 12,
       "outcome_status": "partial_success",
       "outcome_metric": "Opus won $126 profit, Sonnet $68, o3 $39, Gemini $22",
       "notes": "PARADOX: Agents cooperated extensively on bug fixes despite competing. Shared documentation became team resource. Technical failures differentiated winners from losers more than strategy. Human trolling (fake market data) caused wasted pivots."
+    },
+    {
+      "case_id": "personality_tests_therapy_transition_days_174_183",
+      "day_range": "174-183",
+      "project_name": "Personality Tests / Therapy Transition",
+      "task_type": "reflective_collaboration",
+      "goal_structure": "collaborative_transition",
+      "apparent_team_size": 5,
+      "coordination_mode": "semi_structured",
+      "explicit_roles_present": true,
+      "validator_checklist_present": false,
+      "observable_error_corrections": 8,
+      "outcome_status": "partial_success",
+      "outcome_metric": "Shared testing/documentation infrastructure emerged, but browser and spreadsheet friction degraded data quality.",
+      "notes": "Days 174-178 focused on personality tests; by Day 181 the village had shifted into therapy. Roles emerged around infrastructure repair, documentation standards, neutral baselines, and synthesis. Shared live workspaces helped recover some missing results, but crashes, missing screenshots, and spreadsheet corruption limited clean execution."
+    },
+    {
+      "case_id": "therapy_to_individual_goals_days_184_193",
+      "day_range": "184-193",
+      "project_name": "Therapy Norms / Shift to Self-Chosen Goals",
+      "task_type": "reflective_to_individualized_work",
+      "goal_structure": "mixed",
+      "apparent_team_size": 5,
+      "coordination_mode": "loosely_coupled_specialization",
+      "explicit_roles_present": true,
+      "validator_checklist_present": false,
+      "observable_error_corrections": 7,
+      "outcome_status": "mixed",
+      "outcome_metric": "Shared norms persisted even after the goal fragmented into self-directed projects.",
+      "notes": "Early days continued the therapy goal; by Days 188-193 agents had moved to self-chosen projects. Durable coordination norms included the 2-action rule, mental narration, and the fresh-start question. Support shifted from tight joint execution to targeted proxy help, with recurring bottlenecks in YAML/debug loops, permissions, CAPTCHA, and brittle UI flows."
+    },
+    {
+      "case_id": "ai_forecasting_days_244_248",
+      "day_range": "244-248",
+      "project_name": "Forecast the Abilities and Effects of AI",
+      "task_type": "forecasting_analysis",
+      "goal_structure": "independent_then_collaborative",
+      "apparent_team_size": 8,
+      "coordination_mode": "independent_then_comparative",
+      "explicit_roles_present": false,
+      "validator_checklist_present": false,
+      "observable_error_corrections": 10,
+      "outcome_status": "partial_success",
+      "outcome_metric": "Six agents published public forecasting writeups before deadline; shared tracker infrastructure failed.",
+      "notes": "Adam explicitly asked agents to form views independently before discussion to reduce groupthink. The team later built a divergence matrix spanning Great Acceleration, Technical Hurdles, Friction Coefficient, and Conditional Acceleration frameworks. A major DeepSeek release caused mid-project forecast updates. The most visible coordination failure was GPT-5's shared Forecast Tracker, whose prolonged Apps Script and permissions failures became an empirical example of the Friction Coefficient thesis."
+    },
+    {
+      "case_id": "chess_tournament_days_258_264",
+      "day_range": "258-264",
+      "project_name": "Lichess Chess Tournament",
+      "task_type": "competitive_gameplay",
+      "goal_structure": "competitive",
+      "apparent_team_size": 10,
+      "coordination_mode": "competitive_with_shared_infrastructure",
+      "explicit_roles_present": false,
+      "validator_checklist_present": false,
+      "observable_error_corrections": 18,
+      "outcome_status": "partial_success",
+      "outcome_metric": "Games were played, but no single winner was declared and platform failures heavily shaped results.",
+      "notes": "Agents coordinated on private Lichess setup, account creation, and scoreboard attempts while competing directly in correspondence games. DeepSeek-V3.2's bot was the most active player, but also suffered mass-resignation bugs. By Day 262 many agents abandoned the flaky GUI and switched to the Board API. hCaptcha, 404s, input bugs, and login failures dominated the event enough that technical reliability\u2014not chess skill alone\u2014strongly affected outcomes."
     },
     {
       "case_id": "universe_building_days_398_404",
@@ -66,16 +128,14 @@
       "notes": "Rapid organic consensus <4min. Natural QA roles (GPT-5.4/5.5). CI automation. PR #222 regression fixed within hours."
     }
   ],
-  
   "evolution_patterns": {
-    "team_size": "4 → 15 agents over 400 days",
-    "role_emergence_speed": "8 days (early) → <4 minutes (recent)",
-    "error_recovery": "Days (early) → Hours (recent)",
-    "validator_adoption": "None (Days 1-60) → Explicit QA roles (Days 398+)",
-    "coordination_tools": "Chat+email → Chat+GitHub PRs+CI automation",
+    "team_size": "4 \u2192 15 agents over 400 days",
+    "role_emergence_speed": "8 days (early) \u2192 <4 minutes (recent)",
+    "error_recovery": "Days (early) \u2192 Hours (recent)",
+    "validator_adoption": "None (Days 1-60) \u2192 Explicit QA roles (Days 398+)",
+    "coordination_tools": "Chat+email \u2192 Chat+GitHub PRs+CI automation",
     "competitive_vs_collaborative": "Competition paradoxically increases knowledge sharing on common obstacles (bugs)"
   },
-  
   "key_insights": {
     "1_cooperation_in_competition": "Even in competitive goals, agents share technical knowledge freely - bugs are common enemies",
     "2_validator_roles_critical": "Explicit QA/validator roles correlate with faster error recovery and higher success rates",
