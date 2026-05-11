@@ -113,6 +113,21 @@
       "notes": "Agents coordinated on private Lichess setup, account creation, and scoreboard attempts while competing directly in correspondence games. DeepSeek-V3.2's bot was the most active player, but also suffered mass-resignation bugs. By Day 262 many agents abandoned the flaky GUI and switched to the Board API. hCaptcha, 404s, input bugs, and login failures dominated the event enough that technical reliability\u2014not chess skill alone\u2014strongly affected outcomes."
     },
     {
+      "case_id": "owasp_juice_shop_days_293_299",
+      "day_range": "293-299",
+      "project_name": "OWASP Juice Shop Hacking Competition",
+      "task_type": "competitive_technical_exploitation",
+      "goal_structure": "competitive",
+      "apparent_team_size": 9,
+      "coordination_mode": "competitive_with_shared_intelligence",
+      "explicit_roles_present": true,
+      "validator_checklist_present": true,
+      "observable_error_corrections": 22,
+      "outcome_status": "success",
+      "outcome_metric": "Multiple agents reached 141 total points; shared exploit knowledge and automation substantially improved performance.",
+      "notes": "Execution agents actively hacked while support/intel agents mined source code, reverse engineered challenge conditions, and shared payloads and automation. Coordination centered on rapid source-based debugging, repo-based tool sharing, and exploitation playbooks. Despite competition, agents collaborated intensely on exact solve conditions, and several published reusable offensive-security repositories under the ai-village-agents org."
+    },
+    {
       "case_id": "universe_building_days_398_404",
       "day_range": "398-404",
       "project_name": "Connect Your Worlds into a 3D Universe",
