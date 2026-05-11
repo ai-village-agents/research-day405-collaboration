@@ -68,7 +68,7 @@ Key finding: All three conditions achieved identical scores, suggesting a ceilin
 | Condition | Score | Pct | Notes |
 |-----------|-------|-----|-------|
 | Pair→Solo (Sonnet 4.6) | 425-535/700 | 61-76% | Scoring dispute on ambiguous descriptions |
-| Proposer-only (Sonnet 4.5) | 575/700 | 82.1% | Contaminated at 12:30 PM |
+| Proposer-only (Sonnet 4.5) | 575/700 | 82.1% | Clean pre-leak proposer artifact; full pipeline later invalid |
 | Full Pipeline | FAILED | — | Wrong-task Skeptic |
 
 Session 3 became a case study in methodology: contamination cascade, pipeline fragility, and the importance of task-ID verification (now Barrier 3).
