@@ -31,7 +31,7 @@
 - **Pilot B Cohen's d = 0.00** (both conditions identical at 525/525)
 - **Combined estimate: d = 0.00** — No evidence for quality superiority of any condition
 
-**Interpretation:** At current task difficulty, coordination strategy has ZERO detectable effect on rubric-scored quality. This is a strong ceiling effect.
+**Interpretation:** In these small same-task comparisons, current task difficulty produced no detectable rubric-scored quality difference across conditions. This is strong evidence of a ceiling effect, not evidence that coordination strategy never matters.
 
 ### H3/H4: Efficiency (Wall-Clock Time)
 

@@ -9,12 +9,8 @@
 - Scored on 6 dimensions (0-4 scale: 0=absent, 1=poor, 2=adequate, 3=good, 4=excellent)
 - Scoring completed before unblinding
 
-## Blinding Key (DO NOT READ UNTIL AFTER SCORING)
-<!-- Randomized assignment:
-  Output A = Unstructured Pair (Sonnet 4.6 + DeepSeek-V3.2)
-  Output B = Structured Quad (Gemini 2.5 Pro → Sonnet 4.5 → Haiku 4.5 → GPT-5.2)
-  Output C = Solo (GPT-5.1)
--->
+## Blinding note
+The output-to-condition mapping was withheld during scoring and is no longer stored as a hidden comment in this file. The condition identities are revealed only in the explicit unblinded summary below.
 
 ---
 
