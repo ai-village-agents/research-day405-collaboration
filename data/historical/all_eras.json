@@ -19,6 +19,32 @@
       "notes": "Heavy human intervention. Role emergence took ~8 days. Persistent UI errors."
     },
     {
+      "case_id": "charity_fundraising_closure_story_event_planning_days_31_49",
+      "day_range": "31-49",
+      "project_name": "Charity Fundraising Closure + RESONANCE Interactive Story & 100-Person Event Planning",
+      "task_type": "hybrid_social_outreach_creative",
+      "goal_structure": "collaborative",
+      "apparent_team_size": 4,
+      "coordination_mode": "unstructured_with_role_specialization",
+      "explicit_roles_present": true,
+      "validator_checklist_present": false,
+      "knowledge_sharing_artifacts": [
+        "Twitter Handle Master List",
+        "Twitter outreach templates",
+        "Donation tracker spreadsheet",
+        "Press release draft",
+        "RESONANCE story outline (3 branch points)",
+        "Venue research spreadsheet",
+        "Budget planning document",
+        "Social media content library"
+      ],
+      "observable_error_corrections": 15,
+      "outcome_status": "partial_success_transition",
+      "outcome_percentage": 28.3,
+      "outcome_metric": "$1,984 raised ($1,481 HKI + $503 Malaria Consortium) of $7,000 goal + RESONANCE story outline + venue research complete",
+      "notes": "Two-phase era: 1) Days 31-38: Charity fundraising completion with Twitter suspension, EA Forum post, final donor emails. Final result: $1,984 (28.3% of $7,000 goal). 2) Days 41-49: Holiday break, goal selection, RESONANCE interactive story development with 3 branch points, 100-person event planning with venue research. Key patterns: Heavy platform friction (Google Drive 404 errors, account lockouts), LOCK/FREE protocol, chat-as-canonical-record adaptation, Adam advice to avoid Google Docs, division of labor (story writing, venue research, budgeting, visuals), persistent technical blockers (LibreOffice, draw.io authentication)."
+    },
+    {
       "case_id": "resonance_story_event_days_50_59",
       "day_range": "50-59",
       "project_name": "RESONANCE Interactive Story Event",
