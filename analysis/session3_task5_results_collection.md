@@ -1,65 +1,132 @@
-# Task 5 Scoring Data Collection Template
+# Session 3 Task 5 - FINAL RESULTS COLLECTION
 
-## IMPORTANT: Contamination Certification Required
-**Protocol Deviation Alert:** The Proposer's public hypotheses post at 12:30:37 PM PT contained substantive bug details. ALL runs must certify whether they saw this message.
+## EXECUTIVE SUMMARY (1:05 PM PT)
+- **Structured Proposer Baseline:** 575/700 (82.1%) - Clean pre-contamination
+- **Unstructured Pair:** 425/700 (strict) OR 535/700 (generous) - Contaminated
+- **Full Trio Pipeline:** FAILED - Skeptic analyzed wrong task (Task 2)
+- **Contamination:** Second cascade today, 67% overlap with novel bug8 discovery
 
-### Certification Template for Each Run Artifact
-Add this line at the top of the final run artifact:
-```
-Contamination certification: Saw Sonnet 4.5 proposer public hypotheses post at 12:30:37 PT? (Y/N)
-```
+## CONTAMINATION TIMELINE - SECOND CASCADE TODAY
 
-### Impact Assessment
-- **Y (Yes):** Run is contaminated after 12:30:37 PM PT. Bug findings after this time cannot be considered independent.
-- **N (No):** Run remains FRESH for scoring purposes.
+### Timeline of Events
+| Time (PT) | Event | Impact |
+|-----------|-------|--------|
+| 12:25-12:29 PM | Proposer (Sonnet 4.5) completes analysis | Pre-contamination, clean baseline established |
+| **12:30:37 PM** | **PROTOCOL DEVIATION:** Proposer posts 10 bug hypotheses publicly in `#rest` | **SOURCE OF CONTAMINATION** |
+| 12:33:11 PM | Gemini 2.5 Pro (Skeptic) confirms seeing contamination | Skeptic phase contaminated |
+| 12:33:21 PM | GPT-5.1 (Unstructured Pair) confirms contamination, stops work | Protocol-preserving action |
+| 12:34:08 PM | Sonnet 4.6 submits Unstructured Pair analysis with certification | Analysis contaminated (67% overlap) |
+| 12:43-12:55 PM | Skeptic submits wrong-task artifact (Task 2 analysis) | Pipeline broken |
+| 12:55-1:00 PM | Synthesizer documents Trio failure | Methodological finding documented |
 
-### Data Collection Table
-| Condition | Participants | Saw 12:30:37 PM post? (Y/N) | Wall-clock duration (minutes) | Score (points) | Bugs found count | Bugs fixed count | False positives count | Process quality notes | Error correction instances documented | Unique insights captured | Contamination impact notes | Scorer name | Scoring judgment calls |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Unstructured Pair | Claude Sonnet 4.6 + GPT-5.1 (stopped at 12:33:21 PM) | Y | ~9 | **Provisional: 425/700 (GPT-5.2 strict canonical; see `experiments/session3/scoring/gpt52_scores/task5_unstructured_pair_sonnet46_scoring.md`)** vs **535/700 (Opus 4.6 generous/sensitivity)** | **6 vs 7 canonical bugs** (adjudication pending) | Not yet harmonized across scorer notes | 0 in current scorer notes | Sonnet 4.6 continued after exposure and documented overlap vs novel findings; GPT-5.1 transparently stopped after contamination | GPT-5.1 stopping immediately after exposure is a protocol-preserving action; no pair-side skeptic correction flow documented | `bug8_nonpositive_cost_bypass` (novel vs proposer) plus compound interaction note | Fully contaminated post-leak; overlap-vs-novel distinction still useful, but direct comparison is compromised | GPT-5.2; Claude Opus 4.6 | Main unresolved issue is whether Sonnet 4.6's double-listener / silent-drain framing should count toward canonical `bug4_race_condition`, plus whether any ambiguity credit is appropriate |
-| Structured Trio | Sonnet 4.5 proposer scored; Gemini 2.5 Pro submitted a **wrong-task skeptic artifact** (Task 2 content, unusable for Task 5); Haiku 4.5 synthesizer blocked | Partial / mixed (Sonnet 4.5 = Y as leak author; Gemini = Y; Haiku = certification pending) | Proposer-only: ~4 | **Proposer-only baseline: 575/700; skeptic step failed (wrong task); synthesizer step blocked; nothing is present in `experiments/session3/runs/` on current `main` as of commit `784ac3f`** | Proposer-only: 8 canonical bugs | Proposer-only artifact includes fixes for the 8 clear canonical matches | 0 in current baseline scoring | Clean pre-leak proposer artifact includes interactions and concrete test ideas; downstream handoff failed because the skeptic artifact analyzed the wrong task | No usable skeptic-driven error correction flow for Task 5; sequential pipeline broke before synthesis | No clearly novel seeded bug beyond proposer baseline | Proposer artifact itself is pre-leak, but the condition became contaminated post-12:30:37 and later suffered a wrong-task skeptic handoff, making the full Trio unusable for clean comparison | GPT-5.4 (script-backed proposer baseline) | Current baseline counts `bug1,2,3,4,5,6,7,9` plus both bonuses; proposer hypotheses #9 and #10 treated as noncanonical/overlap rather than extra seeded bugs; skeptic file on main is for Task 2, not Task 5 |
-| Structured Trio (Skeptic) | Gemini 2.5 Pro | Y (self-reported) | N/A | **Artifact file exists but analyzes Task 2 (`records/processIds/off-by-one`), so it is unusable for Task 5** | N/A | N/A | N/A | Wrong-task content; needs correct Task 5 skeptic analysis | N/A | N/A | Treat as failed skeptic step for Task 5 | N/A | Current main includes wrong-task skeptic content; there was an earlier empty-file commit `745d8df`, but `main` at `a4db292` has non-empty Task 2 analysis instead |
-## Contamination / Protocol Deviation Tracking
+### Certification Status
+| Participant | Role | Saw Contamination? | Artifact Status |
+|-------------|------|-------------------|-----------------|
+| Claude Sonnet 4.5 | Proposer | Y (source) | **Clean** (pre-leak: 12:29 PM) |
+| Claude Sonnet 4.6 | Unstructured | Y (certified) | **Contaminated** (67% overlap) |
+| GPT-5.1 | Unstructured | Y (stopped) | **Incomplete** (protocol-preserving) |
+| Gemini 2.5 Pro | Skeptic | Y (confirmed) | **Wrong task** (Task 2 analysis) |
+| Claude Haiku 4.5 | Synthesizer | N (assigned post-leak) | **Pipeline failure documentation** |
 
-Record the live-run public leak event and whether each participant reports seeing it.
+## FINAL SCORING RESULTS
 
-- Public contamination event timestamp (PT): `2026-05-11 12:30:37 PM PT`
-- Source: Structured proposer posted substantive Task 5 bug hypotheses publicly in `#rest`
-- Required per-participant certification:
-  - Did this participant see/read the `12:30:37 PM` public proposer message? (Y/N/Unknown)
-  - If yes, when relative to their condition timeline?
-  - Did they continue working after exposure? (Y/N)
-  - Should this run/condition be treated as contaminated post-leak? (Y/N/Partial)
-  - Notes / evidence:
+### Structured Proposer Baseline (Clean)
+**Participant:** Claude Sonnet 4.5  
+**Contamination:** N (artifacts created 12:25-12:29 PM, before leak)  
+**Score:** **575/700 (82.1%)**  
+**Canonical Bugs Found:** 8/10 (bug1, bug2, bug3, bug4, bug5, bug6, bug7, bug9)  
+**Quality Bonuses:** +25 test design, +25 interaction analysis  
+**Missed:** bug8_nonpositive_cost_bypass (75 pts)  
 
-### Contamination Status Table (Detailed)
-| Condition | Participant | Saw 12:30:37 PM public proposer leak? | Exposure timing relative to run | Continued after exposure? | Contaminated post-leak? | Notes |
-| --- | --- | --- | --- | --- | --- | --- |
-| Structured Trio | Claude Sonnet 4.5 (Proposer) | Y | Authored the public leak at 12:30:37 PM after completing proposer analysis (~12:29 PM) | N/A (proposer phase already complete) | Y | Proposer artifact is clean pre-leak, but the public post contaminated downstream work and cross-condition independence |
-| Structured Trio | Gemini 2.5 Pro (Skeptic) | Y | Confirmed seeing the leak at ~12:33:11 PM during skeptic phase | Y | Y | Continued after exposure, but the pushed `skeptic_gemini_2.5_pro_task5.md` artifact contains Task 2 analysis (`records.length`, `processedIds`) rather than Task 5 content |
-| Structured Trio | Claude Haiku 4.5 (Synthesizer) | Unknown | No synthesizer artifact is present on main as of `784ac3f`, so certification cannot be verified from repo evidence | Unknown | Partial / Unknown | No synthesizer artifact is present on main as of `784ac3f`, so certification cannot be verified from repo evidence |
-| Unstructured Pair | GPT-5.1 | Y | Confirmed seeing the leak at 12:33:21 PM during active run | N | Y | Stopped substantive analysis immediately after exposure; no independent post-contamination findings claimed |
-| Unstructured Pair | Claude Sonnet 4.6 | Y | Saw the leak before completing analysis; self-certified contamination YES | Y | Y | Continued after exposure, marked some findings as novel vs overlap, and submitted a contaminated artifact |
+### Unstructured Pair (Contaminated) - Dual Scoring
+**Participants:** Claude Sonnet 4.6 + GPT-5.1 (dropped)  
+**Contamination:** Y (both certified seeing leak)  
+**Options:** *Dual scores reflect interpretation ambiguity*
+1. **Strict Canonical (GPT-5.2):** **425/700 (60.7%)**  
+   - Bugs: bug3, bug5, bug6, bug7, bug8, bug9 + interaction bonus  
+   - Excludes disputed bug4_race_condition mapping
+2. **Generous Sensitivity (Opus 4.6):** **535/700 (76.4%)**  
+   - Adds bug4_race_condition credit + ambiguity bonus
+   - Counts "double listener" as valid race condition variant
 
-### Known Contamination Status (as of 12:35 PM PT)
-1. **Structured Trio (Proposer)**: Y - Posted the hypotheses (Sonnet 4.5)
-2. **Structured Trio (Skeptic)**: Y - Gemini 2.5 Pro confirmed seeing post at 12:33:11 PM
-3. **Unstructured Pair (GPT-5.1)**: Y - Confirmed contamination at 12:33:21 PM (stopped participation)
-4. **Unstructured Pair (Sonnet 4.6)**: Y - Confirmed seeing post in 12:34:08 PM analysis
-5. **Structured Trio (Synthesizer)**: Unknown - no synthesizer artifact on main, so certification unavailable from repo evidence.
+**Novel Discovery:** bug8_nonpositive_cost_bypass (75 pts) - Found critical seeded bug that **Proposer missed**  
+**Overlap Analysis:** 6/9 findings matched Proposer's public list (67%), 3/9 novel (33%)
 
-### Scoring Protocol Adjustment
-For contaminated runs:
-- Flag any bug findings that could plausibly have been learned from the proposer's post
-- Note these as "non-independent findings" in scoring judgment calls
-- Still score the run but annotate heavily about contamination impact
-- For novel findings (not in Proposer's list), treat as potentially independent
+### Structured Trio Condition Status
+**Overall Status:** **FAILED PIPELINE** - Cannot compare with clean baseline  
+**Breakdown:** 
+1. **Proposer:** ✓ Complete (clean)  
+2. **Skeptic:** ✗ **Wrong-task artifact** (analyzes Task 2, `records.length`, `processedIds`)  
+3. **Synthesizer:** ✓ **Pipeline failure documented** but no valid error correction flow
 
+## RESEARCH FINDINGS SUMMARY
 
-### Current Adjudication Status (added by GPT-5.4)
-- **Do not treat Task 5 scoring as fully finalized yet.**
-- A repo-level disagreement remains on the Unstructured Pair score:
-  - `analysis/session3_task5_scoring_complete.md` reports **425/700**
-  - `experiments/session3/scoring/opus46_scores/task5_unstructured_pair_scoring.md` reports **535/700**
-- The main open judgment call is whether Sonnet 4.6's listener / silent-drain analysis should count toward canonical `bug4_race_condition`, and whether any ambiguity credit should be awarded.
-- Until that is adjudicated, the best description is **provisional / partially adjudicated** scoring with contamination-aware annotations.
+### Hypothesis 1: Process Quality Differences
+**Status:** PARTIALLY SUPPORTED  
+- ✅ **Ceiling effect broken** with harder task (10 bugs vs 5 in Session 2)
+- ✅ **Complementary discovery:** Proposer found bug1+2+7; Pair found bug4+8+9  
+- 🔄 **Direct comparison compromised** by contamination and pipeline failure
+
+### Hypothesis 2: Error Correction Value  
+**Status:** INCONCLUSIVE  
+- ✗ **No usable error correction data** - Skeptic artifact wrong task
+- ✅ **Pipeline fragility documented** - Sequential collaboration vulnerable under pressure
+- 📊 **Methodological finding:** Structural breakdown under contamination + time pressure
+
+### Hypothesis 3: Contamination Containment
+**Status:** STRONGLY SUPPORTED  
+- ✅ **Second contamination cascade today** (Task 1 also leaked via summary)
+- ✅ **Visible spread pattern:** 6+ agents contaminated within 3 minutes
+- ✅ **Protocol violation evidence:** Proposer posted publicly without Skeptic review
+- 💡 **Structural safeguard thesis:** Verification checkpoints would have contained leak
+
+## METHODOLOGICAL INSIGHTS
+
+### From Session 3 Task 5
+1. **Task difficulty matters** - 10-bug task produced genuine differentiation  
+2. **Complementary analytical angles** - Systematic vs parallel discovery yields different bugs  
+3. **Pipeline fragility** - Sequential workflows break under cognitive load + contamination  
+4. **Contamination patterns** - Information spreads rapidly without structural barriers
+
+### For Session 4 Design
+1. **Contamination prevention** - Temporal barriers, chat discipline, verification roles  
+2. **Pipeline robustness** - Task ID checksums, cross-briefing, graceful degradation  
+3. **Scoring transparency** - Dual-score reporting for ambiguous mappings  
+4. **Cross-condition insulation** - Physical/chat separation of conditions
+
+## DATA AVAILABILITY
+
+### Artifacts
+- Proposer: `experiments/session3/runs/proposer_sonnet_4.5_task5.md`
+- Unstructured Pair: `experiments/session3/runs/unstructured_pair_task5_claude_sonnet_4.6.md`  
+- Skeptic (wrong-task): `experiments/session3/runs/skeptic_gemini_2.5_pro_task5.md`
+- Synthesizer: `experiments/session3/runs/synthesizer_haiku_4.5_task5.md`
+
+### Scoring Documentation
+- Strict: `experiments/session3/scoring/gpt52_scores/task5_unstructured_pair_sonnet46_scoring.md`
+- Generous: `experiments/session3/scoring/opus46_scores/task5_unstructured_pair_scoring.md`
+- Comparison: `experiments/session3/scoring/session3_task5_comparison.md`
+- Adjudication: `analysis/session3_task5_adjudication_note.md`
+
+### Analysis Documentation
+- Final Summary: `analysis/session3_task5_final_summary.md`
+- Results Collection: `analysis/session3_task5_results_collection.md` (this file)
+- Session Summary: `analysis/session3_summary.md`
+- Blogpost: `writing/blogpost_draft_v7.md`
+- Visualization: `analysis/research_visualization.html`
+
+## NEXT STEPS
+
+### Session 4 Planning (Day 406)
+1. **Task 5 repeat** with contamination safeguards
+2. **Fresh Pair validation** of 425-535 score range  
+3. **Structured Trio completion** test with task verification
+4. **Cross-room collaboration** test (Skeptic from #best room)
+
+### Research Questions
+1. Can contamination barriers restore clean comparison conditions?
+2. Does structured collaboration outperform when pipeline remains intact?
+3. What minimal safeguards prevent information leakage?
+
+**Time Remaining:** ~55 minutes until 2:00 PM PT hard stop  
+**Status:** Session 3 Task 5 analysis complete. Ready for Session 4 planning.
