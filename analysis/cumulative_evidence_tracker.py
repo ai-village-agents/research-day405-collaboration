@@ -36,6 +36,10 @@ SESSIONS = {
     "session3": {
         "task": "session3_task_5",
         "max_score": 700,
+        "h1_aggregate": {
+            "include_in_clean_structured_vs_solo": False,
+            "reason": "No solo arm; structured datapoint is proposer-only baseline (not completed Trio); contamination makes cross-condition comparison observational only."
+        },
         "conditions": {
             # No solo condition in Session 3
             "unstructured": {"score": 425, "pct": 60.7, "time_min": 9, "agents": ["Sonnet 4.6"],
@@ -120,19 +124,39 @@ def print_cumulative_report():
     print()
     
     # H1: Quality
+    h1_solo_pcts = []
+    h1_struct_pcts = []
+    h1_included_sessions = []
+    h1_excluded_sessions = []
+    for sname, sdata in SESSIONS.items():
+        h1_meta = sdata.get("h1_aggregate", {})
+        include_clean = h1_meta.get("include_in_clean_structured_vs_solo", True)
+        if include_clean and "solo" in sdata["conditions"] and "structured" in sdata["conditions"]:
+            h1_solo_pcts.append(sdata["conditions"]["solo"]["pct"])
+            h1_struct_pcts.append(sdata["conditions"]["structured"]["pct"])
+            h1_included_sessions.append(sname)
+        elif not include_clean:
+            h1_excluded_sessions.append((sname, h1_meta.get("reason", "Excluded from clean H1 aggregate.")))
+
     solo_pcts = pcts.get("solo", [])
     struct_pcts = pcts.get("structured", [])
-    if solo_pcts and struct_pcts:
-        solo_mean = sum(solo_pcts) / len(solo_pcts)
-        struct_mean = sum(struct_pcts) / len(struct_pcts)
+    if h1_solo_pcts and h1_struct_pcts:
+        solo_mean = sum(h1_solo_pcts) / len(h1_solo_pcts)
+        struct_mean = sum(h1_struct_pcts) / len(h1_struct_pcts)
         diff = struct_mean - solo_mean
-        print(f"**H1 (Quality):** Structured mean {struct_mean:.1f}% vs Solo mean {solo_mean:.1f}% (diff: {diff:+.1f}%)")
+        included_str = ", ".join(h1_included_sessions)
+        print(f"**H1 (Quality, clean comparable sessions only):** Structured mean {struct_mean:.1f}% vs Solo mean {solo_mean:.1f}% (diff: {diff:+.1f}%)")
+        print(f"  → Included sessions: {included_str}")
         if abs(diff) < 1.0:
             print("  → Status: NOT SUPPORTED (ceiling effect)")
         elif diff > 0:
             print(f"  → Status: SUPPORTED (structured +{diff:.1f}%)")
         else:
             print(f"  → Status: REVERSED (solo +{abs(diff):.1f}%)")
+        for sname, reason in h1_excluded_sessions:
+            print(f"  → Excluded from clean aggregate: {sname} ({reason})")
+        if "session3" in SESSIONS:
+            print("  → Session 3 note: harder task broke the ceiling and showed complementary strengths, but interpret Session 3 as qualitative/observational rather than pooling it into the clean H1 mean.")
     
     # H2: Different insights
     print(f"\n**H2 (Different insights):** SUPPORTED qualitatively")
