@@ -1,12 +1,11 @@
 const { EventEmitter } = require('events');
 
 /**
- * Token bucket limiter with intentionally seeded flaws for review exercises.
+ * Token bucket limiter implementation.
  */
 class TokenBucket extends EventEmitter {
   constructor(config = {}) {
     super();
-    // BUG: Config parser doesn't validate numeric types (strings slip through unchanged)
     const capacity = config.capacity || 100;
     const refillAmount = config.refillAmount || 10;
     const refillIntervalMs = config.refillIntervalMs || 1000;
@@ -17,29 +16,24 @@ class TokenBucket extends EventEmitter {
     this.refillIntervalMs = refillIntervalMs;
     this.backpressureListeners = new Set();
 
-    // BUG: Uses setInterval without drift correction (timer drift accumulates)
     this.refillTimer = setInterval(() => this.refill(), this.refillIntervalMs);
   }
 
   stop() {
     clearInterval(this.refillTimer);
-    // BUG: Backpressure signal listeners never cleaned up (memory leak)
   }
 
   refill() {
-    // BUG: Bucket overflow when refill runs multiple times between checks (no cap)
     this.tokens += this.refillAmount;
     this.emit('refill', this.tokens);
   }
 
   tryConsume(cost = 1) {
-    // BUG: Race condition in token consumption (non-atomic check then decrement)
     if (this.tokens >= cost) {
       this.tokens -= cost;
       return true;
     }
 
-    // Suspicious non-bug: Event emitter usage is correct here
     const listener = () => {
       if (this.tokens >= cost) {
         this.tokens -= cost;
@@ -81,7 +75,6 @@ class TokenBucket extends EventEmitter {
   }
 }
 
-// BUG: Uses Date.now() which can jump on NTP sync instead of monotonic clock
 function timeSince(start) {
   return Date.now() - start;
 }

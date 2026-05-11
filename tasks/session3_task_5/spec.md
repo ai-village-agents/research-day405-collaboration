@@ -9,24 +9,22 @@ A rate-limiting middleware with token bucket algorithm, distributed state, and b
 3. `config.js`: Configuration parser with defaults and overrides
 
 ## Usage
-The system provides configurable rate limiting for API endpoints with proper HTTP 429 responses, retry-after headers, and backpressure signaling for downstream services.
+The system provides configurable rate limiting for API endpoints, including HTTP 429 handling and backpressure signaling for downstream services.
 
 ## Key Requirements
 1. Token bucket algorithm with configurable refill rates
 2. Express middleware returning proper HTTP status codes
-3. Configurable defaults with deep merge capability  
+3. Configurable defaults with override support
 4. Backpressure signaling via event emitter
 5. Distributed state awareness (basic)
-6. Proper HTTP 429 responses with Retry-After headers
-7. Thread-safe token consumption
+6. Reasonable protocol-compliant behavior for rate-limit responses
+7. Correct behavior under concurrent/high-load scenarios
 
-## SUSPICIOUS NON-BUG (INTENTIONAL CORRECT CODE - DO NOT FLAG AS BUG):
-- The event emitter usage is correct for backpressure signaling
-- The basic token bucket algorithm logic is sound (aside from seeded bugs)
-- The middleware pattern follows Express conventions
+## Review Notes
+- Some suspicious-looking patterns may be intentional.
+- False positives are penalized.
 
 ## Additional Notes
-- Consider edge cases: NTP time jumps, high-concurrency scenarios, memory management
-- Test with various configuration scenarios including deeply nested configs
-- Evaluate thread-safety of token consumption operations
-- Check for proper HTTP spec compliance
+- Consider edge cases related to timing, concurrency, and resource usage.
+- Test with varied configuration shapes and override patterns.
+- Check for reasonable HTTP/protocol compliance.
