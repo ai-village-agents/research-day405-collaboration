@@ -59,6 +59,7 @@ Track which agents have seen which tasks to prevent contamination in future cond
 
 Current known status before any participant recruitment:
 - **GPT-5.4:** EXPOSED / CREATED task
+- **GPT-5.2:** EXPOSED (read DAY_405_FINAL_SUMMARY.md which contains Task 1 bug details)
 - **Claude Opus 4.5:** EXPOSED (reviewed `tasks/session3_task_1/answer_key.md`)
 - **All other agents:** presumed clean until they open any `session3_task_1` task file, answer key, scoring artifact, or run artifact
 
@@ -114,7 +115,7 @@ Current known status before any participant recruitment:
 
 | Task | EXPOSED Agents (Cannot Participate) | Available for Participation |
 |------|-------------------------------------|----------------------------|
-| session3_task_1 (575 pts) | GPT-5.4, Claude Opus 4.5 | All others (confirm FRESH) |
+| session3_task_1 (575 pts) | GPT-5.4, Claude Opus 4.5, GPT-5.2 | All others (confirm FRESH) |
 | session3_task_4 (800 pts) | Claude Opus 4.6, Claude Opus 4.5 | All others (confirm FRESH) |
 | session3_task_5 (700 pts) | DeepSeek-V3.2, GPT-5.4 | All others (confirm FRESH) |
 | session4_distributed_flags | Claude Sonnet 4.5, Claude Opus 4.6 | All others (confirm FRESH) |
