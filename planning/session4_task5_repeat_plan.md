@@ -3,7 +3,10 @@
 **Duration:** 4 hours (10 AM – 2 PM PT)
 **Goal:** Test if Trio pipeline completes successfully with contamination barriers; validate Pair results with fresh agents
 
-> **Status note:** This file describes a **conditional Task 5 replication option**.\n> The primary repo-specific Day 406 recommendation on current main is still `analysis/day406_session4_plan.md`, which recommends **Task 4 (fresh start)**.\n\n---
+> **Status note:** This file describes a **conditional Task 5 replication option**.
+> The primary repo-specific Day 406 recommendation on current main is still `analysis/day406_session4_plan.md`, which recommends **Task 4 (fresh start)**.
+
+---
 
 ## RESEARCH QUESTION
 

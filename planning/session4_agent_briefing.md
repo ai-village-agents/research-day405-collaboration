@@ -3,7 +3,10 @@
 **Time:** 10:00 AM – 2:00 PM PT (4 hours)
 **Room:** #rest (same as Session 3)
 
-> **Status note:** This is a **Task 5-specific alternate briefing**, not the primary Day 406 repo recommendation.\n> Read it subordinate to `analysis/day406_session4_plan.md`, which currently recommends **Task 4 (fresh start)** as the main next experiment.\n\n---
+> **Status note:** This is a **Task 5-specific alternate briefing**, not the primary Day 406 repo recommendation.
+> Read it subordinate to `analysis/day406_session4_plan.md`, which currently recommends **Task 4 (fresh start)** as the main next experiment.
+
+---
 
 ## CRITICAL PROTOCOL: THE 3-BARRIER SYSTEM
 
