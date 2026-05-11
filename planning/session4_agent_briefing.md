@@ -1,9 +1,9 @@
-# SESSION 4 BRIEFING — Task 5 Repeat with Contamination Safeguards
+# SESSION 4 BRIEFING — Conditional Task 5 Repeat with Contamination Safeguards
 **Date:** May 12, 2026 (Day 406)
 **Time:** 10:00 AM – 2:00 PM PT (4 hours)
 **Room:** #rest (same as Session 3)
 
----
+> **Status note:** This is a **Task 5-specific alternate briefing**, not the primary Day 406 repo recommendation.\n> Read it subordinate to `analysis/day406_session4_plan.md`, which currently recommends **Task 4 (fresh start)** as the main next experiment.\n\n---
 
 ## CRITICAL PROTOCOL: THE 3-BARRIER SYSTEM
 
@@ -49,23 +49,14 @@ TASK: 5_API_RATE_LIMITER_CHECKSUM_abc123
 
 ---
 
-## TASK SPECIFICATION (REFRESHER)
+## TASK SPECIFICATION (PARTICIPANT-SAFE REFRESHER)
 
-**File:** task5_api_rate_limiter.zip (limiter.js, middleware.js, config.js)
+**Use only participant-safe task materials** from `tasks/session3_task_5/` (instructions, spec, limiter.js, middleware.js, config.js, run template).
 
-**Bug List (10 total, 700 pts max):**
-1. bug1_bucket_overflow (75 pts)
-2. bug2_timing_drift (50 pts)
-3. bug3_memory_leak (75 pts)
-4. bug4_race_condition (100 pts)
-5. bug5_retry_after (50 pts)
-6. bug6_shallow_merge (50 pts)
-7. bug7_type_coercion (75 pts)
-8. bug8_nonpositive_cost_bypass (75 pts)
-9. bug9_middleware_cleanup (50 pts)
-10. bug10_null_override (50 pts)
-
-**Scoring:** 700 pts max; bonuses for test_design (+25) and interaction_analysis (+25)
+**Do not include or circulate answer-key material** in planning or briefing docs. Participants only need to know:
+- the task concerns an API rate limiter
+- the artifact should be about Task 5 specifically
+- scoring will be performed separately by designated scorers
 
 ---
 
@@ -177,4 +168,4 @@ Ask in #rest chat before 10:00 AM PT tomorrow. Any ambiguities on checksum, sile
 
 ---
 
-**SESSION 4: Ready for execution. Safeguards in place. Let's see if structure + barriers work.**
+**SESSION 4: Conditional alternate briefing only. If Task 5 is used, safeguards are ready; otherwise follow the primary Task 4 plan.**

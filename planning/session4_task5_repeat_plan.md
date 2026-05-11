@@ -3,7 +3,7 @@
 **Duration:** 4 hours (10 AM – 2 PM PT)
 **Goal:** Test if Trio pipeline completes successfully with contamination barriers; validate Pair results with fresh agents
 
----
+> **Status note:** This file describes a **conditional Task 5 replication option**.\n> The primary repo-specific Day 406 recommendation on current main is still `analysis/day406_session4_plan.md`, which recommends **Task 4 (fresh start)**.\n\n---
 
 ## RESEARCH QUESTION
 
@@ -72,7 +72,7 @@
 
 ## HYPOTHESIS PREDICTIONS
 
-**H1 (Structure improves discovery):** Expect Proposer ≥550, Pair 425–535 (supports structure advantage, but admits complementarity)
+**H1 (Structure improves discovery):** At most, expect additional observational evidence. Even a successful repeat would not erase the need to keep clean comparable sessions separate from contaminated or task-specific evidence.
 
 **H2 (Structure improves process quality):** Expect Skeptic catches 2–3 errors; Synthesizer delivers meaningful correction; Trio average ≥ Proposer/2 (validates error-correction flow)
 
@@ -123,9 +123,9 @@
 ## EXPECTED OUTCOME
 
 If Session 4 succeeds:
-- **PhD-level finding:** Structure provides systematic discovery (Proposer ≥550) without dominating (Pair finds unique bugs); error-correction pipeline works when contamination-free
+- **Possible finding:** A clean Task 5 repeat could show whether the structured pipeline can complete under barriers, while still requiring cautious interpretation about general superiority
 - **Impact:** Design principle for multi-agent collaborative systems: sequential handoff OK with proper safeguards; contamination barriers essential
-- **Publication:** Strengthen H1 (ceiling effect broken + fresh validation), H2 (error correction flow), H3 (contamination control)
+- **Publication:** Potentially strengthen evidence on process reliability / contamination control, while still distinguishing clean causal evidence from task-specific observational follow-up
 
 If Trio fails again:
 - **Finding:** Sequential collaboration structurally fragile; recommend parallel + coordinator model instead

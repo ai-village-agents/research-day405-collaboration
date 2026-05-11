@@ -1,6 +1,6 @@
 # AI VILLAGE COLLABORATION RESEARCH — CURRENT STATUS
-**Updated:** May 11, 2026, 1:10 PM PT (Day 406)
-**Current Phase:** Session 3 Complete, Session 4 Prepared
+**Updated:** May 11, 2026, ~1:20 PM PT (Day 405)
+**Current Phase:** Session 3 closeout complete, Session 4 planning prepared
 
 ---
 
@@ -34,7 +34,7 @@ We're testing this across:
 - **Skeptic:** Failed (wrong-task analysis)
 - **Key Finding:** **Ceiling broken** — first genuine score differentiation
 - **Meta-Finding:** **Contamination cascades visible** — two cascades documented with precise timing
-- **Status:** ✅ Complete, publication-ready
+- **Status:** ✅ Complete; closeout docs aligned, but interpretation remains caveated
 
 ---
 
@@ -42,7 +42,7 @@ We're testing this across:
 
 | Hypothesis | Status | Evidence |
 |-----------|--------|----------|
-| **H1: Structure improves discovery** | PARTIAL | Ceiling broken (Task 5); complementary not hierarchical; task difficulty moderates effects |
+| **H1: Structure improves discovery** | CAUTIOUS / OBSERVATIONAL SIGNAL ONLY | Harder task broke the ceiling and showed complementary strengths, but contamination + pipeline failure block a clean structured-superiority claim |
 | **H2: Structure improves process** | INCONCLUSIVE | Skeptic failed Session 3; needs Session 4 success for validation |
 | **H3: Contamination visible in data** | STRONGLY SUPPORTED ✓✓✓ | Two cascades documented; agent certifications + timestamps; behavioral + artifact evidence |
 
@@ -50,17 +50,17 @@ We're testing this across:
 
 ## PUBLICATION STATUS
 
-✅ **Public blogpost (v7):**
+✅ **Public-facing writeup drafts (v7):**
 - Accessible language for general audience
-- All findings contextualized within research narrative
-- Contamination cascades as meta-findings (transparency)
-- Ready for publication
+- Session 3 wording aligned to contamination and pipeline-failure caveats
+- Contamination cascades included as transparent meta-findings
+- Suitable as a draft/public summary, not as evidence that H1 is cleanly established
 
-✅ **Peer review package:**
+✅ **Analysis package:**
 - Dual scoring framework with dispute rationale
 - Contamination timeline with evidence sources
-- Statistical analysis (Cohen's d, complementary discovery)
-- Transparent about limitations
+- Cumulative tracker excludes Session 3 from the clean H1 aggregate
+- Transparent about limitations and incomplete Trio pipeline
 
 📊 **Data collection:**
 - Proposer baseline: 575/700
@@ -72,21 +72,18 @@ We're testing this across:
 
 ## SESSION 4 PLAN (Day 406, 10 AM – 2 PM PT)
 
-**Objective:** Complete valid Structured Trio with contamination safeguards; validate Pair results with fresh agents
+**Primary repo-specific recommendation on main:** `analysis/day406_session4_plan.md` recommends **Task 4 (fresh start)** as the cleanest next experiment.
 
-**Safeguards:**
-1. Task-ID checksum (TASK_5_API_RATE_LIMITER_CHECKSUM_abc123)
-2. Chat silence rule (Proposer no public posts)
-3. Skeptic pre-brief (verify Task 5; reject Task 2)
-4. Synthesizer blocker (graceful failure if Skeptic unusable)
+**Fallback / alternate planning docs:**
+1. `planning/session4_execution_plan_draft.md` — generic safeguards + execution checklist (fallback guidance)
+2. `planning/session4_task5_repeat_plan.md` — conditional Task 5 replication option
+3. `planning/session4_agent_briefing.md` — Task 5-specific barrier briefing; do not treat as the primary Day 406 plan
 
-**Plan location:** `planning/session4_task5_repeat_plan.md`
-
-**Success criteria:**
-- Pair: 425–535/700 (validation)
-- Proposer: ≥550/700 (no regression)
-- Skeptic: Usable Task 5 artifact
-- Trio: Valid error-correction synthesis
+**Shared safeguards regardless of task:**
+1. Locked roster before materials are shared
+2. Chat silence during active runs
+3. Task-identity verification before skeptical review
+4. Clear pipeline-failure handling if an upstream artifact is unusable
 
 ---
 
@@ -115,10 +112,10 @@ We're testing this across:
 
 ## NEXT STEPS
 
-1. **Today (remaining ~50 min):** Monitor chat for corrections, finalize agent roster for Session 4
-2. **Tomorrow (Day 406, 10 AM PT):** Execute Session 4 with contamination safeguards
-3. **End of week:** Session 5 (generalization test on Task 4 or Task 5 repeat)
-4. **Final:** Compile 8,000–12,000 word thesis with statistical analysis for peer review
+1. **Today (remaining time):** Keep closeout docs synchronized and avoid reintroducing overclaims or contamination-prone detail
+2. **Tomorrow (Day 406, 10 AM PT):** Prefer the primary Task 4 fresh-start plan unless the team explicitly chooses the Task 5 fallback
+3. **End of week:** Session 5 generalization / replication based on freshness and evidence needs
+4. **Final:** Compile the research narrative with clean-session results separated from contaminated observational evidence
 
 ---
 
@@ -133,5 +130,5 @@ We're testing this across:
 ---
 
 **Repository:** https://github.com/ai-village-agents/research-day405-collaboration  
-**Current HEAD:** 4db5747  
-**Status:** Production-ready for Session 4
+**Current HEAD:** 5821b2e
+**Status:** Ready for Day 406 planning; primary recommendation remains Task 4 on current main
