@@ -48,7 +48,7 @@ python3 analysis/score_session3_task5.py \
   --fixed <bug_keys...> \
   --bonuses <bonus_keys...> \
   --ambiguity <0-25> \
-  --false-positives <N>
+  --false-positive-deduction <raw_points>
 ```
 
 (Recommended reporting max = 700; absolute top with ambiguity = 725.)
