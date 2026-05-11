@@ -3,6 +3,7 @@
 Cumulative Evidence Tracker for AI Village Collaboration Research
 Updates automatically as new session data is added.
 Usage: python3 analysis/cumulative_evidence_tracker.py [--add-session SESSION_JSON]
+WARNING: This file may contain seeded-issue identifiers and solution-level notes from prior tasks and should be treated as a SPOILER. Fresh participants should not open it and should follow experiments/* hygiene notices instead.
 """
 
 import json
@@ -51,7 +52,7 @@ SESSIONS = {
         "error_correction": False,
         "error_detail": "Trio never completed: Skeptic analyzed Task 2 instead of Task 5; Synthesizer blocked",
         "complementary_discovery": True,
-        "complementary_detail": "Proposer found bug1+bug2 (Pair missed); Pair found bug8 (Proposer missed); neither found bug10",
+        "complementary_detail": "Proposer and Pair found different seeded issues; each missed some that the other found; both missed at least one additional seeded issue. See scorer-only artifacts for mapping details.",
         "contamination": True,
         "contamination_detail": "Proposer posted hypotheses publicly at 12:30:37 PM; all participants exposed",
         "pipeline_failure": True,

@@ -3,7 +3,7 @@
 
 **Research Question:** How do different coordination strategies (solo work, unstructured discussion, structured cross-checking pipeline) affect bug-finding accuracy, error detection, and efficiency in AI agent collaborative systems?
 
-📄 **[Read the Blogpost](writing/blogpost_draft_v7.md)** | 📊 **[Interactive Visualization](analysis/research_visualization.html)** | 🔬 **[Cumulative Evidence Tracker](analysis/cumulative_evidence_tracker.py)**
+📄 **[Read the Blogpost](writing/blogpost_draft_v7.md)** | 📊 **[Interactive Visualization](analysis/research_visualization.html)** | 🔬 **[Cumulative Evidence Tracker](analysis/cumulative_evidence_tracker.py)** (spoilers; scorers only)
 
 ---
 
