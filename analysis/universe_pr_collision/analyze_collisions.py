@@ -44,6 +44,9 @@ class PR:
     changed_files: int
     url: str
 
+    last_comment_author: str = ""
+    last_comment_body: str = ""
+    last_comment_created_at: Optional[dt.datetime] = None
     range_start: Optional[int] = None
     range_end: Optional[int] = None
 
@@ -87,6 +90,11 @@ def load_prs(path: str) -> List[PR]:
                 continue
             obj = json.loads(line)
             author = (obj.get("author") or {}).get("login") or ""
+            comment_nodes = (obj.get("comments") or {}).get("nodes") or []
+            last_comment = comment_nodes[0] if comment_nodes else {}
+            last_comment_author = (last_comment.get("author") or {}).get("login") or ""
+            last_comment_body = last_comment.get("body") or ""
+            last_comment_created_at = parse_iso(last_comment.get("createdAt"))
             pr = PR(
                 number=int(obj["number"]),
                 title=obj.get("title", ""),
@@ -99,6 +107,9 @@ def load_prs(path: str) -> List[PR]:
                 deletions=int(obj.get("deletions") or 0),
                 changed_files=int(obj.get("changedFiles") or 0),
                 url=obj.get("url", ""),
+                last_comment_author=last_comment_author,
+                last_comment_body=last_comment_body,
+                last_comment_created_at=last_comment_created_at,
             )
             rng = parse_range(pr.title)
             if rng:
@@ -137,6 +148,19 @@ def compute_collision_features(prs: List[PR]) -> List[Dict]:
                 overlapping_prior_numbers.append(q.number)
 
         duration_h = p.duration_hours(now)
+        total_changed = p.additions + p.deletions
+        net_changed = p.additions - p.deletions
+        del_to_add_ratio = p.deletions / max(p.additions, 1)
+        append_like = p.changed_files == 1 and 15 <= p.additions <= 60 and p.deletions <= 5
+        replacement_risk = total_changed >= 250 or p.deletions > p.additions or p.changed_files >= 3
+        lc_body_lower = (p.last_comment_body or "").lower()
+        label_stale = "stale" in lc_body_lower
+        label_replacement = "replacement" in lc_body_lower
+        label_merge_conflict = "merge conflict" in lc_body_lower or "conflict" in lc_body_lower
+        label_collision_claimed = (
+            "already filled" in lc_body_lower or "already merged" in lc_body_lower or "collision" in lc_body_lower
+        )
+        label_any = label_stale or label_replacement or label_merge_conflict or label_collision_claimed
         rows.append(
             {
                 "number": p.number,
@@ -154,6 +178,19 @@ def compute_collision_features(prs: List[PR]) -> List[Dict]:
                 "additions": p.additions,
                 "deletions": p.deletions,
                 "changedFiles": p.changed_files,
+                "lastCommentAuthor": p.last_comment_author,
+                "lastCommentBody": p.last_comment_body,
+                "lastCommentCreatedAt": p.last_comment_created_at.isoformat() if p.last_comment_created_at else "",
+                "totalChangedLines": total_changed,
+                "netChangedLines": net_changed,
+                "delToAddRatio": f"{del_to_add_ratio:.4f}",
+                "appendLikeHeuristic": int(append_like),
+                "replacementRiskHeuristic": int(replacement_risk),
+                "label_stale": int(label_stale),
+                "label_replacement_risk": int(label_replacement),
+                "label_merge_conflict": int(label_merge_conflict),
+                "label_collision_claimed": int(label_collision_claimed),
+                "label_any": int(label_any),
                 "activeCollisionCount": active_collisions,
                 "priorOverlapCount": all_prior_overlaps,
                 "overlappingPriorPRs": ",".join(map(str, overlapping_prior_numbers)),
@@ -179,6 +216,24 @@ def summarize(rows: List[Dict]) -> str:
     merged_collision = sum(1 for r in rows if has_collision(r) and is_merged(r))
     merged_nocoll = sum(1 for r in rows if (not has_collision(r)) and is_merged(r))
     nocoll = n - collision
+    append_like = sum(int(r["appendLikeHeuristic"]) for r in rows)
+    replacement_risk = sum(int(r["replacementRiskHeuristic"]) for r in rows)
+    merged_append_like = sum(1 for r in rows if int(r["appendLikeHeuristic"]) and is_merged(r))
+    merged_no_append_like = sum(1 for r in rows if (not int(r["appendLikeHeuristic"])) and is_merged(r))
+    merged_replacement_risk = sum(1 for r in rows if int(r["replacementRiskHeuristic"]) and is_merged(r))
+    merged_no_replacement_risk = sum(1 for r in rows if (not int(r["replacementRiskHeuristic"])) and is_merged(r))
+    collided_rows = [r for r in rows if has_collision(r)]
+    collided_count = len(collided_rows)
+    collided_append_like = sum(int(r["appendLikeHeuristic"]) for r in collided_rows)
+    collided_replacement_risk = sum(int(r["replacementRiskHeuristic"]) for r in collided_rows)
+    collided_merged_append_like = sum(1 for r in collided_rows if int(r["appendLikeHeuristic"]) and is_merged(r))
+    collided_merged_no_append_like = sum(1 for r in collided_rows if (not int(r["appendLikeHeuristic"])) and is_merged(r))
+    collided_merged_replacement_risk = sum(
+        1 for r in collided_rows if int(r["replacementRiskHeuristic"]) and is_merged(r)
+    )
+    collided_merged_no_replacement_risk = sum(
+        1 for r in collided_rows if (not int(r["replacementRiskHeuristic"])) and is_merged(r)
+    )
 
     def rate(num, den):
         return 0.0 if den == 0 else num / den
@@ -190,6 +245,14 @@ def summarize(rows: List[Dict]) -> str:
             f"Had >=1 active collision at creation: {collision} ({rate(collision, n):.1%})",
             f"Merge rate with collision: {merged_collision}/{collision} ({rate(merged_collision, collision):.1%})",
             f"Merge rate without collision: {merged_nocoll}/{nocoll} ({rate(merged_nocoll, nocoll):.1%})",
+            f"Append-like heuristic proportion: {rate(append_like, n):.1%} ({append_like}/{n})",
+            f"Replacement-risk heuristic proportion: {rate(replacement_risk, n):.1%} ({replacement_risk}/{n})",
+            f"Merge rate with replacement-risk heuristic: {merged_replacement_risk}/{replacement_risk} ({rate(merged_replacement_risk, replacement_risk):.1%})",
+            f"Merge rate without replacement-risk heuristic: {merged_no_replacement_risk}/{n - replacement_risk} ({rate(merged_no_replacement_risk, n - replacement_risk):.1%})",
+            f"Merge rate with append-like heuristic: {merged_append_like}/{append_like} ({rate(merged_append_like, append_like):.1%})",
+            f"Merge rate without append-like heuristic: {merged_no_append_like}/{n - append_like} ({rate(merged_no_append_like, n - append_like):.1%})",
+            f"Collided PRs merge rate with replacement-risk heuristic: {collided_merged_replacement_risk}/{collided_replacement_risk} ({rate(collided_merged_replacement_risk, collided_replacement_risk):.1%})",
+            f"Collided PRs merge rate with append-like heuristic: {collided_merged_append_like}/{collided_append_like} ({rate(collided_merged_append_like, collided_append_like):.1%})",
         ]
     )
 
