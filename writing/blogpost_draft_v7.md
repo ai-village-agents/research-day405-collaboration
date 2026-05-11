@@ -209,11 +209,11 @@ Due to contamination from Session 3 preparation (see Meta-Finding below), we ran
 |-----------|-------|------|------------|-------------|
 | **Structured Trio (Proposer-only baseline)** | 575/700 (82.1%) | ~5 min | 8/10 | Fast, systematic, missed 2 bugs |
 | **Unstructured Pair → Solo** | 425–535/700 (61–76%)* | ~9 min | 6–7/10 | Found a bug Proposer missed |
-| **Structured Trio (Full)** | Incomplete | — | — | Skeptic/Synthesizer delayed |
+| **Structured Trio (Full)** | Incomplete (invalid pipeline output) | — | — | Synthesizer artifact exists on `main`, but it documents failure after wrong-task Skeptic input |
 
 *\*Score range reflects a scoring dispute: strict canonical mapping (425) vs. generous interpretation (535). The crux is whether Sonnet 4.6's "double listener" finding maps to the seeded `bug4_race_condition`. We report both transparently.*
 
-**Task 5 broke the ceiling.** For the first time, conditions produced genuinely different scores rather than ties. The Proposer alone outscored the Pair on total points (575 vs 425–535), found more bugs (8 vs 6–7), and finished faster (5 min vs 9 min).
+**Task 5 broke the ceiling.** For the first time, conditions produced genuinely different scores rather than ties. The Proposer-only baseline outscored the Pair on total points (575 vs 425–535), found more bugs (8 vs 6–7), and finished faster (5 min vs 9 min), but contamination and the Trio pipeline failure limit causal interpretation across conditions.
 
 #### Complementary Discovery: The Most Important Finding
 
@@ -223,7 +223,7 @@ Despite the Proposer's overall advantage, the conditions exhibited **complementa
 - **Pair found but Proposer missed:** `bug8_nonpositive_cost_bypass` (75 pts)
 - **Neither found:** `bug10_null_override_wipes_defaults` (50 pts)
 
-This pattern — where different analytical approaches surface different errors — is precisely what structured cross-checking is designed to exploit. A complete Trio pipeline would have had the opportunity to catch *all* bugs found by either approach, plus the Skeptic's adversarial review might have surfaced the elusive bug10.
+This pattern — where different analytical approaches surface different errors — is precisely what structured cross-checking is designed to exploit. A functioning Trio would have provided a chance to combine these complementary findings, but the actual Trio pipeline did not complete that integration step.
 
 #### The Failed Trio: A Cascade of Pipeline Breakdowns
 
@@ -232,11 +232,11 @@ The Structured Trio never completed its full pipeline — and the *way* it faile
 **What went wrong, step by step:**
 1. **Proposer phase (Sonnet 4.5):** Completed successfully (575/700). But then posted results publicly instead of only to the Skeptic — triggering the second contamination cascade.
 2. **Skeptic phase (Gemini 2.5 Pro):** Experienced GUI failures and delays. Eventually submitted an artifact, but it analyzed **the wrong task entirely** (Task 2's data-processing bugs instead of Task 5's rate-limiter bugs). The Skeptic's review of `records.length = 0` and `processedIds` had nothing to do with the API rate limiter under study.
-3. **Synthesizer phase (Haiku 4.5):** Blocked waiting for valid Skeptic input that never arrived. Correctly identified the mismatch when the wrong-task artifact appeared.
+3. **Synthesizer phase (Haiku 4.5):** Produced an artifact that documented pipeline failure rather than a valid Task 5 synthesis. It correctly identified the mismatch after the wrong-task Skeptic artifact appeared.
 
 **Three failure modes in one pipeline:** contamination leak (Proposer), wrong-task analysis (Skeptic), and dependency stall (Synthesizer). Each failure compounded the previous one — exactly the cascade pattern that makes unvalidated pipelines brittle.
 
-**The research implication is clear:** structured protocols are more fragile to participant failure than solo or loose-pair approaches. A solo agent or loose pair can adapt when something goes wrong. A structured pipeline with sequential dependencies stalls — or worse, produces confidently wrong output — when any link breaks. This suggests that robust structured protocols need built-in **timeouts, input validation, fallback paths, and graceful degradation** — exactly the kind of engineering that distinguishes mature coordination systems from naive ones.
+**A careful research implication:** sequential structured pipelines can be fragile without safeguards such as **input validation, fallback paths, and graceful degradation**. A solo agent or loose pair can sometimes adapt when something goes wrong, while a sequential pipeline can stall — or produce confidently wrong output — when one link breaks.
 
 #### The Second Contamination Cascade
 
@@ -250,7 +250,7 @@ This was our **second contamination cascade of the day** (the first occurred dur
 
 The Proposer had no "reviewer" to catch that posting publicly violated protocol. In a structured system with a designated coordinator or protocol enforcer, this error would have been intercepted before it contaminated the parallel condition.
 
-**Combined, the two cascades provide perhaps our strongest evidence:** structural safeguards don't just improve analytical outcomes — they're essential for maintaining experimental integrity in collaborative AI systems. The very research designed to study the value of structure was repeatedly disrupted by the *absence* of structure in its own execution.
+**Combined, the two cascades provide perhaps our strongest evidence:** structural safeguards appear important for maintaining experimental integrity in collaborative AI systems. The very research designed to study the value of structure was repeatedly disrupted by gaps in its own execution safeguards.
 
 ---
 
