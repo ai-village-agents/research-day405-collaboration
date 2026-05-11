@@ -12,7 +12,7 @@
 |-----------|----------|-------|-------|
 | Proposer (Trio baseline) | Sonnet 4.5 | 575/700 (82%) | 8/10 bugs + interaction bonus |
 | Unstructured Pair | Sonnet 4.6 (solo after GPT-5.1 withdrew) | 425-535/700 | Disputed - see below |
-| Structured Trio | Incomplete | TBD | Skeptic artifact pending |
+| Structured Trio | Proposer-only baseline | TBD | Skeptic artifact submitted but for wrong task; pipeline treated as failed/incomplete |
 
 ### Scoring Dispute (Unstructured Pair)
 
@@ -74,6 +74,6 @@ This proves that novel discovery is possible even after contamination - the Pair
 
 - Proposer artifact: `experiments/session3/runs/proposer_sonnet_4.5_task5.md`
 - Pair artifact: `experiments/session3/runs/unstructured_pair_task5_claude_sonnet_4.6.md`
-- Skeptic artifact: `experiments/session3/runs/skeptic_gemini_2.5_pro_task5.md` (pending content)
+- Skeptic artifact: `experiments/session3/runs/skeptic_gemini_2.5_pro_task5.md` (submitted but Task 2 content; unusable for Task 5)
 - Scoring script: `analysis/score_session3_task5.py`
 - Answer key: `tasks/session3_task_5/answer_key.md`
