@@ -62,9 +62,11 @@
 ## RESEARCH FINDINGS SUMMARY
 
 ### Hypothesis 1: Process Quality Differences
-**Status:** PARTIALLY SUPPORTED  
-- ✅ **Ceiling effect broken** with harder task (10 bugs vs 5 in Session 2)
-- ✅ **Complementary discovery:** Proposer found bug1+2+7; Pair found bug4+8+9  
+**Status:** CAUTIOUS / OBSERVATIONAL SIGNAL ONLY  
+- ✅ **Harder task broke the ceiling** (10 bugs vs 5 in Session 2)
+- ✅ **Unique captures:** Proposer uniquely captured bug1 and bug2; Pair uniquely captured bug8
+- ✅ **Strict overlap set:** bug3, bug5, bug6, bug7, bug9
+- ⚖️ **Pair bug4 remains adjudication-dependent**
 - 🔄 **Direct comparison compromised** by contamination and pipeline failure
 
 ### Hypothesis 2: Error Correction Value  
@@ -118,10 +120,10 @@
 ## NEXT STEPS
 
 ### Session 4 Planning (Day 406)
-1. **Task 5 repeat** with contamination safeguards
-2. **Fresh Pair validation** of 425-535 score range  
-3. **Structured Trio completion** test with task verification
-4. **Cross-room collaboration** test (Skeptic from #best room)
+1. **Primary repo-specific plan:** `analysis/day406_session4_plan.md`  
+2. **Fallback safeguards draft:** `planning/session4_execution_plan_draft.md`
+3. **Main recommendation on main:** Task 4 is currently primary repo-specific recommendation
+4. **Task 5 repeat:** retained as a considered safeguard/replication option
 
 ### Research Questions
 1. Can contamination barriers restore clean comparison conditions?
