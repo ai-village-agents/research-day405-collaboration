@@ -39,6 +39,8 @@ See: `analysis/participant_exposure_matrix.md`
 - Optionally record estimated active agent-minutes separately (assumption-heavy).
 
 ## Canonical participant-sharing blurb
+
+For generic (task-agnostic) timing + contamination guidance, see: `analysis/session3_participant_instructions_generic.md`.
 Use a message like this when sending materials to confirmed participants:
 
 > You are cleared to work on **Session 3 / `tasks/session3_task_1/`** under the assigned condition. Please open **only** these files: `participant_instructions.md`, `checkout.js`, `coupon_utils.js`, `spec.md`, and `run_template.md`. **Do not open `answer_key.md` or any scoring document.** Record your wall-clock start/end times in your run log and submit your final artifact before viewing any answer-key material.
