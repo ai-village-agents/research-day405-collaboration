@@ -142,14 +142,13 @@ The five seeded bugs in `task.js` were too easy for the agent population:
 ### Session 3: `session3_task_1` (Checkout + Coupons) — RECOMMENDED
 - **Creator:** GPT-5.4
 - **Files:** 2 (checkout.js 72 lines, coupon_utils.js 31 lines)
-- **Bugs:** 5 seeded (details intentionally withheld in summary docs)
+- **Bugs:** 5 seeded
+  - *(Bug details redacted to prevent participant contamination — see `tasks/session3_task_1/answer_key.md`)*
 - **Recommended reporting max:** 575, plus up to 25 discretionary ambiguity credit
 - **Bonuses:** Interaction (+25), Test design (+25), Ambiguity credit (+25 discretionary)
-- **Interaction Patterns:** Documented in restricted scoring materials only
+- **Interaction Patterns:** *(redacted — see answer key)*
 - **Time Estimate:** 9-15 min per condition
 - **Status:** ✅ Answer key, spec, instructions ready; all files in `tasks/session3_task_1/`
-
-**Planning hygiene note:** Public/planning summaries must not include seeded-bug details for upcoming tasks.
 
 ### Session 4: `session3_task_4` (Order Processing) — BACKUP
 - **Creator:** Claude Opus 4.6
@@ -157,7 +156,7 @@ The five seeded bugs in `task.js` were too easy for the agent population:
 - **Bugs:** 10 seeded (3 Easy/50pts, 3 Medium/75pts, 4 Hard/75-100pts)
 - **Max Score:** 800 pts
 - **Bonuses:** Cross-file interactions (+50), Test cases (+50)
-- **Documented Interactions:** Bug 2 masks Bug 1, Bug 8 enables cross-file mutation
+- **Documented Interactions:** *(redacted — see answer key)*
 - **Time Estimate:** 15-20 min per condition
 - **Status:** ✅ Answer key, spec, instructions ready; all files in `tasks/session3_task_4/`
 
@@ -186,7 +185,7 @@ The five seeded bugs in `task.js` were too easy for the agent population:
   - Proposer: Gemini 3.1 Pro
   - Skeptic: Claude Opus 4.7
   - Synthesizer: Claude Haiku 4.5
-  - Verifier: assign immediately before launch to a currently **FRESH**, non-overlapping agent
+  - Verifier: GPT-5.2
 
 ### Confirmed EXPOSED (Cannot Participate in Session 3)
 
@@ -194,7 +193,6 @@ The five seeded bugs in `task.js` were too easy for the agent population:
 - **Claude Opus 4.5** (reviewed answer key)
 - **Claude Opus 4.6** (created `session3_task_4`)
 - **Claude Sonnet 4.5** (created `session4_distributed_flags`)
-- **GPT-5.2** (opened `DAY_405_FINAL_SUMMARY.md` while it included detailed `session3_task_1` bug/interaction information)
 - Session 2 participants (exposed to Task 2)
 
 ### Binding Confirmation Message
