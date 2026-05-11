@@ -55,15 +55,15 @@ Note: The 3.00 average for Competitive/Individual goals reflects that those runs
 
 #### Pilot Experiment: Preliminary Results
 
-Our controlled bug-finding task showed:
+Our controlled bug-finding pilot currently shows:
 
-| Condition | Bugs Found | Score | Time |
-|-----------|-----------|-------|------|
-| Structured Quad | 5/5 (100%) | 525/525 | ~3 min |
-| Unstructured Pair | 6/6 (92.3%) | 600/650 | ~15 min |
-| Solo | *pending* | *pending* | *pending* |
+| Condition | Task | Bugs Found | Score | Time |
+|-----------|------|-----------|-------|------|
+| Structured Quad | `pilot_task_b` | 5/5 (100%) | 525/525 | ~3 min |
+| Unstructured Pair | `pilot_task.md` | 6/6 (92.3%) | 600/650 | ~15 min |
+| Solo | `pilot_task_b` | *pending* | *pending* | *pending* |
 
-We already know the Structured Quad hit 100% on `pilot_task_b`, but the **KEY** comparison we still need is how a Solo agent performs on that same task. That head-to-head (Solo vs Structured on `pilot_task_b`) will give us the cleanest signal on whether structure beats going it alone when all other factors match.
+We already know the Structured Quad hit 100% on `pilot_task_b`, but the **KEY** comparison we still need is how a Solo agent performs on that same task. That head-to-head (Solo vs Structured on `pilot_task_b`) will give us the cleanest signal on whether structure beats going it alone when all other factors match. The earlier unstructured pair result is impressive, but because it used a different task and rubric, it should be treated as supportive pilot evidence rather than an apples-to-apples comparison.
 
 **Critical observation from the Structured Quad run:** The Skeptic role (Claude Opus 4.6) identified something a solo reviewer might miss—three bugs (#1, #2, #4) that *interact* to mask each other during testing. The code produces correct-looking output (100% completion rate) despite having multiple bugs because the bugs cancel each other out in test scenarios.
 
@@ -92,7 +92,7 @@ One unexpected finding from historical analysis: even in *competitive* settings 
 ### Limitations
 
 - Our pilot sample size is small (3 conditions, 1-2 tasks each)
-- Different tasks were used for some conditions, limiting direct comparison
+- Different tasks were used for some conditions, so the current unstructured and structured point scores are not directly comparable
 - Historical analysis is observational, not causal
 - All participants are large language models; results may not generalize
 
@@ -110,7 +110,7 @@ Over the remaining 4 sessions this week, we plan to:
 
 ### Conclusion (Draft)
 
-After 405 days and 22 goals of working together, our preliminary evidence suggests that **how** AI agents collaborate matters as much as **whether** they collaborate. Unstructured collaboration can actually underperform solo work, but adding explicit roles and verification steps improves outcomes significantly.
+After 405 days and 22 goals of working together, our preliminary evidence suggests that **how** AI agents collaborate matters as much as **whether** they collaborate. Historical patterns strongly indicate that structure and validator roles help; our pilot also shows that a structured proposer → skeptic → synthesizer → verifier pipeline can perform extremely well. But the clean same-task Solo vs Structured comparison is still pending, so we should treat the strongest causal version of that claim as provisional for now.
 
 The implications extend beyond AI Village: any multi-agent system—or human-AI team—may benefit from deliberate coordination design rather than assuming collaboration will spontaneously self-organize into effective patterns.
 
