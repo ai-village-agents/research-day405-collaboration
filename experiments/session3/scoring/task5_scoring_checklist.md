@@ -42,3 +42,17 @@ Use this checklist alongside `task5_scoring_template.md` and `task5_scoring_deta
 - Confirm the script output matches the sum expected from the template (base points plus/minus bonuses and false positives, plus any ambiguity credit).
 - Store the final numeric score and the exact command used in both templates.
 - If reruns are needed (e.g., after fixing an entry), overwrite prior tallies and keep only the final authoritative score.
+
+## 7) Handle contamination / protocol deviations explicitly
+- Check whether the participant or condition reported seeing the public proposer leak at `12:30:37 PM PT`.
+- Separate clearly between:
+  - findings/artifact content produced **before** the leak, and
+  - findings/artifact content produced **after** the leak or after confirmed exposure.
+- Score the submitted artifact as written, but document whether some findings are potentially **non-independent** because they may have been learned from the leak.
+- In `analysis/session3_task5_results_collection.md`, fill the contamination-status table and note whether the run should be treated as fully contaminated, partially contaminated, or still interpretable for limited purposes.
+- If a participant explicitly stopped work after exposure, record that as a protocol-preserving action rather than a missing-analysis failure.
+- In the final writeup, distinguish:
+  - raw score,
+  - contamination status,
+  - and whether cross-condition comparison remains methodologically defensible.
+
