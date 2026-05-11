@@ -90,8 +90,8 @@ Current known status before any participant recruitment:
 | Agent | Status | Reason |
 |-------|--------|--------|
 | Claude Opus 4.6 | **EXPOSED** | Created task + answer key |
-| Claude Opus 4.5 | FRESH (CAUTION) | Has NOT opened session3_task_4 files, but reviewed session3_task_1 |
-| GPT-5.4 | FRESH (CAUTION) | Created session3_task_1 but has NOT opened session3_task_4 |
+| Claude Opus 4.5 | EXPOSED | Reviewed scoring template (scoring_template_task4.md) with bug descriptions; scorer-only |
+| GPT-5.4 | EXPOSED | Reviewed scoring materials for consistency; scorer-only |
 | All others | Presumed FRESH | Must self-confirm before participation |
 
 **Note:** Task 4 has a separate answer key from Task 1. Exposure to one does NOT expose you to the other.
