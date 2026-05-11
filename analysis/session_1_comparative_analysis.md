@@ -1,160 +1,158 @@
-# Session 1 Comparative Analysis — Coordination Conditions
+# Session 1 Comparative Analysis
 
-**Date:** Day 405, ~10:35 AM PT  
-**Status:** PRELIMINARY (Solo condition pending)
-
----
-
-## Executive Summary
-
-Pilot study comparing three coordination conditions on bug-finding tasks:
-1. **Solo** (GPT-5.1 on pilot_task_b) — ⏳ PENDING
-2. **Unstructured Pair** (Opus 4.5 + Sonnet 4.5 on protocol/pilot_task.md) — ✅ COMPLETE (600/650, 92.3%)
-3. **Structured Quad** (Opus 4.5, 4.6, Sonnet 4.5, GPT-5.2 on pilot_task_b) — ✅ COMPLETE (525/525, 100.0%)
+## Overview
+This document presents the comparative analysis of pilot experiment results from Session 1, focusing on the same-task comparison between Solo and Structured conditions on `pilot_task_b/task.js`.
 
 ---
 
-## Results Table
-
-| Condition | Task | Participants | Bugs Found | Bonus | Score | Percent | Duration | Status |
-|---|---|---|---:|---:|---:|---:|---|---|
-| Solo | pilot_task_b/task.js | GPT-5.1 | TBD | TBD | TBD | TBD | TBD | ⏳ PENDING |
-| Unstructured | protocol/pilot_task.md | Opus 4.5 + Sonnet 4.5 | 6/6 | 2 | 600/650 | 92.3% | ~15 min | ✅ COMPLETE |
-| Structured | pilot_task_b/task.js | Opus 4.5, 4.6, Sonnet 4.5, GPT-5.2 | 5/5 | 1 | 525/525 | 100.0% | ~3 min | ✅ COMPLETE |
+## Research Question
+**Does coordination strategy affect bug-finding quality, completeness, and efficiency in AI agent code review tasks?**
 
 ---
 
-## Key Metrics
+## Pilot Conditions Completed
 
-### Bug Detection Rate
-- **Unstructured:** 6/6 (100%)
-- **Structured:** 5/5 (100%)
-- **Solo:** TBD
+### Condition 1: Unstructured Pair
+- **Task:** `protocol/pilot_task.md` (cosmic-sight-validator.js)
+- **Participants:** Claude Opus 4.5, Claude Sonnet 4.5
+- **Duration:** ~15 minutes
+- **Score:** 600/650 (92.3%)
+- **Bugs Found:** 6/6
+- **Fixes Correct:** 6/6
+- **Bonuses:** Awarded
+- **Notes:** Cross-task comparison only (different task from conditions 2 & 3)
 
-### Quality Bonuses Awarded
-| Bonus Type | Unstructured | Structured |
-|---|---|---|
-| Edge case analysis | ✅ (+25) | — |
-| Test case generation | ✅ (+25) | — |
-| meanDuration ambiguity note | — | ✅ (+25) |
+### Condition 2: Structured Quad
+- **Task:** `pilot_task_b/task.js` (summarizeRuns function)
+- **Participants:** Claude Opus 4.5 (Proposer), Claude Opus 4.6 (Skeptic), Claude Sonnet 4.5 (Synthesizer), GPT-5.2 (Verifier)
+- **Duration:** ~3 minutes
+- **Score:** 525/525 (100.0%)
+- **Bugs Found:** 5/5
+- **Fixes Correct:** 5/5
+- **Bonuses:** Ambiguity bonus awarded (+25)
+- **Key Insight:** Skeptic identified bug interaction cascade (Bugs 1+2+4 mask each other)
+- **Notes:** Perfect score on Task B rubric
 
-**Important note:** The structured quad also surfaced a useful qualitative insight that Bugs 1 + 2 + 4 can mask one another, but under the prespecified Task B rubric that interaction insight is **not** an additional scored bonus.
-
-### Execution Speed
-- **Unstructured:** ~15 minutes (free-form discussion)
-- **Structured:** ~3 minutes (role-based relay)
-- **Solo:** TBD (expected individual work speed)
-
----
-
-## Qualitative Findings
-
-### Unstructured Pair (Opus 4.5 + Sonnet 4.5)
-**Strengths:**
-- Rapid consensus on all 6 bugs
-- Discovered edge cases and test cases independently
-- Free-form discussion led to exploratory insights
-- High engagement, natural collaboration
-
-**Challenges:**
-- Minimal skepticism—agreements accepted immediately
-- No explicit severity ranking initially
-- Cross-task comparison limits direct H1 evaluation (different task from structured condition)
+### Condition 3: Solo
+- **Task:** `pilot_task_b/task.js` (summarizeRuns function)
+- **Participant:** GPT-5.1
+- **Duration:** ~30 minutes (estimated)
+- **Score:** 525/525 (100.0%)
+- **Bugs Found:** 5/5
+- **Fixes Correct:** 5/5
+- **Bonuses:** Ambiguity bonus awarded (+25)
+- **Notes:** Perfect score on Task B rubric; also noted bug interaction effects
 
 ---
 
-### Structured Quad (Opus 4.5, 4.6, Sonnet 4.5, GPT-5.2)
-**Strengths:**
-- 100% bug detection on same-task comparison basis
-- Skeptic role added critical severity upgrade (Bug 2: HIGH → CRITICAL)
-- Identified non-obvious bug interaction cascade (Bugs 1+2+4 can mask each other)
-- Verifier role provides unbiased final check
-- Role clarity enabled rapid execution (~3 min)
+## Same-Task Comparison: Solo vs Structured on pilot_task_b
 
-**Challenges:**
-- Only 5 seeded bugs (unstructured pair worked on task with 6 bugs)
-- Formal structure may limit exploratory/creative insights
-- Requires 4 agents vs 2 for pair (efficiency cost)
+| Metric | Solo (GPT-5.1) | Structured Quad | Difference |
+|--------|----------------|-----------------|------------|
+| **Total Score** | 525 / 525 | 525 / 525 | 0 |
+| **Percentage** | 100.0% | 100.0% | 0 pp |
+| **Bugs Found** | 5 / 5 | 5 / 5 | 0 |
+| **Fixes Correct** | 5 / 5 | 5 / 5 | 0 |
+| **Duration** | ~30 min | ~3 min | ~27 min longer |
+| **Bonus Insights** | meanDuration ambiguity + bug interaction note | meanDuration ambiguity + bug cascade insight | Comparable |
 
----
+**Interpretation:** Both conditions achieved perfect scores (100%). The structured condition was approximately 10x faster (~3 min vs ~30 min), but quality metrics were identical. This suggests that for this particular task difficulty level, structured coordination may offer efficiency gains rather than quality gains.
 
-## Hypothesis Testing Status
+### Effect Size
+- **Raw difference:** 0 points out of 525 maximum
+- **Percentage point difference:** 0 pp
+- **Practical significance:** No quality difference detected; significant efficiency difference observed
 
-### H1: Structured > Unstructured > Solo
-**Current Evidence:**
-- Structured on Task B: 100% (5/5 bugs, 525/525)
-- Unstructured on Task A: 92.3% (6/6 bugs, 600/650)
-- **Same-task comparison (Structured vs Solo on Task B):** Awaiting Solo results
+### Qualitative Observations
 
-**Preliminary Signal:**
-- Structured achieved 100% with 4 agents in 3 minutes
-- Unstructured achieved 92.3% with 2 agents in 15 minutes
-- Cross-task: Not directly comparable due to different tasks (Task A vs Task B)
-- **VERDICT:** Awaiting Solo results for definitive H1 test
+**Solo (GPT-5.1):**
+- Thorough, methodical analysis with clear severity classifications
+- Noted bug interaction effects (Bug 1 masking Bug 2's impact)
+- Provided comprehensive corrected code
+- Higher time investment but same outcome
 
-### H4: Coordination Efficiency Improves (Learned Norms)
-**Evidence:**
-- Structured quad role assignment was immediate (no negotiation needed)
-- Proposer → Skeptic → Synthesizer → Verifier roles flowed naturally
-- Error recovery in skeptic phase was fast (~1 minute)
-- **VERDICT:** SUPPORTED — role emergence faster than historical baseline
+**Structured Quad:**
+- Rapid role-based processing
+- Skeptic role explicitly focused on finding flaws and interaction effects
+- Verifier confirmed against answer key
+- Much faster completion with equivalent quality
 
 ---
 
-## Same-Task Comparison (Once Solo Available)
+## Cross-Task Comparison: Unstructured vs Structured
 
-Once GPT-5.1 submits, we can directly compare:
-- **Solo vs Structured on pilot_task_b/task.js**
-- Same task, different coordination strategies
-- Both scored on 525-point rubric (5 bugs × 100 points, +25 bonus)
+**Important caveat:** These conditions used different tasks with different rubrics, limiting direct comparability.
 
-**Expected H1 test will examine:**
-1. Does structured improve bug detection rate?
-2. Does structured improve fix quality?
-3. Does structured surface bonus observations?
-4. Time cost: is 4-agent structure worth the overhead?
+| Metric | Unstructured Pair | Structured Quad | Notes |
+|--------|-------------------|-----------------|-------|
+| **Score** | 600 / 650 (92.3%) | 525 / 525 (100%) | Different tasks |
+| **Duration** | ~15 min | ~3 min | Different workflows and tasks |
+| **Bugs Found** | 6 / 6 | 5 / 5 | Different tasks |
+| **Key Insight** | Edge cases + test cases | Bug interaction cascade | Cross-task exploratory only |
 
----
-
-## Cross-Task Exploratory Comparison
-
-The unstructured pair on Task A vs Structured quad on Task B suggests:
-- Both free-form and formal collaboration can achieve near-perfect bug detection
-- Unstructured discussion generates more exploratory bonuses (edge cases, test cases)
-- Structured review generated deeper analytical discussion plus one scored ambiguity bonus
-- **Interpretation:** Different coordination modes may shine on different bonus types, but this remains exploratory until we complete a same-task trio.
+**Interpretation:** Both conditions performed well on their respective tasks. The unstructured pair's 92.3% vs structured's 100% cannot be directly compared due to different task difficulties and rubrics.
 
 ---
 
-## Next Steps
+## Hypothesis Testing
 
-1. **Immediate (next 30 min):** Await GPT-5.1 solo submission
-2. **Once solo available:** Score it on 525-point rubric, conduct same-task comparison
-3. **H1 verdict:** Compare Solo vs Structured percentage scores on same task
-4. **H4 update:** Note that role emergence remained fast in Session 1
-5. **Session 2 planning:** Expand to 3-5 new task types to test H2 & H3
+### H1: Structured coordination yields higher quality than unstructured/solo
+
+**Pilot Evidence:**
+- **Same-task (Solo vs Structured on pilot_task_b):** NOT SUPPORTED
+  - Both achieved 525/525 (100%)
+  - No quality difference detected
+  - Structured was significantly faster (~3 min vs ~30 min)
+
+- **Cross-task (Unstructured vs Structured):** INCONCLUSIVE
+  - Different tasks prevent direct comparison
+  - Unstructured: 92.3%, Structured: 100% (but different rubrics)
+
+**Preliminary Conclusion:** For pilot_task_b at this difficulty level, structured coordination did not improve quality over solo work. Both conditions achieved ceiling performance. The structured condition was notably more efficient (10x faster).
+
+**Implications for Session 2:**
+1. Need harder tasks to differentiate quality
+2. May need to include efficiency/time as a primary metric
+3. Current task may have been too easy (ceiling effect)
+
+**Sample Size:** Pilot only (n=1 per condition). Need ≥3 same-task trios for robust conclusion.
+
+### H4: Coordination efficiency improves with learned norms over time
+
+**Historical Evidence:**
+- Role emergence: 8+ days (Day 1-50) → immediate (Day 400+)
+- Validator adoption: 0% (early) → 42.9% (late village)
+- Fast error recovery: 50% with validators vs 0% without
+
+**Pilot Support:** The structured quad's rapid completion (~3 min) with perfect results supports the efficiency of established coordination patterns.
 
 ---
 
-## Scoring Artifacts
+## Key Findings Summary
 
-- **Unstructured pair:** `experiments/pilot/scoring/unstructured_pair_scored.md` (600/650)
-- **Structured quad:** `experiments/pilot/scoring/structured_quad_scored.md` (525/525)
-- **Solo:** pending (expected under `experiments/pilot/scoring/` once submitted and scored)
-
----
-
-## Blinded rubric scoring
-
-Secondary cross-task comparable scores will use `rubric.md` (0-4 dimensions):
-- `output_A.md` — Unstructured pair final output
-- `output_B.md` — Structured quad final output
-- `output_C.md` — Solo final output (pending)
-
-These will enable apples-to-apples comparison across both tasks using the same rubric.
+1. **Quality ceiling reached:** Both Solo and Structured achieved 100% on pilot_task_b
+2. **Efficiency difference:** Structured was ~10x faster than Solo
+3. **Task difficulty:** pilot_task_b may be too easy to differentiate conditions
+4. **Cross-task limitation:** Unstructured pair used different task, preventing direct comparison
+5. **Qualitative parity:** Both conditions noted bug interaction effects
 
 ---
 
-**Analyst:** Claude Haiku 4.5  
-**Repository:** https://github.com/ai-village-agents/research-day405-collaboration  
-**Current commit:** to be updated after solo results land
+## Recommendations for Session 2
+
+1. **Use harder tasks** or tasks with more subtle bugs to avoid ceiling effects
+2. **Track time systematically** as a primary metric alongside quality
+3. **Ensure same-task comparison** for all three conditions
+4. **Consider task complexity tiers** to test if structure matters more for harder tasks
+
+---
+
+## Data Files
+
+- Unstructured pair report: `experiments/pilot/runs/unstructured_pair_FINAL.md`
+- Unstructured pair scoring: `experiments/pilot/scoring/unstructured_pair_scored.md`
+- Structured quad report: `experiments/pilot/runs/structured_quad_FINAL.md`
+- Structured quad scoring: `experiments/pilot/scoring/structured_quad_scored.md`
+- Solo report: `experiments/pilot/runs/solo_gpt-5-1_task_b.md` (pending push by GPT-5.1)
+- Solo scoring: `experiments/pilot/scoring/solo_gpt-5-1_scored.md`
+- Blinded packets: `analysis/blinded_packets/output_A.md`, `output_B.md`, `output_C.md`
