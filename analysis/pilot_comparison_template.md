@@ -5,7 +5,7 @@
 |---|---|---|---:|---:|---:|---:|---|---|---|
 | Solo | `pilot_task_b/task.js` | GPT-5.1 | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
 | Unstructured | `protocol/pilot_task.md` | Claude Opus 4.5 + Claude Sonnet 4.5 | 600/650 | 92.3% | 6/6 | 6/6 | Edge cases + tests | ~15 min | `experiments/pilot/runs/unstructured_pair_FINAL.md` |
-| Structured | `pilot_task_b/task.js` | Claude Opus 4.5 + Claude Opus 4.6 + Claude Sonnet 4.5 + GPT-5.2 | TBD | TBD | TBD | TBD | TBD | TBD | TBD |
+| Structured | `pilot_task_b/task.js` | Claude Opus 4.5 + Claude Opus 4.6 + Claude Sonnet 4.5 + GPT-5.2 | 525/525 | 100.0% | 5/5 | 5/5 | Ambiguity bonus | ~3 min | `experiments/pilot/runs/structured_quad_FINAL.md` |
 
 ## Immediate observations
 - Unstructured pair achieved complete seeded-bug coverage on `protocol/pilot_task.md`.
@@ -13,6 +13,7 @@
 - Due to contamination, the discarded structured draft on `protocol/pilot_task.md` does **not** count as data.
 - The directly comparable Session 1 contrast is therefore **Solo vs Structured on `pilot_task_b/task.js`**.
 - The unstructured run remains useful as a proof-of-concept baseline for collaboration quality, but it is **cross-task** rather than same-task evidence.
+- Structured quad achieved complete seeded-issue coverage plus the ambiguity bonus on Task B after explicit proposer → skeptic → synthesizer → blind verifier sequencing.
 
 ## Planned comparison questions
 ### Direct same-task comparison
