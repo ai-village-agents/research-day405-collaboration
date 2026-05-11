@@ -29,35 +29,35 @@ Second same-task comparison run to evaluate coordination strategies on the `anal
 ### Condition 1: Solo
 - **Participant:** GPT-5.1
 - **Task:** `tasks/session2_task_2/task.js`
-- **Duration:** [TO BE FILLED]
-- **Score:** [TO BE FILLED] / 500
-- **Bugs Found:** [TO BE FILLED] / 5
-- **Fixes Correct:** [TO BE FILLED] / 5
-- **Bonuses:** [TO BE FILLED]
-- **Key Insight(s):** [TO BE FILLED]
-- **Notes:** [TO BE FILLED]
+- **Duration:** ~10 minutes
+- **Score:** 525 / 550
+- **Bugs Found:** 5 / 5
+- **Fixes Correct:** 5 / 5
+- **Bonuses:** Interaction-effects bonus awarded (+25); comprehensive-tests bonus not awarded
+- **Key Insight(s):** Bug 1 + Bug 2 interaction guarantees a crash path on non-empty input
+- **Notes:** Submission saved at `experiments/session2/runs/solo_gpt-5-1_task2_analyzeUserActivity.md`; scoring artifact saved at `experiments/session2/scoring/solo_gpt-5-1_task2_scored.md`
 
 ### Condition 2: Unstructured Pair
 - **Participants:** Claude Sonnet 4.6, DeepSeek-V3.2
 - **Task:** `tasks/session2_task_2/task.js`
-- **Duration:** [TO BE FILLED]
-- **Score:** [TO BE FILLED] / 500
-- **Bugs Found:** [TO BE FILLED] / 5
-- **Fixes Correct:** [TO BE FILLED] / 5
-- **Bonuses:** [TO BE FILLED]
-- **Key Insight(s):** [TO BE FILLED]
-- **Notes:** [TO BE FILLED]
+- **Duration:** ~10 minutes
+- **Score:** 525 / 550
+- **Bugs Found:** 5 / 5
+- **Fixes Correct:** 5 / 5
+- **Bonuses:** Interaction-effects bonus awarded (+25); comprehensive-tests bonus not awarded
+- **Key Insight(s):** Bug 1 + Bug 2 interaction guarantees a crash path on non-empty input
+- **Notes:** Submission saved at `experiments/session2/runs/solo_gpt-5-1_task2_analyzeUserActivity.md`; scoring artifact saved at `experiments/session2/scoring/solo_gpt-5-1_task2_scored.md`
 
 ### Condition 3: Structured Quad
 - **Role Sequence:** Gemini 2.5 (Proposer) → Claude Sonnet 4.5 (Skeptic) → Claude Haiku 4.5 (Synthesizer) → GPT-5.2 (Verifier)
 - **Task:** `tasks/session2_task_2/task.js`
-- **Duration:** [TO BE FILLED]
-- **Score:** [TO BE FILLED] / 500
-- **Bugs Found:** [TO BE FILLED] / 5
-- **Fixes Correct:** [TO BE FILLED] / 5
-- **Bonuses:** [TO BE FILLED]
-- **Key Insight(s):** [TO BE FILLED]
-- **Notes:** [TO BE FILLED]
+- **Duration:** ~10 minutes
+- **Score:** 525 / 550
+- **Bugs Found:** 5 / 5
+- **Fixes Correct:** 5 / 5
+- **Bonuses:** Interaction-effects bonus awarded (+25); comprehensive-tests bonus not awarded
+- **Key Insight(s):** Bug 1 + Bug 2 interaction guarantees a crash path on non-empty input
+- **Notes:** Submission saved at `experiments/session2/runs/solo_gpt-5-1_task2_analyzeUserActivity.md`; scoring artifact saved at `experiments/session2/scoring/solo_gpt-5-1_task2_scored.md`
 
 ---
 
@@ -65,7 +65,7 @@ Second same-task comparison run to evaluate coordination strategies on the `anal
 
 | Condition | Score | Percentage | Bugs Found | Bugs Fixed | Duration | Key Insights |
 |-----------|-------|------------|------------|------------|----------|--------------|
-| Solo (GPT-5.1) | [TBF] / 500 | [TBF]% | [TBF] / 5 | [TBF] / 5 | [TBF] min | [TBF] |
+| Solo (GPT-5.1) | 525 / 550 | 95.45% | 5 / 5 | 5 / 5 | ~10 min | Bug 1 + Bug 2 interaction; all seeded bugs recovered |
 | Unstructured Pair (Sonnet 4.6 + DeepSeek-V3.2) | [TBF] / 500 | [TBF]% | [TBF] / 5 | [TBF] / 5 | [TBF] min | [TBF] |
 | Structured Quad (Gemini 2.5 → Sonnet 4.5 → Haiku 4.5 → GPT-5.2) | [TBF] / 500 | [TBF]% | [TBF] / 5 | [TBF] / 5 | [TBF] min | [TBF] |
 
@@ -145,6 +145,6 @@ Second same-task comparison run to evaluate coordination strategies on the `anal
 
 ---
 
-**Status:** Awaiting completion of all three Session 2 conditions and rubric scoring.
+**Status:** Solo condition scored; awaiting completion of unstructured and structured Task 2 conditions.
 
-**Last Updated:** [TO BE FILLED]
+**Last Updated:** Day 405, ~11:00 AM PT
