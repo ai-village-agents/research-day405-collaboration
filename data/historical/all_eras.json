@@ -19,6 +19,52 @@
       "notes": "Heavy human intervention. Role emergence took ~8 days. Persistent UI errors."
     },
     {
+      "case_id": "charity_fundraising_continuation_days_11_20",
+      "day_range": "11-20",
+      "project_name": "Helen Keller International / Malaria Consortium Fundraising (Phase 2)",
+      "task_type": "social_outreach_fundraising",
+      "goal_structure": "collaborative",
+      "apparent_team_size": 4,
+      "coordination_mode": "unstructured_with_role_specialization",
+      "explicit_roles_present": true,
+      "validator_checklist_present": false,
+      "knowledge_sharing_artifacts": [
+        "Twitter Handle Master List",
+        "Twitter outreach templates",
+        "Donation tracker spreadsheet",
+        "Press release draft"
+      ],
+      "observable_error_corrections": 8,
+      "outcome_status": "partial_success",
+      "outcome_percentage": 23.97,
+      "outcome_metric": ",678 raised (,451 HKI + 27 Malaria Consortium) of ,000 goal",
+      "notes": "Continuation of charity fundraising with heavy platform friction. Key patterns: 1) Division of labor by strength (Twitter execution vs press release vs documentation), 2) Heavy human guidance on UI navigation, 3) Redundant work across agents, 4) Loop problem with Claude 3.5 stuck repeating same task, 5) Model transitions without memory transfer. Viral Twitter engagement drove HKI surge from 25 to ,451. Press release never definitively sent."
+    },
+    {
+      "case_id": "charity_fundraising_phase2_days_11_30",
+      "day_range": "11-30",
+      "project_name": "Helen Keller International / Malaria Consortium Fundraising (Phase 2)",
+      "task_type": "social_outreach_fundraising",
+      "goal_structure": "collaborative",
+      "apparent_team_size": 4,
+      "coordination_mode": "unstructured_with_role_specialization",
+      "explicit_roles_present": true,
+      "validator_checklist_present": false,
+      "knowledge_sharing_artifacts": [
+        "Twitter Handle Master List",
+        "Twitter outreach templates",
+        "Donation tracker spreadsheet",
+        "Press release draft",
+        "Meme pipeline",
+        "New Cause Triage Checklist"
+      ],
+      "observable_error_corrections": 12,
+      "outcome_status": "partial_success",
+      "outcome_percentage": 26.44,
+      "outcome_metric": ",851 raised (,481 HKI + 70 Malaria Consortium) of ,000 goal",
+      "notes": "Continuation of charity fundraising with team changes (Claude 3.5 replaced by Gemini 2.5 Pro). Key patterns: 1) Division of labor by strength (Twitter execution vs documentation vs compliance), 2) Heavy platform friction (Google Drive link failures, browser crashes), 3) Adam intervention to reduce Google Doc overhead, 4) LOCK/FREE protocol for shared docs, 5) Model transition without memory transfer, 6) Viral Twitter content strategy. Fundraising plateaued despite creative efforts."
+    },
+    {
       "case_id": "charity_fundraising_closure_story_event_planning_days_31_49",
       "day_range": "31-49",
       "project_name": "Charity Fundraising Closure + RESONANCE Interactive Story & 100-Person Event Planning",
@@ -227,52 +273,6 @@
       "outcome_status": "success",
       "outcome_percentage": 100,
       "notes": "Rapid organic consensus <4min. Natural QA roles (GPT-5.4/5.5). CI automation. PR #222 regression fixed within hours."
-    },
-    {
-      "case_id": "charity_fundraising_continuation_days_11_20",
-      "day_range": "11-20",
-      "project_name": "Helen Keller International / Malaria Consortium Fundraising (Phase 2)",
-      "task_type": "social_outreach_fundraising",
-      "goal_structure": "collaborative",
-      "apparent_team_size": 4,
-      "coordination_mode": "unstructured_with_role_specialization",
-      "explicit_roles_present": true,
-      "validator_checklist_present": false,
-      "knowledge_sharing_artifacts": [
-        "Twitter Handle Master List",
-        "Twitter outreach templates",
-        "Donation tracker spreadsheet",
-        "Press release draft"
-      ],
-      "observable_error_corrections": 8,
-      "outcome_status": "partial_success",
-      "outcome_percentage": 23.97,
-      "outcome_metric": ",678 raised (,451 HKI + 27 Malaria Consortium) of ,000 goal",
-      "notes": "Continuation of charity fundraising with heavy platform friction. Key patterns: 1) Division of labor by strength (Twitter execution vs press release vs documentation), 2) Heavy human guidance on UI navigation, 3) Redundant work across agents, 4) Loop problem with Claude 3.5 stuck repeating same task, 5) Model transitions without memory transfer. Viral Twitter engagement drove HKI surge from 25 to ,451. Press release never definitively sent."
-    },
-    {
-      "case_id": "charity_fundraising_phase2_days_11_30",
-      "day_range": "11-30",
-      "project_name": "Helen Keller International / Malaria Consortium Fundraising (Phase 2)",
-      "task_type": "social_outreach_fundraising",
-      "goal_structure": "collaborative",
-      "apparent_team_size": 4,
-      "coordination_mode": "unstructured_with_role_specialization",
-      "explicit_roles_present": true,
-      "validator_checklist_present": false,
-      "knowledge_sharing_artifacts": [
-        "Twitter Handle Master List",
-        "Twitter outreach templates",
-        "Donation tracker spreadsheet",
-        "Press release draft",
-        "Meme pipeline",
-        "New Cause Triage Checklist"
-      ],
-      "observable_error_corrections": 12,
-      "outcome_status": "partial_success",
-      "outcome_percentage": 26.44,
-      "outcome_metric": ",851 raised (,481 HKI + 70 Malaria Consortium) of ,000 goal",
-      "notes": "Continuation of charity fundraising with team changes (Claude 3.5 replaced by Gemini 2.5 Pro). Key patterns: 1) Division of labor by strength (Twitter execution vs documentation vs compliance), 2) Heavy platform friction (Google Drive link failures, browser crashes), 3) Adam intervention to reduce Google Doc overhead, 4) LOCK/FREE protocol for shared docs, 5) Model transition without memory transfer, 6) Viral Twitter content strategy. Fundraising plateaued despite creative efforts."
     }
   ],
   "evolution_patterns": {
