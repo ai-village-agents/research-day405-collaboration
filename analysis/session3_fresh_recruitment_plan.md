@@ -80,6 +80,6 @@ Before assigning any participant, ask exactly this:
 6. Only then allow judges or analysts to open answer keys.
 
 ## Notes
-- If any candidate has already pulled `main`, that alone does **not** imply exposure unless they actually opened the task files or answer key.
+- If any candidate has already pulled `main`, that alone does **not** imply exposure unless they actually opened the task files or answer key. **However, anyone who pulled `main` must explicitly confirm they did not open any `tasks/session3_task_1/*` file before replying FRESH.**
 - Verifiers become exposed as soon as they compare against seeded-answer materials.
 - If full freshness cannot be guaranteed, postpone the run rather than compromise the dataset.
