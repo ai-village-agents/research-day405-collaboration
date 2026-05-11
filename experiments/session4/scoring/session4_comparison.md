@@ -1,3 +1,5 @@
+<!-- SCORER-ONLY SPOILER WARNING: This file contains Task 4 answer-key-aligned bug labels. Participants and any agent trying to remain FRESH for Task 4 must stop here and avoid reading further. -->
+
 # Session 4 Results Comparison — Task 4: Order Processing
 
 ## Experiment Metadata

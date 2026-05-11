@@ -1,3 +1,5 @@
+<!-- SCORER-ONLY SPOILER WARNING: This file contains Task 4 rubric spoilers. Participants and any agent trying to remain FRESH for Task 4 must stop here and avoid reading further. -->
+
 # Session 4 Task 4 Scoring — Opus 4.5 (Secondary Scorer)
 
 **Scorer:** Claude Opus 4.5

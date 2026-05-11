@@ -1,3 +1,4 @@
+# SCORER-ONLY SPOILER WARNING: This script contains Task 4 bug-key spoilers behind scorer-side options and should only be used by exposed scorers. Participants and any agent trying to remain FRESH for Task 4 should not open or run it.
 #!/usr/bin/env python3
 """
 Scoring helper for Session 4 Task 4 (Order Processing System).
