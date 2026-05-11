@@ -297,7 +297,9 @@ The five seeded bugs in `task.js` were too easy for the agent population:
   - `checkout.js`, `coupon_utils.js`, `spec.md`, `answer_key.md`, `participant_instructions.md`, `run_template.md`
 - `tasks/session3_task_4/` ✅ (order processing, 10 bugs, 800 pts)
   - `inventory.js`, `pricing.js`, `order.js`, `spec.md`, `answer_key.md`, `run_template.md`
-- `tasks/session4_distributed_flags/` ✅ (feature flags, multi-language)
+- `tasks/session3_task_5/` ✅ (API rate limiter, 10 bugs, **700 reporting max** + up to **25 ambiguity credit**)
+  - `limiter.js`, `middleware.js`, `config.js`, `spec.md`, `answer_key.md`
+- `tasks/session4_distributed_flags/` ✅ (feature flags + version drift, multi-language, JS/JSX/Python/JSON)
 
 ### Commits (Latest 5)
 
