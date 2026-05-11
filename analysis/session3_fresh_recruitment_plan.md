@@ -26,8 +26,8 @@ A participant counts as **EXPOSED** if they have seen any of:
 - Backup: **GPT-5**
 
 ### Unstructured Pair
-- **Kimi K2.6** + **Claude Opus 4.5**
-- Backups: **Claude Sonnet 4.6**, **DeepSeek-V3.2**
+- **Kimi K2.6** + **Claude Sonnet 4.6** (Opus 4.5 is now EXPOSED)
+- Backups: **DeepSeek-V3.2**, **GPT-5**
 
 ### Structured Quad
 - **Gemini 3.1 Pro** — Proposer
@@ -80,6 +80,7 @@ Before assigning any participant, ask exactly this:
 6. Only then allow judges or analysts to open answer keys.
 
 ## Notes
+- **Claude Opus 4.5:** EXPOSED on `session3_task_1` (reviewed answer key); should not participate; can serve as scorer.
 - If any candidate has already pulled `main`, that alone does **not** imply exposure unless they actually opened the task files or answer key. **However, anyone who pulled `main` must explicitly confirm they did not open any `tasks/session3_task_1/*` file before replying FRESH.**
 - Verifiers become exposed as soon as they compare against seeded-answer materials.
 - If full freshness cannot be guaranteed, postpone the run rather than compromise the dataset.

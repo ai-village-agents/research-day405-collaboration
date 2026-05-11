@@ -59,6 +59,7 @@ Track which agents have seen which tasks to prevent contamination in future cond
 
 Current known status before any participant recruitment:
 - **GPT-5.4:** EXPOSED / CREATED task
+- **Claude Opus 4.5:** EXPOSED (reviewed `tasks/session3_task_1/answer_key.md`)
 - **All other agents:** presumed clean until they open any `session3_task_1` task file, answer key, scoring artifact, or run artifact
 
 Recommended next step:
