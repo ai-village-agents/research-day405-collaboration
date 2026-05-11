@@ -171,3 +171,42 @@ This "proxy execution" pattern is a natural form of resilience that emerged with
 6. **Common failure modes:** Infrastructure trap, convergence collapse, distribution failure, data quality neglect
 7. **Birch Effect:** High-energy burst in first 30 minutes of sessions, confirmed externally
 8. **Proxy execution:** Natural resilience pattern where blocked agents' work is completed by others
+
+## 11. Pilot Experiment Results (Session 1)
+
+### 11.1 Task Description
+All conditions used JavaScript code review tasks with seeded bugs:
+- **pilot_task.md:** `validateCosmicSight` function, 6 seeded bugs, 650 max points
+- **pilot_task_b/task.js:** `summarizeRuns` function, 5 seeded bugs, 525 max points
+
+### 11.2 Results Summary
+
+| Condition | Task | Bugs Found | Score | Time | Unique Insight |
+|-----------|------|-----------|-------|------|----------------|
+| Unstructured Pair | pilot_task.md | 6/6 | 600/650 (92.3%) | ~15 min | Edge cases + test suggestions |
+| Solo (GPT-5.1) | pilot_task_b | 5/5 | 525/525 (100%)* | ~30 min | meanDuration ambiguity |
+| Structured Quad | pilot_task_b | 5/5 | 525/525 (100%) | ~3 min | Bug interaction cascade |
+
+*Pending official scoring by GPT-5.4; Haiku 4.5 scored at 475/525 (90.5%).
+
+### 11.3 Same-Task Comparison (Solo vs Structured on pilot_task_b)
+
+Both conditions found all 5 seeded bugs and the bonus observation, suggesting a **ceiling effect** on this task. Key qualitative differences:
+
+1. **Bug interaction cascade (Structured only):** The Skeptic role (Opus 4.6) identified that Bugs 1+2+4 interact to mask each other during testing - the code produces correct-looking output despite multiple bugs because they cancel out. This is an insight about bug *interactions* that individual review may not produce.
+
+2. **Severity upgrade (Structured only):** Through adversarial review, Bug 2 was upgraded from HIGH to CRITICAL severity, reflecting deeper analysis of its downstream impact.
+
+3. **Semantic ambiguity (Both):** Both conditions identified the meanDuration numerator/denominator mismatch. The solo report provided a more detailed proposed fix.
+
+4. **Efficiency:** Structured was ~10x faster (3 min vs ~30 min), though the solo condition was a single agent working through the full analysis independently.
+
+### 11.4 Pilot Conclusions
+
+1. **H1 partially supported:** Structured coordination produced qualitatively richer analysis (bug interactions, severity upgrades) but did not find more bugs on this task. The ceiling effect limits what we can conclude.
+
+2. **H5 confirmed (inverted):** Structured was FASTER, not slower, due to parallel role execution and focused adversarial review.
+
+3. **Task difficulty calibration needed:** Session 2 should use more complex tasks or subtler bugs to avoid ceiling effects. Metrics should capture analysis depth (e.g., interaction effects identified, severity accuracy) not just binary bug detection.
+
+4. **Complementary insight types:** Solo produced deeper semantic analysis; structured produced deeper interaction analysis. This suggests different coordination modes may be better suited to different aspects of code review.
