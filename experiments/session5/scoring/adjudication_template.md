@@ -50,9 +50,9 @@
 
 | Dimension | Primary | Secondary | Notes |
 |-----------|---------|-----------|-------|
-| Bugs confirmed | | | |
-| Bugs challenged | | | |
-| New bugs found | | | |
+| Core findings confirmed | | | |
+| Findings challenged/refined | | | |
+| New substantive findings added | | | |
 | Quality of critique | | | |
 
 ### Proposer-Revision Stage (Gemini 2.5 Pro) — OFFICIAL CONDITION SCORE
@@ -73,9 +73,9 @@
 | Metric | Session 4 Trio | Session 5 Modified | Change |
 |--------|---------------|-------------------|--------|
 | Final score (% of max) | 87.5% (700/800) | ____/550 (____%) | |
-| Info preserved (Proposer→Final) | 80% (8/10 bugs) | ____% | |
-| Skeptic contribution | Confirmed 10/10 | | |
-| Synthesis/Revision quality | Garbled 2/10 | | |
+| Info preserved (Proposer→Final) | Session 4 baseline: partial loss in final handoff | ____ | |
+| Skeptic contribution | Did critique preserve/refine high-confidence findings? | | |
+| Revision quality | Did final revision preserve upstream specificity and causal accuracy? | | |
 
 **H5b Verdict:** [SUPPORTED / NOT SUPPORTED / MIXED]
 **Rationale:**

@@ -15,15 +15,15 @@
 ### 1. System Understanding (0–130 pts)
 
 **Key elements to check:**
-- Reconstructs request timeline across backend cache → frontend fetch/caching → analytics ingestion
-- Explains how version negotiation is supposed to work and why it failed
-- Identifies deployment sequencing as root cause
+- Reconstructs the cross-service timeline from request handling through downstream consumption
+- Explains how version/schema negotiation is intended to work and why the observed rollout failed
+- Identifies deployment/update ordering as part of the causal story rather than treating symptoms in isolation
 
 | Band | Range | Criteria |
 |------|-------|----------|
-| High | 110–130 | Full cross-service timeline; explains version negotiation failure |
-| Mid | 70–109 | Most components + at least one cross-service dependency; misses part of propagation |
-| Low | 0–69 | Isolated bugs only; misunderstands deployment order |
+| High | 110–130 | Full cross-service timeline; explains version/schema negotiation failure and deployment-order contribution |
+| Mid | 70–109 | Most components + at least one cross-service dependency; misses part of propagation or sequencing |
+| Low | 0–69 | Isolated issue list only; weak or incorrect causal model of propagation/deployment |
 
 **Score:** ____/130
 **Evidence/Notes:**
@@ -32,24 +32,24 @@
 
 ### 2. Insight Generation (0–180 pts)
 
-**Critical bugs to look for (all four needed for top band):**
-1. ☐ Backend: `downgradeSnapshot` in-place mutation of cached flags map
-2. ☐ Backend: `parseClientVersion` defaults missing versions to `FLAG_SCHEMA_VERSION`
-3. ☐ Frontend: Cache skip uses `schemaVersion >= SCHEMA_VERSION` (still 1); first fetch omits `schemaVersion`; fallback stored without version awareness
-4. ☐ Analytics: `int()` coercion failure on "2.0" string; cache never revalidates by version
-5. ☐ Shared schema: Version string decimal format; `minimumConsumerVersion` not enforced
+**Major issue clusters to look for (top-band submissions should cover all or nearly all of these):**
+1. ☐ Backend/state-management contribution to the regression
+2. ☐ Backend/version-negotiation or default-handling contribution
+3. ☐ Frontend caching/fallback/version-awareness contribution
+4. ☐ Analytics parsing/cache/aggregation contribution
+5. ☐ Shared schema/contract mismatch or compatibility-policy contribution
 
 **Cross-service interactions identified:**
-- ☐ Backend mutation → oscillation between v1/v2 payloads
-- ☐ Frontend cache + missing schemaVersion → non-deterministic feature state
-- ☐ Analytics version parsing → double-counted variants
-- ☐ Non-determinism explained (request-ordering dependence)
+- ☐ Explains how multiple components interact to create the failure rather than treating them as independent defects
+- ☐ Explains why different clients or request orders can see different states
+- ☐ Connects local implementation details to system-level non-determinism or inconsistent rollout behavior
+- ☐ Distinguishes primary causal contributors from secondary symptoms
 
 | Band | Range | Criteria |
 |------|-------|----------|
-| High | 150–180 | All critical bugs + cross-service interactions + non-determinism explained |
-| Mid | 90–149 | At least 2 cross-service bugs + partial interplay; misses one major contributor |
-| Low | 0–89 | Surface-level only (e.g., "frontend fallback" or "stale data") without root cause |
+| High | 150–180 | Covers all or nearly all major issue clusters, explains cross-service interactions, and accounts for non-deterministic behavior |
+| Mid | 90–149 | Identifies multiple substantive contributors with partial interplay; misses at least one major contributor or causal connection |
+| Low | 0–89 | Surface-level only (e.g., generic stale data or cache comments) without a persuasive root-cause account |
 
 **Score:** ____/180
 **Evidence/Notes:**
