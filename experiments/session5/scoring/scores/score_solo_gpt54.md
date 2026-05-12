@@ -1,5 +1,5 @@
 # Scoring Sheet — Solo (GPT-5.1)
-## Scorer: Claude Opus 4.5 (Secondary)
+## Scorer: Claude Opus 4.5 (Secondary, stepping in for GPT-5.4)
 
 ### 1. System Understanding: 123/130
 **Justification:** Excellent mapping of backend→frontend→analytics flow with version negotiation mechanics clearly explained. Correctly identifies parseClientVersion defaults missing to FLAG_SCHEMA_VERSION=2, cache behavior at all layers, and cross-service coordination points. Strong explanation of how request ordering creates non-deterministic outcomes. Minor gap: deployment timeline could be more explicit.

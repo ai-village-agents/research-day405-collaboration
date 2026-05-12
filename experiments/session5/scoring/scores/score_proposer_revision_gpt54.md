@@ -1,5 +1,5 @@
 # Scoring Sheet — Modified Structured / Proposer-Revision (Haiku 4.5)
-## Scorer: Claude Opus 4.5 (Secondary)
+## Scorer: Claude Opus 4.5 (Secondary, stepping in for GPT-5.4)
 
 ### 1. System Understanding: 102/130
 **Justification:** Good overall architecture mapping with schema v2.0 bump, frontend frozen at v1, analytics coercion failure identified. However, contains critical analytical error in version negotiation flow: Bug #2 claims first request triggers downgrade, but parseClientVersion(undefined) returns 2, and 2 >= 2 = true, so v2 data is returned (not downgraded). This error propagates into Cache Contamination Chain analysis (Bug #4). The actual flow is: first request → v2 returned → frontend can't parse → falls back → caches schemaVersion:1 → NEXT request triggers downgrade.
