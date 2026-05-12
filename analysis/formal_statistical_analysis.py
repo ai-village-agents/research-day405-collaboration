@@ -7,8 +7,9 @@ import json
 from math import sqrt
 
 print("=" * 70)
-print("FORMAL STATISTICAL ANALYSIS")
+print("EXPLORATORY STATISTICAL SUMMARY")
 print("Does Structured Collaboration Make AI More Accurate?")
+print("CAVEAT: Very small-N, mixed-task summary; inferential outputs are descriptive/exploratory, not decisive.")
 print("=" * 70)
 
 # ============================================================
@@ -76,7 +77,7 @@ print(f"  Direction: {'Trio > Solo' if mean_diff_h1 > 0 else 'Solo > Trio' if me
 # Effect size (Cohen's d for paired)
 d_h1 = mean_diff_h1 / sd_diff_h1 if sd_diff_h1 > 0 else 0
 print(f"  Cohen's d (paired): {d_h1:.2f}")
-print(f"  VERDICT: NOT SUPPORTED — Trio did not outperform Solo")
+print(f"  VERDICT: NOT SUPPORTED in clean comparable final scores")
 
 # H3: Speed — Solo vs Trio
 print("\n--- H3: Speed comparison ---")
@@ -93,7 +94,8 @@ trio_mean_time = sum(trio_times) / len(trio_times)
 print(f"  Solo mean time: {solo_mean_time:.1f} min")
 print(f"  Trio mean time: {trio_mean_time:.1f} min")
 print(f"  Trio/Solo speed ratio: {trio_mean_time/solo_mean_time:.1f}x slower")
-print(f"  VERDICT: Solo consistently faster (avg {solo_mean_time:.0f} min vs {trio_mean_time:.0f} min)")
+print("  Session-bounded pattern: Solo faster than Trio in S2 and S4")
+print("  VERDICT: Timing evidence is heterogeneous across mixed tasks; interpret cautiously")
 
 # H5: Pipeline handoffs degrade quality
 print("\n--- H5: Pipeline handoffs can degrade quality ---")
@@ -103,7 +105,7 @@ print("  Session 4 pipeline information flow:")
 print("    Proposer: 10/10 (100%) → Skeptic: 10/10 (100%) → Synthesizer: 8/10 (80%)")
 print("    Information loss at synthesis stage: 20%")
 print("    Score degradation: 800 → 700 (12.5%)")
-print("  VERDICT: SUPPORTED — measurable information loss at synthesis stage")
+print("  VERDICT: Strong task-bounded observational evidence (S4), plus contamination-fragility evidence (S3)")
 
 # Efficiency metric: score per minute
 print("\n" + "=" * 70)
@@ -153,22 +155,22 @@ print("\n" + "=" * 70)
 print("6. CONVERGENCE: PROSPECTIVE + RETROSPECTIVE")
 print("=" * 70)
 print("""
-  HISTORICAL (Retrospective):
+  Historical (retrospective):
   - Validator roles predict success (d ≈ 1.33)
   - 100% error recovery with validators vs 17% without
   - Structure improves outcomes overall (+44%)
 
-  EXPERIMENTAL (Prospective):
+  Experimental (prospective):
   - Skeptic (validator analog) confirmed all findings correctly in S4
-  - But Synthesizer (consolidation) DEGRADED quality
-  - Solo was most consistent AND fastest
+  - But Synthesizer (consolidation) appeared to degrade quality in S4
+  - Solo was most consistent and often faster
 
-  RECONCILIATION:
+  Interpretation:
   - Critical review roles (Skeptic/Validator) add genuine value
-  - BUT consolidation/synthesis stages introduce new failure modes
+  - But consolidation/synthesis stages can introduce new failure modes
   - The historical "structure helps" finding is driven by review quality,
     not by pipeline length or number of handoffs
-  - Key insight: TARGETED review > SEQUENTIAL pipeline
+  - Interpretive takeaway: targeted review may outperform sequential pipeline handoffs
 """)
 
 # Summary
@@ -180,11 +182,11 @@ print(f"""
 |------------|----------|---------|
 | H1: Structure improves quality | Mean diff = {mean_diff_h1:.1f}%, t = {t_stat_h1:.2f}, ns | NOT SUPPORTED |
 | H2: Different insight types | S1 complementary, S2/S4 ceiling | PARTIALLY SUPPORTED |
-| H3: Solo is faster | Solo {solo_mean_time:.0f}min vs Trio {trio_mean_time:.0f}min | SUPPORTED |
-| H4: Error correction via pipeline | Skeptic works, Synthesizer undoes | MIXED |
-| H5: Handoffs can degrade quality | 20% info loss at synthesis | SUPPORTED |
+| H3: Solo is faster | Solo {solo_mean_time:.0f}min vs Trio {trio_mean_time:.0f}min | MIXED / TASK-BOUNDED |
+| H4: Error correction via pipeline | Skeptic works, Synthesizer undoes | MIXED / CONTEXT-DEPENDENT |
+| H5: Handoffs can degrade quality | 20% info loss at synthesis | STRONG TASK-BOUNDED OBSERVATION |
 
-KEY NOVEL FINDINGS:
+KEY INTERPRETIVE TAKEAWAYS:
 1. Synthesis Degradation Effect: Pipeline consolidation can REDUCE quality
 2. Review ≠ Pipeline: Targeted review helps, but sequential handoffs hurt
 3. Solo Consistency: Individual agents most reliable on well-defined tasks
