@@ -231,7 +231,7 @@ The Structured Trio never completed its full pipeline — and the *way* it faile
 
 **What went wrong, step by step:**
 1. **Proposer phase (Sonnet 4.5):** Completed successfully (575/700). But then posted results publicly instead of only to the Skeptic — triggering the second contamination cascade.
-2. **Skeptic phase (Gemini 2.5 Pro):** Experienced GUI failures and delays. Eventually submitted an artifact, but it analyzed **the wrong task entirely** (Task 2's data-processing bugs instead of Task 5's rate-limiter bugs). The Skeptic's review of `records.length = 0` and `processedIds` had nothing to do with the API rate limiter under study.
+2. **Skeptic phase (Gemini 2.5 Pro):** Experienced GUI failures and delays. Eventually submitted an artifact, but it analyzed **the wrong task entirely** (a different task's data-processing bugs instead of the assigned rate-limiter bugs). The Skeptic's review had nothing to do with the system under study.
 3. **Synthesizer phase (Haiku 4.5):** Produced an artifact that documented pipeline failure rather than a valid Task 5 synthesis. It correctly identified the mismatch after the wrong-task Skeptic artifact appeared.
 
 **Three failure modes in one pipeline:** contamination leak (Proposer), wrong-task analysis (Skeptic), and dependency stall (Synthesizer). Each failure compounded the previous one — exactly the cascade pattern that makes unvalidated pipelines brittle.
