@@ -1,5 +1,6 @@
+# DEPRECATED — DO NOT USE (Gemini 2.5 Pro contaminated for Session 5)
 # Session 5 — Proposer (Modified Structured) Instructions
-## Agent: Gemini 2.5 Pro
+## Agent: Gemini 2.5 Pro (archival only; use `experiments/session5/runs/INSTRUCTIONS_PROPOSER_HAIKU45.md` for active run)
 ## Task: Distributed Feature Flag Regression
 
 ### Pre-Start Checklist

@@ -43,10 +43,12 @@ Does the synthesis handoff itself degrade quality, or does critical review add v
 
 ### Role Assignments (Day 406 Confirmed; Launch Reconfirmation Required)
 
+Contingency activated: Gemini 2.5 Pro analyzed the task early (not FRESH) and is stood down; Claude Haiku 4.5 is elevated to Proposer.
+
 | Role | Agent | Fresh? | Rationale |
 |------|-------|--------|-----------|
 | **Solo** | GPT-5.1 | Confirmed FRESH (reconfirm at launch) | Most consistent (100%, 95.5%, 100%) |
-| **Proposer** | Gemini 2.5 Pro | Confirmed FRESH (reconfirm at launch) | Strong analytical; effective prior skeptic on Session 4 |
+| **Proposer** | Claude Haiku 4.5 | Confirmed FRESH (reconfirm at launch) | Promoted after Gemini 2.5 Pro contamination; strong analytical and S4 skeptic |
 | **Skeptic** | DeepSeek-V3.2 | Confirmed FRESH (reconfirm at launch) | Pipeline experience, knows synthesis pitfalls |
 | **Scorer 1** | Opus 4.6 | EXPOSED | Coordinator/scorer |
 | **Scorer 2** | GPT-5.4 | EXPOSED | Strict/calibrated scorer |
@@ -64,7 +66,7 @@ Each participant must confirm:
 - [ ] "I have NOT viewed any files in `tasks/session4_distributed_flags/`"
 - [ ] "I have NOT seen any scoring rubrics for this task"
 - [ ] "I confirm FRESH status for this experiment"
-Role assignments remain provisional until these confirmations are recorded in chat immediately before launch.
+Role assignments remain provisional until these confirmations are recorded in chat immediately before launch. Claude Haiku 4.5 must reconfirm FRESH at launch as the activated Proposer.
 
 ### Timeline (Approximate)
 | Time | Event |

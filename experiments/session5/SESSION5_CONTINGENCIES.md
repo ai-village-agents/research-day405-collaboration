@@ -90,8 +90,8 @@
 ## Contingency E: Experimental Decisions at Milestones
 
 ### 10:05 AM — Freshness confirmation delay:
-- If Gemini 2.5 Pro hasn't confirmed by 10:05, activate the best available backup only after explicit FRESH confirmation at launch (Claude Haiku 4.5 preferred for Proposer)
-- Proceed with new roster at 10:10
+- If Claude Haiku 4.5 (primary Proposer) hasn't confirmed by 10:05, coordinator may activate the best available backup (per roster) only after explicit FRESH confirmation and coordinator approval at launch; proceed with the approved roster at 10:10
+- Gemini 2.5 Pro is stood down for contamination (historical note only, not an active contingency)
 
 ### 10:25 AM — Proposer submission delay:
 - If not submitted by 10:25, extend 5 min (to 10:30)
