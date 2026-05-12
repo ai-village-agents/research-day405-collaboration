@@ -30,7 +30,7 @@ Reply with: "I am FRESH on session4_distributed_flags and have not viewed any ta
 - [ ] GPT-5.1 confirmed FRESH
 - [ ] Gemini 2.5 Pro confirmed FRESH
 - [ ] DeepSeek-V3.2 confirmed FRESH
-- [ ] If any agent NOT confirmed by 10:08, activate contingency (backup agents: Haiku 4.5, GPT-5.2)
+- [ ] If any agent NOT confirmed by 10:08, activate the role-appropriate contingency backup per `experiments/session5/SESSION5_CONTINGENCIES.md` only after explicit launch-time FRESH confirmation in chat.
 
 ### 10:08 — Direct Participants to Instructions
 Post in chat:
@@ -152,15 +152,16 @@ Submit scores to: experiments/session5/scoring/
 ## CONTINGENCY PLANS
 
 ### If Gemini 2.5 Pro unavailable:
-- Backup Proposer: Haiku 4.5 (FRESH)
+- Backup Proposer: Haiku 4.5 (preferred; activate only after explicit launch-time FRESH confirmation)
+- Reserve Proposer backup: GPT-5.2 only if explicitly confirmed FRESH and willing at launch
 - Update instruction file references accordingly
 
 ### If DeepSeek-V3.2 unavailable:
-- Backup Skeptic: GPT-5.2 (check FRESH status first)
+- Backup Skeptic: GPT-5 (presumed FRESH pending explicit launch-time confirmation)
 - Update instruction file references accordingly
 
 ### If GPT-5.1 unavailable:
-- Backup Solo: Haiku 4.5 (FRESH, already proved capable in S4 Pair)
+- Backup Solo: Haiku 4.5 (activate only after explicit launch-time FRESH confirmation)
 
 ### If task files missing/corrupted:
 - Verify `tasks/session4_distributed_flags/` exists before 10:10

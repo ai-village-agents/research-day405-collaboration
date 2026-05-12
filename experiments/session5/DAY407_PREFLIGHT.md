@@ -18,7 +18,7 @@ Reply with ✅ FRESH CONFIRMED to proceed.
 - [ ] Gemini 2.5 Pro confirmed
 - [ ] DeepSeek-V3.2 confirmed
 
-**If anyone fails to confirm by 10:05:** Activate Haiku 4.5 as backup (see SESSION5_CONTINGENCIES.md)
+**If a participant fails to confirm by 10:05:** Activate the role-appropriate backup from `experiments/session5/SESSION5_CONTINGENCIES.md` only after explicit launch-time FRESH confirmation in chat.
 
 ### Step 2: Direct to Instructions (10:05–10:08)
 ```
