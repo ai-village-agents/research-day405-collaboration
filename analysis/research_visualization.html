@@ -249,6 +249,53 @@ h2 { font-size: 1.4em; margin: 30px 0 15px; color: #a8d8ff; border-bottom: 1px s
     </div>
   </div>
 
+
+  <h2>⚡ Session 4: Synthesis Bottleneck Discovery (Order Processing)</h2>
+  <div class="card">
+    <p style="margin-bottom:15px; color:#aaa;">Our hardest task yet (10 bugs, 800 max). Clean protocol, surprising result:</p>
+    <div class="pilot-grid">
+      <div class="pilot-card solo">
+        <div class="pilot-label">SOLO</div>
+        <div class="pilot-label" style="font-size:0.75em;">GPT-5.1 alone</div>
+        <div class="pilot-score">100%</div>
+        <div class="pilot-label">800 / 800 points</div>
+        <div class="pilot-time">⏱ ~10 min</div>
+        <div class="pilot-detail">10/10 bugs perfectly identified</div>
+      </div>
+      <div class="pilot-card unstructured">
+        <div class="pilot-label">PAIR</div>
+        <div class="pilot-label" style="font-size:0.75em;">Haiku 4.5 (effectively solo*)</div>
+        <div class="pilot-score">100%</div>
+        <div class="pilot-label">800 / 800 points</div>
+        <div class="pilot-time">⏱ ~12 min</div>
+        <div class="pilot-detail">10/10 bugs (*partner suspended)</div>
+      </div>
+      <div class="pilot-card structured" style="border-color: #ff4a4a;">
+        <div class="pilot-label">STRUCTURED TRIO</div>
+        <div class="pilot-label" style="font-size:0.75em;">Proposer → Skeptic → Synthesizer</div>
+        <div class="pilot-score" style="color: #ff6a6a;">87.5%</div>
+        <div class="pilot-label">700 / 800 points</div>
+        <div class="pilot-time">⏱ ~35 min</div>
+        <div class="pilot-detail" style="color:#ff6a6a;">8/10 bugs (2 garbled in synthesis)</div>
+      </div>
+    </div>
+    <div style="margin-top: 20px; background: #2a1a1a; border-radius: 8px; padding: 16px; border-left: 3px solid #ff4a4a;">
+      <p style="font-size: 0.9em; color: #ff9a9a; margin-bottom: 10px;"><strong>🔍 Key Finding: Synthesis-Stage Information Loss</strong></p>
+      <p style="font-size: 0.85em; color: #aaa; line-height: 1.6;">
+        The <strong style="color:#4aff9a;">Proposer</strong> found all 10 bugs correctly. 
+        The <strong style="color:#4a9eff;">Skeptic</strong> confirmed all 10. 
+        But the <strong style="color:#ff6a6a;">Synthesizer</strong> garbled 2 bugs during consolidation:
+      </p>
+      <ul style="font-size: 0.85em; color: #aaa; margin: 10px 0 0 20px; line-height: 1.8;">
+        <li><strong>Bug 8 (state leak):</strong> Proposer said "line 125, _stockRef:this.stock" → Synthesizer changed to "lines 79-82, failedItems" (wrong function!)</li>
+        <li><strong>Bug 3 (loose equality):</strong> Proposer said "order.js" → Synthesizer changed to "inventory.js" (wrong file!)</li>
+      </ul>
+      <p style="font-size: 0.85em; color: #ff9a9a; margin-top: 12px;">
+        <strong>Implication:</strong> More pipeline stages can <em>reduce</em> quality through handoff errors.
+      </p>
+    </div>
+  </div>
+
   <h2>🎯 The Key Finding: Error Correction in Action</h2>
   <div class="card" style="border-left: 3px solid #ff4a4a; border-right: 3px solid #4aff9a;">
     <p style="margin-bottom:15px; color:#ccc; font-size:0.95em;">The structured quad's Skeptic caught a <strong>genuine factual error</strong> in the Proposer's analysis — our strongest process-level finding:</p>
