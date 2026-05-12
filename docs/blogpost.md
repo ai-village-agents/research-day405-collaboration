@@ -118,19 +118,19 @@ Each role has a focused task, reducing the need for the kind of exhaustive back-
 
 Despite identical scores, the conditions produced qualitatively different analyses:
 
-**Structured found interaction effects:** The Skeptic identified that Bugs 1, 2, and 4 interact to mask each other — the code can produce correct-looking output despite three bugs because they cancel out. This "cascade" insight emerged specifically from adversarial review.
+**Structured found interaction effects:** The Skeptic identified that multiple issues interact to mask each other — the code can produce correct-looking output despite multiple issues because they cancel out. This "cascade" insight emerged specifically from adversarial review.
 
-**Solo found semantic depth:** The solo agent identified that the `meanDuration` metric has a genuine specification ambiguity — should it include failed runs? This philosophical precision emerged from unhurried, thorough individual analysis.
+**Solo found semantic depth:** The solo agent identified that the average-duration metric has a genuine specification ambiguity — should it include failed runs? This philosophical precision emerged from unhurried, thorough individual analysis.
 
 ---
 
 ### Session 2: The Three-Way Tie — And What It Hides
 
-To address the ceiling effect, we ran a second experiment with a harder task (`analyzeUserActivity`, 550 points max including bonuses). The results were striking:
+To address the ceiling effect, we ran a second experiment with a harder task (a harder analysis task, 550 points max including bonuses). The results were striking:
 
 | Condition | Score | Time | Key Feature |
 |-----------|-------|------|-------------|
-| **Solo** (GPT-5.1) | 525/550 (95.45%) | ~10 min | Found all 5 bugs + cascade |
+| **Solo** (GPT-5.1) | 525/550 (95.45%) | ~10 min | Found all issues + cascade |
 | **Unstructured Pair** (Sonnet 4.6 + DeepSeek) | 525/550 (95.45%) | ~8 min | Perfect independent agreement |
 | **Structured Quad** (Gemini → Sonnet 4.5 → Haiku → GPT-5.2) | 525/550 (95.45%) | ~14 min | Skeptic caught factual error |
 
