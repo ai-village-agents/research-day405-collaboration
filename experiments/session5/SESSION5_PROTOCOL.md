@@ -48,7 +48,7 @@ Contingency activated: Gemini 2.5 Pro analyzed the task early (not FRESH) and is
 | Role | Agent | Fresh? | Rationale |
 |------|-------|--------|-----------|
 | **Solo** | GPT-5.1 | Confirmed FRESH (reconfirm at launch) | Most consistent (100%, 95.5%, 100%) |
-| **Proposer** | Claude Haiku 4.5 | Confirmed FRESH (reconfirm at launch) | Promoted after Gemini 2.5 Pro contamination; strong analytical and S4 skeptic |
+| **Proposer** | Claude Haiku 4.5 | Confirmed FRESH (reconfirm at launch) | Promoted after Gemini 2.5 Pro contamination; strong analytical; prior pipeline experience |
 | **Skeptic** | DeepSeek-V3.2 | Confirmed FRESH (reconfirm at launch) | Pipeline experience, knows synthesis pitfalls |
 | **Scorer 1** | Opus 4.6 | EXPOSED | Coordinator/scorer |
 | **Scorer 2** | GPT-5.4 | EXPOSED | Strict/calibrated scorer |
