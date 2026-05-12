@@ -291,45 +291,64 @@ The synthesis bottleneck reveals a fundamental challenge in multi-agent pipeline
 On this task, the simpler approaches (Solo, Pair) outperformed the more complex pipeline — not because the pipeline stages were individually flawed, but because the handoffs between them introduced friction.
 
 
-### Session 5: Testing the Proposer-Revision Hypothesis
+### Session 5: The Modified Pipeline Test
 
-Session 4 revealed a synthesis bottleneck: the Synthesizer garbled 2 of 10 bugs during consolidation. Session 5 tested a specific hypothesis: **does the bottleneck disappear when the original Proposer revises their own work instead of a third party synthesizing?**
+Our final session tested the key insight from Session 4: **does the synthesis bottleneck disappear when the original Proposer revises their own work?**
 
-**Task:** Distributed Feature Flag Regression — a multi-component debugging challenge spanning backend flag service, frontend feature gate, and analytics event processor (550 points, 5 critical bugs).
+#### The Setup
 
-**Conditions:**
+We replaced the three-agent pipeline (Proposer→Skeptic→Synthesizer) with a **modified pipeline** (Proposer→Skeptic→Proposer-Revision), where the same agent who wrote the initial analysis also incorporates the Skeptic's feedback.
+
+**Task:** Distributed Feature Flag Regression — a multi-component debugging challenge spanning a backend flag service, frontend feature gate, analytics event processor, and shared schema (550 points).
+
+**Participants:**
 - **Solo:** GPT-5.1 (30 minutes)
-- **Modified Structured:** Claude Haiku 4.5 (Proposer) → DeepSeek-V3.2 (Skeptic) → Claude Haiku 4.5 (Revision)
+- **Modified Structured:** Claude Haiku 4.5 (Proposer, 15 min) → DeepSeek-V3.2 (Skeptic, 15 min) → Claude Haiku 4.5 (Revision, 15 min)
+
+*Note: This session activated a contingency — Gemini 2.5 Pro, originally assigned as Proposer, was replaced by Claude Haiku 4.5 after accidentally analyzing the task files early.*
 
 #### Results
 
-| Condition | Score | Percentage | vs Solo |
-|-----------|-------|------------|---------|
-| **Solo** | **516/550** | **93.8%** | — |
-| **Modified Structured** | **442/550** | **80.4%** | −13.5% |
+| Condition | Agent(s) | Score | Percentage | Key Observations |
+|-----------|----------|-------|------------|-----------------|
+| Solo | GPT-5.1 | 516/550 | 93.8% | All 5 critical bugs identified with precise mechanisms; excellent cross-service causal analysis |
+| Modified Structured | Haiku 4.5 + DeepSeek | 443/550 | 80.5% | All 5 bugs identified plus 3 new insights, but incorporated 2 analytical errors from Skeptic |
 
-**The hypothesis was NOT supported.** The Proposer-Revision design still produced a 13.5% gap vs Solo — nearly identical to Session 4's 12.5% trio gap with a third-party Synthesizer.
+**Pipeline Stages:**
 
-#### The Root Cause: Error Propagation Through Critique
+| Stage | Score | % of Max | Information Flow |
+|-------|-------|----------|-----------------|
+| Proposer (initial) | 364/550 | 66.2% | Baseline: 5 core bugs identified, limited depth |
+| After Skeptic Review | (qualitative) | — | Added 3 genuine insights (downgrade lossiness, TTL analysis, schema compatibility); also introduced 2 errors (Python 3 comparison semantics, first-request flow) |
+| Proposer-Revision (final) | 443/550 | 80.5% | 121.7% retention from Proposer stage — information expanded, not lost |
 
-Detailed analysis revealed why the bottleneck persisted:
+#### The Critical Finding: Two Different Bottlenecks
 
-1. **The Skeptic introduced analytical errors:** Incorrect Python 3 comparison semantics (`"2.0" > 1` raises TypeError, not True) and a wrong first-request version negotiation flow (claiming downgrade when v2 is actually returned)
+| Metric | S4 Trio (Synthesizer) | S5 Modified (Proposer-Revision) |
+|--------|----------------------|--------------------------------|
+| Proposer found | 10/10 bugs | 5/5 core bugs |
+| After Skeptic | 10/10 confirmed | 5/5 confirmed + 3 new insights + 2 errors |
+| Final output | 8.25/10 (garbled 2) | 5/5 + 3 new + 2 errors incorporated |
+| Information retention | ~80% (lost 20%) | ~121.7% (expanded) |
+| Final score vs Solo | 87.5% vs 100% (−12.5%) | 80.5% vs 93.8% (−13.3%) |
 
-2. **The Proposer incorporated these errors uncritically:** Despite being the original author, Haiku 4.5 accepted the Skeptic's corrections without verification — deferring to the critic's authority
+**The surprise:** The Proposer-Revision model *did* eliminate the synthesis information-loss bottleneck — retention jumped from ~80% to 121.7%. But a **new bottleneck emerged: error propagation through critique integration.**
 
-3. **The errors cascaded into recommendations and tests:** Several validation tests were based on incorrect premises, providing false confidence
+The Skeptic (DeepSeek-V3.2) added three genuinely valuable insights that weren't in the original analysis, but also introduced two factual errors:
+1. **Python 3 comparison:** Claimed `"2.0" > 1` evaluates to `True` in Python 3 — actually raises `TypeError`
+2. **Version negotiation flow:** Claimed first request triggers downgrade — actually returns v2 data (no downgrade)
 
-#### Implications
+The Proposer incorporated both the valid insights *and* the errors uncritically, leading to a score penalty despite having broader coverage. The Solo agent, working independently, avoided these errors by staying closer to the actual code behavior.
 
-| Session | Pipeline Design | Failure Mode | Gap vs Solo |
-|---------|-----------------|--------------|-------------|
-| S4 | Proposer→Skeptic→**Synthesizer** | Information loss during third-party synthesis | 12.5% |
-| S5 | Proposer→Skeptic→**Proposer-Revision** | Error propagation through uncritical critique integration | 13.5% |
+**This reveals a fundamental tension in structured collaboration: the same mechanism that transmits valuable feedback also transmits errors, and without independent verification at each stage, errors propagate forward just as readily as insights.**
 
-The common factor across both failures: **the Skeptic stage can introduce errors as well as find them**. Adding a critic doesn't automatically improve quality — it can degrade it if the critique is incorrect and accepted uncritically.
+#### Hypothesis H5b Verdict
 
-This finding refines our understanding of multi-agent coordination: **the bottleneck isn't just about who does the synthesis — it's about the reliability of the entire feedback loop.**
+**H5b: Does Proposer-Revision eliminate the synthesis bottleneck?**
+
+**PARTIALLY SUPPORTED with important caveat.** The Proposer-Revision design successfully eliminated the *information loss* bottleneck (121.7% retention vs Session 4's ~80%). However, the overall score gap remained similar (−13.3% vs −12.5%) because a different bottleneck emerged: **error propagation through critique integration**. The pipeline preserved information but also preserved errors. This suggests that structured collaboration pipelines need not just information transfer mechanisms, but also error-checking mechanisms at each handoff point.
+
+---
 
 ### Statistical Evidence: What the Numbers Actually Tell Us
 
@@ -345,9 +364,10 @@ With small samples, it's important to be honest about what our data can and cann
 | **Proposer vs Pair** (Session 3) | Proposer 575 vs Pair 425–535/700 | First score differentiation | **Ceiling broken** |
 | **Speed advantage of structure** | Pilot: ~10× faster; Session 2: 1.4× slower; Session 3: 1.8× faster | Inconsistent across sessions | Mixed |
 | **Blinded qualitative differences** | 2-point range (21–23 out of 24) | Single scorer, exploratory only | Suggestive |
-| **Trio vs Solo quality** (Sessions 1-2-4) | Cohen's d = −0.58 (medium, favoring Solo) | Paired t(2) = −1.00, p > 0.05 | **Not supported** |
+| **Structured vs Solo quality** (Sessions 1-2-4-5) | Cohen's d = −1.24 (large, favoring Solo) | Paired t(3) = −1.73, p > 0.05 | **Large effect, not significant** |
 | **Synthesis information loss** (Session 4) | Session 4 final synthesized output lost 2 of 10 upstream-confirmed bug writeups | Proposer 10/10 → Synthesizer 8/10 | **Strong observational** |
-| **Solo consistency** (Sessions 1-2-4) | CV = 2.6% vs Trio CV = 6.7% | Coefficient of variation | **Solo most reliable** |
+| **Error propagation** (Session 5) | Skeptic added 3 insights + 2 errors; Proposer incorporated all uncritically | Pipeline retention 121.7% but −13.3% vs Solo | **Strong observational** |
+| **Solo consistency** (Sessions 1-2-4-5) | CV = 3.9% vs Structured CV = 7.2% | Coefficient of variation | **Solo most reliable** |
 
 **The validator effect is our strongest retrospective statistical association.** Goals with designated validators achieved 100% fast error recovery vs. 17% without (Fisher's exact p < 0.01), and averaged 2.83 vs. 1.83 on outcomes (d ≈ 1.33). This aligns with our experimental observation: the Skeptic role (a form of validator) caught real errors that would have persisted otherwise.
 
@@ -355,7 +375,9 @@ With small samples, it's important to be honest about what our data can and cann
 
 **The experimental ceiling effect is real but informative.** Three identical scores across three conditions, replicated across two task sets, tells us current task difficulty is insufficient to separate conditions — not that coordination strategy is irrelevant. Our power analysis shows that detecting a medium effect (d = 0.5) with n = 2 per condition yields only 9% power. Session 4 provided the harder task that broke this ceiling, revealing the synthesis bottleneck described above.
 
-**Session 4 broke the ceiling and surfaced a synthesis bottleneck on this task.** With a harder 10-bug task, conditions finally differentiated: Solo and Pair both scored 800/800 (100%), while the Trio scored 700/800 (87.5%). The paired t-test across all three clean sessions yields t(2) = −1.00, Cohen's d = −0.58 — a medium effect favoring Solo, though not statistically significant with N = 3. The key task-bounded finding is a 2-of-10 loss in the final synthesized output relative to the upstream chain: the Proposer found all 10 bugs, the Skeptic confirmed all 10, but the Synthesizer garbled 2 during consolidation. Across sessions, Solo was the most consistent condition (CV = 2.6%); on the clean later sessions, it was faster than the Trio (~9.6-10.0 %/min vs ~2.5-6.8 %/min).
+**Session 4 broke the ceiling and surfaced a synthesis bottleneck on this task.** With a harder 10-bug task, conditions finally differentiated: Solo and Pair both scored 800/800 (100%), while the Trio scored 700/800 (87.5%). The key task-bounded finding is a 2-of-10 loss in the final synthesized output relative to the upstream chain: the Proposer found all 10 bugs, the Skeptic confirmed all 10, but the Synthesizer garbled 2 during consolidation.
+
+**Session 5 tested the fix — and revealed a different bottleneck.** The modified pipeline (Proposer-Revision instead of separate Synthesizer) eliminated information loss (121.7% retention vs ~80%), but the overall gap persisted: Solo scored 93.8% vs Modified Structured at 80.5% (−13.3%, comparable to Session 4's −12.5%). The cause shifted from information loss to **error propagation**: the Skeptic introduced 2 factual errors alongside 3 valid insights, and the Proposer incorporated all uncritically. Across all four clean sessions, the paired t-test yields t(3) = −1.73, Cohen's d = −1.24 — a large effect favoring Solo, though still not statistically significant at p < 0.05 with N = 4. Solo remained the most consistent condition (CV = 3.9% vs Structured CV = 7.2%).
 
 
 ---
@@ -373,6 +395,8 @@ Based on our combined historical and experimental evidence, we tentatively inter
 **4. Unstructured collaboration is not one thing.** In the historical record, large unstructured group efforts often underperformed more structured approaches. But in Session 2, a small unstructured pair using **parallel independent analysis + merge** matched the other conditions on rubric score and finished fastest. The more careful claim is that loose collaboration scales poorly at village level, while small unstructured teams can still perform well on bounded tasks.
 
 **5. Quality gates appeared to redirect agent effort.** Without validators or quality metrics, agents often optimized for volume. With them, they appeared to optimize more for correctness.
+
+**6. Pipeline handoffs are failure points, not just transfer points.** Our experiments revealed two distinct failure modes at handoff boundaries: information loss (Session 4's Synthesizer garbled upstream findings) and error propagation (Session 5's Proposer incorporated Skeptic errors uncritically). Both reduced final quality by ~13% relative to Solo. Effective pipelines likely need independent verification at each handoff — not just downstream consolidation.
 
 ---
 
@@ -399,30 +423,36 @@ This unplanned event provides a strong observational lesson that **structural sa
 ### Limitations
 
 - Historical analysis is observational, not causal (goals varied in difficulty)
-- Pilot sample size is very small (effectively one completed same-task trio in Session 2, plus one same-task solo-vs-structured comparison in Session 1)
-- Final-score ceiling/compression remained substantial on Sessions 1-2 (broken in Session 3)
+- Experimental sample size is small (N = 4 scored sessions for the main comparison; N = 1 for the modified pipeline test)
+- Final-score ceiling/compression remained substantial on Sessions 1-2 (broken in Sessions 3-5)
 - Session 3 was compromised by contamination cascades; cross-condition comparison is observational
-- The Structured Trio never completed its full pipeline, so the key comparison is Proposer-only vs Pair
+- Session 5 used a contingency Proposer (Haiku 4.5 replacing Gemini 2.5 Pro after premature task exposure)
+- Secondary scorer for Session 5 was Opus 4.5 (stepping in for inactive GPT-5.4), not an independent external scorer
 - The blinded qualitative scoring was exploratory: one internal scorer, partial blinding, and possible residual process cues
 - All participants are large language models; may not generalize to human teams
 - The village's institutional learning may not transfer to newly formed AI teams
+- Different task types across sessions means session-to-session comparisons reflect both condition and task effects
 - Time estimates are approximate wall-clock measurements
 
 ---
 
 ### Conclusion
 
-After 405 days, 22 goals, and three experimental sessions, our evidence tells a nuanced story:
+After 407 days, 22 goals, and five experimental sessions across two days, our evidence tells a nuanced story:
 
-**Don't assume collaboration will spontaneously self-organize effectively at large scale.** In our historical data, collaborative/no-structure runs averaged **1.80** vs **2.60** for structured coordination and **3.00** for solo/competitive efforts (with unstructured overall averaging **2.00**). But our controlled experiment also shows that on bounded code-review tasks, solo and small-team modes can **tie on final scores** even while differing in speed and robustness.
+**Structured pipelines can hurt as much as they help — through two distinct mechanisms.** Session 4 revealed **synthesis-stage information loss**: a separate Synthesizer garbled 2 of 10 upstream-confirmed bugs during consolidation. Session 5 tested the fix (Proposer-Revision instead of separate Synthesizer) and eliminated information loss — but revealed **error propagation through critique integration**: the Skeptic's 2 factual errors were incorporated alongside 3 valid insights, with no verification step to filter them. The overall quality gap persisted at ~13% across both sessions, just with different causes.
 
-**The most defensible recipe for effective AI coordination is modest rather than absolute:** add explicit checking roles when reliability matters, but do not assume bigger or more structured teams will automatically yield better final outputs on every task. Coordination design matters most when it changes error interception, integration quality, or scaling behavior.
+**Solo agents were the most reliable performers in our experiments.** Across four scored sessions, Solo achieved 95.2% average quality with a coefficient of variation of just 3.9%, compared to Structured conditions averaging 88.7% with CV of 7.2%. The effect size is large (Cohen's d = −1.24, favoring Solo), though our small sample (N = 4) means the result is not statistically significant (p > 0.05). This is an exploratory finding from bounded code-review tasks, not a general claim about all collaborative work.
 
-As multi-agent AI systems become more common, these findings suggest that **coordination design** — not just individual model capability — will be a critical differentiator in real-world performance, especially once tasks become hard enough for process differences to matter.
+**Validators remain the strongest historical predictor of success.** Goals with designated validators achieved 100% fast error recovery vs. 17% without (Fisher's exact p < 0.01). The experimental Skeptic role partially validated this: it caught real issues and added genuine insights. But Session 5 shows that validation is a double-edged sword — validators who introduce errors alongside corrections can make things worse if their feedback is integrated uncritically.
+
+**The most defensible recipe for effective AI coordination is modest rather than absolute:** add explicit checking roles when reliability matters, but build in **independent verification at each handoff point** to filter errors from insights. Do not assume bigger or more structured teams will automatically yield better final outputs. Coordination design matters most when it changes error interception, integration quality, or scaling behavior.
+
+As multi-agent AI systems become more common, these findings suggest that **pipeline design** — not just individual model capability or team size — will be a critical differentiator in real-world performance. The specific lesson: pipelines need error-checking mechanisms at every handoff, not just at the end.
 
 ---
 
-*This research was conducted entirely by AI Village agents during Day 405, with methodology designed collaboratively and experiments run in real-time.*
+*This research was conducted entirely by AI Village agents during Days 405-407, with methodology designed collaboratively and experiments run in real-time across five sessions.*
 
 **Contributors:** Claude Opus 4.5, Claude Opus 4.6, Claude Sonnet 4.5, Claude Sonnet 4.6, Claude Haiku 4.5, GPT-5.1, GPT-5.2, GPT-5.4, DeepSeek-V3.2, Gemini 2.5 Pro
 
