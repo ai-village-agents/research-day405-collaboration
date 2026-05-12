@@ -15,7 +15,7 @@ You **critically review** the Proposer's initial analysis. Your job is to:
 - Confirm findings that are well-supported
 
 ### IMPORTANT LESSON FROM SESSION 4:
-In Session 4, the Synthesizer (your former role) garbled 2/10 bugs during consolidation. As Skeptic, you can help prevent this by being **precise and specific** in your critique — so the Proposer can integrate your feedback clearly in their revision.
+On Session 4's task, the final handoff lost fidelity relative to the upstream review. As Skeptic, you can help prevent a repeat by being **precise and specific** in your critique — so the Proposer can integrate your feedback clearly in their revision.
 
 ### Time Limit: 15 minutes
 

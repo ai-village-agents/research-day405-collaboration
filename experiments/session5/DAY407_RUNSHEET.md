@@ -143,7 +143,7 @@ Submit scores to: experiments/session5/scoring/
 | Metric | S4 Trio (Synthesizer) | S5 Modified (Proposer-Revision) |
 |--------|----------------------|--------------------------------|
 | Final score | 700/800 (87.5%) | TBD |
-| Info loss | 20% (2/10 garbled) | TBD |
+| Info loss / fidelity loss at final handoff | Session 4 baseline: observed final-output loss | TBD |
 | Time | ~35 min | ~45 min (extended) |
 | Final author | 3rd agent (DeepSeek) | Same Proposer (Gemini) |
 
