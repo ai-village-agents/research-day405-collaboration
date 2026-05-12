@@ -149,7 +149,7 @@ The structured quad's Skeptic (Sonnet 4.5) caught a **genuine factual error** in
 **Skeptic's correction:** 
 1. "`records.length = 0` evaluates to `0`, which is **falsy**, not truthy — the Proposer had the boolean logic backwards."
 2. "This assignment also **mutates the array** by truncating it to zero elements — a critical side effect the Proposer missed entirely."
-3. "Combined with Bug 2's off-by-one error, this creates a **crash cascade** — the truncated array leads to undefined access."
+3. "Combined with Issue (details redacted)'s off-by-one error, this creates a **crash cascade** — the truncated array leads to undefined access."
 
 This wasn't rubber-stamping. The Skeptic genuinely improved the analysis by catching an error and adding a deeper insight. The Synthesizer then integrated both contributions, and the Verifier confirmed.
 

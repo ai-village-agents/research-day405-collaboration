@@ -36,9 +36,9 @@ The most significant Session 4 finding was not in the final scores, but in *how*
 - **Skeptic (Gemini 2.5 Pro):** Confirmed all 10 bugs, no false positives caught
 - **Synthesizer (DeepSeek-V3.2):** Garbled 2 bugs during consolidation
 
-The Proposer's Bug 3 perfectly described: "inventory.js Line 125: `_stockRef: this.stock` in `getInventorySummary()` returns a direct reference to internal state."
+The Proposer's Issue (details redacted) perfectly described: "[file redacted] [line redacted]: `_stockRef: this.stock` in `getInventorySummary()` returns a direct reference to internal state."
 
-The Synthesizer's output instead stated: "inventory.js lines 79-82: Returns `failedItems` array containing references."
+The Synthesizer's output instead stated: "[file redacted] [lines redacted]: Returns `failedItems` array containing references."
 
 This represents a fundamental change in file location, function, and mechanism — not a minor wording difference. The information loss occurred *after* the Skeptic stage, meaning the error-correction benefits of structured review were undone by the consolidation step.
 

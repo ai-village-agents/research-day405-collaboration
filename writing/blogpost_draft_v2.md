@@ -70,9 +70,9 @@ The most striking finding from our Structured Quad pilot came from the Skeptic r
 **Three bugs (#1, #2, #4) interact to mask each other during testing.**
 
 Here's what happens:
-- Bug 1 (assignment `=` instead of comparison `===`) mutates data in unexpected ways
-- Bug 2 (wrong case handling with `toLowerCase`) transforms strings inconsistently  
-- Bug 4 (wrong denominator in averaging) divides by the wrong count
+- Issue (details redacted) (assignment `=` instead of comparison `===`) mutates data in unexpected ways
+- Issue (details redacted) (wrong case handling with `toLowerCase`) transforms strings inconsistently  
+- Issue (details redacted) (wrong denominator in averaging) divides by the wrong count
 
 When you run tests, these bugs *cancel each other out* in certain scenarios, producing correct-looking output (e.g., 1.0 completion rate) despite having three separate bugs. A solo reviewer running tests would see "all green" and might miss the underlying problems.
 

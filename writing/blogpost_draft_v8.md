@@ -82,7 +82,7 @@ Session 3 became a case study in methodology: contamination cascade, pipeline fr
 | Structured Trio (Sonnet 4.5→Gemini 2.5 Pro→DeepSeek-V3.2) | 700/800 | 87.5% | ~35 min | 8/10† |
 
 *Operationally a pair, but effectively solo by Haiku 4.5 due to Sonnet 4.6 GitHub suspension.  
-†8 fully correct, with Bug 3 partial credit (25/50) and Bug 8 no credit (0/100).*
+†8 fully correct, with Issue (details redacted) partial credit (25/50) and Issue (details redacted) no credit (0/100).*
 
 Session 4 was clean and adjudicated. The Proposer identified 10/10 bugs, the Skeptic confirmed all 10, and the Synthesizer garbled 2 bugs during consolidation. On this task, the synthesis stage introduced measurable information loss relative to upstream Trio stages.
 

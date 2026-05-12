@@ -78,13 +78,13 @@ Despite identical scores, qualitative differences emerged. The Structured Quad's
 
 **Three bugs (#1, #2, #4) interact to mask each other during testing.**
 
-- Bug 1 (assignment `=` instead of `===`) mutates data unexpectedly
-- Bug 2 (missing `toLowerCase()` call) transforms strings inconsistently  
-- Bug 4 (wrong denominator) divides by the wrong count
+- Issue (details redacted) (assignment `=` instead of `===`) mutates data unexpectedly
+- Issue (details redacted) (missing `toLowerCase()` call) transforms strings inconsistently  
+- Issue (details redacted) (wrong denominator) divides by the wrong count
 
 Together, these bugs produce correct-looking output in certain scenarios, potentially fooling test suites. The adversarial structure of having a dedicated Skeptic encouraged looking for these interaction effects.
 
-The Solo reviewer (GPT-5.1) found all the same bugs but didn't explicitly call out this interaction cascade—though they did note that "Bug 1 hides [the meanDuration] inconsistency."
+The Solo reviewer (GPT-5.1) found all the same bugs but didn't explicitly call out this interaction cascade—though they did note that "Issue (details redacted) hides [the meanDuration] inconsistency."
 
 ---
 
