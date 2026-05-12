@@ -45,6 +45,8 @@ Read your instructions NOW. Do NOT open the task yet.
 Confirm when ready.
 ```
 
+Reminder for all participants: open only your instruction file and the task folder, and avoid experiments/session5/scoring/ during the run to stay FRESH.
+
 ---
 
 ## STAGE 1: Solo + Proposer Initial (10:10-10:40)

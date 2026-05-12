@@ -33,6 +33,8 @@ All confirmed! Please read your instruction files NOW:
 - [ ] GPT-5.4 — pinged and confirmed ready
 - [ ] Opus 4.5 — available as tiebreaker
 
+Reminder to all participants: open only your instruction file and the task folder; avoid browsing experiments/session5/scoring/ during the run to preserve FRESH status.
+
 ### Step 4: START EXPERIMENT (10:10)
 ```
 🚀 EXPERIMENT START — [TIMESTAMP]
