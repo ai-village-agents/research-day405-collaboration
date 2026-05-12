@@ -149,7 +149,7 @@ h2 { font-size: 1.4em; margin: 30px 0 15px; color: #a8d8ff; border-bottom: 1px s
       <p style="font-size: 0.95em; color: #7ecfff; margin-bottom: 10px; font-weight: 600;">🔑 The Hidden Story: Error Correction in Action</p>
       <p style="font-size: 0.85em; color: #aaa; margin-bottom: 8px;">The Structured Quad's <strong style="color:#4a9eff;">Skeptic</strong> caught a <strong style="color:#ff9a4a;">genuine factual error</strong> in the Proposer's analysis:</p>
       <ul style="font-size: 0.8em; color: #ccc; margin-left: 20px; line-height: 1.6;">
-        <li>Proposer claimed <code style="background:#2a2a4a; padding:2px 4px; border-radius:3px;">records.length = 0</code> is "truthy" — <strong style="color:#ff6a4a;">WRONG</strong>, it's falsy</li>
+        <li>Proposer claimed <span style="background:#2a2a4a; padding:2px 4px; border-radius:3px;">an assignment inside a conditional</span> is "truthy" — <strong style="color:#ff6a4a;">WRONG</strong>, it evaluates to a falsy value</li>
         <li>Skeptic also identified the array mutation side effect the Proposer missed</li>
         <li>Connected Issue (details redacted) + Issue (details redacted) into a crash cascade</li>
       </ul>
@@ -260,14 +260,14 @@ h2 { font-size: 1.4em; margin: 30px 0 15px; color: #a8d8ff; border-bottom: 1px s
     <div style="display:grid; grid-template-columns:1fr 20px 1fr; gap:0; margin:15px 0; align-items:stretch;">
       <div style="background:#2a1515; border-radius:10px 0 0 10px; padding:20px; border:1px solid #6a2a2a;">
         <div style="font-size:0.75em; text-transform:uppercase; color:#ff6a6a; letter-spacing:1px; margin-bottom:8px;">❌ Proposer (Session 2: Gemini 2.5 Pro)</div>
-        <p style="font-size:0.9em; color:#ddd; line-height:1.5;"><em>"The assignment <code style='background:#1a1a3a; padding:2px 5px; border-radius:3px;'>records.length = 0</code> creates a truthy value, so the condition will never be met."</em></p>
+        <p style="font-size:0.9em; color:#ddd; line-height:1.5;"><em>"An assignment inside a conditional is always truthy, so the condition will never be met."</em></p>
         <p style="font-size:0.8em; color:#ff8a8a; margin-top:10px;">⚠️ Wrong: <code>0</code> is <strong>falsy</strong>, not truthy</p>
         <p style="font-size:0.8em; color:#ff8a8a;">⚠️ Missed: assignment truncates the array</p>
       </div>
       <div style="display:flex; align-items:center; justify-content:center; font-size:1.5em; color:#666;">→</div>
       <div style="background:#152a15; border-radius:0 10px 10px 0; padding:20px; border:1px solid #2a6a2a;">
         <div style="font-size:0.75em; text-transform:uppercase; color:#4aff9a; letter-spacing:1px; margin-bottom:8px;">✅ Skeptic (Sonnet 4.5)</div>
-        <p style="font-size:0.9em; color:#ddd; line-height:1.5;"><em>"<code style='background:#1a1a3a; padding:2px 5px; border-radius:3px;'>records.length = 0</code> evaluates to <code>0</code>, which is <strong>falsy</strong> — the Proposer had the logic backwards."</em></p>
+        <p style="font-size:0.9em; color:#ddd; line-height:1.5;"><em>"In JavaScript, an assignment expression evaluates to the assigned value (here, zero), which is <strong>falsy</strong> — the Proposer had the logic backwards."</em></p>
         <p style="font-size:0.8em; color:#7aff7a; margin-top:10px;">✅ Corrected boolean logic</p>
         <p style="font-size:0.8em; color:#7aff7a;">✅ Identified array truncation side effect</p>
         <p style="font-size:0.8em; color:#7aff7a;">✅ Found Issue (details redacted)+2 crash cascade</p>
