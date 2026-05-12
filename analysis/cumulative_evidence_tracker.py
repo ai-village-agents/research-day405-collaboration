@@ -63,19 +63,22 @@ SESSIONS = {
         "task": "session3_task_4",
         "max_score": 800,
         "conditions": {
-            "solo": {"score": None, "pct": None, "time_min": None, "agents": ["GPT-5.1"],
-                     "note": "PLACEHOLDER — fill after experiment"},
-            "unstructured": {"score": None, "pct": None, "time_min": None, "agents": ["Sonnet 4.6", "Haiku 4.5"],
-                             "note": "PLACEHOLDER — fill after experiment"},
-            "structured": {"score": None, "pct": None, "time_min": None, "agents": ["Sonnet 4.5", "Gemini 2.5", "DeepSeek-V3.2"],
-                           "note": "PLACEHOLDER — fill after experiment"},
+            "solo": {"score": 800, "pct": 100.0, "time_min": 10, "agents": ["GPT-5.1"],
+                     "note": "Perfect score, 10/10 bugs identified"},
+            "unstructured": {"score": 800, "pct": 100.0, "time_min": 12, "agents": ["Haiku 4.5"],
+                             "note": "Effectively solo; Sonnet 4.6 GitHub suspended during experiment"},
+            "structured": {"score": 700, "pct": 87.5, "time_min": 35, "agents": ["Sonnet 4.5", "Gemini 2.5", "DeepSeek-V3.2"],
+                           "note": "Pipeline degradation: Proposer found 10/10, Synthesizer garbled 2"},
         },
-        "error_correction": None,
-        "error_detail": "PLACEHOLDER",
-        "complementary_discovery": None,
-        "complementary_detail": "PLACEHOLDER",
+        "error_correction": "mixed",
+        "error_detail": "Skeptic (Gemini 2.5) confirmed all 10 bugs correctly; errors introduced at synthesis stage",
+        "synthesis_bottleneck": True,
+        "synthesis_detail": "Synthesizer (DeepSeek) garbled 2/10 bugs during consolidation: wrong file (Bug 3) and wrong function (Bug 8)",
+        "complementary_discovery": False,
+        "complementary_detail": "All conditions found the same bug set; no unique discoveries",
         "contamination": False,
-        "notes": "Session 4: Task 4 Order Processing with 4-barrier anti-contamination protocol. AWAITING EXECUTION."
+        "contamination_detail": "5-barrier anti-contamination protocol successful",
+        "notes": "KEY FINDING: Pipeline degradation through synthesis-stage information loss. Solo outperformed Trio despite identical upstream analysis quality."
     },
 }
 
