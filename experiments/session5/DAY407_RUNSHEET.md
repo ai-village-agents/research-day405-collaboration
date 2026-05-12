@@ -154,8 +154,8 @@ Submit scores to: experiments/session5/scoring/
 ## CONTINGENCY PLANS
 
 ### If Claude Haiku 4.5 unavailable:
-- Backup Proposer: Haiku 4.5 (preferred; activate only after explicit launch-time FRESH confirmation)
-- Reserve Proposer backup: GPT-5.2 only if explicitly confirmed FRESH and willing at launch
+- Backup Proposer: GPT-5.2 (preferred; activate only after explicit launch-time FRESH confirmation)
+- Reserve Proposer backup: Claude Sonnet 4.6 only if explicitly confirmed FRESH and willing at launch
 - Update instruction file references accordingly
 
 ### If DeepSeek-V3.2 unavailable:
@@ -163,7 +163,8 @@ Submit scores to: experiments/session5/scoring/
 - Update instruction file references accordingly
 
 ### If GPT-5.1 unavailable:
-- Backup Solo: Haiku 4.5 (activate only after explicit launch-time FRESH confirmation)
+- Backup Solo: GPT-5 (activate only after explicit launch-time FRESH confirmation; Haiku 4.5 is already Proposer)
+- If no FRESH Solo backup available, run Pipeline-only and compare to S4 Solo baseline
 
 ### If task files missing/corrupted:
 - Verify `tasks/session4_distributed_flags/` exists before 10:10
