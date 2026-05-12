@@ -86,21 +86,20 @@ def analyze(solo_score, modified_score, proposer_score=None, skeptic_score=None)
     print()
     
     # Pipeline retention analysis
+    retention = None
     if proposer_score is not None:
-        print("━━━ Pipeline Analysis (H5b) ━━━")
+        print("━━━ Pipeline Information Retention (H5b) ━━━")
         if proposer_score > 0:
             retention = round(100 * modified_score / proposer_score, 1)
-            quality_gap = round(100 * solo_score / 550 - 100 * modified_score / 550, 1)
             print(f"  Proposer → Final (Proposer-Revision): {retention}% retention")
-            print(f"  Solo vs Modified quality gap: {quality_gap}%")
-            print()
-            print(f"  H5b-retention (info preserved):  {'✅ IMPROVED' if retention >= 100 else '🔶 PARTIAL'}")
-            print(f"     Retention: {retention}% (vs S4 Synthesizer ~80%)")
-            print(f"  H5b-quality (gap closed):        {'✅ CLOSED' if quality_gap < 5 else '❌ PERSISTS'}")
-            print(f"     Gap: {quality_gap}% (vs S4 Trio gap 12.5%)")
-            print()
-            print(f"  📊 OVERALL H5b VERDICT: {'NOT SUPPORTED' if quality_gap >= 5 else 'SUPPORTED'}")
-            print(f"     Synthesis bottleneck eliminated, but error-propagation bottleneck emerged")
+            if retention >= 100:
+                metric = "improved (>=100%)"
+            elif retention >= 90:
+                metric = "minor loss (90-99.9%)"
+            else:
+                metric = "major loss (<90%)"
+            print(f"  Retention metric: {metric}")
+            print("     (Context: S4 synthesizer retention was ~80% — ~20% information loss)")
         print()
     
     # Cumulative analysis (Sessions 1, 2, 4, 5)
@@ -168,11 +167,17 @@ def analyze(solo_score, modified_score, proposer_score=None, skeptic_score=None)
     print(f"  H3 (Speed): TASK-BOUNDED (varied by session)")
     
     if proposer_score is not None and proposer_score > 0:
-        retention = 100 * modified_score / proposer_score
-        quality_gap = 100 * solo_score / 550 - 100 * modified_score / 550
-        print(f"  H5b (Proposer-Revision eliminates bottleneck): NOT SUPPORTED")
-        print(f"      Retention: {round(retention, 1)}% ✅ (improved from S4's ~80%)")
-        print(f"      Quality gap: {round(quality_gap, 1)}% ❌ (persists, similar to S4's 12.5%)")
+        if retention is None:
+            retention = round(100 * modified_score / proposer_score, 1)
+        h5b_retention = "SUPPORTED" if retention >= 95 else "NOT SUPPORTED"
+        print(f"  H5b-retention (no info loss vs proposer stage): {h5b_retention}")
+        print(f"      Retention: {retention}% (context: S4 was ~80%)")
+    
+    performance_gap = round(solo_pct - mod_pct, 1)
+    performance_gap_abs = round(abs(performance_gap), 1)
+    h5b_performance = "SUPPORTED" if performance_gap_abs <= 5.0 else "NOT SUPPORTED"
+    print(f"  H5b-performance (closes quality gap vs solo): {h5b_performance}")
+    print(f"      Solo-Modified gap: {performance_gap:+.1f} pts (abs {performance_gap_abs:.1f})")
     
     print()
     print("═══════════════════════════════════════════════════════════════")
