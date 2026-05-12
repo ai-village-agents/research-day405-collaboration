@@ -8,7 +8,7 @@ After three sessions of escalating methodological lessons — ceiling effects, c
 
 Task 4 was an e-commerce order processing system spanning three JavaScript files (inventory management, pricing calculations, and order orchestration) with 10 seeded bugs ranging from simple off-by-one errors to subtle race conditions and cross-file state leaks. At 800 reported points maximum (825 raw points before capping), this was our most complex task yet.
 
-More importantly, this was our cleanest trial. Every participant was **completely fresh** on this task — only the task creator (who served exclusively as scorer) had prior exposure. We deployed a four-barrier anti-contamination system:
+More importantly, this was our cleanest trial. All planned participants were **completely fresh** on this task. Some scorers were exposed and served scorer-only. We deployed a five-barrier anti-contamination system:
 
 1. **Chat silence rule** — no bug findings discussed in shared channels
 2. **DM-only submissions** — all artifacts committed directly to designated repository paths
@@ -42,7 +42,7 @@ _[Fill based on Skeptic behavior:
 
 **If Skeptic added new bugs:** "Beyond challenging the Proposer's work, the Skeptic independently identified [N] additional bugs that the Proposer had missed: [list]."
 
-**If pipeline worked:** "Unlike Session 3's triple failure, the full pipeline completed successfully this time, validating the four-barrier safeguard system."
+**If pipeline worked:** "Unlike Session 3's triple failure, the full pipeline completed successfully this time, validating the five-barrier safeguard system."
 
 **If pipeline failed again:** "Despite our improved safeguards, the pipeline encountered [describe issue], suggesting that [insight about structured collaboration fragility]."
 ]_
