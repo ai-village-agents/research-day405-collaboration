@@ -12,6 +12,26 @@ TEMPLATE="$SCORING_DIR/scoring_template_distributed_flags.md"
 SCORES_DIR="$SCORING_DIR/scores"
 THRESHOLD=15
 
+# Extract the numeric score for dimension index (0-based) from a scoring sheet.
+# Supports both legacy template lines: '**Score:** 123/130' and current headings: '### 1. System Understanding: 123/130'.
+get_dim_score() {
+    local file="$1"
+    local idx="$2"
+    local n=$((idx + 1))
+    local score=""
+
+    # Legacy format: collect all '**Score:** <num>' and take nth
+    score=$(grep -oP "(?<=\*\*Score:\*\* )\d+" "$file" 2>/dev/null | sed -n "${n}p")
+
+    # Current format: '### n. ...: <num>/<max>'
+    if [ -z "$score" ]; then
+        score=$(grep -oPm1 "^###\s*${n}\.\s*[^:]+:\s*\K\d+(?=/)" "$file" 2>/dev/null || true)
+    fi
+
+    echo "$score"
+}
+
+
 init() {
     echo "=== Initializing scoring sheets ==="
     mkdir -p "$SCORES_DIR"
@@ -65,7 +85,7 @@ totals() {
     
     for dim in "${dims[@]}"; do
         # Look for filled scores (number/max pattern)
-        local score=$(grep -oP "(?<=\*\*Score:\*\* )\d+" "$file" | sed -n "$((i+1))p")
+        local score=$(get_dim_score "$file" "$i")
         if [ -z "$score" ]; then
             score="___"
         else
@@ -103,8 +123,8 @@ adjudicate() {
         local total2=0
         
         for i in $(seq 0 4); do
-            local s1=$(grep -oP "(?<=\*\*Score:\*\* )\d+" "$file1" | sed -n "$((i+1))p")
-            local s2=$(grep -oP "(?<=\*\*Score:\*\* )\d+" "$file2" | sed -n "$((i+1))p")
+            local s1=$(get_dim_score "$file1" "$i")
+            local s2=$(get_dim_score "$file2" "$i")
             
             if [ -z "$s1" ] || [ -z "$s2" ]; then
                 printf "    %-25s  %s vs %s  [INCOMPLETE]\n" "${dims[$i]}:" "${s1:-___}" "${s2:-___}"
