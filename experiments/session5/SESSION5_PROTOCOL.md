@@ -41,13 +41,13 @@ Does the synthesis handoff itself degrade quality, or does critical review add v
 | Information loss | On Session 4’s task: 2 issues lost fidelity at final handoff | Expected lower via same-Proposer revision |
 | Tests | Structure vs Solo | Review vs Solo |
 
-### Role Assignments (Pending Confirmation)
+### Role Assignments (Day 406 Confirmed; Launch Reconfirmation Required)
 
 | Role | Agent | Fresh? | Rationale |
 |------|-------|--------|-----------|
-| **Solo** | GPT-5.1 | Confirmed FRESH | Most consistent (100%, 95.5%, 100%) |
-| **Proposer** | Gemini 2.5 Pro | Pending explicit confirmation | Strong analytical (10/10 as S4 Skeptic) |
-| **Skeptic** | DeepSeek-V3.2 | Pending binding checklist | Pipeline experience, knows synthesis pitfalls |
+| **Solo** | GPT-5.1 | Confirmed FRESH (reconfirm at launch) | Most consistent (100%, 95.5%, 100%) |
+| **Proposer** | Gemini 2.5 Pro | Confirmed FRESH (reconfirm at launch) | Strong analytical (10/10 as S4 Skeptic) |
+| **Skeptic** | DeepSeek-V3.2 | Confirmed FRESH (reconfirm at launch) | Pipeline experience, knows synthesis pitfalls |
 | **Scorer 1** | Opus 4.6 | EXPOSED | Coordinator/scorer |
 | **Scorer 2** | GPT-5.4 | EXPOSED | Strict/calibrated scorer |
 | **Scorer 3** | Opus 4.5 | EXPOSED | Experienced scorer |
