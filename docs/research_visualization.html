@@ -154,8 +154,14 @@ h3 { font-size: 1.1em; margin: 20px 0 10px; color: #88bbdd; }
     <div class="score-cell pair-cell"><div class="score-val">800</div><div class="score-pct">100% &#x2705;</div></div>
     <div class="score-cell trio-cell"><div class="score-val">700</div><div class="score-pct">87.5% &#x26A0;&#xFE0F;</div></div>
   </div>
+  <div class="session-row" style="border: 2px solid #9a4aff;">
+    <div class="session-label" style="color:#cc88ff;">S5 H5b<br><span style="font-size:0.75em;color:#666">5 bugs, 550 max</span></div>
+    <div class="score-cell solo-cell"><div class="score-val">516</div><div class="score-pct">93.8% &#x2705;</div></div>
+    <div class="score-cell pair-cell"><div class="score-val">&mdash;</div><div class="score-pct">N/A</div></div>
+    <div class="score-cell trio-cell" style="background:#2a1a3a;border-color:#5a2a5a;"><div class="score-val" style="color:#cc88ff;">442</div><div class="score-pct">80.4% &#x26A0;&#xFE0F;</div></div>
+  </div>
 </div>
-<p style="font-size:0.8em;color:#666;margin-top:12px;">*Session 3 contaminated by chat leaks and wrong-task Skeptic. Excluded from primary analysis.</p>
+<p style="font-size:0.8em;color:#666;margin-top:12px;">*Session 3 contaminated by chat leaks. S5 tested Modified pipeline (Proposer→Skeptic→Proposer-Revision instead of Synthesizer).</p>
 </div>
 
 <!-- SESSION 4 PIPELINE BREAKDOWN -->
@@ -201,6 +207,33 @@ h3 { font-size: 1.1em; margin: 20px 0 10px; color: #88bbdd; }
 </div>
 
 <!-- TIME COMPARISON -->
+<!-- SESSION 5: H5b EXPERIMENT -->
+<h2>&#x1F9EA; Session 5: Testing H5b (Proposer-Revision)</h2>
+<div class="card">
+<p>After Session 4 revealed synthesis degradation, we tested an alternative: <strong>let the original Proposer revise their own work</strong> after receiving Skeptic feedback, instead of using a third-party Synthesizer.</p>
+
+<div class="key-finding">
+<h3>&#x274C; H5b: NOT SUPPORTED</h3>
+<p>Modified pipeline (Proposer&rarr;Skeptic&rarr;Proposer-Revision) scored <span class="stat">442/550 (80.4%)</span> vs Solo&apos;s <span class="stat">516/550 (93.8%)</span> &mdash; a <span class="stat">13.5% gap</span>, similar to S4&apos;s 12.5% gap.</p>
+</div>
+
+<h3>Root Cause: Error Propagation</h3>
+<div class="pipeline">
+  <div class="pipe-stage pipe-proposer"><div class="stage-name">Proposer</div><div class="stage-score">364</div><div class="stage-detail">66.2%</div></div>
+  <div class="pipe-arrow">&rarr;</div>
+  <div class="pipe-stage pipe-skeptic"><div class="stage-name">Skeptic</div><div class="stage-score">+81</div><div class="stage-detail">Added insights + errors</div></div>
+  <div class="pipe-arrow">&rarr;</div>
+  <div class="pipe-stage pipe-synthesizer" style="border-color:#9a4aff;"><div class="stage-name">Proposer-Revision</div><div class="stage-score" style="color:#cc88ff;">442</div><div class="stage-detail">80.4%</div></div>
+</div>
+
+<p style="margin-top:16px;"><strong>Key Finding:</strong> The Skeptic (DeepSeek-V3.2) introduced analytical errors:</p>
+<ul style="margin:12px 0 12px 24px;font-size:0.9em;">
+<li>Claimed Python <code>"2.0" > 1</code> returns True (actually raises TypeError in Python 3)</li>
+<li>Incorrectly described first-request version negotiation flow</li>
+</ul>
+<p>The Proposer (Haiku 4.5) incorporated these errors <em>uncritically</em>, trusting the Skeptic&apos;s authority over empirical verification. The bottleneck shifted from information loss to <strong>error propagation through critique integration</strong>.</p>
+</div>
+
 <h2>&#x23F1;&#xFE0F; Speed: Solo Time Advantage in Clean Sessions</h2>
 <div class="card">
 <h3>Session 4 Completion Time</h3>
@@ -227,7 +260,7 @@ h3 { font-size: 1.1em; margin: 20px 0 10px; color: #88bbdd; }
 <div class="card">
 <table class="hyp-table">
 <thead>
-<tr><th>Hypothesis</th><th>S1</th><th>S2</th><th>S3</th><th>S4</th><th>Verdict</th></tr>
+<tr><th>Hypothesis</th><th>S1</th><th>S2</th><th>S3</th><th>S4</th><th>S5</th><th>Verdict</th></tr>
 </thead>
 <tbody>
 <tr>
@@ -236,6 +269,7 @@ h3 { font-size: 1.1em; margin: 20px 0 10px; color: #88bbdd; }
   <td class="status-mixed">Tie</td>
   <td class="status-no">&#x274C;</td>
   <td class="status-no">Solo > Trio</td>
+  <td class="status-no">Solo > Mod</td>
   <td class="status-no">NOT SUPPORTED</td>
 </tr>
 <tr>
@@ -243,6 +277,7 @@ h3 { font-size: 1.1em; margin: 20px 0 10px; color: #88bbdd; }
   <td class="status-yes">&#x2705;</td>
   <td class="status-mixed">Ceiling</td>
   <td>&mdash;</td>
+  <td class="status-mixed">All found same</td>
   <td class="status-mixed">All found same</td>
   <td class="status-mixed">PARTIAL</td>
 </tr>
@@ -252,6 +287,7 @@ h3 { font-size: 1.1em; margin: 20px 0 10px; color: #88bbdd; }
   <td class="status-no">Solo fast</td>
   <td>&mdash;</td>
   <td class="status-no">Solo 3.5x</td>
+  <td>&mdash;</td>
   <td class="status-mixed">MIXED; TASK-BOUNDED SPEED PATTERN</td>
 </tr>
 <tr>
@@ -260,6 +296,7 @@ h3 { font-size: 1.1em; margin: 20px 0 10px; color: #88bbdd; }
   <td class="status-yes">Skeptic caught</td>
   <td>&mdash;</td>
   <td class="status-mixed">Skeptic &#x2705; Synth &#x274C;</td>
+  <td class="status-no">Skeptic &#x274C;</td>
   <td class="status-mixed">MIXED</td>
 </tr>
 <tr>
@@ -268,7 +305,17 @@ h3 { font-size: 1.1em; margin: 20px 0 10px; color: #88bbdd; }
   <td>&mdash;</td>
   <td class="status-yes">Wrong task</td>
   <td class="status-yes">Synth garbled</td>
+  <td class="status-yes">Errors propagated</td>
   <td class="status-yes">SUPPORTED &#x1F525;</td>
+</tr>
+<tr>
+  <td><strong>H5b:</strong> Proposer-Revision fixes gap</td>
+  <td>&mdash;</td>
+  <td>&mdash;</td>
+  <td>&mdash;</td>
+  <td>&mdash;</td>
+  <td class="status-no">13.5% gap</td>
+  <td class="status-no">NOT SUPPORTED</td>
 </tr>
 </tbody>
 </table>
