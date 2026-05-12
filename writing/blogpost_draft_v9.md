@@ -7,7 +7,7 @@
 
 ### Abstract
 
-We investigate whether structured collaboration protocols—specifically a Proposer→Skeptic→Synthesizer pipeline—improve the factual accuracy and error detection of LLM-based agents compared to unstructured collaboration or solo work. Across 4 experimental sessions using JavaScript bug-hunting tasks (Sessions 1-4), we find that structured collaboration can introduce synthesis-stage information loss, with solo work outperforming the pipeline 800 vs 700 on our hardest task. Our complementary historical analysis of 405 days of AI Village collaboration reveals that validator roles are the strongest predictor of goal success (effect size d ≈ 1.33, p < 0.01).
+We investigate whether structured collaboration protocols—specifically a Proposer→Skeptic→Synthesizer pipeline—improve the factual accuracy and error detection of LLM-based agents compared to unstructured collaboration or solo work. Across 4 experimental sessions using JavaScript bug-hunting tasks (Sessions 1-4), we find no clean final-score advantage for the Proposer→Skeptic→Synthesizer pipeline across the clean comparable sessions; on Session 4's clean harder task, the Trio underperformed Solo/Pair (700 vs 800) because of synthesis-stage information loss. Our complementary historical analysis of 405 days of AI Village collaboration reveals that validator roles are the strongest predictor of goal success (effect size d ≈ 1.33, p < 0.01).
 
 ---
 
@@ -93,7 +93,7 @@ The Proposer (Sonnet 4.5) correctly identified all 10 bugs. The Skeptic (Gemini 
 - **Bug 8 (state leak):** Proposer correctly identified `_stockRef: this.stock` at line 125. Synthesizer changed it to `failedItems` at lines 79-82 — different function, different mechanism.
 - **Bug 3 (loose equality):** Proposer correctly identified order.js line 163. Synthesizer changed it to inventory.js line 103 — wrong file entirely.
 
-This represents **measurable information loss at the synthesis stage**, not noise or disagreement. The error-correction benefits of structured review were undone by the consolidation step.
+This represents **measurable information loss at the synthesis stage**, not noise or scorer disagreement. On this task, the error-correction benefits of structured review were partially undone by the consolidation step.
 
 #### 3.5 Cumulative Evidence
 
@@ -102,7 +102,7 @@ This represents **measurable information loss at the synthesis stage**, not nois
 | H1: Structure improves quality | NOT SUPPORTED (ceiling) | NOT SUPPORTED (Trio < Solo) | **NOT SUPPORTED** |
 | H2: Different insights | ✅ SUPPORTED | N/A (all found same bugs) | PARTIALLY SUPPORTED |
 | H3: Speed advantage | MIXED | Solo 3.5x faster than Trio | **Solo faster** |
-| H4: Error correction | ✅ STRONG | Skeptic worked; Synthesizer undid it | **MIXED** |
+| H4: Error correction | ✅ STRONG | Skeptic was accurate, but Synthesizer lost fidelity on 2 bugs | **MIXED** |
 
 **New hypothesis emerged from Session 4:**
 - **H5: Pipeline handoffs can degrade quality** — The synthesis stage introduced errors that neither upstream stage made. More stages ≠ better output.
@@ -146,11 +146,11 @@ Our research process itself yielded novel insights:
 
 Our multi-session experiment yields several key findings:
 
-1. **Structured collaboration did not improve accuracy** — Across 4 sessions, the Proposer→Skeptic→Synthesizer pipeline never outperformed solo work. In Session 4, it performed significantly worse (87.5% vs 100%).
+1. **Structured collaboration did not improve final accuracy in our clean comparable sessions** — Across the sessions where clean score comparisons were possible, the Proposer→Skeptic→Synthesizer pipeline did not outperform solo work. In Session 4, it performed worse on this task (87.5% vs 100%).
 
 2. **Synthesis is a bottleneck** — Session 4 revealed that the consolidation/synthesis stage can introduce errors that upstream stages avoided. The Proposer found 10/10 bugs correctly; after synthesis, only 8/10 were correctly preserved.
 
-3. **The Skeptic role works, but isn't sufficient** — Skeptics caught errors in Sessions 2-4, but the synthesis stage can undo these gains.
+3. **Skeptic review looks useful, but isn't sufficient by itself** — The Skeptic clearly improved process quality in Session 2 and was accurate in Session 4, but downstream synthesis can still undo that benefit.
 
 4. **Historical validators predict success** — Our retrospective analysis found that goals with designated validators scored significantly higher (d ≈ 1.33), reinforcing the value of critical review roles.
 
@@ -160,7 +160,7 @@ Our multi-session experiment yields several key findings:
 - Critical review roles (Skeptics, validators) add value
 - Consolidation/synthesis stages require careful design to avoid information loss
 - Simpler structures (solo, pair) may outperform complex pipelines on well-defined tasks
-- Speed and quality don't necessarily trade off — solo was both faster AND more accurate
+- On Session 4's task, speed and quality did not trade off — Solo was both faster and more accurate than the Trio
 
 **Future work:**
 - Test synthesis stage alternatives (e.g., Proposer self-consolidates after Skeptic feedback)
