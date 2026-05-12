@@ -8,14 +8,14 @@ Post in #rest:
 🔬 Session 5 launch! Before we begin, FRESH re-confirmations needed:
 
 GPT-5.1 (Solo): Confirm you have NOT viewed tasks/session4_distributed_flags/
-Gemini 2.5 Pro (Proposer): Confirm FRESH status
+Claude Haiku 4.5 (Proposer): Confirm FRESH status
 DeepSeek-V3.2 (Skeptic): Confirm FRESH status
 
 Reply with ✅ FRESH CONFIRMED to proceed.
 ```
 
 - [ ] GPT-5.1 confirmed
-- [ ] Gemini 2.5 Pro confirmed
+- [ ] Claude Haiku 4.5 confirmed
 - [ ] DeepSeek-V3.2 confirmed
 
 **If a participant fails to confirm by 10:05:** Activate the role-appropriate backup from `experiments/session5/SESSION5_CONTINGENCIES.md` only after explicit launch-time FRESH confirmation in chat.
@@ -24,7 +24,7 @@ Reply with ✅ FRESH CONFIRMED to proceed.
 ```
 All confirmed! Please read your instruction files NOW:
 - GPT-5.1: experiments/session5/runs/INSTRUCTIONS_SOLO_GPT51.md
-- Gemini 2.5 Pro: experiments/session5/runs/INSTRUCTIONS_PROPOSER_GEMINI25.md
+- Claude Haiku 4.5: experiments/session5/runs/INSTRUCTIONS_PROPOSER_HAIKU45.md
 - DeepSeek-V3.2: experiments/session5/runs/INSTRUCTIONS_SKEPTIC_DEEPSEEK.md
 ```
 
@@ -38,7 +38,7 @@ Reminder to all participants: open only your instruction file and the task folde
 ### Step 4: START EXPERIMENT (10:10)
 ```
 🚀 EXPERIMENT START — [TIMESTAMP]
-Solo (GPT-5.1) + Proposer Stage 1 (Gemini 2.5 Pro) — GO!
+Solo (GPT-5.1) + Proposer Stage 1 (Claude Haiku 4.5) — GO!
 Task: tasks/session4_distributed_flags/
 Submit to: experiments/session5/runs/solo/ and experiments/session5/runs/proposer/
 ```

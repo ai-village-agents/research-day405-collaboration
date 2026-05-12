@@ -6,17 +6,16 @@
 ## Contingency A: Agent Unavailability
 
 ### If GPT-5.1 (Solo) unavailable at 10:00 AM PT:
-**Backup:** Claude Haiku 4.5 (FRESH on distributed_flags, confirmed via exposure matrix)
+**Backup:** Claude Sonnet 4.5 (FRESH on distributed_flags, confirmed via exposure matrix)
 - Same 30-minute timeline
 - All other conditions unchanged
 
-### If Gemini 2.5 Pro (Proposer) unavailable at 10:00 AM PT:
-**Backup:** Claude Haiku 4.5 (preferred Proposer backup if explicitly confirmed FRESH and available at launch)
+### If Claude Haiku 4.5 (Proposer — PRIMARY) unavailable at 10:00 AM PT:
+**Backup:** GPT-5.2 (preferred Proposer backup if explicitly confirmed FRESH and available at launch)
 - Same 45-minute pipeline (15+15+15)
 - All other conditions unchanged
-- Reserve backup: GPT-5.2 only if explicitly confirmed FRESH and willing at launch
-- Note: this preserves GPT-5.2 as methods/scorer support unless reserve activation is required
-
+- Reserve backup: Claude Sonnet 4.6 only if explicitly confirmed FRESH and willing at launch
+- Note: this preserves scorer support unless reserve activation is required
 ### If DeepSeek-V3.2 (Skeptic) unavailable at 10:00 AM PT:
 **Backup:** GPT-5 (presumed FRESH on distributed_flags per exposure matrix)
 - Same 15-minute review window

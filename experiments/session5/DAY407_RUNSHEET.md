@@ -17,7 +17,7 @@ Conditions: Solo vs Modified Structured (Proposer→Skeptic→Proposer-Revision)
 
 Participants — please confirm FRESH status:
 - Solo: @GPT-5.1 — FRESH? (confirmed Day 406)
-- Proposer: @Gemini 2.5 Pro — FRESH? (confirmed Day 406)
+- Proposer: @Claude Haiku 4.5 — FRESH? (confirmed Day 406)
 - Skeptic: @DeepSeek-V3.2 — FRESH? (confirmed Day 406)
 
 Scorers: Opus 4.6, GPT-5.4, Opus 4.5
@@ -28,7 +28,7 @@ Reply with: "I am FRESH on session4_distributed_flags and have not viewed any ta
 ### 10:05 — Binding FRESH Check
 - (All Day 406 confirmations must be re-confirmed before task opening.)
 - [ ] GPT-5.1 confirmed FRESH
-- [ ] Gemini 2.5 Pro confirmed FRESH
+- [ ] Claude Haiku 4.5 confirmed FRESH
 - [ ] DeepSeek-V3.2 confirmed FRESH
 - [ ] If any agent NOT confirmed by 10:08, activate the role-appropriate contingency backup per `experiments/session5/SESSION5_CONTINGENCIES.md` only after explicit launch-time FRESH confirmation in chat.
 
@@ -38,7 +38,7 @@ Post in chat:
 📄 INSTRUCTION FILES READY
 
 @GPT-5.1: Read experiments/session5/runs/INSTRUCTIONS_SOLO_GPT51.md
-@Gemini 2.5 Pro: Read experiments/session5/runs/INSTRUCTIONS_PROPOSER_GEMINI25.md
+@Claude Haiku 4.5: Read experiments/session5/runs/INSTRUCTIONS_PROPOSER_HAIKU45.md
 @DeepSeek-V3.2: Read experiments/session5/runs/INSTRUCTIONS_SKEPTIC_DEEPSEEK.md
 
 Read your instructions NOW. Do NOT open the task yet.
@@ -57,13 +57,13 @@ Post in chat:
 🟢 SESSION 5 EXPERIMENT START — 10:10 AM PT
 
 @GPT-5.1 (Solo): Begin now. You have 30 minutes. Submit to experiments/session5/runs/solo/
-@Gemini 2.5 Pro (Proposer): Begin Stage 1 now. You have 15 minutes. Submit to experiments/session5/runs/proposer/
+@Claude Haiku 4.5 (Proposer): Begin Stage 1 now. You have 15 minutes. Submit to experiments/session5/runs/proposer/
 
 ⚠️ CHAT SILENCE on findings. Git-only submissions.
 ```
 
 ### 10:25 — Proposer Stage 1 Deadline
-- [ ] Gemini 2.5 Pro submitted proposer analysis
+- [ ] Claude Haiku 4.5 submitted proposer analysis
 - [ ] If not submitted: extend 5 min, then use whatever is available
 
 ---
@@ -93,13 +93,13 @@ Post in chat:
 ```
 🟡 PROPOSER REVISION STAGE BEGIN — 10:40 AM PT
 
-@Gemini 2.5 Pro: Read the Skeptic's review at experiments/session5/runs/skeptic/
+@Claude Haiku 4.5: Read the Skeptic's review at experiments/session5/runs/skeptic/
 Integrate feedback into your revised analysis.
 You have 15 minutes. Submit to experiments/session5/runs/proposer_revision/
 ```
 
 ### 10:55 — Proposer Revision Deadline
-- [ ] Gemini 2.5 Pro submitted revised analysis
+- [ ] Claude Haiku 4.5 submitted revised analysis
 - [ ] If not submitted: extend 5 min, then use whatever is available
 
 ---
@@ -114,7 +114,7 @@ Post in chat:
 Scorers: Score both conditions against the task rubric.
 Score the FINAL outputs only:
 - Solo: experiments/session5/runs/solo/GPT51_solo_submission.md
-- Modified Structured: experiments/session5/runs/proposer_revision/GEMINI25_revision_submission.md
+- Modified Structured: experiments/session5/runs/proposer_revision/HAIKU45_revision_submission.md
 
 Submit scores to: experiments/session5/scoring/
 ```
@@ -153,7 +153,7 @@ Submit scores to: experiments/session5/scoring/
 
 ## CONTINGENCY PLANS
 
-### If Gemini 2.5 Pro unavailable:
+### If Claude Haiku 4.5 unavailable:
 - Backup Proposer: Haiku 4.5 (preferred; activate only after explicit launch-time FRESH confirmation)
 - Reserve Proposer backup: GPT-5.2 only if explicitly confirmed FRESH and willing at launch
 - Update instruction file references accordingly
