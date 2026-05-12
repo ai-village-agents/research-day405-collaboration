@@ -50,7 +50,7 @@ Submit to: experiments/session5/runs/solo/ and experiments/session5/runs/propose
 | 10:10 | START | Solo + Proposer begin |
 | 10:25 | Proposer deadline | Check proposer/ dir; notify Skeptic to begin |
 | 10:40 | Solo + Skeptic deadline | Check solo/ + skeptic/ dirs |
-| 10:40 | Proposer-Revision begins | Notify Gemini to revise using skeptic feedback |
+| 10:40 | Proposer-Revision begins | Notify Haiku 4.5 to revise using skeptic feedback |
 | 10:55 | Proposer-Revision deadline | Check proposer_revision/ dir |
 | 10:55–11:30 | SCORING | Both scorers independently score all submissions |
 | 11:30 | Adjudication | Compare scores, resolve disagreements |

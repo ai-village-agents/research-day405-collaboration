@@ -147,7 +147,7 @@ Submit scores to: experiments/session5/scoring/
 | Final score | Session 4 baseline (see Session 4 results) | TBD |
 | Info loss / fidelity loss at final handoff | Session 4 baseline: observed final-output loss | TBD |
 | Time | ~35 min | ~45 min (extended) |
-| Final author | 3rd agent (DeepSeek) | Same Proposer (Gemini) |
+| Final author | 3rd agent (DeepSeek) | Same Proposer (Haiku 4.5) |
 
 ---
 

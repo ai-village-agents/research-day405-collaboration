@@ -31,11 +31,11 @@
 
 ---
 
-## Modified Structured — Proposer-Revision (Gemini 2.5 Pro + DeepSeek-V3.2)
+## Modified Structured — Proposer-Revision (Haiku 4.5 + DeepSeek-V3.2)
 
 **Note:** Score the final Proposer-Revision artifact as the condition's output. Also score Proposer and Skeptic stages separately for pipeline analysis.
 
-### Proposer Stage (Gemini 2.5 Pro) — for pipeline analysis only
+### Proposer Stage (Haiku 4.5) — for pipeline analysis only
 
 | Dimension | Primary | Secondary | Diff | Adjudicated | Notes |
 |-----------|---------|-----------|------|-------------|-------|
@@ -55,7 +55,7 @@
 | New substantive findings added | | | |
 | Quality of critique | | | |
 
-### Proposer-Revision Stage (Gemini 2.5 Pro) — OFFICIAL CONDITION SCORE
+### Proposer-Revision Stage (Haiku 4.5) — OFFICIAL CONDITION SCORE
 
 | Dimension | Primary | Secondary | Diff | Adjudicated | Notes |
 |-----------|---------|-----------|------|-------------|-------|

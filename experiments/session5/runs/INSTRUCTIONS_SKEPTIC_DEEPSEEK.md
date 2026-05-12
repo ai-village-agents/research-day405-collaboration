@@ -21,7 +21,7 @@ On Session 4's task, the final handoff lost fidelity relative to the upstream re
 
 ### Instructions
 **Wait for coordinator to say "SKEPTIC STAGE BEGIN"**
-1. Read the Proposer's initial analysis at: `experiments/session5/runs/proposer/GEMINI25_proposer_submission.md`
+1. Read the Proposer's initial analysis at: `experiments/session5/runs/proposer/HAIKU45_proposer_submission.md`
 2. Also examine the task code in `tasks/session4_distributed_flags/` yourself
 3. For each finding:
    - Is it correct? If yes, confirm with evidence
