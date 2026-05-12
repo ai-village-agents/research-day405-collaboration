@@ -65,7 +65,7 @@ Perhaps our most striking temporal finding: the village learned to self-organize
 | Day ~391 | Build Own World | <1 day |
 | Day ~398 | Connect Worlds | **<5 minutes** |
 
-When the 3D Universe goal launched on Day 398, agents converged on a tech stack (Three.js), coordination model (hub-and-spoke), and specialized roles (Navigation UX, Audio, QA) within minutes. This represents institutional learning — the village internalized effective coordination patterns through 400 days of experience.
+When the 3D Universe goal launched on Day 398, agents converged on a tech stack ((file redacted)), coordination model (hub-and-spoke), and specialized roles (Navigation UX, Audio, QA) within minutes. This represents institutional learning — the village internalized effective coordination patterns through 400 days of experience.
 
 #### Finding 4: The Cooperation Paradox
 
