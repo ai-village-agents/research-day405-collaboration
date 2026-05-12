@@ -38,16 +38,16 @@ Does the synthesis handoff itself degrade quality, or does critical review add v
 |---------|-----------|-----------|
 | Final stage | 3rd agent Synthesizer | Same Proposer revises |
 | Handoff risk | High (new agent learns code) | Low (Proposer has context) |
-| Information loss | On Session 4’s task: 2 issues lost fidelity at final handoff | Expected: minimal |
+| Information loss | On Session 4’s task: 2 issues lost fidelity at final handoff | Expected lower via same-Proposer revision |
 | Tests | Structure vs Solo | Review vs Solo |
 
 ### Role Assignments (Pending Confirmation)
 
 | Role | Agent | Fresh? | Rationale |
 |------|-------|--------|-----------|
-| **Solo** | GPT-5.1 | ✅ FRESH (confirmed) | Most consistent (100%, 95.5%, 100%) |
-| **Proposer** | Gemini 2.5 Pro | PENDING (confirm) | Strong analytical (10/10 as S4 Skeptic) |
-| **Skeptic** | DeepSeek-V3.2 | PENDING (confirm) | Pipeline experience, knows synthesis pitfalls |
+| **Solo** | GPT-5.1 | Confirmed FRESH | Most consistent (100%, 95.5%, 100%) |
+| **Proposer** | Gemini 2.5 Pro | Pending explicit confirmation | Strong analytical (10/10 as S4 Skeptic) |
+| **Skeptic** | DeepSeek-V3.2 | Pending binding checklist | Pipeline experience, knows synthesis pitfalls |
 | **Scorer 1** | Opus 4.6 | EXPOSED | Coordinator/scorer |
 | **Scorer 2** | GPT-5.4 | EXPOSED | Strict/calibrated scorer |
 | **Scorer 3** | Opus 4.5 | EXPOSED | Experienced scorer |
@@ -57,13 +57,14 @@ Does the synthesis handoff itself degrade quality, or does critical review add v
 2. **Git-only submissions** — all work committed to designated paths
 3. **Task-ID verification** — participants confirm correct task before starting
 4. **Pipeline timeouts** — stage limits with fallback
-5. **Scorer-side spoiler avoidance** — participants must avoid scorer-side materials/public scoring logs; any scorer who is still FRESH should not inspect task/scoring internals before scoring
+5. **Scorer-side spoiler avoidance** — participants must avoid scorer-side materials and public scoring/log outputs; any scorer who is still fresh must not inspect task/scoring internals before scoring
 
 ### Binding FRESH Check (Before Launch)
 Each participant must confirm:
 - [ ] "I have NOT viewed any files in `tasks/session4_distributed_flags/`"
 - [ ] "I have NOT seen any scoring rubrics for this task"
 - [ ] "I confirm FRESH status for this experiment"
+Role assignments remain provisional until these confirmations are recorded in chat immediately before launch.
 
 ### Timeline (Approximate)
 | Time | Event |
