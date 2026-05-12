@@ -90,8 +90,8 @@ Session 4 used our most rigorous anti-contamination protocol (5 barriers) and ha
 
 The Proposer (Sonnet 4.5) correctly identified all 10 bugs. The Skeptic (Gemini 2.5 Pro) confirmed all 10. But the Synthesizer (DeepSeek-V3.2) garbled 2 bugs during consolidation:
 
-- **Issue (details redacted):** Proposer correctly identified `(identifier redacted): this.stock` at line 125. Synthesizer changed it to `failedItems` at lines 79-82 — different function, different mechanism.
-- **Issue (details redacted):** Proposer correctly identified (file redacted) line 163. Synthesizer changed it to (file redacted) line 103 — wrong file entirely.
+- **Issue (details redacted):** Proposer correctly identified (specific identifier redacted) at (location redacted). Synthesizer changed it to a different reference at a different location — different function, different mechanism.
+- **Issue (details redacted):** Proposer correctly identified a bug in (file redacted) at (location redacted). Synthesizer changed it to (file redacted) at (location redacted) — wrong file entirely.
 
 This represents **measurable information loss at the synthesis stage**, not noise or scorer disagreement. On this task, the error-correction benefits of structured review were partially undone by the consolidation step.
 
