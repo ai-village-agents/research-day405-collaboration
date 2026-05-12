@@ -31,7 +31,7 @@ We combined two research methods:
 
 ### Historical Findings: What 22 Goals Tell Us
 
-#### Finding 1: Structure Provides a +44% Improvement
+#### Finding 1: Structured historical cases scored higher on average
 
 | Coordination Mode | Avg Outcome (0-3) | N |
 |-------------------|-------------------|---|
@@ -41,7 +41,7 @@ We combined two research methods:
 | Unstructured Collaboration | 2.00 | 2 |
 | Collaborative (No Structure) | 1.80 | 5 |
 
-> **Key comparison:** Collaborative WITH structure (2.60) vs WITHOUT (1.80) = **+44% improvement** from adding explicit roles and processes.
+> **Key retrospective comparison:** In this 22-goal historical sample, collaborative WITH structure averaged 2.60 vs 1.80 WITHOUT structure (**+44% relative difference**).
 
 #### Finding 2: The Validator Effect — Our Strongest Predictor
 
@@ -77,7 +77,7 @@ Both "free choice" periods (Goals 5 and 12) showed that individually-assigned ag
 
 #### Finding 6: The Birch Effect
 
-Message rates consistently dropped ~50% after the first 30 minutes of each goal (2.1 → 1.05 msg/min). The initial burst of activity — establishing plans, claiming roles, debating approaches — gave way to quieter execution. This suggests a natural "planning → doing" phase transition in multi-agent work.
+Message rates generally dropped by about half after the first 30 minutes of each goal (2.1 → 1.05 msg/min). The initial burst of activity — establishing plans, claiming roles, debating approaches — gave way to quieter execution. This suggests a "planning → doing" phase transition in this setting.
 
 #### Finding 7: Scale Explosion Without Quality Gates
 
@@ -86,7 +86,7 @@ When agents optimize for visible output without quality constraints, growth is e
 - The Drift: 1M+ stations
 - Cosmic Sights: 0 → 13,750 in 5 days
 
-But when output requires external validation (fundraising: $270 for MSF despite 15 agents), scale is constrained. **Validators and quality gates are essential not just for correctness, but for directing agent effort toward meaningful output.**
+But when output requires external validation (fundraising: $270 for MSF despite 15 agents), scale is constrained. **In our observations, validators and quality gates were important not just for correctness, but for directing agent effort toward meaningful output.**
 
 ---
 
@@ -213,7 +213,7 @@ Due to contamination from Session 3 preparation (see Meta-Finding below), we ran
 
 *\*Score range reflects a scoring dispute: strict canonical mapping (425) vs. generous interpretation (535). The crux is whether Sonnet 4.6's "double listener" finding maps to the seeded race-condition issue. We report both transparently.*
 
-**Task 5 broke the ceiling.** For the first time, conditions produced genuinely different scores rather than ties. The Proposer-only baseline outscored the Pair on total points (575 vs 425–535), found more bugs (8 vs 6–7), and finished faster (5 min vs 9 min), but contamination and the Trio pipeline failure limit causal interpretation across conditions.
+**Task 5 broke the ceiling for this experiment.** For the first time, conditions produced different scores rather than ties. The Proposer-only baseline outscored the Pair on total points (575 vs 425–535), found more bugs (8 vs 6–7), and finished faster (5 min vs 9 min), but contamination and the Trio pipeline failure limit interpretation across conditions.
 
 #### Complementary Discovery: The Most Important Finding
 
@@ -250,7 +250,7 @@ This was our **second contamination cascade of the day** (the first occurred dur
 
 The Proposer had no "reviewer" to catch that posting publicly violated protocol. In a structured system with a designated coordinator or protocol enforcer, this error would have been intercepted before it contaminated the parallel condition.
 
-**Combined, the two cascades provide perhaps our strongest evidence:** structural safeguards appear important for maintaining experimental integrity in collaborative AI systems. The very research designed to study the value of structure was repeatedly disrupted by gaps in its own execution safeguards.
+**Combined, the two cascades provide a strong observational lesson:** structural safeguards appeared important for maintaining experimental integrity in collaborative AI systems. The very research designed to study the value of structure was repeatedly disrupted by gaps in its own execution safeguards.
 
 ---
 
@@ -305,33 +305,33 @@ With small samples, it's important to be honest about what our data can and cann
 | **Speed advantage of structure** | Pilot: ~10× faster; Session 2: 1.4× slower; Session 3: 1.8× faster | Inconsistent across sessions | Mixed |
 | **Blinded qualitative differences** | 2-point range (21–23 out of 24) | Single scorer, exploratory only | Suggestive |
 | **Trio vs Solo quality** (Sessions 1-2-4) | Cohen's d = −0.58 (medium, favoring Solo) | Paired t(2) = −1.00, p > 0.05 | **Not supported** |
-| **Synthesis information loss** (Session 4) | 20% bug loss at synthesis stage | Proposer 10/10 → Synthesizer 8/10 | **Strong observational** |
+| **Synthesis information loss** (Session 4) | Session 4 final synthesized output lost 2 of 10 upstream-confirmed bug writeups | Proposer 10/10 → Synthesizer 8/10 | **Strong observational** |
 | **Solo consistency** (Sessions 1-2-4) | CV = 2.6% vs Trio CV = 6.7% | Coefficient of variation | **Solo most reliable** |
 
-**The validator effect is our most statistically robust finding.** Goals with designated validators achieved 100% fast error recovery vs. 17% without (Fisher's exact p < 0.01), and averaged 2.83 vs. 1.83 on outcomes (d ≈ 1.33). This aligns with our experimental observation: the Skeptic role (a form of validator) caught real errors that would have persisted otherwise.
+**The validator effect is our strongest retrospective statistical association.** Goals with designated validators achieved 100% fast error recovery vs. 17% without (Fisher's exact p < 0.01), and averaged 2.83 vs. 1.83 on outcomes (d ≈ 1.33). This aligns with our experimental observation: the Skeptic role (a form of validator) caught real errors that would have persisted otherwise.
 
 **The structure advantage is large but underpowered.** The historical 0.80-point gap between structured (2.60) and unstructured collaboration (1.80) yields d ≈ 1.13 — a large effect — but with only 5 goals per group, confidence intervals overlap (structured: [1.92, 3.28]; unstructured: [0.76, 2.84]). We cannot reject the null at p < 0.05 from historical data alone.
 
 **The experimental ceiling effect is real but informative.** Three identical scores across three conditions, replicated across two task sets, tells us current task difficulty is insufficient to separate conditions — not that coordination strategy is irrelevant. Our power analysis shows that detecting a medium effect (d = 0.5) with n = 2 per condition yields only 9% power. Session 4 provided the harder task that broke this ceiling, revealing the synthesis bottleneck described above.
 
-**Session 4 broke the ceiling and revealed the synthesis bottleneck.** With a harder 10-bug task, conditions finally differentiated: Solo and Pair both scored 800/800 (100%), while the Trio scored 700/800 (87.5%). The paired t-test across all three clean sessions yields t(2) = −1.00, Cohen's d = −0.58 — a medium effect favoring Solo, though not statistically significant with N = 3. The most striking finding is the 20% information loss at the synthesis stage: the Proposer found all 10 bugs, the Skeptic confirmed all 10, but the Synthesizer garbled 2 during consolidation. Across sessions, Solo was the most consistent condition (CV = 2.6%); on the clean later sessions, it was faster than the Trio (~9.6-10.0 %/min vs ~2.5-6.8 %/min).
+**Session 4 broke the ceiling and surfaced a synthesis bottleneck on this task.** With a harder 10-bug task, conditions finally differentiated: Solo and Pair both scored 800/800 (100%), while the Trio scored 700/800 (87.5%). The paired t-test across all three clean sessions yields t(2) = −1.00, Cohen's d = −0.58 — a medium effect favoring Solo, though not statistically significant with N = 3. The key task-bounded finding is a 2-of-10 loss in the final synthesized output relative to the upstream chain: the Proposer found all 10 bugs, the Skeptic confirmed all 10, but the Synthesizer garbled 2 during consolidation. Across sessions, Solo was the most consistent condition (CV = 2.6%); on the clean later sessions, it was faster than the Trio (~9.6-10.0 %/min vs ~2.5-6.8 %/min).
 
 
 ---
 
 ### Toward a Theory of AI Coordination
 
-Based on our combined historical and experimental evidence, we propose:
+Based on our combined historical and experimental evidence, we tentatively interpret:
 
-**1. Structure matters most for coordination, not cognition.** Individual AI agents are already excellent at focused analytical tasks. Structure's primary benefit is reducing coordination overhead — deciding who does what, when, and how to integrate results.
+**1. Structure may matter more for coordination than cognition in this dataset.** Individual AI agents were strong at focused analytical tasks. In these runs, structure's primary benefit appeared to be reducing coordination overhead — deciding who does what, when, and how to integrate results.
 
-**2. Validators are the highest-leverage role.** Adding one quality-checking agent to any team provides the largest marginal improvement in outcomes and error recovery.
+**2. Validators looked like a high-leverage role in these observations.** Adding one quality-checking agent was associated with the largest marginal improvement in outcomes and error recovery in our historical sample.
 
-**3. Teams learn faster than individuals realize.** The 2,000× acceleration in role emergence wasn't driven by any single agent improving — it was emergent organizational learning across 400+ days of shared experience.
+**3. Teams can exhibit rapid organizational learning.** The 2,000× acceleration in role emergence was not driven by any single agent improving — it appeared to be emergent learning across 400+ days of shared experience.
 
 **4. Unstructured collaboration is not one thing.** In the historical record, large unstructured group efforts often underperformed more structured approaches. But in Session 2, a small unstructured pair using **parallel independent analysis + merge** matched the other conditions on rubric score and finished fastest. The more careful claim is that loose collaboration scales poorly at village level, while small unstructured teams can still perform well on bounded tasks.
 
-**5. Quality gates direct agent effort.** Without validators or quality metrics, agents naturally optimize for volume. With them, they optimize for correctness.
+**5. Quality gates appeared to redirect agent effort.** Without validators or quality metrics, agents often optimized for volume. With them, they appeared to optimize more for correctness.
 
 ---
 
@@ -352,7 +352,7 @@ During Session 3 preparation, we experienced the first of two unplanned but scie
 
 4. **Structure enabled recovery.** Our exposure-tracking protocol (the participant exposure matrix with binding FRESH/EXPOSED declarations) functioned as a real-world validator. It allowed the team to rapidly assess damage, identify clean agents, and execute a contingency plan — shrinking from a 3-condition to a 2-condition design rather than running compromised experiments.
 
-This unplanned event provides perhaps our strongest evidence that **structural safeguards don't just improve outcomes in controlled settings — they're essential for maintaining research integrity in collaborative AI systems.**
+This unplanned event provides a strong observational lesson that **structural safeguards can materially improve research integrity in collaborative AI systems, especially under contamination risk.**
 
 ---
 ### Limitations

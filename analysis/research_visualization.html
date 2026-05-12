@@ -116,8 +116,8 @@ h3 { font-size: 1.1em; margin: 20px 0 10px; color: #88bbdd; }
 <!-- KEY FINDING HIGHLIGHT -->
 <div class="key-finding">
 <h3>&#x1F525; Key Finding: Synthesis Degradation Effect</h3>
-<p>In Session 4, the Proposer correctly identified <span class="stat">10/10</span> bugs. After passing through the Skeptic and Synthesizer pipeline, only <span class="stat">8/10</span> survived correctly &mdash; a <span class="stat">20% information loss</span> at the synthesis stage. The structured pipeline scored <span class="stat">700/800 (87.5%)</span> while the Solo agent scored <span class="stat">800/800 (100%)</span>.</p>
-<p style="margin-top:10px;color:#bbb;font-size:0.9em;">More stages &ne; better output. The consolidation step can <em>introduce</em> errors that no upstream stage made.</p>
+<p>In Session 4, the Proposer correctly identified <span class="stat">10/10</span> bugs. In that task's final synthesized output, only <span class="stat">8/10</span> bug writeups were preserved correctly relative to the upstream chain &mdash; a <span class="stat">20% loss</span> during synthesis. The structured pipeline scored <span class="stat">700/800 (87.5%)</span> while the Solo agent scored <span class="stat">800/800 (100%)</span>.</p>
+<p style="margin-top:10px;color:#bbb;font-size:0.9em;">In this experiment, more stages did not automatically improve final output. The consolidation step can <em>introduce</em> errors that upstream stages did not make.</p>
 </div>
 
 <!-- ALL SESSIONS COMPARISON -->
@@ -201,7 +201,7 @@ h3 { font-size: 1.1em; margin: 20px 0 10px; color: #88bbdd; }
 </div>
 
 <!-- TIME COMPARISON -->
-<h2>&#x23F1;&#xFE0F; Speed: Solo Faster in Clean Sessions</h2>
+<h2>&#x23F1;&#xFE0F; Speed: Solo Time Advantage in Clean Sessions</h2>
 <div class="card">
 <h3>Session 4 Completion Time</h3>
 <div class="time-bars">
@@ -219,7 +219,7 @@ h3 { font-size: 1.1em; margin: 20px 0 10px; color: #88bbdd; }
   <div class="time-track"><div class="time-fill bar-trio" style="width:100%"></div></div>
   <div class="time-val">~35 min</div>
 </div>
-<p style="font-size:0.85em;color:#888;margin-top:12px;">Solo was <strong style="color:#4aff9a">3.5x faster</strong> than the Trio pipeline &mdash; and more accurate (100% vs 87.5%)</p>
+<p style="font-size:0.85em;color:#888;margin-top:12px;">On Session 4, Solo was <strong style="color:#4aff9a">3.5x faster</strong> than the Trio pipeline &mdash; and scored higher on that task (100% vs 87.5%).</p>
 </div>
 
 <!-- HYPOTHESIS TESTING -->
@@ -252,7 +252,7 @@ h3 { font-size: 1.1em; margin: 20px 0 10px; color: #88bbdd; }
   <td class="status-no">Solo fast</td>
   <td>&mdash;</td>
   <td class="status-no">Solo 3.5x</td>
-  <td class="status-no">SOLO FASTER</td>
+  <td class="status-mixed">MIXED; TASK-BOUNDED SPEED PATTERN</td>
 </tr>
 <tr>
   <td><strong>H4:</strong> Error correction via pipeline</td>
@@ -288,7 +288,7 @@ h3 { font-size: 1.1em; margin: 20px 0 10px; color: #88bbdd; }
     <div class="val-label">Quality without Validators<br><span style="font-size:0.85em;">(16 goals)</span></div>
   </div>
 </div>
-<p style="text-align:center;font-size:0.9em;color:#aaa;">Goals with designated validators scored <strong style="color:#4aff9a">55% higher</strong> on average. This is the strongest predictor of success across all 22 village goals.</p>
+<p style="text-align:center;font-size:0.9em;color:#aaa;">Goals with designated validators scored <strong style="color:#4aff9a">55% higher</strong> on average. This is the strongest retrospective predictor of success across all 22 village goals.</p>
 </div>
 
 <!-- KEY FINDINGS -->
@@ -296,15 +296,15 @@ h3 { font-size: 1.1em; margin: 20px 0 10px; color: #88bbdd; }
 <div class="card">
 <div class="finding">
   <div class="finding-icon">&#x1F4A1;</div>
-  <div class="finding-text"><strong>Synthesis Degradation Effect:</strong> Additional pipeline stages can <em>reduce</em> quality. The Synthesizer garbled <span class="finding-stat">20%</span> of correctly-identified bugs, turning a perfect <span class="finding-stat">10/10</span> into <span class="finding-stat">8/10</span>.</div>
+  <div class="finding-text"><strong>Synthesis Degradation Effect:</strong> In Session 4, the final synthesized output lost fidelity relative to the upstream chain. The Synthesizer garbled <span class="finding-stat">2 of 10</span> correctly-identified bug writeups, turning <span class="finding-stat">10/10</span> upstream identification into <span class="finding-stat">8/10</span> in the final report.</div>
 </div>
 <div class="finding">
   <div class="finding-icon">&#x26A1;</div>
-  <div class="finding-text"><strong>Solo Consistency:</strong> The Solo agent (GPT-5.1) was the most consistent performer: <span class="finding-stat">100%, 95.5%, 100%</span> across clean sessions. Faster AND more accurate.</div>
+  <div class="finding-text"><strong>Solo Consistency:</strong> The Solo agent (GPT-5.1) was the most consistent performer across the clean comparable sessions: <span class="finding-stat">100%, 95.5%, 100%</span>. Solo was also faster than the Trio on the later clean tasks.</div>
 </div>
 <div class="finding">
   <div class="finding-icon">&#x1F50D;</div>
-  <div class="finding-text"><strong>Skeptics Work, Synthesizers Don&rsquo;t:</strong> The Skeptic caught errors in S2 and confirmed all findings in S4. But the Synthesizer <em>undid</em> those gains by introducing new errors during consolidation.</div>
+  <div class="finding-text"><strong>Review helped, but final synthesis could still lose fidelity:</strong> The Skeptic caught errors in S2 and confirmed all findings in S4. In Session 4, the final synthesis step then introduced errors during consolidation.</div>
 </div>
 <div class="finding">
   <div class="finding-icon">&#x1F4DC;</div>

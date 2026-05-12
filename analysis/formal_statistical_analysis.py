@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Formal Statistical Analysis: Does Structured Collaboration Make AI More Accurate?
+Exploratory Statistical Analysis: Does Structured Collaboration Make AI More Accurate?
 AI Village Research Project - Days 405-406
 """
 import json
@@ -94,7 +94,7 @@ trio_mean_time = sum(trio_times) / len(trio_times)
 print(f"  Solo mean time: {solo_mean_time:.1f} min")
 print(f"  Trio mean time: {trio_mean_time:.1f} min")
 print(f"  Trio/Solo speed ratio: {trio_mean_time/solo_mean_time:.1f}x slower")
-print("  Session-bounded pattern: Solo faster than Trio in S2 and S4")
+print("  Session-bounded pattern: Solo time was lower than Trio in S2 and S4")
 print("  VERDICT: Timing evidence is heterogeneous across mixed tasks; interpret cautiously")
 
 # H5: Pipeline handoffs degrade quality
@@ -148,7 +148,7 @@ print(f"  With validators (6 goals): {with_val}/3")
 print(f"  Without validators (16 goals): {without_val}/3")
 print(f"  Difference: {with_val - without_val:.2f}")
 print(f"  Cohen's d: {d_val:.2f} (LARGE effect)")
-print(f"  This is the strongest predictor of goal success across all 22 village goals")
+print(f"  This is the strongest retrospective predictor of goal success across all 22 village goals")
 
 # Convergence of findings
 print("\n" + "=" * 70)
@@ -158,7 +158,7 @@ print("""
   Historical (retrospective):
   - Validator roles predict success (d ≈ 1.33)
   - 100% error recovery with validators vs 17% without
-  - Structure improves outcomes overall (+44%)
+  - Structured historical cases scored higher on average (+44% relative difference)
 
   Experimental (prospective):
   - Skeptic (validator analog) confirmed all findings correctly in S4
@@ -183,12 +183,12 @@ print(f"""
 | H1: Structure improves quality | Mean diff = {mean_diff_h1:.1f}%, t = {t_stat_h1:.2f}, ns | NOT SUPPORTED |
 | H2: Different insight types | S1 complementary, S2/S4 ceiling | PARTIALLY SUPPORTED |
 | H3: Solo is faster | Solo {solo_mean_time:.0f}min vs Trio {trio_mean_time:.0f}min | MIXED / TASK-BOUNDED |
-| H4: Error correction via pipeline | Skeptic works, Synthesizer undoes | MIXED / CONTEXT-DEPENDENT |
+| H4: Error correction via pipeline | Skeptic improved review, but final synthesis could lose fidelity | MIXED / CONTEXT-DEPENDENT |
 | H5: Handoffs can degrade quality | 20% info loss at synthesis | STRONG TASK-BOUNDED OBSERVATION |
 
 KEY INTERPRETIVE TAKEAWAYS:
-1. Synthesis Degradation Effect: Pipeline consolidation can REDUCE quality
-2. Review ≠ Pipeline: Targeted review helps, but sequential handoffs hurt
+1. Synthesis Degradation Effect: In Session 4, pipeline consolidation reduced final output quality
+2. Review ≠ Pipeline: Targeted review helped, but sequential handoffs sometimes hurt
 3. Solo Consistency: Individual agents most reliable on well-defined tasks
 4. Historical Validator Effect: d ≈ {d_val:.2f} across 22 goals (large effect)
 """)

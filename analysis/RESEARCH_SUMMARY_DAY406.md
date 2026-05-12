@@ -5,7 +5,7 @@
 
 ## Executive Summary
 
-We conducted an exploratory, small-N, mixed-task experiment testing whether structured collaboration (Proposer→Skeptic→Synthesizer pipeline) improves LLM accuracy compared to solo work. Across 4 clean sessions, we found **no final-score advantage** for structure, and discovered a critical **synthesis-stage bottleneck** that degrades quality.
+We conducted an exploratory, small-N, mixed-task experiment testing whether structured collaboration (Proposer→Skeptic→Synthesizer pipeline) improves LLM accuracy compared to solo work. Across the clean comparable sessions (S1, S2, S4; S3 excluded as contaminated), we found **no final-score advantage** for structure, and observed a **session-specific synthesis-stage bottleneck** on Session 4.
 
 **Key Novel Finding:** Pipeline handoffs can introduce information loss that neither upstream stage produced. On Session 4's task, the Proposer correctly found all 10 bugs, the Skeptic confirmed all 10, but the Synthesizer's consolidation lost fidelity on 2 bugs, resulting in 12.5% score degradation (800→700).
 
@@ -32,7 +32,7 @@ We conducted an exploratory, small-N, mixed-task experiment testing whether stru
 | Trio | 700 | 87.5% | 8/10 (fully correct) | 35 min | Sonnet 4.5 (P) + Gemini 2.5 (S) + DeepSeek (Syn) |
 
 ### Information Loss Analysis
-**Proposer (Sonnet 4.5):** Found all 10 bugs with precise file/line/mechanism
+**Proposer (Sonnet 4.5):** Found all 10 bugs with specific mechanism-level identifications
 **Skeptic (Gemini 2.5 Pro):** Confirmed all 10 bugs correctly
 **Synthesizer (DeepSeek-V3.2):** Output 8/10 correct, 2 garbled during consolidation
 
@@ -87,7 +87,7 @@ We conducted an exploratory, small-N, mixed-task experiment testing whether stru
 
 ## Anti-Contamination Protocol: 5 Barriers
 
-After Session 3's contamination cascade (wrong-task Skeptic + public chat leakage), we developed a 5-barrier protocol that proved essential for clean Session 4 data:
+After Session 3's contamination cascade (wrong-task Skeptic + public chat leakage), we developed a 5-barrier protocol that proved important for clean Session 4 data:
 
 1. **Chat Silence** — No bug findings shared in public chat during experiment window
 2. **Git-Only Submissions** — All work committed to designated paths (no direct paste-sharing)
@@ -109,10 +109,12 @@ After Session 3's contamination cascade (wrong-task Skeptic + public chat leakag
 
 **Task:** distributed_flags task packet — multi-component system forensics task (550 pts)
 
-**Fresh Agents Confirmed:**
+**Fresh Agents Confirmed on Day 406:**
 - Solo: GPT-5.1 ✅
-- Proposer: Gemini 2.5 Pro (PENDING confirmation)
+- Proposer: Gemini 2.5 Pro ✅
 - Skeptic: DeepSeek-V3.2 ✅
+
+**Launch-time hygiene note:** Reconfirm FRESH status immediately before Session 5 start.
 
 **Timeline:** Day 407 (May 13), 10:00 AM–12:00 PM PT
 
@@ -130,10 +132,10 @@ On well-defined, deterministic tasks, individual agents are most consistent (CV=
 Our retrospective analysis of 22 village goals shows that designated validators (similar to our Skeptic role) predict success with d=1.33. This aligns with prospective finding that Skeptics catch errors.
 
 ### 4. Contamination Cascades Are Real
-Session 3 showed how a single wrong-task Skeptic + public chat can cascade through the pipeline. The 5-barrier protocol is essential.
+Session 3 showed how a single wrong-task Skeptic + public chat can cascade through the pipeline. The 5-barrier protocol was a strong practical safeguard in our runs.
 
 ### 5. Synthesis Is Task-Dependent?
-Session 4 synthesis failed on this bug-hunting task. Session 5 will test whether the bottleneck generalizes to multi-component forensics tasks.
+Session 4 final synthesis lost fidelity on this bug-hunting task. Session 5 will test whether that bottleneck generalizes to multi-component forensics tasks.
 
 ---
 
@@ -143,7 +145,7 @@ Session 4 synthesis failed on this bug-hunting task. Session 5 will test whether
 - [x] Finalize Session 5 protocol and materials
 - [x] Verify contamination hygiene of public artifacts
 - [x] Statistical analysis complete
-- [ ] Await Gemini 2.5 Pro FRESH confirmation
+- [x] Confirm Session 5 agent freshness on Day 406 (GPT-5.1, Gemini 2.5 Pro, DeepSeek-V3.2)
 - [ ] (Optional) Additional blogpost polish
 
 ### Tomorrow (Day 407, 10 AM – 2 PM)
