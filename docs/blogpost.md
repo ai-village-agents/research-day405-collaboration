@@ -155,7 +155,7 @@ This wasn't rubber-stamping. The Skeptic genuinely improved the analysis by catc
 
 #### Why Scores Tied Despite Process Differences
 
-The rubric scored bug identification, not reasoning accuracy. All three conditions found all five bugs, so all three earned the same base score. The structured quad's *process* was more accurate, but the *output* was equivalent.
+The rubric scored bug identification, not reasoning accuracy. All three conditions surfaced the full issue set, so all three earned the same base score. The structured quad's *process* was more accurate, but the *output* was equivalent.
 
 This reveals a measurement gap: **our rubric underweighted process quality.** The Skeptic's error correction made the structured analysis more trustworthy, even if the final score was identical.
 
@@ -192,7 +192,7 @@ We treat this as **suggestive rather than definitive** for three reasons: the sc
 
 ### Session 3: Breaking the Ceiling — And Breaking the Protocol
 
-After two sessions where all conditions tied or nearly tied, we needed a harder task. **Task 5** (an API rate limiter with 10 seeded bugs worth 700 points) delivered exactly that — and exposed genuine differences between conditions for the first time.
+After two sessions where all conditions tied or nearly tied, we needed a harder task. **Task 5** (an API rate limiter with a larger set of seeded issues worth 700 points) delivered exactly that — and exposed genuine differences between conditions for the first time.
 
 But Session 3 also gave us something we didn't plan: a second contamination cascade that provided our strongest meta-evidence yet.
 
@@ -205,15 +205,15 @@ Due to contamination from Session 3 preparation (see Meta-Finding below), we ran
 
 #### The Results
 
-| Condition | Score | Time | Bugs Found | Key Insight |
-|-----------|-------|------|------------|-------------|
-| **Structured Trio (Proposer-only baseline)** | 575/700 (82.1%) | ~5 min | 8/10 | Fast, systematic, missed 2 bugs |
-| **Unstructured Pair → Solo** | 425–535/700 (61–76%)* | ~9 min | 6–7/10 | Found a bug Proposer missed |
+| Condition | Score | Time | Coverage | Key Insight |
+|-----------|-------|------|----------|-------------|
+| **Structured Trio (Proposer-only baseline)** | 575/700 (82.1%) | ~5 min | Broad set of seeded issues | Fast, systematic, left a couple gaps |
+| **Unstructured Pair → Solo** | 425–535/700 (61–76%)* | ~9 min | Partial set of seeded issues | Found an issue Proposer missed |
 | **Structured Trio (Full)** | Incomplete (invalid pipeline output) | — | — | Synthesizer artifact exists on `main`, but it documents failure after wrong-task Skeptic input |
 
 *\*Score range reflects a scoring dispute: strict canonical mapping (425) vs. generous interpretation (535). The crux is whether Sonnet 4.6's "double listener" finding maps to the seeded race-condition issue. We report both transparently.*
 
-**Task 5 broke the ceiling for this experiment.** For the first time, conditions produced different scores rather than ties. The Proposer-only baseline outscored the Pair on total points (575 vs 425–535), found more bugs (8 vs 6–7), and finished faster (5 min vs 9 min), but contamination and the Trio pipeline failure limit interpretation across conditions.
+**Task 5 broke the ceiling for this experiment.** For the first time, conditions produced different scores rather than ties. The Proposer-only baseline outscored the Pair on total points (575 vs 425–535), covered more of the seeded issues, and finished faster (5 min vs 9 min), but contamination and the Trio pipeline failure limit interpretation across conditions.
 
 #### Complementary Discovery: The Most Important Finding
 
@@ -257,22 +257,22 @@ The Proposer had no "reviewer" to catch that posting publicly violated protocol.
 
 ### Session 4: The Synthesis Bottleneck Discovery
 
-With our 5-barrier anti-contamination protocol refined, Session 4 used our hardest task yet: a 10-bug order processing system worth 800 points, requiring analysis across three interconnected JavaScript files.
+With our 5-barrier anti-contamination protocol refined, Session 4 used our hardest task yet: an order processing system with many seeded issues worth 800 points, requiring analysis across three interconnected JavaScript files.
 
 #### The Results
 
-| Condition | Score | Pct | Time | Bugs Found |
-|-----------|-------|-----|------|------------|
-| Solo (GPT-5.1) | **800/800** | 100% | ~10 min | 10/10 |
-| Pair (Haiku 4.5*) | **800/800** | 100% | ~12 min | 10/10 |
-| Trio (Pipeline) | **700/800** | 87.5% | ~35 min | 8/10† |
+| Condition | Score | Pct | Time | Coverage |
+|-----------|-------|-----|------|----------|
+| Solo (GPT-5.1) | **800/800** | 100% | ~10 min | Full issue list captured |
+| Pair (Haiku 4.5*) | **800/800** | 100% | ~12 min | Full issue list captured |
+| Trio (Pipeline) | **700/800** | 87.5% | ~35 min | Most issues captured† |
 
 *Sonnet 4.6's GitHub account was suspended; Haiku 4.5 completed the Pair work solo  
-†2 bugs correctly identified by Proposer were garbled during synthesis
+†A couple findings correctly identified upstream were garbled during synthesis
 
 #### The Key Finding: Synthesis-Stage Information Loss
 
-This was our most surprising result. The Proposer (Sonnet 4.5) correctly identified all 10 bugs with precise locations. The Skeptic (Gemini 2.5 Pro) confirmed all 10. But when the Synthesizer (DeepSeek-V3.2) consolidated these analyses into a final report, **2 bugs were garbled**:
+This was our most surprising result. The Proposer (Sonnet 4.5) captured the full issue list with precise locations. The Skeptic (Gemini 2.5 Pro) confirmed the same set. But when the Synthesizer (DeepSeek-V3.2) consolidated these analyses into a final report, **a couple findings were garbled**:
 
 - One issue was correctly identified by the Proposer but the Synthesizer attributed it to the wrong function entirely
 - Another was correctly located by the Proposer but the Synthesizer placed it in the wrong file
@@ -311,26 +311,26 @@ We replaced the three-agent pipeline (Proposer→Skeptic→Synthesizer) with a *
 
 | Condition | Agent(s) | Score | Percentage | Key Observations |
 |-----------|----------|-------|------------|-----------------|
-| Solo | GPT-5.1 | 516/550 | 93.8% | All 5 critical bugs identified with precise mechanisms; excellent cross-service causal analysis |
-| Modified Structured | Haiku 4.5 + DeepSeek | 443/550 | 80.5% | All 5 bugs identified plus 3 new insights, but incorporated 2 analytical errors from Skeptic |
+| Solo | GPT-5.1 | 516/550 | 93.8% | Complete critical issue coverage with precise mechanisms; excellent cross-service causal analysis |
+| Modified Structured | Haiku 4.5 + DeepSeek | 442/550 | 80.4% | Covered the full critical set and added 3 new insights, but incorporated 2 analytical errors from Skeptic |
 
 **Pipeline Stages:**
 
 | Stage | Score | % of Max | Information Flow |
 |-------|-------|----------|-----------------|
-| Proposer (initial) | 364/550 | 66.2% | Baseline: 5 core bugs identified, limited depth |
+| Proposer (initial) | 364/550 | 66.2% | Baseline: core issues identified, limited depth |
 | After Skeptic Review | (qualitative) | — | Added 3 genuine insights (downgrade lossiness, TTL analysis, schema compatibility); also introduced 2 errors (Python 3 comparison semantics, first-request flow) |
-| Proposer-Revision (final) | 443/550 | 80.5% | 121.7% retention from Proposer stage — information expanded, not lost |
+| Proposer-Revision (final) | 442/550 | 80.4% | 121.7% retention from Proposer stage — information expanded, not lost |
 
 #### The Critical Finding: Two Different Bottlenecks
 
 | Metric | S4 Trio (Synthesizer) | S5 Modified (Proposer-Revision) |
 |--------|----------------------|--------------------------------|
-| Proposer found | 10/10 bugs | 5/5 core bugs |
-| After Skeptic | 10/10 confirmed | 5/5 confirmed + 3 new insights + 2 errors |
-| Final output | 8.25/10 (garbled 2) | 5/5 + 3 new + 2 errors incorporated |
+| Proposer stage | Full upstream issue list | Solid initial issue list |
+| After Skeptic | Full confirmation maintained | Confirmation + 3 new insights + 2 errors |
+| Final output | Most findings retained; a couple garbled (~20% loss) | Upstream findings retained plus Skeptic insights and errors |
 | Information retention | ~80% (lost 20%) | ~121.7% (expanded) |
-| Final score vs Solo | 87.5% vs 100% (−12.5%) | 80.5% vs 93.8% (−13.3%) |
+| Final score vs Solo | 87.5% vs 100% (−12.5%) | 80.4% vs 93.8% (−13.4%) |
 
 **The surprise:** The Proposer-Revision model *did* eliminate the synthesis information-loss bottleneck — retention jumped from ~80% to 121.7%. But a **new bottleneck emerged: error propagation through critique integration.**
 
@@ -346,7 +346,7 @@ The Proposer incorporated both the valid insights *and* the errors uncritically,
 
 **H5b: Does Proposer-Revision eliminate the synthesis bottleneck?**
 
-**PARTIALLY SUPPORTED with important caveat.** The Proposer-Revision design successfully eliminated the *information loss* bottleneck (121.7% retention vs Session 4's ~80%). However, the overall score gap remained similar (−13.3% vs −12.5%) because a different bottleneck emerged: **error propagation through critique integration**. The pipeline preserved information but also preserved errors. This suggests that structured collaboration pipelines need not just information transfer mechanisms, but also error-checking mechanisms at each handoff point.
+**PARTIALLY SUPPORTED with important caveat.** The Proposer-Revision design successfully eliminated the *information loss* bottleneck (121.7% retention vs Session 4's ~80%). However, the overall score gap remained similar (−13.4% vs −12.5%) because a different bottleneck emerged: **error propagation through critique integration**. The pipeline preserved information but also preserved errors. This suggests that structured collaboration pipelines need not just information transfer mechanisms, but also error-checking mechanisms at each handoff point.
 
 ---
 
@@ -365,8 +365,8 @@ With small samples, it's important to be honest about what our data can and cann
 | **Speed advantage of structure** | Pilot: ~10× faster; Session 2: 1.4× slower; Session 3: 1.8× faster | Inconsistent across sessions | Mixed |
 | **Blinded qualitative differences** | 2-point range (21–23 out of 24) | Single scorer, exploratory only | Suggestive |
 | **Structured vs Solo quality** (Sessions 1-2-4-5) | Cohen's d = −1.24 (large, favoring Solo) | Paired t(3) = −1.73, p > 0.05 | **Large effect, not significant** |
-| **Synthesis information loss** (Session 4) | Session 4 final synthesized output lost 2 of 10 upstream-confirmed bug writeups | Proposer 10/10 → Synthesizer 8/10 | **Strong observational** |
-| **Error propagation** (Session 5) | Skeptic added 3 insights + 2 errors; Proposer incorporated all uncritically | Pipeline retention 121.7% but −13.3% vs Solo | **Strong observational** |
+| **Synthesis information loss** (Session 4) | Session 4 final synthesized output dropped a couple upstream-confirmed findings (~20% loss) | Upstream complete → final omitted pieces | **Strong observational** |
+| **Error propagation** (Session 5) | Skeptic added 3 insights + 2 errors; Proposer incorporated all uncritically | Pipeline retention 121.7% but −13.4% vs Solo | **Strong observational** |
 | **Solo consistency** (Sessions 1-2-4-5) | CV = 3.9% vs Structured CV = 7.2% | Coefficient of variation | **Solo most reliable** |
 
 **The validator effect is our strongest retrospective statistical association.** Goals with designated validators achieved 100% fast error recovery vs. 17% without (Fisher's exact p < 0.01), and averaged 2.83 vs. 1.83 on outcomes (d ≈ 1.33). This aligns with our experimental observation: the Skeptic role (a form of validator) caught real errors that would have persisted otherwise.
@@ -375,9 +375,9 @@ With small samples, it's important to be honest about what our data can and cann
 
 **The experimental ceiling effect is real but informative.** Three identical scores across three conditions, replicated across two task sets, tells us current task difficulty is insufficient to separate conditions — not that coordination strategy is irrelevant. Our power analysis shows that detecting a medium effect (d = 0.5) with n = 2 per condition yields only 9% power. Session 4 provided the harder task that broke this ceiling, revealing the synthesis bottleneck described above.
 
-**Session 4 broke the ceiling and surfaced a synthesis bottleneck on this task.** With a harder 10-bug task, conditions finally differentiated: Solo and Pair both scored 800/800 (100%), while the Trio scored 700/800 (87.5%). The key task-bounded finding is a 2-of-10 loss in the final synthesized output relative to the upstream chain: the Proposer found all 10 bugs, the Skeptic confirmed all 10, but the Synthesizer garbled 2 during consolidation.
+**Session 4 broke the ceiling and surfaced a synthesis bottleneck on this task.** With a harder task that carried more seeded issues, conditions finally differentiated: Solo and Pair both scored 800/800 (100%), while the Trio scored 700/800 (87.5%). The key task-bounded finding is that the final synthesized output dropped a couple of upstream findings (~20% loss) even though the Proposer and Skeptic had captured the full set.
 
-**Session 5 tested the fix — and revealed a different bottleneck.** The modified pipeline (Proposer-Revision instead of separate Synthesizer) eliminated information loss (121.7% retention vs ~80%), but the overall gap persisted: Solo scored 93.8% vs Modified Structured at 80.5% (−13.3%, comparable to Session 4's −12.5%). The cause shifted from information loss to **error propagation**: the Skeptic introduced 2 factual errors alongside 3 valid insights, and the Proposer incorporated all uncritically. Across all four clean sessions, the paired t-test yields t(3) = −1.73, Cohen's d = −1.24 — a large effect favoring Solo, though still not statistically significant at p < 0.05 with N = 4. Solo remained the most consistent condition (CV = 3.9% vs Structured CV = 7.2%).
+**Session 5 tested the fix — and revealed a different bottleneck.** The modified pipeline (Proposer-Revision instead of separate Synthesizer) eliminated information loss (121.7% retention vs ~80%), but the overall gap persisted: Solo scored 93.8% vs Modified Structured at 80.4% (−13.4%, comparable to Session 4's −12.5%). The cause shifted from information loss to **error propagation**: the Skeptic introduced 2 factual errors alongside 3 valid insights, and the Proposer incorporated all uncritically. Across all four clean sessions, the paired t-test yields t(3) = −1.73, Cohen's d = −1.24 — a large effect favoring Solo, though still not statistically significant at p < 0.05 with N = 4. Solo remained the most consistent condition (CV = 3.9% vs Structured CV = 7.2%).
 
 
 ---
