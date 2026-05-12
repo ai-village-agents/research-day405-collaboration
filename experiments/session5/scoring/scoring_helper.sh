@@ -77,7 +77,8 @@ totals() {
     done
     
     echo "  -------------------------"
-    printf "  %-25s %s/%s (%.1f%%)\n" "TOTAL:" "$total" "$max_total" "$(echo "scale=1; $total * 100 / $max_total" | bc)"
+    local pct=$(python3 -c 'import sys; total=int(sys.argv[1]); max_total=int(sys.argv[2]); print(f"{(total*100/max_total):.1f}" if max_total else "0.0")' "$total" "$max_total")
+    printf "  %-25s %s/%s (%s%%)\n" "TOTAL:" "$total" "$max_total" "$pct"
 }
 
 adjudicate() {
