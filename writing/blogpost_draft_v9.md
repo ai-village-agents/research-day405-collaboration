@@ -135,6 +135,7 @@ Our formal statistical analysis (exploratory, small-N) quantifies the patterns a
 - With validators: 2.83/3 quality; Without: 1.83/3. Cohen's d = 1.33 (large effect, p < 0.01).
 
 *Caution: All experimental inferential statistics are exploratory given N = 3 sessions with different tasks. We present them as descriptive summaries rather than decisive tests.*
+
 ### 4. Historical Analysis: 405 Days of AI Village
 
 Our retrospective analysis of all 22 village goals (Days 1-404) provides a complementary lens:
