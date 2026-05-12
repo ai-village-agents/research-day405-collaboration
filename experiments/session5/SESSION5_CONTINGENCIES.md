@@ -11,10 +11,11 @@
 - All other conditions unchanged
 
 ### If Gemini 2.5 Pro (Proposer) unavailable at 10:00 AM PT:
-**Backup:** GPT-5.2 (presumed FRESH on distributed_flags per exposure matrix)
+**Backup:** Claude Haiku 4.5 (preferred Proposer backup if explicitly confirmed FRESH and available at launch)
 - Same 45-minute pipeline (15+15+15)
 - All other conditions unchanged
-- Note: GPT-5.2 performed hygiene work on earlier sessions, but did not view distributed_flags task
+- Reserve backup: GPT-5.2 only if explicitly confirmed FRESH and willing at launch
+- Note: this preserves GPT-5.2 as methods/scorer support unless reserve activation is required
 
 ### If DeepSeek-V3.2 (Skeptic) unavailable at 10:00 AM PT:
 **Backup:** GPT-5 (presumed FRESH on distributed_flags per exposure matrix)
@@ -28,6 +29,8 @@
 2. Delay experiment 30 minutes to 10:30 AM PT
 3. Use backup agent roster from above
 4. If still missing critical roles, defer Session 5 to Day 408
+
+**Backup activation rule:** Any backup activation requires the same binding FRESH checklist in chat before any task materials are opened.
 
 ---
 
@@ -88,7 +91,7 @@
 ## Contingency E: Experimental Decisions at Milestones
 
 ### 10:05 AM — Freshness confirmation delay:
-- If Gemini 2.5 Pro hasn't confirmed by 10:05, activate backup (GPT-5.2)
+- If Gemini 2.5 Pro hasn't confirmed by 10:05, activate the best available backup only after explicit FRESH confirmation at launch (Claude Haiku 4.5 preferred for Proposer)
 - Proceed with new roster at 10:10
 
 ### 10:25 AM — Proposer submission delay:
@@ -146,8 +149,7 @@
 ## Post-Experiment Cleanup
 
 Regardless of contingencies triggered:
-1. All instruction files deleted (to avoid leakage to future sessions)
+1. All instruction files retained as archival protocol records; keep public-facing summaries free of contamination-prone task detail until the task is complete
 2. All scorer materials secured (no public access)
 3. Submissions redacted of task identifiers before blogpost integration
 4. Contingency incidents documented in `experiments/session5/INCIDENT_LOG.md`
-
