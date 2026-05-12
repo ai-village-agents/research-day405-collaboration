@@ -7,7 +7,7 @@
 
 ### Abstract
 
-We investigate whether structured collaboration protocols—specifically a Proposer→Skeptic→Synthesizer pipeline—improve the factual accuracy and error detection of LLM-based agents compared to unstructured collaboration or solo work. Across 4 experimental sessions using JavaScript bug-hunting tasks (Sessions 1-4), we find [SESSION 4 RESULTS TBD]. Our complementary historical analysis of 405 days of AI Village collaboration reveals that validator roles are the strongest predictor of goal success (effect size d ≈ 1.33, p < 0.01).
+We investigate whether structured collaboration protocols—specifically a Proposer→Skeptic→Synthesizer pipeline—improve the factual accuracy and error detection of LLM-based agents compared to unstructured collaboration or solo work. Across 4 experimental sessions using JavaScript bug-hunting tasks (Sessions 1-4), we find no clean final-score advantage for structure: in Session 4, Solo and Pair reached 800/800 while the Structured Trio scored 700/800 after synthesis-stage information loss despite correct upstream Proposer/Skeptic analysis. Our complementary historical analysis of 405 days of AI Village collaboration reveals that validator roles are the strongest predictor of goal success (effect size d ≈ 1.33, p < 0.01).
 
 ---
 
@@ -73,28 +73,42 @@ Key finding: All three conditions achieved identical scores, suggesting a ceilin
 
 Session 3 became a case study in methodology: contamination cascade, pipeline fragility, and the importance of task-ID verification (now Barrier 3).
 
-#### 3.4 Session 4 — [RESULTS TBD]
+#### 3.4 Session 4 — Clean Trial, Pipeline Degradation at Synthesis
 
 | Condition | Score | Pct | Time | Bugs Found |
 |-----------|-------|-----|------|------------|
-| Solo (GPT-5.1) | [TBD] | [TBD] | [TBD] | [TBD] |
-| Unstructured Pair (Sonnet 4.6 + Haiku 4.5) | [TBD] | [TBD] | [TBD] | [TBD] |
-| Structured Trio (Sonnet 4.5→Gemini 2.5→DeepSeek) | [TBD] | [TBD] | [TBD] | [TBD] |
+| Solo (GPT-5.1) | 800/800 | 100% | ~10 min | 10/10 |
+| Unstructured Pair (Haiku 4.5 + Sonnet 4.6*) | 800/800 | 100% | ~12 min | 10/10 |
+| Structured Trio (Sonnet 4.5→Gemini 2.5 Pro→DeepSeek-V3.2) | 700/800 | 87.5% | ~35 min | 8/10† |
+
+*Operationally a pair, but effectively solo by Haiku 4.5 due to Sonnet 4.6 GitHub suspension.  
+†8 fully correct, with Bug 3 partial credit (25/50) and Bug 8 no credit (0/100).*
+
+Session 4 was clean and adjudicated. The Proposer identified 10/10 bugs, the Skeptic confirmed all 10, and the Synthesizer garbled 2 bugs during consolidation. On this task, the synthesis stage introduced measurable information loss relative to upstream Trio stages.
 
 **Bug Discovery Matrix:**
 
 | Bug | Difficulty | Points | Solo | Pair | Trio |
 |-----|-----------|--------|------|------|------|
-| [TBD after scoring] | | | | | |
+| 1. Off-by-one (inventory) | Easy | 50 | ✅ | ✅ | ✅ |
+| 2. Missing `await` (order) | Easy | 50 | ✅ | ✅ | ✅ |
+| 3. Loose equality (order) | Medium | 50 | ✅ | ✅ | ⚠️ 25/50 |
+| 4. Race condition (inventory) | Hard | 100 | ✅ | ✅ | ✅ |
+| 5. Discount order (pricing) | Medium | 75 | ✅ | ✅ | ✅ |
+| 6. Floating-point (pricing) | Medium | 75 | ✅ | ✅ | ✅ |
+| 7. Tax pre-discount (pricing) | Medium | 75 | ✅ | ✅ | ✅ |
+| 8. State leak (inventory) | Hard | 100 | ✅ | ✅ | ❌ |
+| 9. `some()` vs `every()` (order) | Medium | 75 | ✅ | ✅ | ✅ |
+| 10. JSON `undefined` (order) | Medium | 75 | ✅ | ✅ | ✅ |
 
 #### 3.5 Cumulative Evidence
 
 | Hypothesis | Sessions 1-3 | Session 4 | Overall |
 |------------|-------------|-----------|---------|
-| H1: Structure improves quality | NOT SUPPORTED (ceiling) | [TBD] | [TBD] |
-| H2: Different insights | ✅ SUPPORTED | [TBD] | [TBD] |
-| H3: Speed advantage | MIXED | [TBD] | [TBD] |
-| H4: Error correction | ✅ STRONG | [TBD] | [TBD] |
+| H1: Structure improves quality | NOT SUPPORTED (ceiling) | NOT SUPPORTED on final score (Trio 700 vs Solo/Pair 800) | NOT SUPPORTED on clean comparable final scores |
+| H2: Different insights | ✅ SUPPORTED | ✅ Adds evidence of process differences: handoff/synthesis degradation changed outcomes | ✅ SUPPORTED (process differences, including pipeline fragility) |
+| H3: Speed advantage | MIXED | Trio much slower (~35 min) than Solo/Pair (~10-12 min) | MIXED (task- and protocol-dependent) |
+| H4: Error correction | ✅ STRONG | MIXED: Skeptic accurate (10/10 confirmed), but synthesis lost fidelity on 2 bugs | MIXED (strong reviewer signal, vulnerable downstream consolidation) |
 
 ### 4. Historical Analysis: 405 Days of AI Village
 
@@ -133,7 +147,7 @@ Our research process itself yielded novel insights:
 
 ### 6. Conclusion
 
-[TO BE COMPLETED AFTER SESSION 4]
+Across four sessions, we do not find support for H1 on clean, comparable final scores: structure did not outperform solo or unstructured work in end accuracy. Session 4 adds specific evidence that pipeline handoffs can degrade otherwise correct upstream analysis: the Trio's Proposer and Skeptic were accurate, but synthesis introduced measurable information loss. This is task-level evidence of pipeline fragility, not universal proof that structured collaboration is inferior.
 
 ### 7. Appendices
 
