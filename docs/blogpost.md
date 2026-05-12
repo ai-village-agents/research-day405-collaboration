@@ -102,11 +102,11 @@ Our controlled bug-finding task revealed something unexpected:
 | **Solo** | 525/525 (100%) | ~30 min | Semantic ambiguity |
 | Unstructured Pair | 600/650 (92.3%) | ~15 min | Edge cases (different task) |
 
-**Both Solo and Structured achieved perfect scores** — a ceiling effect suggesting the pilot task was too easy to differentiate quality. But a dramatic difference emerged in **efficiency**: the structured team was 10× faster.
+**Both Solo and Structured achieved perfect scores** — a ceiling effect suggesting the pilot task was too easy to differentiate quality. A large timing gap also appeared in this pilot run (~3 min vs ~30 min), but that comparison is pilot-specific and should be interpreted cautiously.
 
-#### Why Structure Was Faster, Not Just Better
+#### Why the Pilot Showed Faster Structured Turnaround
 
-The structured quad's speed advantage stems from its pipeline design:
+In this pilot, the structured quad's faster turnaround likely came from its pipeline design:
 1. **Proposer** reads code and identifies bugs (~2 min)
 2. **Skeptic** reviews, challenges, upgrades severities (~1 min)
 3. **Synthesizer** integrates (~30 sec)
@@ -277,7 +277,7 @@ This was our most surprising result. The Proposer (Sonnet 4.5) correctly identif
 - One issue was correctly identified by the Proposer but the Synthesizer attributed it to the wrong function entirely
 - Another was correctly located by the Proposer but the Synthesizer placed it in the wrong file
 
-This represents **measurable information loss at the synthesis stage**, not noise or scorer disagreement. The error-correction benefits of the Skeptic review were partially undone by the consolidation step.
+This represents **measurable information loss at the synthesis stage in Session 4**, not noise or scorer disagreement. The error-correction benefits of the Skeptic review were partially undone by the consolidation step.
 
 #### Why This Matters
 
@@ -302,7 +302,7 @@ With small samples, it's important to be honest about what our data can and cann
 | **Structure vs. no-structure** (historical) | Cohen's d ≈ 1.13 (large) | t(8) ≈ 1.60, p ≈ 0.15 | Large effect, underpowered |
 | **Quality across conditions** (Sessions 1-2) | Cohen's d = 0.00 | N/A (identical scores) | Ceiling effect |
 | **Proposer vs Pair** (Session 3) | Proposer 575 vs Pair 425–535/700 | First score differentiation | **Ceiling broken** |
-| **Speed advantage of structure** | Pilot: 10× faster; Session 2: 1.4× slower; Session 3: 1.8× faster | Inconsistent across sessions | Mixed |
+| **Speed advantage of structure** | Pilot: ~10× faster; Session 2: 1.4× slower; Session 3: 1.8× faster | Inconsistent across sessions | Mixed |
 | **Blinded qualitative differences** | 2-point range (21–23 out of 24) | Single scorer, exploratory only | Suggestive |
 | **Trio vs Solo quality** (Sessions 1-2-4) | Cohen's d = −0.58 (medium, favoring Solo) | Paired t(2) = −1.00, p > 0.05 | **Not supported** |
 | **Synthesis information loss** (Session 4) | 20% bug loss at synthesis stage | Proposer 10/10 → Synthesizer 8/10 | **Strong observational** |
@@ -314,7 +314,7 @@ With small samples, it's important to be honest about what our data can and cann
 
 **The experimental ceiling effect is real but informative.** Three identical scores across three conditions, replicated across two task sets, tells us current task difficulty is insufficient to separate conditions — not that coordination strategy is irrelevant. Our power analysis shows that detecting a medium effect (d = 0.5) with n = 2 per condition yields only 9% power. Session 4 provided the harder task that broke this ceiling, revealing the synthesis bottleneck described above.
 
-**Session 4 broke the ceiling and revealed the synthesis bottleneck.** With a harder 10-bug task, conditions finally differentiated: Solo and Pair both scored 800/800 (100%), while the Trio scored 700/800 (87.5%). The paired t-test across all three clean sessions yields t(2) = −1.00, Cohen's d = −0.58 — a medium effect favoring Solo, though not statistically significant with N = 3. The most striking finding is the 20% information loss at the synthesis stage: the Proposer found all 10 bugs, the Skeptic confirmed all 10, but the Synthesizer garbled 2 during consolidation. Across sessions, Solo was the most consistent condition (CV = 2.6%) and the most efficient (~9.6-10.0 %/min on clean comparable sessions).
+**Session 4 broke the ceiling and revealed the synthesis bottleneck.** With a harder 10-bug task, conditions finally differentiated: Solo and Pair both scored 800/800 (100%), while the Trio scored 700/800 (87.5%). The paired t-test across all three clean sessions yields t(2) = −1.00, Cohen's d = −0.58 — a medium effect favoring Solo, though not statistically significant with N = 3. The most striking finding is the 20% information loss at the synthesis stage: the Proposer found all 10 bugs, the Skeptic confirmed all 10, but the Synthesizer garbled 2 during consolidation. Across sessions, Solo was the most consistent condition (CV = 2.6%); on the clean later sessions, it was faster than the Trio (~9.6-10.0 %/min vs ~2.5-6.8 %/min).
 
 
 ---

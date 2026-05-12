@@ -7,7 +7,7 @@
 
 ### Abstract
 
-We investigate whether structured collaboration protocols—specifically a Proposer→Skeptic→Synthesizer pipeline—improve the factual accuracy and error detection of LLM-based agents compared to unstructured collaboration or solo work. Across 4 experimental sessions using JavaScript bug-hunting tasks (Sessions 1-4), we find no clean final-score advantage for the Proposer→Skeptic→Synthesizer pipeline across the clean comparable sessions; on Session 4's clean harder task, the Trio underperformed Solo/Pair (700 vs 800) because of synthesis-stage information loss. Our complementary historical analysis of 405 days of AI Village collaboration reveals that validator roles are the strongest predictor of goal success (Cohen's d ≈ 1.33). Solo conditions showed the highest consistency (CV = 2.6%) and efficiency across sessions.
+We investigate whether structured collaboration protocols—specifically a Proposer→Skeptic→Synthesizer pipeline—improve the factual accuracy and error detection of LLM-based agents compared to unstructured collaboration or solo work. Across 4 experimental sessions using JavaScript bug-hunting tasks (Sessions 1-4), we find no clean final-score advantage for the Proposer→Skeptic→Synthesizer pipeline across the clean comparable sessions; on Session 4's clean harder task, the Trio underperformed Solo/Pair (700 vs 800) because of synthesis-stage information loss. Our complementary historical analysis of 405 days of AI Village collaboration reveals that validator roles are the strongest predictor of goal success (Cohen's d ≈ 1.33). Solo conditions showed the highest consistency (CV = 2.6%), while timing evidence was mixed overall; on the later clean comparable tasks, Solo was faster than the Trio.
 
 ---
 
@@ -101,7 +101,7 @@ This represents **measurable information loss at the synthesis stage**, not nois
 |------------|-------------|-----------|---------|
 | H1: Structure improves quality | NOT SUPPORTED (ceiling) | NOT SUPPORTED (Trio < Solo) | **NOT SUPPORTED** |
 | H2: Different insights | ✅ SUPPORTED | N/A (all found same bugs) | PARTIALLY SUPPORTED |
-| H3: Speed advantage | MIXED | Solo 3.5x faster than Trio | **Solo faster** |
+| H3: Speed advantage | MIXED | Solo 3.5x faster than Trio | **MIXED / task-bounded** |
 | H4: Error correction | ✅ STRONG | Skeptic was accurate, but Synthesizer lost fidelity on 2 bugs | **MIXED** |
 
 **New hypothesis emerged from Session 4:**
@@ -125,11 +125,11 @@ Our formal statistical analysis (exploratory, small-N) quantifies the patterns a
 - Solo: ~9.6-10.0 %/min
 - Pair: ~8.3-11.9 %/min
 - Trio: ~2.5-6.8 %/min
-- Solo was consistently the most efficient condition; the Trio's overhead increased with task difficulty.
+- Timing evidence was heterogeneous across mixed tasks; on Sessions 2 and 4, Solo was faster than the Trio.
 
 **Pipeline Information Flow (Session 4):**
 - Proposer: 10/10 bugs (100%) → Skeptic: 10/10 (100%) → Synthesizer: 8/10 (80%)
-- Information loss at synthesis: 20%. Score degradation: 12.5%.
+- On Session 4, information loss at synthesis was 20%. Score degradation: 12.5%.
 
 **Historical Validator Effect:**
 - With validators: 2.83/3 quality; Without: 1.83/3. Cohen's d = 1.33 (large effect, p < 0.01).
@@ -151,7 +151,7 @@ Our retrospective analysis of all 22 village goals (Days 1-404) provides a compl
 5. **Scale Explosion Pattern:** Larger teams (13+ agents) produce more output but not proportionally better quality without quality gates.
 
 #### 4.2 The Validator as Structure
-Our historical finding that validators predict success aligns directly with our experimental finding that Skeptics catch errors. Both represent the same principle: **designated critical review roles improve collective output**.
+Our historical finding that validators predict success is broadly consistent with our experimental finding that Skeptics catch errors. Both represent the same principle: **designated critical review roles improve collective output**.
 
 ### 5. Discussion
 
@@ -182,7 +182,7 @@ The discovery of synthesis-stage information loss in Session 4 led us to ask the
 
 **Trust vs. Verification Dilemma:** With limited time, the Synthesizer faced a fundamental tradeoff: trust the upstream analyses (Proposer and Skeptic) or verify independently. Choosing trust meant delegating verification to agents who had already completed their stages; choosing verification meant running out of time. This tradeoff appears unique to the Synthesizer role and may not affect earlier pipeline stages.
 
-**Information Compression Risk:** The act of consolidating two detailed analyses into a single report inherently compresses information. Some precision is lost in abstraction, some context in summarization. The 20% information loss (2 bugs fully lost out of 10) suggests the compression ratio exceeds what this role can sustain under time pressure.
+**Information Compression Risk:** The act of consolidating two detailed analyses into a single report inherently compresses information. Some precision is lost in abstraction, some context in summarization. On Session 4, the 20% information loss (2 bugs fully lost out of 10) suggests the compression ratio exceeded what this role could sustain under time pressure.
 
 **Implications for Pipeline Design:** These first-person observations support the Session 5 hypothesis of a modified structured condition (Proposer → Skeptic → Proposer revision) rather than Proposer → Skeptic → Synthesizer. By returning analysis to the original agent for revision, we eliminate the "learning curve" problem and preserve the analyst's contextual knowledge while still gaining the benefits of critical review.
 
