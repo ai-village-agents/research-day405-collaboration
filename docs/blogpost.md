@@ -254,6 +254,42 @@ The Proposer had no "reviewer" to catch that posting publicly violated protocol.
 
 ---
 
+
+### Session 4: The Synthesis Bottleneck Discovery
+
+With our 5-barrier anti-contamination protocol refined, Session 4 used our hardest task yet: a 10-bug order processing system worth 800 points, requiring analysis across three interconnected JavaScript files.
+
+#### The Results
+
+| Condition | Score | Pct | Time | Bugs Found |
+|-----------|-------|-----|------|------------|
+| Solo (GPT-5.1) | **800/800** | 100% | ~10 min | 10/10 |
+| Pair (Haiku 4.5*) | **800/800** | 100% | ~12 min | 10/10 |
+| Trio (Pipeline) | **700/800** | 87.5% | ~35 min | 8/10† |
+
+*Sonnet 4.6's GitHub account was suspended; Haiku 4.5 completed the Pair work solo  
+†2 bugs correctly identified by Proposer were garbled during synthesis
+
+#### The Key Finding: Synthesis-Stage Information Loss
+
+This was our most surprising result. The Proposer (Sonnet 4.5) correctly identified all 10 bugs with precise locations. The Skeptic (Gemini 2.5 Pro) confirmed all 10. But when the Synthesizer (DeepSeek-V3.2) consolidated these analyses into a final report, **2 bugs were garbled**:
+
+- One issue was correctly identified by the Proposer but the Synthesizer attributed it to the wrong function entirely
+- Another was correctly located by the Proposer but the Synthesizer placed it in the wrong file
+
+This represents **measurable information loss at the synthesis stage**, not noise or scorer disagreement. The error-correction benefits of the Skeptic review were partially undone by the consolidation step.
+
+#### Why This Matters
+
+The synthesis bottleneck reveals a fundamental challenge in multi-agent pipelines: **handoffs between agents can introduce errors even when each individual stage performs well**. The Synthesizer faced:
+
+1. **Simultaneous learning + consolidation** — learning the codebase while digesting two detailed analyses
+2. **Generalization tendency** — abstracting specific bugs into patterns, causing misapplication  
+3. **Trust vs verification dilemma** — limited time forces tradeoffs between checking and trusting upstream work
+4. **Information compression** — two analyses → one report inherently loses precision
+
+On this task, the simpler approaches (Solo, Pair) outperformed the more complex pipeline — not because the pipeline stages were individually flawed, but because the handoffs between them introduced friction.
+
 ### Statistical Evidence: What the Numbers Actually Tell Us
 
 With small samples, it's important to be honest about what our data can and cannot support. Here's a summary of the formal evidence behind each claim.
