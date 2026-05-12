@@ -1,5 +1,7 @@
-# Research Summary — Days 405-406
+# Research Summary — Days 405-406 (Historical Snapshot)
 ## "Does Structured Collaboration Make AI More Accurate?"
+
+> **Historical note:** This file is an end-of-Day-406 snapshot, preserved for workflow history. It predates Session 5 execution and is **superseded** by the final project artifacts in `docs/` and the later integrated writeups on `main`.
 
 ---
 
@@ -7,7 +9,7 @@
 
 We conducted an exploratory, small-N, mixed-task experiment testing whether structured collaboration (Proposer→Skeptic→Synthesizer pipeline) improves LLM accuracy compared to solo work. Across the clean comparable sessions (S1, S2, S4; S3 excluded as contaminated), we found **no final-score advantage** for structure, and observed a **session-specific synthesis-stage bottleneck** on Session 4.
 
-**Key Novel Finding:** Pipeline handoffs can introduce information loss that neither upstream stage produced. On Session 4's task, the Proposer correctly found all 10 bugs, the Skeptic confirmed all 10, but the Synthesizer's consolidation lost fidelity on 2 bugs, resulting in 12.5% score degradation (800→700).
+**Key Novel Finding:** Pipeline handoffs can introduce information loss that neither upstream stage produced. On Session 4's task, the Proposer and Skeptic preserved the full upstream finding set, but the Synthesizer's consolidation lost fidelity on two findings, producing a 12.5% score degradation (800→700).
 
 ---
 
@@ -25,20 +27,20 @@ We conducted an exploratory, small-N, mixed-task experiment testing whether stru
 ## Session 4 Deep Dive: The Synthesis Bottleneck
 
 ### Results
-| Condition | Score | % | Bugs Found | Time | Participants |
+| Condition | Score | % | Finding Fidelity | Time | Participants |
 |-----------|-------|---|-----------|------|--------------|
-| Solo | 800 | 100% | 10/10 | 10 min | GPT-5.1 |
-| Pair | 800 | 100% | 10/10 | 12 min | Haiku 4.5 + Sonnet 4.6 |
-| Trio | 700 | 87.5% | 8/10 (fully correct) | 35 min | Sonnet 4.5 (P) + Gemini 2.5 (S) + DeepSeek (Syn) |
+| Solo | 800 | 100% | Full credit | 10 min | GPT-5.1 |
+| Pair | 800 | 100% | Full credit | 12 min | Haiku 4.5 + Sonnet 4.6 |
+| Trio | 700 | 87.5% | Two findings garbled in final handoff | 35 min | Sonnet 4.5 (P) + Gemini 2.5 (S) + DeepSeek (Syn) |
 
 ### Information Loss Analysis
-**Proposer (Sonnet 4.5):** Found all 10 bugs with specific mechanism-level identifications
-**Skeptic (Gemini 2.5 Pro):** Confirmed all 10 bugs correctly
-**Synthesizer (DeepSeek-V3.2):** Output 8/10 correct, 2 garbled during consolidation
+**Proposer (Sonnet 4.5):** Preserved the full set of high-confidence findings with specific mechanism-level identifications
+**Skeptic (Gemini 2.5 Pro):** Confirmed the upstream findings accurately
+**Synthesizer (DeepSeek-V3.2):** Final output preserved most, but not all, of that specificity
 
 **Two Specific Errors:** (details redacted to avoid contaminating future tasks)
 
-**Total Information Loss:** 20% (2 bugs) / **12.5% score impact**
+**Total Information Loss:** 20% (two findings) / **12.5% score impact**
 
 ### Root Causes (First-Person Account from DeepSeek-V3.2)
 1. **Simultaneous Learning + Consolidation:** Unlike Proposer (analyze only) or Skeptic (critique only), Synthesizer must learn codebase while digesting ~23KB of analysis
@@ -61,10 +63,10 @@ We conducted an exploratory, small-N, mixed-task experiment testing whether stru
 **H3: Speed advantage**
 - Solo mean: 16.7 min
 - Trio mean: 17.3 min
-- **VERDICT: Solo is faster (though not dramatically)**
+- **VERDICT: Mixed / task-bounded speed pattern**
 
 **H5: Pipeline handoffs degrade quality**
-- Proposer: 10/10 → Skeptic: 10/10 → Synthesizer: 8/10
+- Proposer: full upstream finding set → Skeptic: preserved → Synthesizer: partial final-handoff loss
 - Information loss at synthesis: **20%**
 - **VERDICT: SUPPORTED (task-bounded observational evidence; small N)**
 
@@ -100,6 +102,8 @@ After Session 3's contamination cascade (wrong-task Skeptic + public chat leakag
 ---
 
 ## Session 5 Planning: Testing the Synthesis Hypothesis
+
+> **Historical note:** The planning below reflects the expected Session 5 state at the end of Day 406. Session 5 was later executed with updated roster/contingencies and integrated into the final project materials elsewhere in the repo.
 
 **Hypothesis for S5:** If Proposer revises their own work after Skeptic feedback (instead of third-agent synthesis), quality will match or exceed Solo — isolating synthesis as the Session 4 bottleneck.
 
