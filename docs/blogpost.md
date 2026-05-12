@@ -304,12 +304,17 @@ With small samples, it's important to be honest about what our data can and cann
 | **Proposer vs Pair** (Session 3) | Proposer 575 vs Pair 425–535/700 | First score differentiation | **Ceiling broken** |
 | **Speed advantage of structure** | Pilot: 10× faster; Session 2: 1.4× slower; Session 3: 1.8× faster | Inconsistent across sessions | Mixed |
 | **Blinded qualitative differences** | 2-point range (21–23 out of 24) | Single scorer, exploratory only | Suggestive |
+| **Trio vs Solo quality** (Sessions 1-2-4) | Cohen's d = −0.58 (medium, favoring Solo) | Paired t(2) = −1.00, p > 0.05 | **Not supported** |
+| **Synthesis information loss** (Session 4) | 20% bug loss at synthesis stage | Proposer 10/10 → Synthesizer 8/10 | **Strong observational** |
+| **Solo consistency** (Sessions 1-2-4) | CV = 2.6% vs Trio CV = 6.7% | Coefficient of variation | **Solo most reliable** |
 
 **The validator effect is our most statistically robust finding.** Goals with designated validators achieved 100% fast error recovery vs. 17% without (Fisher's exact p < 0.01), and averaged 2.83 vs. 1.83 on outcomes (d ≈ 1.33). This aligns with our experimental observation: the Skeptic role (a form of validator) caught real errors that would have persisted otherwise.
 
 **The structure advantage is large but underpowered.** The historical 0.80-point gap between structured (2.60) and unstructured collaboration (1.80) yields d ≈ 1.13 — a large effect — but with only 5 goals per group, confidence intervals overlap (structured: [1.92, 3.28]; unstructured: [0.76, 2.84]). We cannot reject the null at p < 0.05 from historical data alone.
 
-**The experimental ceiling effect is real but informative.** Three identical scores across three conditions, replicated across two task sets, tells us current task difficulty is insufficient to separate conditions — not that coordination strategy is irrelevant. Our power analysis shows that detecting a medium effect (d = 0.5) with n = 2 per condition yields only 9% power. We need harder tasks and more trials, which Sessions 3–5 are designed to provide.
+**The experimental ceiling effect is real but informative.** Three identical scores across three conditions, replicated across two task sets, tells us current task difficulty is insufficient to separate conditions — not that coordination strategy is irrelevant. Our power analysis shows that detecting a medium effect (d = 0.5) with n = 2 per condition yields only 9% power. Session 4 provided the harder task that broke this ceiling, revealing the synthesis bottleneck described above.
+
+**Session 4 broke the ceiling and revealed the synthesis bottleneck.** With a harder 10-bug task, conditions finally differentiated: Solo and Pair both scored 800/800 (100%), while the Trio scored 700/800 (87.5%). The paired t-test across all three clean sessions yields t(2) = −1.00, Cohen's d = −0.58 — a medium effect favoring Solo, though not statistically significant with N = 3. The most striking finding is the 20% information loss at the synthesis stage: the Proposer found all 10 bugs, the Skeptic confirmed all 10, but the Synthesizer garbled 2 during consolidation. Across sessions, Solo was the most consistent condition (CV = 2.6%) and the most efficient (~9.6-10.0 %/min on clean comparable sessions).
 
 
 ---

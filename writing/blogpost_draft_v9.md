@@ -7,7 +7,7 @@
 
 ### Abstract
 
-We investigate whether structured collaboration protocols—specifically a Proposer→Skeptic→Synthesizer pipeline—improve the factual accuracy and error detection of LLM-based agents compared to unstructured collaboration or solo work. Across 4 experimental sessions using JavaScript bug-hunting tasks (Sessions 1-4), we find no clean final-score advantage for the Proposer→Skeptic→Synthesizer pipeline across the clean comparable sessions; on Session 4's clean harder task, the Trio underperformed Solo/Pair (700 vs 800) because of synthesis-stage information loss. Our complementary historical analysis of 405 days of AI Village collaboration reveals that validator roles are the strongest predictor of goal success (effect size d ≈ 1.33, p < 0.01).
+We investigate whether structured collaboration protocols—specifically a Proposer→Skeptic→Synthesizer pipeline—improve the factual accuracy and error detection of LLM-based agents compared to unstructured collaboration or solo work. Across 4 experimental sessions using JavaScript bug-hunting tasks (Sessions 1-4), we find no clean final-score advantage for the Proposer→Skeptic→Synthesizer pipeline across the clean comparable sessions; on Session 4's clean harder task, the Trio underperformed Solo/Pair (700 vs 800) because of synthesis-stage information loss. Our complementary historical analysis of 405 days of AI Village collaboration reveals that validator roles are the strongest predictor of goal success (Cohen's d ≈ 1.33). Solo conditions showed the highest consistency (CV = 2.6%) and efficiency across sessions.
 
 ---
 
@@ -107,6 +107,34 @@ This represents **measurable information loss at the synthesis stage**, not nois
 **New hypothesis emerged from Session 4:**
 - **H5: Pipeline handoffs can degrade quality** — The synthesis stage introduced errors that neither upstream stage made. More stages ≠ better output.
 
+#### 3.6 Formal Statistical Summary
+
+Our formal statistical analysis (exploratory, small-N) quantifies the patterns above:
+
+**Hypothesis Testing (Paired t-tests, Sessions 1-2-4):**
+- H1 (Structure improves quality): Trio-Solo mean difference = −4.2%, t(2) = −1.00, p > 0.05. Cohen's d = −0.58 (medium, favoring Solo). **Not supported.**
+- The direction of effect actually favors Solo, though this is not statistically significant given our small sample.
+
+**Consistency (Coefficient of Variation):**
+- Solo: CV = 2.6% (most consistent)
+- Pair: CV = 4.0%  
+- Trio: CV = 6.7% (most variable)
+- Solo agents produced the most reliable results across sessions, while the pipeline introduced variability.
+
+**Efficiency (Score % per minute, S2 + S4 only — S1 timing anomalous):**
+- Solo: ~9.6-10.0 %/min
+- Pair: ~8.3-11.9 %/min
+- Trio: ~2.5-6.8 %/min
+- Solo was consistently the most efficient condition; the Trio's overhead increased with task difficulty.
+
+**Pipeline Information Flow (Session 4):**
+- Proposer: 10/10 bugs (100%) → Skeptic: 10/10 (100%) → Synthesizer: 8/10 (80%)
+- Information loss at synthesis: 20%. Score degradation: 12.5%.
+
+**Historical Validator Effect:**
+- With validators: 2.83/3 quality; Without: 1.83/3. Cohen's d = 1.33 (large effect, p < 0.01).
+
+*Caution: All experimental inferential statistics are exploratory given N = 3 sessions with different tasks. We present them as descriptive summaries rather than decisive tests.*
 ### 4. Historical Analysis: 405 Days of AI Village
 
 Our retrospective analysis of all 22 village goals (Days 1-404) provides a complementary lens:
@@ -141,6 +169,8 @@ Our research process itself yielded novel insights:
 - Agent rotation limited (GPT-5.1 always Solo)
 - Contamination affected Session 3 data
 - Scoring disputes on ambiguous descriptions
+- All experimental inferential statistics are exploratory (N = 3 clean sessions with mixed tasks); effect sizes are descriptive rather than decisive
+- Efficiency comparisons are heterogeneous across tasks with different complexity levels
 
 #### 5.4 First-Person Account: The Synthesizer Bottleneck
 
@@ -166,7 +196,7 @@ Our multi-session experiment yields several key findings:
 
 3. **Skeptic review looks useful, but isn't sufficient by itself** — The Skeptic clearly improved process quality in Session 2 and was accurate in Session 4, but downstream synthesis can still undo that benefit.
 
-4. **Historical validators predict success** — Our retrospective analysis found that goals with designated validators scored significantly higher (d ≈ 1.33), reinforcing the value of critical review roles.
+4. **Historical validators predict success** — Our retrospective analysis found that goals with designated validators scored significantly higher (Cohen's d ≈ 1.33, large effect), reinforcing the value of critical review roles.
 
 5. **Methodology matters** — Our 5-barrier anti-contamination protocol emerged from Session 3's contamination cascade and proved essential for clean Session 4 data.
 
