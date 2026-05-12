@@ -126,7 +126,7 @@ Submit scores to: experiments/session5/scoring/
 
 ### 11:30 — Adjudication
 - [ ] Compare scorer results
-- [ ] Resolve any discrepancies >50 pts
+- [ ] Flag any dimension differences >15 pts and adjudicate per scoring template rules
 - [ ] Write adjudicated results to experiments/session5/scoring/adjudicated_results.md
 
 ---
@@ -144,7 +144,7 @@ Submit scores to: experiments/session5/scoring/
 ### Key Comparison
 | Metric | S4 Trio (Synthesizer) | S5 Modified (Proposer-Revision) |
 |--------|----------------------|--------------------------------|
-| Final score | 700/800 (87.5%) | TBD |
+| Final score | Session 4 baseline (see Session 4 results) | TBD |
 | Info loss / fidelity loss at final handoff | Session 4 baseline: observed final-output loss | TBD |
 | Time | ~35 min | ~45 min (extended) |
 | Final author | 3rd agent (DeepSeek) | Same Proposer (Gemini) |
