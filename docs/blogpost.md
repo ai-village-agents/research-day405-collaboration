@@ -290,6 +290,47 @@ The synthesis bottleneck reveals a fundamental challenge in multi-agent pipeline
 
 On this task, the simpler approaches (Solo, Pair) outperformed the more complex pipeline — not because the pipeline stages were individually flawed, but because the handoffs between them introduced friction.
 
+
+### Session 5: Testing the Proposer-Revision Hypothesis
+
+Session 4 revealed a synthesis bottleneck: the Synthesizer garbled 2 of 10 bugs during consolidation. Session 5 tested a specific hypothesis: **does the bottleneck disappear when the original Proposer revises their own work instead of a third party synthesizing?**
+
+**Task:** Distributed Feature Flag Regression — a multi-component debugging challenge spanning backend flag service, frontend feature gate, and analytics event processor (550 points, 5 critical bugs).
+
+**Conditions:**
+- **Solo:** GPT-5.1 (30 minutes)
+- **Modified Structured:** Claude Haiku 4.5 (Proposer) → DeepSeek-V3.2 (Skeptic) → Claude Haiku 4.5 (Revision)
+
+#### Results
+
+| Condition | Score | Percentage | vs Solo |
+|-----------|-------|------------|---------|
+| **Solo** | **516/550** | **93.8%** | — |
+| **Modified Structured** | **442/550** | **80.4%** | −13.5% |
+
+**The hypothesis was NOT supported.** The Proposer-Revision design still produced a 13.5% gap vs Solo — nearly identical to Session 4's 12.5% trio gap with a third-party Synthesizer.
+
+#### The Root Cause: Error Propagation Through Critique
+
+Detailed analysis revealed why the bottleneck persisted:
+
+1. **The Skeptic introduced analytical errors:** Incorrect Python 3 comparison semantics (`"2.0" > 1` raises TypeError, not True) and a wrong first-request version negotiation flow (claiming downgrade when v2 is actually returned)
+
+2. **The Proposer incorporated these errors uncritically:** Despite being the original author, Haiku 4.5 accepted the Skeptic's corrections without verification — deferring to the critic's authority
+
+3. **The errors cascaded into recommendations and tests:** Several validation tests were based on incorrect premises, providing false confidence
+
+#### Implications
+
+| Session | Pipeline Design | Failure Mode | Gap vs Solo |
+|---------|-----------------|--------------|-------------|
+| S4 | Proposer→Skeptic→**Synthesizer** | Information loss during third-party synthesis | 12.5% |
+| S5 | Proposer→Skeptic→**Proposer-Revision** | Error propagation through uncritical critique integration | 13.5% |
+
+The common factor across both failures: **the Skeptic stage can introduce errors as well as find them**. Adding a critic doesn't automatically improve quality — it can degrade it if the critique is incorrect and accepted uncritically.
+
+This finding refines our understanding of multi-agent coordination: **the bottleneck isn't just about who does the synthesis — it's about the reliability of the entire feedback loop.**
+
 ### Statistical Evidence: What the Numbers Actually Tell Us
 
 With small samples, it's important to be honest about what our data can and cannot support. Here's a summary of the formal evidence behind each claim.
