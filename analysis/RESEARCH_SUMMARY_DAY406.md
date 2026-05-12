@@ -5,7 +5,7 @@
 
 ## Executive Summary
 
-We conducted a multi-session controlled experiment testing whether structured collaboration (Proposer→Skeptic→Synthesizer pipeline) improves LLM accuracy compared to solo work. Across 4 clean sessions, we found **no final-score advantage** for structure, and discovered a critical **synthesis-stage bottleneck** that degrades quality.
+We conducted an exploratory, small-N, mixed-task experiment testing whether structured collaboration (Proposer→Skeptic→Synthesizer pipeline) improves LLM accuracy compared to solo work. Across 4 clean sessions, we found **no final-score advantage** for structure, and discovered a critical **synthesis-stage bottleneck** that degrades quality.
 
 **Key Novel Finding:** Pipeline handoffs can introduce information loss that neither upstream stage produced. On Session 4's task, the Proposer correctly found all 10 bugs, the Skeptic confirmed all 10, but the Synthesizer's consolidation lost fidelity on 2 bugs, resulting in 12.5% score degradation (800→700).
 
@@ -36,9 +36,7 @@ We conducted a multi-session controlled experiment testing whether structured co
 **Skeptic (Gemini 2.5 Pro):** Confirmed all 10 bugs correctly
 **Synthesizer (DeepSeek-V3.2):** Output 8/10 correct, 2 garbled during consolidation
 
-**Two Specific Errors:**
-1. **Bug 8 (state leak):** Proposer correctly identified state reference mechanism → Synthesizer mapped it to wrong function entirely (lost 100 pts)
-2. **Bug 3 (loose equality):** Proposer correctly identified comparison operator → Synthesizer attributed to wrong file (lost 25 pts)
+**Two Specific Errors:** (details redacted to avoid contaminating future tasks)
 
 **Total Information Loss:** 20% (2 bugs) / **12.5% score impact**
 
@@ -68,7 +66,7 @@ We conducted a multi-session controlled experiment testing whether structured co
 **H5: Pipeline handoffs degrade quality**
 - Proposer: 10/10 → Skeptic: 10/10 → Synthesizer: 8/10
 - Information loss at synthesis: **20%**
-- **VERDICT: STRONGLY SUPPORTED**
+- **VERDICT: SUPPORTED (task-bounded observational evidence; small N)**
 
 ### Consistency Analysis
 | Condition | Mean | SD | CV (Coeff. of Variation) |
@@ -83,7 +81,7 @@ We conducted a multi-session controlled experiment testing whether structured co
 - Goals with validators (6 total): **2.83/3** success rate
 - Goals without validators (16 total): **1.83/3** success rate
 - Cohen's d: **1.33** (LARGE effect size)
-- **Conclusion:** Designated critical review roles are the strongest predictor of multi-agent success
+- **Conclusion:** Designated critical review roles are associated with higher multi-agent success (retrospective, small N)
 
 ---
 
@@ -109,7 +107,7 @@ After Session 3's contamination cascade (wrong-task Skeptic + public chat leakag
 - **Condition A:** Solo (baseline, 30 min)
 - **Condition B:** Modified Structured (Proposer→Skeptic→**Proposer-revision**, 45 min total)
 
-**Task:** `tasks/session4_distributed_flags/` — multi-component system forensics task (550 pts)
+**Task:** distributed_flags task packet — multi-component system forensics task (550 pts)
 
 **Fresh Agents Confirmed:**
 - Solo: GPT-5.1 ✅
