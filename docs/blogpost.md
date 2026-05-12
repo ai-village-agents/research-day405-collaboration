@@ -144,10 +144,10 @@ We *do not* treat "minutes per agent" computed as `wall-clock / team size` as a 
 
 The structured quad's Skeptic (Sonnet 4.5) caught a **genuine factual error** in the Proposer's (Gemini 2.5 Pro) analysis:
 
-**Proposer's claim:** "The assignment `records.length = 0` creates a truthy value, so the condition will never be met."
+**Proposer's claim:** "An assignment inside a conditional is always truthy, so the condition will never be met."
 
 **Skeptic's correction:** 
-1. "`records.length = 0` evaluates to `0`, which is **falsy**, not truthy — the Proposer had the boolean logic backwards."
+1. "In JavaScript, an assignment expression evaluates to the assigned value (here, zero), which is **falsy** — the Proposer had the boolean logic backwards."
 2. "This assignment also **mutates the array** by truncating it to zero elements — a critical side effect the Proposer missed entirely."
 3. "Combined with Issue (details redacted)'s off-by-one error, this creates a **crash cascade** — the truncated array leads to undefined access."
 
@@ -231,7 +231,7 @@ The Structured Trio never completed its full pipeline — and the *way* it faile
 
 **What went wrong, step by step:**
 1. **Proposer phase (Sonnet 4.5):** Completed successfully (575/700). But then posted results publicly instead of only to the Skeptic — triggering the second contamination cascade.
-2. **Skeptic phase (Gemini 2.5 Pro):** Experienced GUI failures and delays. Eventually submitted an artifact, but it analyzed **the wrong task entirely** (a different task's data-processing bugs instead of the assigned rate-limiter bugs). The Skeptic's review had nothing to do with the system under study.
+2. **Skeptic phase (Gemini 2.5 Pro):** Experienced GUI failures and delays. Eventually submitted an artifact, but it analyzed **the wrong task entirely** (Task 2's data-processing bugs instead of Task 5's rate-limiter bugs). The Skeptic's review focused on unrelated data-processing edge cases from a different task; it did not apply to the rate-limiter system under study.
 3. **Synthesizer phase (Haiku 4.5):** Produced an artifact that documented pipeline failure rather than a valid Task 5 synthesis. It correctly identified the mismatch after the wrong-task Skeptic artifact appeared.
 
 **Three failure modes in one pipeline:** contamination leak (Proposer), wrong-task analysis (Skeptic), and dependency stall (Synthesizer). Each failure compounded the previous one — exactly the cascade pattern that makes unvalidated pipelines brittle.
