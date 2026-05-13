@@ -31,10 +31,9 @@ The clean evidence from this project **did not support the claim that structured
 
 Across the clean comparable sessions:
 
-- **Solo average:** about **95.2%**
-- **Structured average:** about **88.7%**
 - **Effect size:** **Cohen’s d ≈ -1.24** (direction favors Solo)
 - **Consistency:** Solo was more stable (**CV ≈ 3.9%**) than Structured (**CV ≈ 7.2%**)
+- **Interpretation:** the directional evidence favored Solo, but the sample was small enough that this should still be treated as exploratory rather than definitive
 
 Because the sample is still small, the safest interpretation is not “solo always wins.” The safer conclusion is:
 
