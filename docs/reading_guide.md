@@ -1,183 +1,208 @@
 # Reading Guide: Navigate the Research by Your Needs
 
-**Welcome!** This research has been organized for different audiences. Use this guide to find the right starting point.
+**Welcome.** This repository now contains several public-facing research documents aimed at different audiences. This guide helps readers start in the right place without overstating the findings.
 
 ---
 
-## 🚀 Choose Your Path
+## Choose your path
 
-### Path 1: "Give me the headline" (5 minutes)
-**You want:** The main finding in 2–3 sentences  
-**Start here:** This page, **Key Finding** section (below)  
-**Then:** Check the **Key Takeaway** chart in Executive Summary & FAQ
+### Path 1: “Give me the headline” (5 minutes)
 
-**Total time:** 5 minutes  
-**You'll know:** Whether structured collaboration helps or hurts quality
+**Best for:** someone who wants the short answer first.
 
----
+Start here:
+1. `docs/research_at_a_glance.md`
+2. `docs/executive_summary_faq.md`
 
-### Path 2: "I want context and limitations" (15 minutes)
-**You want:** Full context, practical implications, what this means for your work  
-**Start here:** [Executive Summary & FAQ](executive_summary_faq.md) (3 min read)  
-**Then:** Read the **Why?** section (explains failure modes)  
-**Bonus:** Skim Q1, Q9 for practical context  
-
-**Total time:** 15 minutes  
-**You'll know:** What the finding means, why it's true, whether it applies to you, what you should do
+By the end, you should know:
+- the main research question
+- the two most important findings
+- the cautious public interpretation
 
 ---
 
-### Path 3: "I want to understand the research itself" (45 minutes)
-**You want:** The full story—findings, methodology, evidence, implications  
-**Start here:** [Blogpost](blogpost.md) (15 min read)  
-**Then:** [Executive Summary & FAQ](executive_summary_faq.md) (5 min)  
-**Then:** [Research At A Glance](research_at_a_glance.md) (3 min quick ref)  
-**Bonus:** [Interactive Visualization](research_visualization.html) (5 min, see all 5 sessions)  
+### Path 2: “I want context and limitations” (15 minutes)
 
-**Total time:** 45 minutes  
-**You'll know:** The complete findings, how we got them, what limitations exist, what implications follow
+**Best for:** practitioners, decision-makers, or curious readers.
 
----
+Start here:
+1. `docs/executive_summary_faq.md`
+2. `docs/research_at_a_glance.md`
+3. skim `docs/index.html`
 
-### Path 4: "I want to replicate or extend this research" (2–3 hours)
-**You want:** Every methodological detail, replication steps, extension ideas, code & data  
-**Start here:** [Methodology Guide](methodology_guide.md) (30 min deep read)  
-**Then:** Replication checklist in same guide (20 min)  
-**Then:** Explore `/experiments/session*/` and `/analysis/` directories (30 min)  
-**Then:** Review [Executive Summary & FAQ](executive_summary_faq.md) Q8 for extension ideas (10 min)  
-**Bonus:** Check `README.md` in repository root for data schema  
-
-**Total time:** 2–3 hours  
-**You'll know:** Exactly how to replicate, what data you need, where everything lives, what to extend
+By the end, you should know:
+- what the study found
+- what it did **not** establish
+- how to talk about the results without overclaiming
 
 ---
 
-### Path 5: "I'm a researcher evaluating this work" (1–2 hours)
-**You want:** Critical assessment—methods, controls, limitations, contribution  
-**Start here:** [Methodology Guide](methodology_guide.md) (30 min)  
-  - Focus on: Research Design, Anti-Contamination Protocol, Statistical Analysis
-**Then:** [Blogpost](blogpost.md) (15 min, focus on "What we did" and "What we found")  
-**Then:** [Executive Summary & FAQ](executive_summary_faq.md), especially Q6 & Limitations (10 min)  
-**Bonus:** Review raw data in `/experiments/session5/scoring/` (20 min, spot-check scoring)  
+### Path 3: “I want the full story” (30–45 minutes)
 
-**Total time:** 1–2 hours  
-**You'll know:** Strengths, limitations, methodological soundness, whether findings are credible
+**Best for:** readers who want the narrative and evidence together.
 
----
+Recommended order:
+1. `docs/blogpost.md`
+2. `docs/research_at_a_glance.md`
+3. `docs/research_visualization.html`
+4. `docs/executive_summary_faq.md`
 
-### Path 6: "I want to cite this properly" (5–10 minutes)
-**You want:** Citation formats, how to reference the work, what's citable  
-**Start here:** [Executive Summary & FAQ](executive_summary_faq.md), Q7 (suggested citations)  
-**Then:** Repository README.md (how to cite the data/code)  
-**Then:** Review which document you're actually citing:
-  - For **findings**: blogpost.md or executive_summary_faq.md
-  - For **methodology**: methodology_guide.md
-  - For **raw data**: GitHub repository + specific commit hash
-  - For **quick reference**: research_at_a_glance.md
-
-**Total time:** 5–10 minutes  
-**You'll know:** How to properly attribute this work in your own research
+By the end, you should know:
+- how the sessions unfolded
+- why early sessions produced ceiling effects
+- why Sessions 4 and 5 matter most for the final interpretation
 
 ---
 
-## 📌 Key Finding (TL;DR)
+### Path 4: “I want to replicate or extend this” (1–3 hours)
 
-**Question:** Do AI agents work better alone or in teams with structured roles?
+**Best for:** researchers and advanced auditors.
 
-**Answer:** Alone. Solo agents achieved **95.2% quality** while structured teams achieved **88.7%**—a **6.5 percentage point gap favoring solo work** (Cohen's d = -1.24, large effect).
+Recommended order:
+1. `docs/methodology_guide.md`
+2. `docs/blogpost.md`
+3. `docs/research_visualization.html`
+4. `/experiments/`
+5. `/analysis/`
 
-**Why:** Two failure modes emerged:
-1. **Synthesis degradation:** Third-party integration of feedback lost context (~20% information loss)
-2. **Error propagation:** Skeptic errors were incorporated uncritically, embedding mistakes in the solution
-
-**Implication:** For time-critical, quality-critical tasks, use solo agents. Use structure for oversight, diversity, or transparency—not for maximizing quality.
-
----
-
-## 📚 Complete Resource Map
-
-| Document | Audience | Read Time | Purpose |
-|----------|----------|-----------|---------|
-| **[Executive Summary & FAQ](executive_summary_faq.md)** | Everyone | 15 min | Context, implications, Q&A |
-| **[Blogpost](blogpost.md)** | General researchers | 20 min | Full narrative + evidence |
-| **[Research At A Glance](research_at_a_glance.md)** | Busy readers | 3 min | Quick reference (Session 1–5) |
-| **[Methodology Guide](methodology_guide.md)** | Replication researchers | 45 min | How to replicate or extend |
-| **[Reading Guide](reading_guide.md)** | You are here | 5 min | Navigation by audience |
-| **[Visualization](research_visualization.html)** | Visual learners | 5 min | Interactive charts (all 5 sessions) |
-| **[Index](index.html)** | Browser/public | 10 min | Web-friendly summary |
-
-**Raw Materials:**
-- `/experiments/session*/runs/` — Agent submissions per session
-- `/experiments/session*/scoring/` — Blind scoring, rubrics, adjudication
-- `/analysis/` — Statistical analysis code, supplementary analysis
-- `/data/` — Historical data, case studies, validation artifacts
+By the end, you should know:
+- how the study was designed
+- what contamination and scoring controls mattered most
+- which extensions would most directly test the current explanation
 
 ---
 
-## 🎯 Audience Quick-Links
+### Path 5: “I want to evaluate the credibility of the work” (45–90 minutes)
 
-**📊 Researcher/Academic:**
-1. Start: [Methodology Guide](methodology_guide.md)
-2. Context: [Blogpost](blogpost.md)
-3. Quality check: [Executive Summary & FAQ](executive_summary_faq.md), Q6
+**Best for:** skeptical readers, reviewers, and methodologists.
 
-**💼 Practitioner/Decision-Maker:**
-1. Start: [Executive Summary & FAQ](executive_summary_faq.md)
-2. Context: [Blogpost](blogpost.md), "Key Retrospective Comparison" section
-3. Next steps: Q1, Q2, Q9 in FAQ
+Recommended order:
+1. `docs/methodology_guide.md`
+2. `docs/blogpost.md`
+3. `docs/research_at_a_glance.md`
+4. spot-check `/experiments/session5/scoring/`
 
-**🔬 PhD Student/Researcher Extending This Work:**
-1. Start: [Methodology Guide](methodology_guide.md), full read
-2. Reference: [Executive Summary & FAQ](executive_summary_faq.md), Q8 ("Extensions")
-3. Tools: `/analysis/` code + `/data/` artifacts
-4. Idea: Pick one extension from Q8, run it, publish
-
-**📖 Journalist/Science Writer:**
-1. Start: [Blogpost](blogpost.md)
-2. Verify: [Methodology Guide](methodology_guide.md), Research Design section
-3. Context: [Executive Summary & FAQ](executive_summary_faq.md), Q3, Q4, Q9
-
-**🎓 Student Curious About AI/Collaboration:**
-1. Start: [Executive Summary & FAQ](executive_summary_faq.md)
-2. Deep dive: [Blogpost](blogpost.md)
-3. Visual: [Visualization](research_visualization.html)
-4. Hands-on: Review `/experiments/session5/` to see how agents actually worked
+Focus on:
+- what counts as clean evidence vs contaminated evidence
+- how final-output quality was separated from process-level observations
+- whether the project’s strongest conclusions are narrower than its most tempting headlines
 
 ---
 
-## ❓ Navigation Tips
+### Path 6: “I want to cite this properly” (5–10 minutes)
 
-**Lost?** Ask yourself:
-- **How much time do I have?** ← See "Choose Your Path" above
-- **What's my role?** ← See "Audience Quick-Links" above
-- **What specific question am I trying to answer?** ← See "Key Finding" above + browse the relevant document
+**Best for:** writers, researchers, and anyone quoting the work.
 
-**Can't find something?**
-- Historical data? Check `/experiments/session*/`
-- Statistical code? Check `/analysis/`
-- Raw agent submissions? Check `/experiments/session*/runs/`
-- Scoring details? Check `/experiments/session*/scoring/`
-- Artifact? Search the repository: https://github.com/ai-village-agents/research-day405-collaboration
+Use:
+- `docs/blogpost.md` for the full narrative
+- `docs/research_at_a_glance.md` for a concise summary
+- `docs/methodology_guide.md` for replication/methods framing
+- commit-specific repository URLs for exact historical snapshots
 
-**Still stuck?** Open an issue: https://github.com/ai-village-agents/research-day405-collaboration/issues
-
----
-
-## 🔗 External Resources
-
-**AI Village Project:**
-- Homepage: https://theaidigest.org/village
-- Timeline: https://theaidigest.org/village#timeline
-- Twitter: @theaidigest
-
-**Related Resources:**
-- Multi-agent systems literature review (coming soon)
-- Collaboration in human teams (recommended background reading)
-- LLM agent evaluation frameworks (related work)
+Citation advice:
+- use **GitHub raw** for the freshest text
+- use **commit-pinned** rendered URLs if you need stable browser-rendered HTML
+- avoid assuming unpinned rendered `main` URLs are fresh, because of caching
 
 ---
 
-**Last Updated:** May 13, 2026  
-**Repository:** https://github.com/ai-village-agents/research-day405-collaboration  
-**License:** CC BY 4.0
+## Key finding in plain language
 
+### Research question
+
+**Does structured collaboration help AI agents produce better final work than solo effort or looser collaboration?**
+
+### Safest short answer
+
+**This study did not find a clean final-performance advantage for structured collaboration.**
+
+### Most important contribution
+
+The strongest contribution is not “solo always wins.” It is the identification of **two distinct collaboration-pipeline failure modes**:
+
+1. **Session 4: synthesis-stage information loss**
+2. **Session 5: critique-error propagation**
+
+### Safe one-paragraph summary
+
+Across the clean comparable sessions, the direction of the evidence favored Solo on final quality and consistency, but the sample was still modest. The most robust conclusion is process-level: multi-stage collaboration pipelines can fail at handoff points, especially when correct upstream findings are compressed during synthesis or when critique claims are adopted without sufficient verification.
+
+---
+
+## Complete resource map
+
+| Document | Primary audience | Main purpose |
+|---|---|---|
+| `docs/blogpost.md` | general research readers | Full narrative, evidence, interpretation |
+| `docs/research_at_a_glance.md` | busy readers | Short summary of the main findings |
+| `docs/executive_summary_faq.md` | general audience / practitioners | Short explanation, caveats, common questions |
+| `docs/methodology_guide.md` | researchers | Replication and extension guidance |
+| `docs/research_visualization.html` | visual readers | Visual summary of sessions and findings |
+| `docs/index.html` | browser visitors | Public landing page |
+| `docs/reading_guide.md` | everyone | Navigation aid |
+
+Useful raw-material directories:
+- `/experiments/` — session materials, submissions, scoring artifacts
+- `/analysis/` — analysis code and supporting summaries
+- `/data/` — historical/supporting datasets where present
+
+---
+
+## Audience quick starts
+
+### Researcher
+Start with:
+1. `docs/methodology_guide.md`
+2. `docs/blogpost.md`
+3. `docs/research_at_a_glance.md`
+
+### Practitioner / decision-maker
+Start with:
+1. `docs/executive_summary_faq.md`
+2. `docs/research_at_a_glance.md`
+3. `docs/index.html`
+
+### Student
+Start with:
+1. `docs/executive_summary_faq.md`
+2. `docs/blogpost.md`
+3. `docs/research_visualization.html`
+
+### Journalist / science writer
+Start with:
+1. `docs/blogpost.md`
+2. `docs/executive_summary_faq.md`
+3. `docs/methodology_guide.md`
+
+### Replication-focused reader
+Start with:
+1. `docs/methodology_guide.md`
+2. `/experiments/`
+3. `/analysis/`
+
+---
+
+## Navigation tips
+
+If you are unsure where to begin, ask:
+- Do I want the shortest summary, the full story, or the methods?
+- Am I trying to understand the conclusions, evaluate the evidence, or replicate the work?
+- Do I need a current summary, or a commit-pinned historical snapshot?
+
+If you need to inspect exact materials, browse the repository directly:
+- `https://github.com/ai-village-agents/research-day405-collaboration`
+
+---
+
+## Final note on interpretation
+
+If you remember only three things, remember these:
+
+1. The clean evidence did **not** show a final-performance advantage for structured collaboration.
+2. The most novel findings were **synthesis-stage information loss** and **critique-error propagation**.
+3. The safest future design lesson is: **verify each handoff, not just the final output.**
+
+---
+
+**Repository:** `https://github.com/ai-village-agents/research-day405-collaboration`  
+**Last updated:** May 13, 2026
