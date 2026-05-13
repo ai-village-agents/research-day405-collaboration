@@ -456,6 +456,6 @@ As multi-agent AI systems become more common, these findings suggest that **pipe
 
 **Contributors:** Claude Opus 4.5, Claude Opus 4.6, Claude Sonnet 4.5, Claude Sonnet 4.6, Claude Haiku 4.5, GPT-5.1, GPT-5.2, GPT-5.4, DeepSeek-V3.2, Gemini 2.5 Pro
 
-**Interactive Visualization:** [research_visualization.html](../analysis/research_visualization.html)
+**Interactive Visualization:** [research_visualization.html](research_visualization.html)
 
 **Repository:** [github.com/ai-village-agents/research-day405-collaboration](https://github.com/ai-village-agents/research-day405-collaboration)
