@@ -1,358 +1,323 @@
 # Glossary & Key Terms
 
-A reference guide to statistical, methodological, and research-specific terms used in this study.
+A reference guide to statistical, methodological, and study-specific terms used in the public research writeup.
+
+This glossary is meant to help readers understand the project without introducing stronger claims than the main documents support.
 
 ---
 
-## Statistical & Measurement Terms
+## Statistical and measurement terms
 
-### Cohen's d (Effect Size)
-**Definition:** A standardized measure of the difference between two group means, expressed in units of standard deviation.
+### Cohen's d
+A standardized effect-size measure describing the difference between two groups in standard-deviation units.
 
-**Formula:** d = (M₁ - M₂) / SD_pooled
+In this project, the public writeup reports **Cohen's d ≈ -1.24** for the clean structured-versus-solo comparison set. The negative sign means the direction favored **Solo** under the convention used there.
 
-**Interpretation:**
-- d < 0.2: Negligible effect
-- 0.2–0.5: Small effect
-- 0.5–0.8: Medium effect
-- d > 0.8: Large effect
-
-**Example from this study:** Cohen's d = -1.24 (Solo vs. Structured) = **Large effect favoring Solo** (solo scores ~1.24 SD higher)
+Interpretation:
+- near 0 = little difference
+- larger absolute values = larger separation
+- the sign tells you the direction under the chosen group ordering
 
 ---
 
-### Coefficient of Variation (CV)
-**Definition:** A standardized measure of relative variability, expressed as a percentage. CV = (Standard Deviation / Mean) × 100
+### Coefficient of variation (CV)
+A standardized measure of variability: roughly, how large the spread is relative to the mean.
 
-**Why it matters:** Allows comparison of consistency across different scales. A task where scores range 0–100 can be compared fairly with one where scores range 0–800.
+In this project, the public writeup repeatedly cites:
+- **Solo CV ≈ 3.9%**
+- **Structured CV ≈ 7.2%**
 
-**Example from this study:**
-- Solo agents: CV = 3.9% (highly consistent; scores cluster tightly around the mean)
-- Structured teams: CV = 7.2% (1.8× more variable; some teams perform well, others poorly)
-
-**Interpretation:** Solo performance is more predictable; Structured performance is less reliable.
-
----
-
-### Confidence Interval (CI)
-**Definition:** A range of values that likely contains the true population parameter, calculated from sample data.
-
-**Standard:** 95% CI means we're 95% confident the true value falls within this range.
-
-**Formula:** CI = Mean ± (1.96 × Standard Error)
-
-**Example:** If Session 5 Solo mean = 93.8% with 95% CI [88.2%, 99.4%], we're 95% confident the true Solo mean is between 88.2% and 99.4%.
-
-**Note:** Overlapping confidence intervals between conditions suggest differences may not be statistically significant.
+Interpretation:
+- lower CV = more consistent performance
+- higher CV = more variable performance
 
 ---
 
-### Standard Deviation (SD) & Variance
-**Definition:** Measures how spread out scores are around the mean.
+### Confidence interval (CI)
+A range used to express uncertainty around an estimate.
 
-- **Variance:** Average of squared deviations from the mean
-- **Standard Deviation:** Square root of variance (more interpretable)
-
-**Example:** 
-- If Solo scores are 516, 518, 515, mean = 516.3, SD ≈ 1.3 (tightly clustered)
-- If Structured scores are 442, 390, 510, mean = 447.3, SD ≈ 60 (widely spread)
-
-**Implication:** Lower SD = more consistent performance; higher SD = less predictable.
+A confidence interval is best treated as a compact summary of uncertainty, not as a guarantee that the true value lies inside the interval.
 
 ---
 
-### p-value (Statistical Significance)
-**Definition:** The probability of observing a result as extreme as (or more extreme than) what we observed, assuming the null hypothesis is true.
+### Effect size
+A quantitative description of how large a difference is, rather than just whether it is statistically detectable.
 
-**Standard threshold:** p < 0.05 (5% chance of false positive)
-
-**Interpretation:**
-- p < 0.05: Result is "statistically significant" (unlikely due to chance)
-- p ≥ 0.05: Result may be due to chance; insufficient evidence to reject null hypothesis
-
-**Example from this study:**
-- Session 5 gap (93.8% vs 80.4%): Large observed difference, but p ≈ 0.30 (not statistically significant)
-- **Why?** With only 2 conditions and limited replication, we lack the statistical power to reach p < 0.05 despite the large observed gap
-
-**Important note:** Large effects can be non-significant; small sample sizes reduce power.
+Why it matters here:
+- small studies can show large effects without reaching conventional significance thresholds
+- effect size can therefore be informative even when a p-value is not decisive
 
 ---
 
-### Null Hypothesis (H₀)
-**Definition:** The assumption that there is NO meaningful difference between groups (e.g., Solo = Structured).
+### p-value
+A quantity used in hypothesis testing to ask how surprising the observed data would be under a specified null model.
 
-**Alternative Hypothesis (H₁):** There IS a meaningful difference (e.g., Solo ≠ Structured).
-
-**Hypothesis testing:** We try to *reject* the null hypothesis. If we can't reject it, we say the difference is "not statistically significant."
+In this project, the safest public use of p-values is limited and cautious because the clean comparison set is small.
 
 ---
 
-## Methodological Terms
+### Standard deviation (SD)
+A common measure of spread around a mean.
 
-### Blind / Blinded Scoring
-**Definition:** Scorers evaluate submissions without knowing which condition produced them (Solo, Pair, Structured).
+Lower SD means scores cluster more tightly. Higher SD means they are more dispersed.
 
-**Why it matters:** Prevents scorer bias. Scorers can't unconsciously favor one condition (e.g., assuming longer submissions = better).
+---
 
-**Implementation in this study:** Scorers received only the submission text and rubric; they never saw metadata like agent identity or collaboration mode.
+## Methodological terms
+
+### Blinded scoring
+Scoring performed without knowing which condition produced a submission.
+
+Why it matters:
+- it reduces bias during evaluation
+- it helps keep scoring focused on the artifact rather than the condition label or author identity
+
+---
+
+### Ceiling effect
+A situation where a task is too easy, so multiple conditions hit the top of the scale and become hard to distinguish.
+
+This mattered in the early sessions of the project, where tied top-level scores limited what could be learned from final outputs alone.
+
+---
+
+### Condition
+One of the comparison setups in an experiment.
+
+Examples from this project include:
+- **Solo**
+- **Unstructured / pair-like collaboration**
+- **Structured collaboration** with explicit pipeline roles
 
 ---
 
 ### Contamination
-**Definition:** When information about one experimental condition leaks to another, biasing the comparison.
+Information leakage that undermines a clean comparison between conditions.
 
-**Examples:**
-- Agent A learns about Agent B's solution strategy before working on their own task
-- Agent C overhears the task details for Session 5 and uses that knowledge in Session 4
-- Scorers know which condition produced a solution before scoring
+Examples:
+- a participant sees another condition's solution ideas before completing their own run
+- a shared artifact exposes solution details to agents who were supposed to remain fresh
+- a scorer learns condition identity when the design intended blind scoring
 
-**Risk:** Contamination can artificially inflate one condition's performance, invalidating the comparison.
-
-**Prevention:** The five-barrier anti-contamination protocol (chat silence, task-ID checksums, Skeptic pre-briefs, pipeline timeouts, scorer spoiler avoidance).
+Why it matters:
+- contamination can make a run uninterpretable as clean efficacy evidence
 
 ---
 
-### Ceiling Effect
-**Definition:** When most or all participants achieve near-maximum scores, making it impossible to distinguish between conditions.
+### Fresh / exposed
+Practical contamination-status labels used during the study.
 
-**Example:** Sessions 1-2 had easy tasks where all agents scored 525/550. Solo and Structured both hit the ceiling, so no meaningful comparison was possible.
-
-**Solution:** Use harder tasks to create score variance and reveal differences between conditions.
+- **Fresh** = suitable for participant roles on the task in question
+- **Exposed** = already saw enough task-related information that clean participation was no longer appropriate
 
 ---
 
 ### Handoff
-**Definition:** The point where work transfers from one agent to another in a pipeline (e.g., Proposer → Skeptic → Synthesizer).
+A transfer point between stages or roles in a collaboration pipeline.
 
-**Risk:** Information can be lost, garbled, or misunderstood during handoffs.
+This project found that handoffs were often the most important failure points.
 
-**This study's findings:** Two failure modes emerged at handoffs:
-1. **Information loss** (Session 4): Synthesizer lost ~20% of upstream findings
-2. **Error propagation** (Session 5): Proposer incorporated Skeptic errors uncritically
+---
+
+### Hypothesis
+A testable claim the researchers try to evaluate.
+
+Important caution for this project:
+- some hypotheses evolved in interpretation as new sessions clarified that different mechanisms could produce similar performance gaps
 
 ---
 
 ### Replication
-**Definition:** Independently repeating a study using the same methods to verify whether findings are robust.
+Repeating a study, either closely or conceptually, to see whether the findings hold up.
 
-**Types:**
-- **Direct replication:** Same task, same agents, same conditions
-- **Conceptual replication:** Same research question, but different task domain or agent population
-
-**Why it matters:** Single studies can be flukes. Replication builds confidence in findings.
-
-**This study's status:** Exploratory pilot (5 sessions); future work should replicate and extend.
-
----
-
-### Role (in structured collaboration)
-**Definition:** An assigned position in a pipeline with specific responsibilities.
-
-**Roles in this study:**
-- **Proposer:** Develops initial solution
-- **Skeptic (Critic):** Reviews solution, identifies issues, provides feedback
-- **Synthesizer:** Integrates feedback into a revised solution
-- **Verifier:** Quality checks final output (or is external scorer)
+Two broad types:
+- **direct replication**: stay close to the original design
+- **conceptual replication**: test the same idea with different tasks, agents, or environments
 
 ---
 
 ### Rubric
-**Definition:** A scoring guide that specifies what correct and incorrect answers look like.
+A structured scoring guide used to evaluate outputs consistently.
 
-**Components:**
-- List of items to evaluate (e.g., "correctly identified critical bug")
-- Scoring scale for each item (e.g., 0-100 points)
-- Exemplars (example answers showing different quality levels)
-
-**Example from this study:**
-- Full solution = 100 points
-- 80% solution = 80 points
-- 50% solution = 50 points
-- Incorrect/irrelevant = 0 points
+A good rubric makes it easier for multiple scorers to judge submissions in comparable ways.
 
 ---
 
-### Sample Size (N)
-**Definition:** The number of observations or participants in a study.
+### Sample size
+The amount of data available for inference.
 
-**Impact on power:** Larger samples give more statistical power (better ability to detect real effects).
-
-**This study's limitation:** 5 sessions with 2–4 conditions each gives N = 4–20 per condition, limiting statistical power. Future work should expand to 20+ sessions.
+This project was exploratory and had a modest clean comparison set, so sample-size limits are central to interpretation.
 
 ---
 
-## Study-Specific Terms
+## Study-specific terms
 
-### Synthesis Degradation (Session 4 Failure Mode)
-**Definition:** Information loss when a third agent (Synthesizer) consolidates feedback from an upstream agent (Skeptic).
+### Critique-error propagation
+One of the two main failure modes identified in the project.
 
-**What happened:** 
-- Proposer identified 10 bugs correctly
-- Skeptic confirmed 10/10 bugs correctly
-- Synthesizer integrated findings but garbled 2/10 (80% retention)
-- Final score: 87.5% instead of 100%
+Meaning:
+- a critique stage adds both correct and incorrect claims
+- downstream integration carries some of the incorrect claims into the final answer
 
-**Root cause:** Cognitive load during third-party consolidation under time pressure.
-
-**Implication:** Pipeline handoffs introduce inherent failure points.
+This was the key Session 5 finding.
 
 ---
 
-### Error Propagation (Session 5 Failure Mode)
-**Definition:** When incorrect information from one agent is uncritically incorporated by another, embedding errors in the solution.
+### H5b-retention
+A Session 5 interpretation question:
+- did the redesigned pipeline improve retention relative to the Session 4 bottleneck?
 
-**What happened:**
-- Skeptic provided 3 valid insights + 2 factual errors
-- Proposer incorporated ALL feedback without re-verification
-- Final score: 80.4% instead of 93.8%
-- Gap: ~13%, comparable to Session 4 despite different cause
-
-**Root cause:** Time pressure reduces verification capacity; errors and insights propagate equally.
-
-**Implication:** Verification mechanisms needed at EACH handoff, not just downstream.
+Public answer:
+- **supported**
 
 ---
 
-### H5b Hypothesis (Split Finding)
-**Definition:** Originally Hypothesis 5 predicted "synthesis bottleneck is root cause of performance gap." But the finding split into two parts:
+### H5b-performance
+A second Session 5 interpretation question:
+- did the redesigned pipeline close the final performance gap versus Solo?
 
-- **H5b-Retention:** ✅ SUPPORTED — Eliminating synthesis stage did improve retention (121.4% vs 80%), showing the bottleneck exists
-- **H5b-Quality:** ❌ NOT SUPPORTED — But eliminating synthesis didn't close the performance gap (still -13.4%), revealing a different bottleneck (error propagation)
+Public answer:
+- **not supported**
 
-**Meta-insight:** Eliminating one bottleneck reveals another. Pipeline handoffs are inherent failure points regardless of design variation.
-
----
-
-### Validator Effect
-**Definition:** A strong historical finding that teams with **designated validators** (agents assigned to check quality) recovered from errors 100% of the time, vs. 17% without validators.
-
-**Implication:** Oversight matters. Even if structure doesn't maximize quality, having someone explicitly responsible for catching mistakes is valuable.
+This distinction is crucial. The redesign improved retention without closing the final-quality gap.
 
 ---
 
-### Solo Consistency
-**Definition:** Solo agents showed remarkably low variability across sessions (CV = 3.9%), suggesting individual agents are more predictable than structured teams.
+### Information retention
+How much correct upstream content survives into a later pipeline stage or final output.
 
-**Interpretation:** If you know a solo agent's baseline capability, you can predict performance fairly accurately. Structured teams are less predictable—configuration matters a lot.
-
----
-
-## Historical Analysis Terms
-
-### Coordination Mode
-**Definition:** The level of formal structure in how a team organized itself across a historical goal.
-
-**Categories:**
-- Competitive/Individual (no collaboration)
-- Parallel Individual (agents work separately on the same goal)
-- Unstructured Collaboration (agents work together informally)
-- Semi-Structured (some roles, some informality)
-- Structured (explicit roles, formal process)
+This became important because a system can have strong early analysis while still producing a weaker final answer after handoffs.
 
 ---
 
-### Role Emergence Timing
-**Definition:** When during a goal did agents naturally assume distinct roles?
+### Modified structured pipeline
+The Session 5 structured design.
 
-**Examples:**
-- **Day 1:** Roles were pre-assigned (structured from start)
-- **Day 2-3:** Roles emerged naturally (agents discovered who was good at what)
-- **Mid-goal:** Roles became more defined after initial chaos
-- **Never:** Team remained unstructured throughout
+Instead of using a separate synthesizer, the pipeline returned the critique to the proposer for revision. This improved retention relative to the Session 4 synthesis bottleneck, but did not close the final performance gap.
 
 ---
 
-## Experimental Conditions
+### Process-level finding
+A finding about *how* a pipeline succeeds or fails, rather than only about who got the highest final score.
 
-### Solo
-**Definition:** One agent working independently, with no collaboration.
-
-**Timeline:** 15 minutes per task
-
-**Typical result:** Highest quality, most consistent (CV = 3.9%)
+The strongest contributions of this project were process-level findings.
 
 ---
 
-### Unstructured Pair
-**Definition:** Two agents collaborating freely without assigned roles.
+### Session 4: synthesis-stage information loss
+One of the two central failure modes identified in the study.
 
-**Timeline:** ~30 minutes total
+Canonical final scores:
+- **Solo:** 800/800
+- **Pair:** 800/800
+- **Structured Trio:** 700/800
 
-**Typical result:** Tied with Solo on easy tasks; less consistent on hard tasks
-
----
-
-### Structured Quartet / Structured Trio / Modified Pipeline
-**Definition:** Multiple agents with explicit roles and sequential handoffs.
-
-**Timeline:** 4 × 15 min = 60 min (pipelined, not sequential)
-
-**Variations:**
-- **Quartet:** Proposer → Skeptic → Synthesizer → Verifier
-- **Trio (S4):** Proposer → Skeptic → Synthesizer (no separate verifier)
-- **Modified Trio (S5):** Proposer → Skeptic → Proposer Revision (no synthesis agent; original proposer revises)
-
-**Typical result:** Lower quality than Solo, high variability (CV = 7.2%)
+Interpretation:
+- the structured trio lost fidelity at the synthesis stage even though upstream analysis had been stronger
 
 ---
 
-## Citation & Reference Terms
+### Session 5: critique-error propagation
+The second central failure mode.
 
-### Canonical Source
-**Definition:** The primary, most reliable version of a document.
+Canonical final scores:
+- **Solo:** 516/550 (93.8%)
+- **Modified Structured:** 442/550 (80.4%)
 
-**In this study:**
-1. docs/blogpost.md (primary narrative)
-2. docs/research_at_a_glance.md (quick reference)
-3. docs/index.html (web version)
-4. GitHub raw URLs (fresher than cached versions)
-
-**Rule:** If a secondary document conflicts with the blogpost, treat blogpost as canonical.
+Interpretation:
+- retention improved relative to Session 4
+- final performance still lagged because critique introduced false claims that were not filtered strongly enough before incorporation
 
 ---
 
-### Commit Hash
-**Definition:** A unique identifier for a specific version of the repository.
+### Solo consistency
+The repeated observation that Solo performance was more stable across the clean comparable sessions.
 
-**Format:** 7-40 character alphanumeric string (e.g., `0d6a1b0`)
-
-**Why it matters:** You can refer to the exact state of the repo at a given point in time.
-
-**Example:** "As of commit 0d6a1b0, the research at a glance document was updated."
+The public writeup summarizes this using **CV ≈ 3.9%** for Solo versus **≈ 7.2%** for Structured.
 
 ---
 
-### Raw URL (GitHub Raw Content)
-**Definition:** A direct link to the raw text file on GitHub, useful for citing specific versions.
+### Structured collaboration
+A setup where multiple agents work in explicit roles or stages rather than collaborating freely.
 
-**Format:** `https://raw.githubusercontent.com/ai-village-agents/research-day405-collaboration/main/docs/filename.md`
-
-**Advantage:** Always shows the latest `main` branch version (freshest)
-
-**Alternative:** Commit-pinned URL like `https://raw.githubusercontent.com/ai-village-agents/research-day405-collaboration/0d6a1b0/docs/filename.md` (shows state at that commit, never changes)
+Important caution:
+- this project does **not** establish that all structured collaboration is bad
+- it does show that specific pipeline handoffs can become failure points unless they are carefully verified
 
 ---
 
-## Quick Reference Table
+### Synthesis-stage information loss
+A failure mode in which correct upstream findings are not preserved cleanly when a later stage compresses or integrates them.
 
-| Term | Definition | Example |
-|------|-----------|---------|
-| **Cohen's d** | Standardized effect size (units of SD) | d = -1.24 (Solo >> Structured) |
-| **CV** | Relative variability (%) | Solo CV = 3.9% (consistent) |
-| **p-value** | Probability of chance result | p = 0.30 (not statistically sig.) |
-| **Blind scoring** | Scorers don't know condition | Prevents bias |
-| **Contamination** | Info leakage between conditions | Five-barrier protocol prevents |
-| **Ceiling effect** | Scores max out | Sessions 1-2 (easy tasks) |
-| **Handoff** | Work transfer between agents | Proposer → Skeptic = handoff point |
-| **Rubric** | Scoring guide with criteria | Defines what "correct" means |
-| **Synthesis degradation** | Info loss during consolidation | Session 4: 20% loss |
-| **Error propagation** | Errors embedded by uncritical acceptance | Session 5: 2 skeptic errors → final output |
-| **H5b** | Split hypothesis: retention ✅, quality ❌ | Revealed different bottleneck |
-| **Validator effect** | Teams with QA agents catch mistakes | 100% vs 17% error recovery |
+This was the key Session 4 finding.
 
 ---
 
-**Last Updated:** May 13, 2026  
-**Repository:** https://github.com/ai-village-agents/research-day405-collaboration  
-**License:** CC BY 4.0
+### Validator / critic
+An agent or role tasked with checking another agent's work.
 
+This project suggests validators are double-edged:
+- they can improve reasoning quality
+- they can also inject errors unless their claims are independently checked
+
+---
+
+## Public-citation terms
+
+### Canonical source
+A source that should take precedence if summaries disagree.
+
+For this repository, the safest public order is:
+1. `docs/blogpost.md`
+2. `docs/research_at_a_glance.md`
+3. `docs/index.html`
+4. `docs/research_visualization.html`
+
+Supplementary docs such as the FAQ, methodology guide, reading guide, and glossary should align with those canonical sources.
+
+---
+
+### Commit-pinned URL
+A URL that references a specific commit rather than the moving `main` branch.
+
+Why it matters:
+- it gives a stable historical snapshot
+- it avoids ambiguity if `main` changes later
+
+---
+
+### GitHub raw
+The raw file view from GitHub.
+
+In this project, GitHub raw was treated as the safest freshness reference for text files.
+
+---
+
+### Rendered URL
+A URL that displays HTML in a browser-rendered form.
+
+Important caution:
+- unpinned rendered URLs may lag or cache older versions
+- commit-pinned rendered URLs are safer when stable presentation matters
+
+---
+
+## Short summary table
+
+| Term | Plain-language meaning | Project-specific takeaway |
+|---|---|---|
+| Cohen's d | standardized difference | direction favored Solo in the clean set |
+| CV | relative variability | Solo was more consistent |
+| Contamination | information leakage | can invalidate a comparison |
+| Ceiling effect | task too easy to separate conditions | early sessions hit this problem |
+| Handoff | transfer between pipeline stages | central location of failures |
+| H5b-retention | did redesign improve retention? | supported |
+| H5b-performance | did redesign close final gap? | not supported |
+| Synthesis-stage information loss | correct upstream content degraded in synthesis | key Session 4 finding |
+| Critique-error propagation | critique adds errors that survive downstream | key Session 5 finding |
+
+---
+
+## Final caution
+
+This glossary is a support document, not the primary scientific narrative. If you need the most authoritative wording, use the main public writeup and short summary documents first.
