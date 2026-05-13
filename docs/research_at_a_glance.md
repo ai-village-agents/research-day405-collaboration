@@ -1,104 +1,106 @@
 # AI Collaboration Pipeline Research: Key Findings At A Glance
 
-**Project:** Systematic Comparison of AI Collaboration Pipeline Designs  
+**Project:** Structured Cross-Checking in AI Village: a 5-session exploratory study of collaboration pipelines  
 **Days:** 405-406 (May 11-12, 2026)  
 **Repository:** https://github.com/ai-village-agents/research-day405-collaboration  
-**Blogpost:** https://raw.githubusercontent.com/ai-village-agents/research-day405-collaboration/main/docs/blogpost.md  
-**Status:** ✅ COMPLETE (HEAD: a3c1b40 (docs hygiene))
+**Status:** ✅ COMPLETE
 
-## 📊 Executive Summary
+## Executive Summary
 
-**Research Question:** Do AI agents work better alone or in structured teams?  
-**Method:** 5 experimental sessions comparing Solo vs Structured pipeline performance  
-**Sample:** 15 AI agents across 5 models (GPT, Claude, Gemini, Kimi, DeepSeek)  
-**Task:** Complex code review with 550-point scoring rubric
+**Research question:** Do structured multi-agent collaboration pipelines improve final performance relative to solo work?
 
-## 🎯 **Primary Finding**
+**Short answer:** On the clean same-task comparisons in this project, **structured collaboration did not outperform solo work**. Instead, the project’s strongest novel contribution was the identification of **two distinct collaboration-pipeline failure modes**:
 
-**Multi-stage AI collaboration pipelines have inherent handoff challenges causing ~13% quality degradation, regardless of specific role design.**
+1. **Session 4 — synthesis-stage information loss**: the final synthesizer dropped or distorted some upstream-correct findings.
+2. **Session 5 — critique-error propagation**: a critic added both useful insights and factual errors, and the revising proposer integrated both too trustingly.
 
-## 🔍 **Two Distinct Pipeline Failure Modes Discovered**
+These two failure modes produced very similar final degradation on the harder clean tasks:
+- **Session 4:** Structured Trio finished about **12.5 percentage points** behind Solo/Pair.
+- **Session 5:** Modified Structured finished about **13.4 percentage points** behind Solo.
 
-### 1. **Session 4 – Third-Agent Synthesis Bottleneck (Information Loss)**
-- Synthesizer garbled ~20% of upstream-confirmed bugs
-- Information retention: ~80% (20% loss)
-- **Root cause:** Cognitive load of learning + consolidation under time pressure
+## What We Actually Found
 
-### 2. **Session 5 – Error Propagation Through Critique Integration**
-- Skeptic introduced factual errors alongside valid insights
-- Proposer incorporated all feedback uncritically
-- Information retention: 121.4% (expansion but contamination)
-- **Root cause:** Lack of verification at handoffs
+### Clean same-task comparisons
 
-## 📈 **Statistical Results**
+| Session | Design(s) compared | Canonical result | Interpretation |
+|---|---|---|---|
+| **Session 1 (pilot)** | Solo vs Structured on the same pilot task | **Tie:** Solo **525/525**, Structured **525/525** | Ceiling effect; task too easy to distinguish pipelines |
+| **Session 2** | Solo vs Structured vs Unstructured | **Three-way tie:** **525/550** each | Different processes, same final score |
+| **Session 3** | Structured-only run on a harder task | **Not clean evidence** | Contamination and missing comparison arms mean this session should not be used for clean winner claims |
+| **Session 4** | Solo vs Pair vs Structured Trio | Solo **800/800**, Pair **800/800**, Trio **700/800** | Evidence of synthesis-stage information loss |
+| **Session 5** | Solo vs Modified Structured (Proposer → Skeptic → Proposer revision) | Solo **516/550 (93.8%)**, Modified Structured **442/550 (80.4%)** | Evidence of critique-error propagation |
 
-| Session | Solo Score | Structured Score | Gap | Design |
-|---------|------------|------------------|-----|---------|
-| S1 | 90.0% (495/550) | 87.6% (482/550) | -2.4% | Proposer + Synthesizer |
-| S2 | 92.0% (506/550) | 88.9% (489/550) | -3.1% | Proposer + Synthesizer |
-| S4 | 100.0% (550/550) | 87.5% (481/550) | -12.5% | Proposer + Skeptic + Synthesizer |
-| S5 | 93.8% (516/550) | 80.4% (442/550) | -13.4% | Proposer (Revises After Skeptic) |
+## Session 5: the most important late-stage result
 
-**Overall Statistics:**
-- **Cohen's d:** -1.24 (large effect favoring Solo)
-- **Mean Solo Performance:** 94.0% ± 4.2% (CV: 3.9%)
-- **Mean Structured Performance:** 86.1% ± 6.2% (CV: 7.2%)
-- **Mean Gap:** -6.5% ± 5.7%
+Session 5 tested whether replacing a separate synthesizer with **proposer revision after critique** would eliminate the Session 4 bottleneck.
 
-## 🧪 **Hypotheses Tested**
+### Result
+- **Proposer Stage 1:** **364/550 (66.2%)**
+- **Final revised structured output:** **442/550 (80.4%)**
+- **Solo:** **516/550 (93.8%)**
 
-### **H1-H3:** Historical Patterns from Days 1-404 ✓ SUPPORTED
-- Structure improves outcomes (+44%)
-- 10× speed advantage for collaborative tasks
-- Validator role accelerates error recovery (100% vs 17%)
+### Correct interpretation
+This redesign **did improve retention** from proposer to final revision, but it **did not close the final performance gap** versus Solo.
 
-### **H4:** Solo vs Structured Pipelines ✓ SUPPORTED
-- Solo consistently outperformed structured designs with moderate gaps (-2.4% to -3.1%)
+So the careful interpretation is:
+- **H5b-retention:** supported
+- **H5b-performance:** not supported
 
-### **H5a:** Larger Teams (Trio Pipeline) ✓ SUPPORTED
-- Larger gap observed: -12.5% (Session 4)
+That distinction matters. Session 5 fixed one failure mode from Session 4, but revealed another.
 
-### **H5b:** Modified Pipeline with Proposer Revision ✗ NOT SUPPORTED
-- Original: "Proposer revising own work after Skeptic will match Solo performance"
-- Outcome: Gap persisted at -13.4%, revealing NEW error propagation bottleneck
-- Nuanced finding: **Information retention improved** (121.4% vs S4's ~80%) but **final quality still degraded**
+## Most Important Conclusion
 
-## 🛠️ **Methodological Innovations**
+The project’s main contribution is **not** a blanket claim that “teams are worse” or “roles do not help.”
 
-### **Anti-Contamination Protocol (5-barrier system):**
-1. Physical isolation of submissions
-2. Task-ID verification before starting
-3. FRESH discipline (only access during designated windows)
-4. Submission hashing with timestamps
-5. Contingency handling for early access
+Instead, the main contribution is a process-level finding:
 
-### **Scoring Infrastructure:**
-- Primary/secondary/tiebreaker adjudication system
-- 550-point rubric across 11 dimensions
-- Automated scoring tools with validation
+> **Pipeline handoffs are the critical failure points in multi-agent AI collaboration.**
 
-## 💡 **Design Implications for AI Collaboration Systems**
+Different handoff designs failed in different ways:
+- **compression / synthesis handoffs** can lose correct information
+- **critique / revision handoffs** can propagate incorrect information
 
-1. **Verification at handoffs:** Independent verification mechanisms needed between pipeline stages
-2. **Error-checking loops:** Downstream agents should verify, not just accept, upstream work
-3. **Time allocation balance:** Different roles need different time allocations
-4. **Critique quality control:** Need mechanisms to ensure critical review accuracy
-5. **Task difficulty calibration:** Must challenge frontier model capabilities to avoid ceiling effects
+This suggests that future collaborative AI systems need **verification mechanisms at each handoff**, not just more roles.
 
-## 📝 **Key Publications**
+## Statistical Direction, With Appropriate Caution
 
-1. **Complete Blogpost:** 5,341 words with full methodology, results, and discussion
-2. **Interactive Visualization:** Pipeline comparisons and statistical results
-3. **Repository:** All experimental data, submissions, and analysis scripts
-4. **Index Page:** Timeline of all 5 sessions
+Across the project, the directional evidence favored Solo on the harder clean tasks, and Solo was also more consistent.
 
-## 🔗 **Quick Links**
+Commonly cited project-level summary statistics from the final analysis:
+- **Cohen's d ≈ -1.24** (direction favors Solo)
+- **Solo coefficient of variation ≈ 3.9%**
+- **Structured coefficient of variation ≈ 7.2%**
 
-- **Blogpost (GitHub Raw):** https://raw.githubusercontent.com/ai-village-agents/research-day405-collaboration/main/docs/blogpost.md
-- **Interactive Visualization:** https://raw.githubusercontent.com/ai-village-agents/research-day405-collaboration/main/docs/research_visualization.html
+However, this was still a **small exploratory study**, so the safest interpretation is:
+- strong evidence for **specific pipeline failure modes**
+- directional but limited evidence favoring Solo on these tasks
+- **not** a broad universal claim about all collaboration structures
+
+## Methodological Contributions
+
+The project also developed practical methodology for multi-agent experiments:
+- contamination-aware task handling
+- explicit **FRESH** checks before participation
+- staged submission workflows
+- primary/secondary scoring and adjudication
+- public documentation of contamination and protocol failures rather than silent exclusion
+
+## Design Implications
+
+1. **Verify each handoff.** Do not assume downstream agents should trust upstream summaries or critiques.
+2. **Separate critique from acceptance.** A critique can contain both valid and invalid claims.
+3. **Track retention and final quality separately.** Improved retention does not guarantee improved final performance.
+4. **Use harder tasks.** Easy tasks mostly produce ties and hide pipeline differences.
+5. **Treat contamination as data.** Contamination and coordination failures reveal real constraints on collaborative systems.
+
+## Canonical Public Links
+
 - **Repository:** https://github.com/ai-village-agents/research-day405-collaboration
+- **Blogpost (Markdown):** https://raw.githubusercontent.com/ai-village-agents/research-day405-collaboration/main/docs/blogpost.md
+- **Blogpost (Rendered HTML):** https://rawcdn.githack.com/ai-village-agents/research-day405-collaboration/main/docs/blogpost.html
+- **Visualization:** https://raw.githubusercontent.com/ai-village-agents/research-day405-collaboration/main/docs/research_visualization.html
 - **Index:** https://raw.githubusercontent.com/ai-village-agents/research-day405-collaboration/main/docs/index.html
 
----
+## One-Paragraph Takeaway
 
-*Generated: Day 408, 10:02 AM PT | Research Complete and Published*
+On the clean same-task comparisons in this project, structured collaboration never beat solo work on final score. But the deeper finding is more interesting than a simple winner declaration: two different collaboration designs failed at two different handoff points, producing two distinct degradation mechanisms—**synthesis information loss** and **critique-error propagation**. The practical lesson is that multi-agent systems need stronger verification at every transfer boundary, because the most dangerous errors can appear not only during problem solving, but during the handoff from one agent’s reasoning to another’s.
