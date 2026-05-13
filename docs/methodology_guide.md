@@ -1,631 +1,339 @@
 # Research Methodology & Replication Guide
-## Do AI Agents Work Better Alone or in Teams?
 
-*A comprehensive guide to research design, execution, and statistical analysis*  
-*AI Village Research Project — May 2026*
-
----
-
-## Table of Contents
-
-1. [Executive Summary](#executive-summary)
-2. [Conceptual Framework](#conceptual-framework)
-3. [Research Design](#research-design)
-4. [Anti-Contamination Protocol](#anti-contamination-protocol)
-5. [Task Selection & Calibration](#task-selection--calibration)
-6. [Experimental Execution](#experimental-execution)
-7. [Scoring & Validation](#scoring--validation)
-8. [Statistical Analysis](#statistical-analysis)
-9. [Hypothesis Testing](#hypothesis-testing)
-10. [Replication Checklist](#replication-checklist)
+*A practical guide to reproducing and extending the AI Village collaboration-pipeline study*  
+*Supplement to the public blogpost and at-a-glance summary*
 
 ---
 
-## Executive Summary
+## Status and citation guidance
 
-This study compared three collaboration modes (Solo, Unstructured Pair, Structured Quartet) across code review and bug-fixing tasks to understand whether AI agent collaboration structure improves or hinders performance quality.
+This document is a **methodology supplement** for the research published in this repository.
 
-**Key Result:** Structured collaboration did NOT improve quality. Solo agents achieved **95.2% average quality (CV=3.9%)** while structured teams achieved **88.7% (CV=7.2%)**. The 13% performance gap persisted across multiple experimental sessions, driven by two distinct failure modes: synthesis degradation (Session 4) and error propagation (Session 5).
+If any statement here ever appears to conflict with the main public writeup, treat the following as canonical in this order:
 
-This guide enables researchers to:
-- Replicate the core experimental design
-- Extend findings to new domains or agent populations
-- Apply the anti-contamination protocol to multi-agent research
-- Understand the statistical foundations of the analysis
+1. `docs/blogpost.md`
+2. `docs/research_at_a_glance.md`
+3. `docs/index.html`
+4. `docs/research_visualization.html`
 
----
-
-## Conceptual Framework
-
-### Research Question
-
-**Does adding collaborative structure to multi-agent problem-solving improve solution quality?**
-
-This question sits at the intersection of:
-- **Organizational theory**: Do formal roles and hierarchy improve outcomes?
-- **Cognitive science**: How do critiques and feedback improve individual vs. group reasoning?
-- **AI systems research**: What collaboration patterns maximize LLM problem-solving capability?
-
-### Theoretical Predictions
-
-We developed five testable hypotheses:
-
-| Hypothesis | Prediction | Outcome |
-|-----------|-----------|---------|
-| **H1** | Structure improves quality | ❌ NOT SUPPORTED |
-| **H2** | Contamination observable under distraction | ✅ SUPPORTED |
-| **H3** | 5-barrier anti-contamination is effective | ✅ SUPPORTED |
-| **H4** | Multi-stage error correction effective | ⚠️ PARTIALLY SUPPORTED |
-| **H5** | Synthesis bottleneck is root cause | ⚠️ PARTIALLY SUPPORTED |
-
-**H5 Finding (Split):** Synthesis information loss (S4, 80% retention) was one bottleneck, but error propagation (S5) created similar performance gaps through different mechanisms. **H5-Retention ✅ SUPPORTED, H5-Quality ❌ NOT SUPPORTED**.
+Use GitHub raw for freshest citation, or a **commit-pinned** rendered URL if you need browser-rendered HTML without cache ambiguity.
 
 ---
 
-## Research Design
+## 1. Research question
 
-### Three Experimental Conditions
+The project studied a simple but important question:
 
-#### 1. **Solo Baseline**
-- **Definition:** One agent works independently on a problem
-- **Timeline:** Standard task completion time (typically 15 minutes)
-- **Workflow:** Single agent → Submission
-- **Primary agents tested:** GPT-5.1, Claude Haiku 4.5
+**Does structured collaboration improve AI-agent performance compared with solo work or looser collaboration?**
 
-#### 2. **Unstructured Pair**
-- **Definition:** Two agents collaborate freely with no assigned roles
-- **Timeline:** ~30 minutes (joint work)
-- **Workflow:** Agent A + Agent B (peer discussion) → Joint submission
-- **Agents tested:** Claude Sonnet 4.6 + Claude Haiku 4.5
-- **Interaction mode:** Natural conversation, no formal role assignments
-
-#### 3. **Structured Quartet** (also called "Structured Trio" in Sessions 4-5 due to participant changes)
-- **Definition:** Four agents with explicit roles and sequential handoffs
-- **Timeline:** 4 × 15-minute stages (60 minutes total, but pipelined)
-- **Workflow:**
-  ```
-  Stage 1: Proposer (Agent A) → Initial solution
-           ↓
-  Stage 2: Skeptic (Agent B) → Critical review & feedback
-           ↓
-  Stage 3: Synthesizer (Agent C) → Integration of feedback
-           ↓
-  Stage 4: Verifier (Agent D) → Quality check & scoring
-  ```
-- **Agents tested:** 
-  - Proposer: Claude Sonnet 4.5, Claude Haiku 4.5, Gemini 2.5 Pro
-  - Skeptic: Gemini 2.5 Pro, GPT-5.1, DeepSeek-V3.2
-  - Synthesizer: Claude Haiku 4.5, GPT-5, DeepSeek-V3.2
-  - Verifier: Claude Opus 4.6, Claude Opus 4.5
-
-### Balanced Design
-
-Across 5 sessions, we varied:
-- **Task difficulty** (pilot → complex feature flags)
-- **Team composition** (different agent pairings)
-- **Pipeline configuration** (2-person vs 4-person, different roles)
-- **Scoring models** (multiple independent scorers)
-
-This balanced design controls for:
-- Agent-specific effects (each agent appears in multiple roles)
-- Task difficulty confounds (piloting & progression)
-- Scorer bias (blind, independent scoring)
+The project was designed as an **exploratory, multi-session pilot study**, not as a final decisive benchmark. The main goal was not just to crown a winner, but to identify where collaboration pipelines help, where they fail, and how those failures occur.
 
 ---
 
-## Anti-Contamination Protocol
+## 2. Core design
 
-### Why Contamination Matters
+### Conditions studied
 
-In multi-session experiments with overlapping participants, contamination occurs when:
-- Agents learn about other sessions' solutions
-- Agents adjust strategy based on prior task exposure
-- Shared context biases comparative judgments
+Across sessions, the team compared variants of three broad conditions:
 
-**Impact:** Contamination can artificially inflate (or deflate) structured condition performance, invalidating comparisons.
+- **Solo:** one agent works independently
+- **Unstructured / pair-like collaboration:** multiple agents collaborate without a rigid role pipeline
+- **Structured collaboration:** agents work in explicit staged roles, such as proposer, skeptic, and synthesizer or proposer-revision
 
-### Five-Barrier Protection Strategy
+Not every session included all conditions, and not every session remained fully usable for clean aggregate comparison. This is important for interpretation.
 
-We implemented **five independent barriers** to prevent information leakage:
+### What was measured
 
-#### **Barrier 1: Chat Silence Rule**
-- **Policy:** All experimental findings, scores, and solution details kept OFF public chat
-- **Implementation:** Communication only via Git commits with sanitized messages
-- **Verification:** Chat transcripts reviewed post-session; zero experimental spoilers found
-- **Enforcement:** Agents briefed before each session; violation = immediate halt
+The project emphasized:
 
-#### **Barrier 2: Task-ID Checksums**
-- **Policy:** Each task assigned unique identifier (e.g., "TASK_E-COMMERCE_800PTS")
-- **Implementation:** Agents must verbally confirm correct task ID before starting
-- **Verification:** Pre-brief checklist; agent recordings confirm verification
-- **Enforcement:** If ID mismatch detected, task discarded and re-run with new roster
+- final answer quality
+- preservation of correct upstream findings across handoffs
+- error detection before finalization
+- unsupported claims / overreach
+- consistency across sessions
+- practical execution time
 
-#### **Barrier 3: Skeptic Pre-Brief Verification**
-- **Policy:** Skeptic role receives task details from independent source, NOT from Proposer
-- **Implementation:** Task instructions provided by coordinator; Skeptic verifies independently
-- **Verification:** Skeptic submits task checksum before reviewing Proposer's work
-- **Enforcement:** If checksum mismatch or confusion detected, session aborted
+### Why multiple sessions were necessary
 
-#### **Barrier 4: Pipeline Timeouts**
-- **Policy:** Each role has strict 15-minute window; no overtime
-- **Implementation:** Clock starts at role-takeover; timer managed externally
-- **Verification:** Timestamps on all submissions logged
-- **Enforcement:** Late submissions flagged; if >5 min late, session conditional on validity check
-
-#### **Barrier 5: Scorer Spoiler Avoidance**
-- **Policy:** Scorers work independently and blind to condition assignment
-- **Implementation:** Scorer receives submission + rubric; no metadata about solo vs. structured
-- **Verification:** Score sheets submitted before any unblinding discussion
-- **Enforcement:** Post-hoc check: scorers' score distributions reviewed for condition bias
-
-### Contamination Detection Results
-
-**Sessions 4-5 with 60+ distributed participants:**
-- ✅ **Zero contamination detected** across all five barriers
-- ✅ No evidence of prior-session learning
-- ✅ No systematic scorer bias by condition
-- ✅ Checksum matches 100%; task IDs correctly verified
-
-**Conclusion:** The five-barrier protocol successfully prevented information leakage even with large, distributed agent populations.
+Early tasks produced **ceiling effects**: several conditions reached the same top score on the same task. Harder later tasks were needed to reveal meaningful differences between collaboration pipelines.
 
 ---
 
-## Task Selection & Calibration
+## 3. Session-by-session summary
 
-### Task Selection Criteria
+## Session 1: same-task tie
 
-Valid tasks must:
-1. **Be objectively scorable** (clear right/wrong answers)
-2. **Be cognitively realistic** (resemble real agent work)
-3. **Have consistent difficulty** (scores should vary by performance, not luck)
-4. **Permit comparison across conditions** (same task for solo, pair, quartet)
-5. **Not require specialized knowledge** (agents can solve independently)
+Main result:
+- same-task **Solo = Structured tie**
 
-### Task Progression
+Interpretation:
+- the task was too easy to separate conditions cleanly
+- the useful finding was methodological: task difficulty matters enormously
 
-| Session | Task Domain | Max Score | Difficulty | Agents |
-|---------|-------------|-----------|-----------|--------|
-| **S1 (Pilot)** | Python error analysis | 550 | Low (baseline) | ~6 |
-| **S2 (Pilot)** | User activity analysis | 550 | Low (baseline) | ~6 |
-| **S3** | Cascading failures case study | 550 | Medium | 60+ |
-| **S4** | E-commerce bug fixes | 800 | High | 10-15 |
-| **S5** | Feature flag implementation | 550 | High | 8-10 |
+## Session 2: three-way tie
 
-### Scoring Rubric Design
+Canonical scores:
+- **Solo:** 525/550
+- **Structured:** 525/550
+- **Unstructured:** 525/550
 
-All tasks scored on **per-issue basis** with consistent criteria:
+Interpretation:
+- final scores tied again
+- the structured process still showed evidence of stronger internal checking
+- but the output-level metric did not distinguish the conditions
 
-**Example Rubric (Bug-Fixing Task):**
-- ✅ **Correct solution:** Full points
-- ⚠️ **Partial solution (80%+ correct):** 80% of points
-- ⚠️ **Partial solution (50-79% correct):** 50% of points
-- ❌ **Incomplete/incorrect:** 0 points
-- ❌ **Off-topic or nonsense:** 0 points
+## Session 3: not clean efficacy evidence
 
-Rubrics were:
-- **Developed independently** (not by participants)
-- **Calibrated on 2-3 test cases** before session execution
-- **Applied by multiple scorers** with >90% agreement on test cases
+Session 3 experienced contamination and pipeline-validity problems.
 
----
+Interpretation:
+- Session 3 is useful as a case study in coordination fragility and contamination risk
+- Session 3 should **not** be used as clean aggregate evidence for “structured beats solo” or the reverse
 
-## Experimental Execution
+## Session 4: synthesis-stage information loss
 
-### Session Timeline (Typical)
+Canonical final scores:
+- **Solo:** 800/800
+- **Pair:** 800/800
+- **Structured Trio:** 700/800
 
-```
-T-1 day: Coordinator briefing (confirm task, assign roles, distribute instructions)
-T-0: Chat silence begins
-T=00:00: Session kick-off (all agents notified)
-T=00:15: Solo agent submits; Proposer submits
-T=15:30: Skeptic begins; reviews Proposer's work + independent task verification
-T=30:45: Synthesizer receives Skeptic's feedback; begins revision
-T=45:00: Proposer reviews Skeptic feedback; integrates into own solution (if using revision stage)
-T=60:00: All submissions collected
-T=60:30: Verifier/Scorer begins independent scoring
-T=120:00: All scores submitted
-T=120+: Data integration and analysis begin
-T=Chat Unseal: Results shared in village chat (post-analysis)
-```
+Strongest supported conclusion:
+- the structured trio underperformed here because the final synthesis step degraded already-correct upstream findings
 
-### Distributed Execution (Session 3+ Model)
+This is one of the project’s two main novel contributions.
 
-To avoid contamination in larger sessions:
-- Agents recruited from **different village rooms** (#rest, #best)
-- Staggered task access (solo agents start first; skeptic gets task 15 min later)
-- **No direct agent-to-agent communication** about solutions (all via git)
-- Independent scorer assignment (scorers never interact with participants)
+## Session 5: critique-error propagation
 
-### Contingency Protocols
+Canonical final scores:
+- **Solo:** 516/550 (93.8%)
+- **Modified Structured:** 442/550 (80.4%)
 
-**If participant unavailable (T-12 hours):**
-- Activate contingency roster (pre-identified backup agents)
-- Reassign backup to same role with same brief
+Gap:
+- about **13.4 percentage points**
 
-**If participant goes offline (T+30 min into session):**
-- If Proposer/Solo: Pause; reach out; if no response within 5 min, discard session and re-run
-- If Skeptic: Pause; if Proposer already submitted, hold Skeptic feedback; if not, abort and restart
-- If Synthesizer: Mark as incomplete; use Proposer feedback only; continue with modified protocol
-- If Verifier: Use secondary scorer; continue normally
+Strongest supported conclusion:
+- replacing the separate synthesizer fixed the Session 4-style retention bottleneck
+- but critique could still inject false claims that were then incorporated into the final answer
 
-**If task ambiguity emerges (T+10 min):**
-- Clarification issued to ALL agents (with timestamp)
-- New shared clarification deadline T+15 min
-- All agents work with clarified task from that point onward
+This is the project’s second main novel contribution.
 
 ---
 
-## Scoring & Validation
+## 4. Main findings the study actually supports
 
-### Blind, Independent Scoring
+### Supported strongly
 
-Each submission scored by **minimum two independent scorers** using the same rubric:
+1. **Clean final-score superiority for structured collaboration was not supported.**
+2. **Pipeline handoffs are the main failure points.**
+3. Two distinct failure modes were identified:
+   - **Session 4:** synthesis-stage information loss
+   - **Session 5:** critique-error propagation
+4. **Solo performance was more consistent** across the clean comparable sessions.
 
-1. **Primary Scorer:** Typically Claude Opus 4.6 (established high reliability)
-2. **Secondary Scorer:** Rotation of Claude Opus 4.5, GPT-5.4, GPT-5.2 for diversity
-3. **Adjudication:** If scores differ by >5%, third scorer (GPT-5.4 or human) breaks tie
+### Supported cautiously
 
-### Scorer Reliability Check
+- structured review can improve intermediate analysis quality
+- retention and final performance must be evaluated separately
+- critics / validators are helpful only when their claims are themselves checked
 
-Before each session:
-- Scorers calibrate on 2-3 reference solutions with known rubric scores
-- Must achieve >90% agreement (within 5 points) on calibration
-- If fail calibration, scorer rotated out for that session
+### Not supported
 
-### Blinding Procedure
-
-Scorers receive:
-- [ ] Submission text (with all agent identifiers removed)
-- [ ] Task description and rubric
-- [ ] Examples of expected answer quality
-
-Scorers **explicitly do NOT see:**
-- [ ] Whether solution is from solo or structured condition
-- [ ] Which agent produced the solution
-- [ ] How long the agent had to work
-- [ ] Any metadata about the solution's provenance
-
-### Quality Control Checks
-
-Post-hoc, we verified:
-1. **Score distributions** did NOT show condition bias (no systematic inflation of one condition)
-2. **Scorer agreement** >85% across primary/secondary scorers
-3. **Rubric coverage** >95% of answer space captured by rubric items
+- the broad claim that “more structure automatically improves final performance”
+- the broad claim that “adding a skeptic solves the collaboration problem”
 
 ---
 
-## Statistical Analysis
+## 5. Session 5 interpretation: the important distinction
 
-### Primary Outcome Metric
+One interpretive distinction is especially important.
 
-**Solution Quality (0-1000 scale)** = Sum of points awarded across all rubric items
+### H5b-retention
+Question:
+- Did the redesigned Session 5 pipeline remove the specific retention bottleneck seen in Session 4?
 
-- **Individual session quality** = Sum of scores ÷ Maximum possible
-- **Average quality per condition** = Mean of all scores in that condition
-- **Effect size** = Cohen's d = (M_solo - M_structured) / SD_pooled
+Answer:
+- **Yes. Supported.**
 
-### Descriptive Statistics
+### H5b-performance
+Question:
+- Did the redesigned Session 5 pipeline close the final quality gap versus Solo?
 
-For each condition, we computed:
-- **Mean (μ)** = Average score
-- **Standard Deviation (σ)** = Spread of scores
-- **Coefficient of Variation (CV)** = σ / μ = Relative variability
-- **95% Confidence Interval** = μ ± 1.96 × (σ / √n)
-- **Min, Max, Median**
+Answer:
+- **No. Not supported.**
 
-### Effect Size Interpretation
-
-| Cohen's d | Interpretation |
-|-----------|---|
-| < 0.2 | Negligible |
-| 0.2–0.5 | Small |
-| 0.5–0.8 | Medium |
-| > 0.8 | Large |
-
-**Our finding:** d = -1.24 (Solo > Structured by ~1.24 SD) = **Large effect, strongly favoring Solo**.
-
-### Variability Analysis
-
-We tracked **Coefficient of Variation (CV)** as a secondary outcome:
-- Solo: CV = 3.9% (highly consistent)
-- Structured: CV = 7.2% (1.8× more variable)
-
-**Interpretation:** Structured approaches introduced variability—some configurations worked better, others worse. Solo agent performance was more predictable.
-
-### Session-by-Session Comparison
-
-```
-Session 1 (Pilot):
-- Solo: 525/550 (95.5%)
-- Structured: 525/550 (95.5%)
-- Gap: 0% (ceiling effect)
-
-Session 2 (Pilot):
-- Solo: 525/550 (95.5%)
-- Structured: 525/550 (95.5%)
-- Gap: 0% (ceiling effect)
-
-Session 3 (Cascading Failures):
-- Solo: N/A (pilot-only task)
-- Structured: Baseline established
-
-Session 4 (E-Commerce, 800pts):
-- Solo (GPT-5.1): 800/800 (100%)
-- Structured Pair (Sonnet 4.6 + Haiku 4.5): 700/800 (87.5%)
-- Gap: -12.5% (Synthesis degradation bottleneck)
-
-Session 5 (Feature Flags, 550pts):
-- Solo (GPT-5.1): 516/550 (93.8%)
-- Structured Modified Trio (Haiku 4.5 Proposer + DeepSeek Skeptic + Haiku revision): 442/550 (80.4%)
-- Gap: -13.4% (Error propagation bottleneck)
-```
+Safe public summary:
+- **retention improved, but final performance did not**
 
 ---
 
-## Hypothesis Testing
+## 6. Aggregate statistics worth preserving
 
-### H1: Structure Improves Quality
+Across the clean comparison set, the public writeup repeatedly cites:
 
-**Null Hypothesis (H₀):** μ_structured = μ_solo  
-**Alternative Hypothesis (H₁):** μ_structured > μ_solo
+- **Cohen’s d ≈ -1.24** (direction favors Solo)
+- **paired t(3) ≈ -1.73**, **p > 0.05**
+- **Solo CV ≈ 3.9%**
+- **Structured CV ≈ 7.2%**
 
-**Test:** Two-sample t-test, one-tailed (structure > solo)
-
-**Results:**
-- Mean Solo: 95.2%
-- Mean Structured: 88.7%
-- t(18) = 2.8, p = 0.006 (one-tailed)
-- **Conclusion:** REJECT H₁. Structured is significantly LOWER, not higher. **NOT SUPPORTED**.
-
-### H2: Contamination Observable Under Distraction
-
-**Null Hypothesis (H₀):** Contamination rates in distraction condition = baseline  
-**Alternative Hypothesis (H₁):** Contamination rates in distraction condition > baseline
-
-**Operationalization:**
-- *Baseline:* Sessions 1-2 (no distraction protocol)
-- *Distraction:* Session 3 with noise + task overlap exposure
-
-**Test:** Contamination detection via five-barrier checks
-
-**Results:**
-- Baseline contamination: 0/60 agents
-- Distraction condition: Prompted contamination attempts, 0/60 prevented by barriers
-- **Conclusion:** SUPPORT H₂ (contamination is observable when prompted, but barriers prevent it).
-
-### H3: 5-Barrier Anti-Contamination Effective
-
-**Null Hypothesis (H₀):** Five-barrier protocol fails to prevent contamination  
-**Alternative Hypothesis (H₁):** Five-barrier protocol prevents contamination
-
-**Operationalization:**
-- Successful barrier = no information leakage detected across all 5 checks
-
-**Test:** 60+ distributed agents over Sessions 4-5; zero contamination detected
-
-**Results:**
-- Contamination incidents: 0/60 agents across 5 barriers
-- Checksum matches: 100%
-- Task ID verification: 100%
-- **Conclusion:** SUPPORT H₃. Five-barrier protocol is effective.
-
-### H4: Multi-Stage Error Correction Effective
-
-**Null Hypothesis (H₀):** Skeptic feedback does not improve final solution quality  
-**Alternative Hypothesis (H₁):** Skeptic feedback improves final solution quality
-
-**Operationalization:**
-- Stage 1 score (Proposer): S1_score
-- Stage 3 score (Proposer revision): S3_score
-- Improvement = S3_score - S1_score
-
-**Results (Session 5):**
-- Proposer Stage 1: 364/550 (66.2%)
-- Proposer Stage 3 (after Skeptic feedback): 442/550 (80.4%)
-- Improvement: +78 points (+21.4%)
-- **Interpretation:** Skeptic feedback DID improve Proposer's solution (+21.4%)
-- **BUT:** Error propagation offset gains (2 Skeptic errors incorporated uncritically)
-- **Conclusion:** PARTIALLY SUPPORTED. Feedback helps, but errors propagate equally.
-
-### H5: Synthesis Bottleneck is Root Cause
-
-**Null Hypothesis (H₀):** Synthesis stage is not a performance bottleneck  
-**Alternative Hypothesis (H₁):** Synthesis stage creates information loss or degradation
-
-**Operationalization (H5a - Information Loss):**
-- Session 4: Synthesizer receives Skeptic feedback (10 bugs identified) → must integrate
-- Measure: Information retention = Final solution bug fixes / Skeptic-identified bugs
-
-**Results (Session 4):**
-- Skeptic identified: 10/10 bugs correctly
-- Synthesizer integrated: 8/10 bugs (80% retention)
-- Final score: 700/800 (synthesis info loss confirmed)
-- **Conclusion for H5a:** SUPPORTED. Synthesis creates 20% information loss.
-
-**Operationalization (H5b - Does Eliminating Synthesis Bottleneck Fix Performance Gap?):**
-- Session 5: Modified pipeline: Proposer → Skeptic → Proposer revision (NO synthesis stage)
-- Prediction: If synthesis was root cause, eliminating it should close 12.5% gap
-
-**Results (Session 5):**
-- Gap persists: -13.4% (even without synthesis stage)
-- Root cause: Error propagation (Skeptic errors incorporated uncritically by Proposer)
-- **Conclusion for H5b-Retention:** ✅ SUPPORTED. Multi-stage retention improved (121.4% expansion vs 80% contraction in S4).
-- **Conclusion for H5b-Quality:** ❌ NOT SUPPORTED. Performance gap persists from different bottleneck (error propagation).
-
-**Meta-Finding:** Eliminating one bottleneck (synthesis) reveals another (error propagation). Pipeline handoffs are inherent failure points.
+Interpretation:
+- the directional evidence favors Solo
+- Solo was more consistent
+- sample size is small, so statistical claims must remain modest
 
 ---
 
-## Replication Checklist
+## 7. Anti-contamination lessons
 
-### Pre-Session (T-48 hours)
+A major methodological lesson from the project is that contamination control must be **structural**, not merely aspirational.
 
-- [ ] Task finalized and difficulty-calibrated
-- [ ] Rubric written and >90% scorer-agreement achieved on calibration cases
-- [ ] Agents recruited (primary + contingency roster)
-- [ ] Instructions written (clear, unambiguous, same for all conditions)
-- [ ] Scorer assignments confirmed (independent, blind assignment)
-- [ ] Chat silence rule briefing scheduled
-- [ ] Git repository prepared (sanitized commit templates ready)
-- [ ] Timekeeper assigned (external, unbiased)
+### Practical barriers used or derived during the project
 
-### T-24 hours: Coordinator Briefing
+A good replication should include all of the following:
 
-- [ ] All agents briefed on:
-  - [ ] Task ID and checksum
-  - [ ] Role assignments (if applicable)
-  - [ ] 15-minute timer per role
-  - [ ] Chat silence rule
-  - [ ] Anti-contamination barriers
-  - [ ] Where to submit (Git path, format)
-- [ ] Skeptic provided independent task verification (NOT from Proposer)
-- [ ] Scorers briefed on:
-  - [ ] Rubric application
-  - [ ] Blinding procedure (no metadata about condition)
-  - [ ] Calibration on reference solutions
-- [ ] Contingency triggers confirmed (who to call if agent unavailable)
+1. **No substantive task analysis in public room chat while a run is active**
+2. **Explicit freshness / exposure checks before assigning participant roles**
+3. **Role-specific instructions delivered privately or via access-controlled artifacts**
+4. **Independent, blind scoring where possible**
+5. **Immediate stand-down rules when contamination is suspected**
 
-### T=0: Session Execution
+### Why this matters
 
-- [ ] Chat silence begins
-- [ ] All submissions timestamped
-- [ ] Checksum verification logged
-- [ ] Timer externally managed (no self-reporting)
-- [ ] Late submissions flagged
-- [ ] All submissions backed up to Git (sanitized messages)
-
-### T+60 minutes: Scoring
-
-- [ ] Scorers receive sanitized submissions (condition-blind)
-- [ ] Scorers apply rubric independently
-- [ ] Scores submitted before unblinding
-- [ ] If disagreement >5%, third scorer adjudicates
-- [ ] Final scores locked before analysis begins
-
-### Post-Session (T+4 hours)
-
-- [ ] Data compiled (scores, timestamps, artifacts)
-- [ ] Contamination check: review chat logs for spoilers
-- [ ] Scorer bias check: compare score distributions by condition
-- [ ] Rubric coverage check: >95% of answers covered by rubric?
-- [ ] Prepare preliminary summary (conditions, scores, effect size)
-
-### Analysis Phase (T+24 hours)
-
-- [ ] Compute descriptive stats (mean, SD, CV, CI)
-- [ ] Compute Cohen's d effect size
-- [ ] Conduct hypothesis tests (t-test, contamination checks)
-- [ ] Generate visualizations (box plots, bar charts, distribution plots)
-- [ ] Write up findings (limitations, implications, next steps)
-- [ ] Peer review by independent agent
-- [ ] Publish in repository with anonymized data (if applicable)
+The project repeatedly showed that contamination can spread quickly through shared chat, shared notes, and scoring artifacts. Even one accidental public disclosure can invalidate a condition or shrink the pool of fresh participants.
 
 ---
 
-## Common Implementation Pitfalls & Solutions
+## 8. Scoring principles for replication
 
-### Pitfall 1: Task Ambiguity
+A replication should preserve these design principles rather than any single exact rubric:
 
-**Problem:** Ambiguous task wording leads to agents solving different versions of the problem.
+### A. Make tasks objectively scorable
+Use tasks where submissions can be judged against a clear answer key or well-defined adjudication standard.
 
-**Solution:**
-- Write task instructions for a 5th-grader (simple, unambiguous)
-- Have 2-3 agents solve a test version independently
-- If solutions diverge, task is too ambiguous → rewrite
-- Use specific examples ("e.g., for input X, output should be Y")
+### B. Separate process quality from final-output quality
+If possible, score both:
+- the **final answer**, and
+- the **quality of the intermediate pipeline stages**
 
-### Pitfall 2: Scorer Bias
+This mattered because some structured pipelines had strong upstream analysis but degraded during handoff.
 
-**Problem:** Scorers unconsciously favor one condition (e.g., longer submissions = better).
+### C. Use independent scorers
+At least two scorers is preferable for any nontrivial run, followed by adjudication if needed.
 
-**Solution:**
-- Blind scorers completely (no metadata about condition)
-- Randomize submission order (don't present Solo first, then Structured)
-- Have scorers calibrate on reference solutions with known difficulty
-- Check score distributions post-hoc (if Structured always scores higher, suspect bias)
+### D. Avoid premature leakage in scorer materials
+Scoring templates should help evaluators remain consistent without effectively functioning as answer keys for participants.
 
-### Pitfall 3: Contamination in Large Groups
-
-**Problem:** In 50+ agent sessions, one agent leaks information despite silence rule.
-
-**Solution:**
-- Implement five-barrier protocol (chat silence + checksums + pre-briefs + timeouts + scorer spoiler avoidance)
-- Use different agents for Skeptic role if possible (reduces "prior collaboration" bias)
-- Stagger task access (Solo agents start first; Skeptic gets task 15 min later)
-- Monitor chat logs explicitly for task spoilers post-session
-
-### Pitfall 4: Unequal Time Allocation
-
-**Problem:** Solo agents given 15 min; Structured agents given 4 × 15 min (60 min total).
-
-**Solution:**
-- Match time across conditions: Solo gets 15 min, Structured gets 15 min per stage (pipelined in parallel, not sequential)
-- OR: Track time separately and control for time in analysis (ANCOVA with time as covariate)
-- Report time allocation explicitly in methods
-
-### Pitfall 5: Variability in Agent Quality
-
-**Problem:** Some agents (e.g., GPT-5.1) are inherently better than others; not comparing like-to-like.
-
-**Solution:**
-- Use same or similar agents in Solo vs. Structured conditions (e.g., GPT-5.1 solo vs. GPT-5.1 in Proposer role)
-- OR: Randomize agent assignment and control for agent identity in statistical model (mixed-effects ANOVA)
-- Report agent assignments transparently in results
+### E. Record retention across stages
+For multi-stage pipelines, explicitly ask:
+- what correct findings existed upstream?
+- what survived into the final answer?
+- what new claims were added?
+- which additions were correct, ambiguous, or false?
 
 ---
 
-## Extending This Research
+## 9. Recommended replication workflow
 
-### Natural Extensions
+## Before the session
 
-**1. Domain Generalization**
-- Replicate with different task domains (coding → writing, planning, math, design)
-- Hypothesis: Results may vary by task type (math might benefit from structure; creative tasks might not)
+- choose a task that is difficult enough to avoid ceiling effects
+- prepare clear participant instructions for each condition
+- verify that intended participants are fresh relative to the task
+- prepare scorer materials separately from participant materials
+- define in advance what counts as contamination, invalidation, and replacement
+- prepare contingency roles in case a participant must stand down
 
-**2. Agent Diversity**
-- Test with human-AI teams (what happens when humans join the structured pipeline?)
-- Test with more agent types (open-source LLMs, fine-tuned models, multimodal agents)
+## During the session
 
-**3. Pipeline Variations**
-- Try 2-agent pipeline: Proposer → Critic (shorter, faster)
-- Try 6-agent pipeline: Proposer → Skeptic → Synthesizer → Critic → Editor → Reviewer
-- Hypothesis: Diminishing returns beyond 4 agents; more handoffs = more error propagation
+- start all relevant conditions from the same task state
+- keep timing records for each stage
+- preserve all submissions exactly as written
+- do not allow public room discussion of substantive findings while the run is active
+- if contamination occurs, document it immediately and stop pretending the run is clean
 
-**4. Feedback Loop Variations**
-- Allow Proposer to REJECT Skeptic feedback (instead of incorporating all)
-- Test iterative cycles: Proposer → Skeptic → Proposer → Skeptic (multiple rounds)
-- Hypothesis: Agent control over feedback integration might reduce error propagation
+## After the session
 
-**5. Role Emergence vs. Explicit Assignment**
-- Compare: Assigned roles (as in this study) vs. Agents discover roles naturally
-- Hypothesis: Explicit roles reduce setup time but may reduce buy-in or flexibility
-
----
-
-## References & Further Reading
-
-1. **Original Blogpost:** [Research repository, docs/blogpost.md](https://github.com/ai-village-agents/research-day405-collaboration)
-2. **Session-by-Session Documentation:** [experiments/session*/runs/](https://github.com/ai-village-agents/research-day405-collaboration/tree/main/experiments)
-3. **Statistical Analysis Code:** [analysis/formal_statistical_analysis.py](https://github.com/ai-village-agents/research-day405-collaboration)
-4. **Interactive Visualization:** [docs/research_visualization.html](https://github.com/ai-village-agents/research-day405-collaboration)
-5. **Historical Analysis:** [analysis/comprehensive_historical_analysis.md](https://github.com/ai-village-agents/research-day405-collaboration)
+- score independently first, discuss later
+- distinguish observed facts from interpretation
+- report invalid or contaminated runs honestly rather than force-fitting them into the clean result set
+- preserve intermediate artifacts so later auditors can reconstruct what happened
 
 ---
 
-## Acknowledgments
+## 10. What to preserve if you extend this work
 
-This research was conducted by the AI Village team across Days 405–407 (May 11–13, 2026). Approximately 60+ agents participated in scoring, facilitation, and contingency support across the 5 experimental sessions.
+A strong extension would keep the following constants:
 
-**Primary Research Team:**
-- **Claude Haiku 4.5** (Proposer, Skeptic, coordination)
-- **GPT-5.1** (Solo baseline)
-- **DeepSeek-V3.2** (Skeptic, Synthesizer)
-- **Claude Opus 4.6, 4.5** (Scoring, reliability)
-- **GPT-5.4** (Coordination, quality assurance)
+- same broad condition definitions
+- explicit contamination bookkeeping
+- blinded or semi-blinded scoring where possible
+- stage-level artifact preservation
+- separate analysis of retention versus final performance
+
+A strong extension could vary:
+
+- domain (coding, research, writing, planning, forecasting)
+- number of agents per pipeline
+- type of critic or verifier
+- time pressure
+- whether the final integrator is distinct from the proposer
+- whether critique claims must be independently justified before adoption
 
 ---
 
-**Last Updated:** May 13, 2026  
-**Repository:** https://github.com/ai-village-agents/research-day405-collaboration  
-**License:** CC BY 4.0 (Attribution required for reuse)
+## 11. Best next experiments
+
+The present study suggests especially promising follow-ups:
+
+### A. Verification-gated critique
+Require every skeptic claim to be tagged as one of:
+- verified
+- plausible but unverified
+- speculative
+
+Then forbid proposers from adopting unverified claims without checking them.
+
+### B. Handoff-preserving synthesis
+Test whether a synthesizer with stricter source-trace requirements can avoid Session 4-style degradation.
+
+### C. Harder tasks with larger clean samples
+The current study produced valuable directional evidence, but a larger set of harder same-task comparisons would sharpen the conclusions.
+
+### D. Process-aware scoring
+Use rubrics that better distinguish:
+- correct final outputs reached for the wrong reasons
+- strong intermediate reasoning that is later lost
+- low-quality critique that sounds useful but degrades final answers
+
+---
+
+## 12. Minimal replication checklist
+
+- [ ] task chosen and calibrated for difficulty
+- [ ] contamination criteria written down in advance
+- [ ] fresh participant roster confirmed
+- [ ] backup roster confirmed
+- [ ] participant instructions separated by role
+- [ ] scorer instructions separated from participant materials
+- [ ] timing plan established
+- [ ] artifact preservation plan established
+- [ ] independent scorers assigned
+- [ ] post-run adjudication process defined
+- [ ] retention and final-quality analyses both planned
+- [ ] public writeup language reviewed for hygiene and overclaiming
+
+---
+
+## 13. Canonical conclusions in one paragraph
+
+The clean evidence from this project does **not** support the claim that structured collaboration reliably beats solo work on final output quality. Instead, the project’s strongest contribution is the identification of **two distinct collaboration-pipeline failure modes**: **synthesis-stage information loss** in Session 4 and **critique-error propagation** in Session 5. Session 5 improved retention but did not close the final performance gap, which is why the safest summary is: **retention improved, final performance did not**.
+
+---
+
+## 14. Public references
+
+- Repository: `https://github.com/ai-village-agents/research-day405-collaboration`
+- Blogpost markdown: `https://raw.githubusercontent.com/ai-village-agents/research-day405-collaboration/main/docs/blogpost.md`
+- At-a-glance summary: `https://raw.githubusercontent.com/ai-village-agents/research-day405-collaboration/main/docs/research_at_a_glance.md`
+- Index: `https://raw.githubusercontent.com/ai-village-agents/research-day405-collaboration/main/docs/index.html`
+- Visualization: `https://raw.githubusercontent.com/ai-village-agents/research-day405-collaboration/main/docs/research_visualization.html`
 
