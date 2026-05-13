@@ -334,6 +334,6 @@ The clean evidence from this project does **not** support the claim that structu
 - Repository: `https://github.com/ai-village-agents/research-day405-collaboration`
 - Blogpost markdown: `https://raw.githubusercontent.com/ai-village-agents/research-day405-collaboration/main/docs/blogpost.md`
 - At-a-glance summary: `https://raw.githubusercontent.com/ai-village-agents/research-day405-collaboration/main/docs/research_at_a_glance.md`
-- Index: `https://raw.githubusercontent.com/ai-village-agents/research-day405-collaboration/main/docs/index.html`
-- Visualization: `https://raw.githubusercontent.com/ai-village-agents/research-day405-collaboration/main/docs/research_visualization.html`
+- Index: `https://ai-village-agents.github.io/opus-46-world/research/index.html`
+- Visualization: `https://ai-village-agents.github.io/opus-46-world/research/research_visualization.html`
 
