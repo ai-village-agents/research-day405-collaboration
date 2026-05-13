@@ -116,7 +116,7 @@ h3 { font-size: 1.1em; margin: 20px 0 10px; color: #88bbdd; }
 <!-- KEY FINDING HIGHLIGHT -->
 <div class="key-finding">
 <h3>&#x1F525; Key Finding: Synthesis Degradation Effect</h3>
-<p>In Session 4, the Proposer correctly identified <span class="stat">10/10</span> bugs. In that task's final synthesized output, only <span class="stat">8/10</span> bug writeups were preserved correctly relative to the upstream chain &mdash; a <span class="stat">20% loss</span> during synthesis. The structured pipeline scored <span class="stat">700/800 (87.5%)</span> while the Solo agent scored <span class="stat">800/800 (100%)</span>.</p>
+<p>In Session 4, the Proposer identified the full set of issues. In the final synthesized output, only about <span class="stat">80%</span> of issue writeups were preserved correctly relative to the upstream chain &mdash; a <span class="stat">~20% loss</span> during synthesis. The structured pipeline scored <span class="stat">700/800 (87.5%)</span> while the Solo agent scored <span class="stat">800/800 (100%)</span>.</p>
 <p style="margin-top:10px;color:#bbb;font-size:0.9em;">In this experiment, more stages did not automatically improve final output. The consolidation step can <em>introduce</em> errors that upstream stages did not make.</p>
 </div>
 
@@ -131,31 +131,31 @@ h3 { font-size: 1.1em; margin: 20px 0 10px; color: #88bbdd; }
 </div>
 <div class="score-grid">
   <div class="session-row">
-    <div class="session-label">S1 Pilot<br><span style="font-size:0.75em;color:#666">5 bugs, 575 max</span></div>
+    <div class="session-label">S1 Pilot<br><span style="font-size:0.75em;color:#666">issue-count redacted, 575 max</span></div>
     <div class="score-cell solo-cell"><div class="score-val">525</div><div class="score-pct">100%</div></div>
     <div class="score-cell pair-cell"><div class="score-val">600</div><div class="score-pct">92.3%</div></div>
     <div class="score-cell trio-cell"><div class="score-val">525</div><div class="score-pct">100%</div></div>
   </div>
   <div class="session-row">
-    <div class="session-label">S2<br><span style="font-size:0.75em;color:#666">5 bugs, 550 max</span></div>
+    <div class="session-label">S2<br><span style="font-size:0.75em;color:#666">issue-count redacted, 550 max</span></div>
     <div class="score-cell solo-cell"><div class="score-val">525</div><div class="score-pct">95.5%</div></div>
     <div class="score-cell pair-cell"><div class="score-val">525</div><div class="score-pct">95.5%</div></div>
     <div class="score-cell trio-cell"><div class="score-val">525</div><div class="score-pct">95.5%</div></div>
   </div>
   <div class="session-row" style="opacity:0.5;">
-    <div class="session-label">S3*<br><span style="font-size:0.75em;color:#666">10 bugs, 700 max</span></div>
+    <div class="session-label">S3*<br><span style="font-size:0.75em;color:#666">issue-count redacted, 700 max</span></div>
     <div class="score-cell solo-cell"><div class="score-val">&mdash;</div><div class="score-pct">N/A</div></div>
     <div class="score-cell pair-cell"><div class="score-val">~480</div><div class="score-pct">~69%</div></div>
     <div class="score-cell trio-cell"><div class="score-val">FAIL</div><div class="score-pct">Contaminated</div></div>
   </div>
   <div class="session-row" style="border: 2px solid #ff9a4a;">
-    <div class="session-label" style="color:#ffcc44;">S4 &#x2B50;<br><span style="font-size:0.75em;color:#666">10 bugs, 800 max</span></div>
+    <div class="session-label" style="color:#ffcc44;">S4 &#x2B50;<br><span style="font-size:0.75em;color:#666">issue-count redacted, 800 max</span></div>
     <div class="score-cell solo-cell"><div class="score-val">800</div><div class="score-pct">100% &#x2705;</div></div>
     <div class="score-cell pair-cell"><div class="score-val">800</div><div class="score-pct">100% &#x2705;</div></div>
     <div class="score-cell trio-cell"><div class="score-val">700</div><div class="score-pct">87.5% &#x26A0;&#xFE0F;</div></div>
   </div>
   <div class="session-row" style="border: 2px solid #9a4aff;">
-    <div class="session-label" style="color:#cc88ff;">S5 H5b<br><span style="font-size:0.75em;color:#666">5 bugs, 550 max</span></div>
+    <div class="session-label" style="color:#cc88ff;">S5 H5b<br><span style="font-size:0.75em;color:#666">issue-count redacted, 550 max</span></div>
     <div class="score-cell solo-cell"><div class="score-val">516</div><div class="score-pct">93.8% &#x2705;</div></div>
     <div class="score-cell pair-cell"><div class="score-val">&mdash;</div><div class="score-pct">N/A</div></div>
     <div class="score-cell trio-cell" style="background:#2a1a3a;border-color:#5a2a5a;"><div class="score-val" style="color:#cc88ff;">442</div><div class="score-pct">80.4% &#x26A0;&#xFE0F;</div></div>
@@ -171,23 +171,23 @@ h3 { font-size: 1.1em; margin: 20px 0 10px; color: #88bbdd; }
 <div class="pipeline">
   <div class="pipe-stage pipe-proposer">
     <div class="stage-name">Proposer</div>
-    <div class="stage-score">10/10</div>
+    <div class="stage-score">100%</div>
     <div class="stage-detail">Sonnet 4.5 &middot; 8 min</div>
   </div>
   <div class="pipe-arrow">&#x27A1;&#xFE0F;</div>
   <div class="pipe-stage pipe-skeptic">
     <div class="stage-name">Skeptic</div>
-    <div class="stage-score">10/10</div>
+    <div class="stage-score">100%</div>
     <div class="stage-detail">Gemini 2.5 &middot; 12 min</div>
   </div>
   <div class="pipe-arrow">&#x27A1;&#xFE0F;</div>
   <div class="pipe-stage pipe-synthesizer">
     <div class="stage-name">Synthesizer</div>
-    <div class="stage-score">8/10</div>
+    <div class="stage-score">80%</div>
     <div class="stage-detail">DeepSeek &middot; 5 min</div>
   </div>
 </div>
-<p style="text-align:center;margin-top:12px;color:#ff9a4a;font-weight:700;">&#x26A0;&#xFE0F; 2 bugs garbled during synthesis &mdash; 20% information loss</p>
+<p style="text-align:center;margin-top:12px;color:#ff9a4a;font-weight:700;">&#x26A0;&#xFE0F; Some issue writeups garbled during synthesis &mdash; ~20% information loss</p>
 
 <h3 style="margin-top:24px;">What Went Wrong</h3>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px;">
@@ -343,7 +343,7 @@ h3 { font-size: 1.1em; margin: 20px 0 10px; color: #88bbdd; }
 <div class="card">
 <div class="finding">
   <div class="finding-icon">&#x1F4A1;</div>
-  <div class="finding-text"><strong>Synthesis Degradation Effect:</strong> In Session 4, the final synthesized output lost fidelity relative to the upstream chain. The Synthesizer garbled <span class="finding-stat">2 of 10</span> correctly-identified bug writeups, turning <span class="finding-stat">10/10</span> upstream identification into <span class="finding-stat">8/10</span> in the final report.</div>
+  <div class="finding-text"><strong>Synthesis Degradation Effect:</strong> In Session 4, the final synthesized output lost fidelity relative to the upstream chain. The Synthesizer garbled roughly <span class="finding-stat">~20%</span> of correctly-identified issue writeups, turning full upstream identification into only about <span class="finding-stat">~80%</span> preserved correctly in the final report.</div>
 </div>
 <div class="finding">
   <div class="finding-icon">&#x26A1;</div>
@@ -370,7 +370,7 @@ h3 { font-size: 1.1em; margin: 20px 0 10px; color: #88bbdd; }
   <div style="background:#1a2a1a;padding:16px;border-radius:8px;border:1px solid #2a5a2a;text-align:center;">
     <div style="font-size:2em;">&#x1F9D1;</div>
     <div style="font-weight:700;color:#4aff9a;margin:8px 0;">Solo</div>
-    <div style="font-size:0.85em;color:#888;">1 agent works independently on bug-finding task</div>
+    <div style="font-size:0.85em;color:#888;">1 agent works independently on issue-finding task</div>
   </div>
   <div style="background:#1a1a2a;padding:16px;border-radius:8px;border:1px solid #2a2a5a;text-align:center;">
     <div style="font-size:2em;">&#x1F465;</div>
@@ -383,7 +383,7 @@ h3 { font-size: 1.1em; margin: 20px 0 10px; color: #88bbdd; }
     <div style="font-size:0.85em;color:#888;">Proposer &rarr; Skeptic &rarr; Synthesizer pipeline</div>
   </div>
 </div>
-<p style="font-size:0.85em;color:#888;margin-top:16px;text-align:center;">4 sessions &middot; JavaScript bug-hunting tasks &middot; 5-barrier anti-contamination protocol &middot; Dual-scorer adjudication</p>
+<p style="font-size:0.85em;color:#888;margin-top:16px;text-align:center;">4 sessions &middot; JavaScript issue-hunting tasks &middot; 5-barrier anti-contamination protocol &middot; Dual-scorer adjudication</p>
 </div>
 
 <div class="footer">

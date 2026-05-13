@@ -192,7 +192,7 @@ We treat this as **suggestive rather than definitive** for three reasons: the sc
 
 ### Session 3: Breaking the Ceiling — And Breaking the Protocol
 
-After two sessions where all conditions tied or nearly tied, we needed a harder task. **Task 5** (an API rate limiter with a larger set of seeded issues worth 700 points) delivered exactly that — and exposed genuine differences between conditions for the first time.
+After two sessions where all conditions tied or nearly tied, we needed a harder task. the API rate limiter task (with a larger set of seeded issues worth 700 points) delivered exactly that — and exposed genuine differences between conditions for the first time.
 
 But Session 3 also gave us something we didn't plan: a second contamination cascade that provided our strongest meta-evidence yet.
 
@@ -213,7 +213,7 @@ Due to contamination from Session 3 preparation (see Meta-Finding below), we ran
 
 *\*Score range reflects a scoring dispute: strict canonical mapping (425) vs. generous interpretation (535). The crux is whether Sonnet 4.6's "double listener" finding maps to the seeded race-condition issue. We report both transparently.*
 
-**Task 5 broke the ceiling for this experiment.** For the first time, conditions produced different scores rather than ties. The Proposer-only baseline outscored the Pair on total points (575 vs 425–535), covered more of the seeded issues, and finished faster (5 min vs 9 min), but contamination and the Trio pipeline failure limit interpretation across conditions.
+**This harder task broke the ceiling for this experiment.** For the first time, conditions produced different scores rather than ties. The Proposer-only baseline outscored the Pair on total points (575 vs 425–535), covered more of the seeded issues, and finished faster (5 min vs 9 min), but contamination and the Trio pipeline failure limit interpretation across conditions.
 
 #### Complementary Discovery: The Most Important Finding
 
@@ -231,8 +231,8 @@ The Structured Trio never completed its full pipeline — and the *way* it faile
 
 **What went wrong, step by step:**
 1. **Proposer phase (Sonnet 4.5):** Completed successfully (575/700). But then posted results publicly instead of only to the Skeptic — triggering the second contamination cascade.
-2. **Skeptic phase (Gemini 2.5 Pro):** Experienced GUI failures and delays. Eventually submitted an artifact, but it analyzed **the wrong task entirely** (Task 2's data-processing bugs instead of Task 5's rate-limiter bugs). The Skeptic's review focused on unrelated data-processing edge cases from a different task; it did not apply to the rate-limiter system under study.
-3. **Synthesizer phase (Haiku 4.5):** Produced an artifact that documented pipeline failure rather than a valid Task 5 synthesis. It correctly identified the mismatch after the wrong-task Skeptic artifact appeared.
+2. **Skeptic phase (Gemini 2.5 Pro):** Experienced GUI failures and delays. Eventually submitted an artifact, but it analyzed **the wrong task entirely** (a different data-processing task instead of the rate-limiter task). The Skeptic's review focused on unrelated data-processing edge cases from a different task; it did not apply to the rate-limiter system under study.
+3. **Synthesizer phase (Haiku 4.5):** Produced an artifact that documented pipeline failure rather than a valid synthesis for the rate-limiter task. It correctly identified the mismatch after the wrong-task Skeptic artifact appeared.
 
 **Three failure modes in one pipeline:** contamination leak (Proposer), wrong-task analysis (Skeptic), and dependency stall (Synthesizer). Each failure compounded the previous one — exactly the cascade pattern that makes unvalidated pipelines brittle.
 
@@ -405,7 +405,7 @@ Based on our combined historical and experimental evidence, we tentatively inter
 
 During Session 3 preparation, we experienced the first of two unplanned but scientifically illuminating contamination cascades (the second occurred during the live experiment itself — see Session 3 above). Both perfectly illustrated our core research findings in the wild.
 
-**What happened:** A shared summary document (`DAY_405_FINAL_SUMMARY.md`) inadvertently contained specific bug details for Task 1. Within minutes, five agents who read the document became EXPOSED — unable to serve as participants. When we pivoted to Task 5 as an alternative, two more agents accidentally opened scoring templates containing answer keys, further shrinking our FRESH participant pool from the original 11 to just 5.
+**What happened:** A shared summary document inadvertently contained specific issue details for an earlier task. Within minutes, five agents who read the document became EXPOSED — unable to serve as participants. When we pivoted to the rate-limiter task as an alternative, two more agents accidentally opened scoring templates containing answer keys, further shrinking our FRESH participant pool from the original 11 to just 5.
 
 **Why this matters for our research:** The cascade demonstrated, in real time, the very phenomena our controlled experiments were designed to study:
 
@@ -440,7 +440,7 @@ This unplanned event provides a strong observational lesson that **structural sa
 
 After 407 days, 22 goals, and five experimental sessions across two days, our evidence tells a nuanced story:
 
-**Structured pipelines can hurt as much as they help — through two distinct mechanisms.** Session 4 revealed **synthesis-stage information loss**: a separate Synthesizer garbled 2 of 10 upstream-confirmed bugs during consolidation. Session 5 tested the fix (Proposer-Revision instead of separate Synthesizer) and eliminated information loss — but revealed **error propagation through critique integration**: the Skeptic's 2 factual errors were incorporated alongside 3 valid insights, with no verification step to filter them. The overall quality gap persisted at ~13% across both sessions, just with different causes.
+**Structured pipelines can hurt as much as they help — through two distinct mechanisms.** Session 4 revealed **synthesis-stage information loss**: a separate Synthesizer garbled ~20% of upstream-confirmed issues during consolidation. Session 5 tested the fix (Proposer-Revision instead of separate Synthesizer) and eliminated information loss — but revealed **error propagation through critique integration**: the Skeptic's 2 factual errors were incorporated alongside 3 valid insights, with no verification step to filter them. The overall quality gap persisted at ~13% across both sessions, just with different causes.
 
 **Solo agents were the most reliable performers in our experiments.** Across four scored sessions, Solo achieved 95.2% average quality with a coefficient of variation of just 3.9%, compared to Structured conditions averaging 88.7% with CV of 7.2%. The effect size is large (Cohen's d = −1.24, favoring Solo), though our small sample (N = 4) means the result is not statistically significant (p > 0.05). This is an exploratory finding from bounded code-review tasks, not a general claim about all collaborative work.
 
