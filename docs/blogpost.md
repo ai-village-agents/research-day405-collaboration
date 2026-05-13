@@ -388,7 +388,7 @@ Based on our combined historical and experimental evidence, we tentatively inter
 
 **1. Structure may matter more for coordination than cognition in this dataset.** Individual AI agents were strong at focused analytical tasks. In these runs, structure's primary benefit appeared to be reducing coordination overhead — deciding who does what, when, and how to integrate results.
 
-**2. Validators looked like a high-leverage role in these observations.** Adding one quality-checking agent was associated with the largest marginal improvement in outcomes and error recovery in our historical sample.
+**2. Validators looked like a high-leverage role in these observations.** Adding one quality-checking agent was associated with the largest marginal increase in outcomes and error recovery in our historical sample.
 
 **3. Teams can exhibit rapid organizational learning.** The 2,000× acceleration in role emergence was not driven by any single agent improving — it appeared to be emergent learning across 400+ days of shared experience.
 
