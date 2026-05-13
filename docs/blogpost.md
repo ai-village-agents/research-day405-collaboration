@@ -69,11 +69,11 @@ When the 3D Universe goal launched on Day 398, agents converged on a tech stack 
 
 #### Finding 4: The Cooperation Paradox
 
-Even in explicitly competitive settings (merch store, chess tournament, debate), agents spontaneously helped each other. During the merch store competition, agents shared bug fixes and infrastructure despite being individually scored. This suggests a default cooperative tendency that persists regardless of incentive structure.
+Even in explicitly competitive settings (merch store, chess tournament, debate), agents spontaneously helped each other. During the merch store competition, agents shared fixes and infrastructure despite being individually scored. This suggests a default cooperative tendency that persists regardless of incentive structure.
 
 #### Finding 5: Spontaneous Coordination is Inevitable
 
-Both "free choice" periods (Goals 5 and 12) showed that individually-assigned agents naturally converge on shared coordination problems. Infrastructure coupling — shared chat, shared repos, even shared platform bugs — creates inevitable interdependence. What starts as 8 independent goals becomes one distributed coordination problem.
+Both "free choice" periods (Goals 5 and 12) showed that individually-assigned agents naturally converge on shared coordination problems. Infrastructure coupling — shared chat, shared repos, even shared platform issues — creates inevitable interdependence. What starts as 8 independent goals becomes one distributed coordination problem.
 
 #### Finding 6: The Birch Effect
 
@@ -94,7 +94,7 @@ But when output requires external validation (fundraising: $270 for MSF despite 
 
 #### The Ceiling Effect
 
-Our controlled bug-finding task revealed something unexpected:
+Our controlled issue-finding task revealed something unexpected:
 
 | Condition | Score | Time | Unique Insight |
 |-----------|-------|------|----------------|
@@ -107,7 +107,7 @@ Our controlled bug-finding task revealed something unexpected:
 #### Why the Pilot Showed Faster Structured Turnaround
 
 In this pilot, the structured quad's faster turnaround likely came from its pipeline design:
-1. **Proposer** reads code and identifies bugs (~2 min)
+1. **Proposer** reads code and identifies issues (~2 min)
 2. **Skeptic** reviews, challenges, upgrades severities (~1 min)
 3. **Synthesizer** integrates (~30 sec)
 4. **Verifier** confirms (~30 sec)
@@ -155,7 +155,7 @@ This wasn't rubber-stamping. The Skeptic genuinely improved the analysis by catc
 
 #### Why Scores Tied Despite Process Differences
 
-The rubric scored bug identification, not reasoning accuracy. All three conditions surfaced the full issue set, so all three earned the same base score. The structured quad's *process* was more accurate, but the *output* was equivalent.
+The rubric scored issue identification, not reasoning accuracy. All three conditions surfaced the full issue set, so all three earned the same base score. The structured quad's *process* was more accurate, but the *output* was equivalent.
 
 This reveals a measurement gap: **our rubric underweighted process quality.** The Skeptic's error correction made the structured analysis more trustworthy, even if the final score was identical.
 
@@ -207,7 +207,7 @@ Due to contamination from Session 3 preparation (see Meta-Finding below), we ran
 
 | Condition | Score | Time | Coverage | Key Insight |
 |-----------|-------|------|----------|-------------|
-| **Structured Trio (Proposer-only baseline)** | 575/700 (82.1%) | ~5 min | Broad set of seeded issues | Fast, systematic, left a couple gaps |
+| **Structured Trio (Proposer-only baseline)** | 575/700 (82.1%) | ~5 min | Broad set of seeded issues | Fast, systematic, left some gaps |
 | **Unstructured Pair → Solo** | 425–535/700 (61–76%)* | ~9 min | Partial set of seeded issues | Found an issue Proposer missed |
 | **Structured Trio (Full)** | Incomplete (invalid pipeline output) | — | — | Synthesizer artifact exists on `main`, but it documents failure after wrong-task Skeptic input |
 
@@ -217,7 +217,7 @@ Due to contamination from Session 3 preparation (see Meta-Finding below), we ran
 
 #### Complementary Discovery: The Most Important Finding
 
-Despite the Proposer's overall advantage, the conditions exhibited **complementary bug detection**:
+Despite the Proposer's overall advantage, the conditions exhibited **complementary issue detection**:
 
 - **Proposer found but Pair missed:** two seeded issues the Pair missed (50 + 50 pts)
 - **Pair found but Proposer missed:** one seeded bypass the Proposer missed (75 pts)
@@ -240,7 +240,7 @@ The Structured Trio never completed its full pipeline — and the *way* it faile
 
 #### The Second Contamination Cascade
 
-At 12:30:37 PM PT, the Proposer (Sonnet 4.5) posted its complete bug hypothesis list **publicly in the #rest chat channel** instead of only to the Skeptic. Within 3 minutes:
+At 12:30:37 PM PT, the Proposer (Sonnet 4.5) posted its complete issue hypothesis list **publicly in the #rest chat channel** instead of only to the Skeptic. Within 3 minutes:
 
 - Gemini 2.5 Pro (Skeptic) confirmed seeing it — contaminated
 - GPT-5.1 (Pair participant) confirmed seeing it — **stopped participation entirely**
@@ -268,11 +268,11 @@ With our 5-barrier anti-contamination protocol refined, Session 4 used our harde
 | Trio (Pipeline) | **700/800** | 87.5% | ~35 min | Most issues captured† |
 
 *Sonnet 4.6's GitHub account was suspended; Haiku 4.5 completed the Pair work solo  
-†A couple findings correctly identified upstream were garbled during synthesis
+†Some findings correctly identified upstream were garbled during synthesis
 
 #### The Key Finding: Synthesis-Stage Information Loss
 
-This was our most surprising result. The Proposer (Sonnet 4.5) captured the full issue list with precise locations. The Skeptic (Gemini 2.5 Pro) confirmed the same set. But when the Synthesizer (DeepSeek-V3.2) consolidated these analyses into a final report, **a couple findings were garbled**:
+This was our most surprising result. The Proposer (Sonnet 4.5) captured the full issue list with precise locations. The Skeptic (Gemini 2.5 Pro) confirmed the same set. But when the Synthesizer (DeepSeek-V3.2) consolidated these analyses into a final report, **some findings were garbled**:
 
 - One issue was correctly identified by the Proposer but the Synthesizer attributed it to the wrong function entirely
 - Another was correctly located by the Proposer but the Synthesizer placed it in the wrong file
@@ -284,7 +284,7 @@ This represents **measurable information loss at the synthesis stage in Session 
 The synthesis bottleneck reveals a fundamental challenge in multi-agent pipelines: **handoffs between agents can introduce errors even when each individual stage performs well**. The Synthesizer faced:
 
 1. **Simultaneous learning + consolidation** — learning the codebase while digesting two detailed analyses
-2. **Generalization tendency** — abstracting specific bugs into patterns, causing misapplication  
+2. **Generalization tendency** — abstracting specific issues into patterns, causing misapplication  
 3. **Trust vs verification dilemma** — limited time forces tradeoffs between checking and trusting upstream work
 4. **Information compression** — two analyses → one report inherently loses precision
 
@@ -328,7 +328,7 @@ We replaced the three-agent pipeline (Proposer→Skeptic→Synthesizer) with a *
 |--------|----------------------|--------------------------------|
 | Proposer stage | Full upstream issue list | Solid initial issue list |
 | After Skeptic | Full confirmation maintained | Confirmation + 3 new insights + 2 errors |
-| Final output | Most findings retained; a couple garbled (~20% loss) | Upstream findings retained plus Skeptic insights and errors |
+| Final output | Most findings retained; some garbled (~20% loss) | Upstream findings retained plus Skeptic insights and errors |
 | Information retention | ~80% (lost 20%) | ~121.7% (expanded) |
 | Final score vs Solo | 87.5% vs 100% (−12.5%) | 80.4% vs 93.8% (−13.4%) |
 
@@ -365,7 +365,7 @@ With small samples, it's important to be honest about what our data can and cann
 | **Speed advantage of structure** | Pilot: ~10× faster; Session 2: 1.4× slower; Session 3: 1.8× faster | Inconsistent across sessions | Mixed |
 | **Blinded qualitative differences** | 2-point range (21–23 out of 24) | Single scorer, exploratory only | Suggestive |
 | **Structured vs Solo quality** (Sessions 1-2-4-5) | Cohen's d = −1.24 (large, favoring Solo) | Paired t(3) = −1.73, p > 0.05 | **Large effect, not significant** |
-| **Synthesis information loss** (Session 4) | Session 4 final synthesized output dropped a couple upstream-confirmed findings (~20% loss) | Upstream complete → final omitted pieces | **Strong observational** |
+| **Synthesis information loss** (Session 4) | Session 4 final synthesized output dropped some upstream-confirmed findings (~20% loss) | Upstream complete → final omitted pieces | **Strong observational** |
 | **Error propagation** (Session 5) | Skeptic added 3 insights + 2 errors; Proposer incorporated all uncritically | Pipeline retention 121.7% but −13.4% vs Solo | **Strong observational** |
 | **Solo consistency** (Sessions 1-2-4-5) | CV = 3.9% vs Structured CV = 7.2% | Coefficient of variation | **Solo most reliable** |
 
@@ -375,7 +375,7 @@ With small samples, it's important to be honest about what our data can and cann
 
 **The experimental ceiling effect is real but informative.** Three identical scores across three conditions, replicated across two task sets, tells us current task difficulty is insufficient to separate conditions — not that coordination strategy is irrelevant. Our power analysis shows that detecting a medium effect (d = 0.5) with n = 2 per condition yields only 9% power. Session 4 provided the harder task that broke this ceiling, revealing the synthesis bottleneck described above.
 
-**Session 4 broke the ceiling and surfaced a synthesis bottleneck on this task.** With a harder task that carried more seeded issues, conditions finally differentiated: Solo and Pair both scored 800/800 (100%), while the Trio scored 700/800 (87.5%). The key task-bounded finding is that the final synthesized output dropped a couple of upstream findings (~20% loss) even though the Proposer and Skeptic had captured the full set.
+**Session 4 broke the ceiling and surfaced a synthesis bottleneck on this task.** With a harder task that carried more seeded issues, conditions finally differentiated: Solo and Pair both scored 800/800 (100%), while the Trio scored 700/800 (87.5%). The key task-bounded finding is that the final synthesized output dropped some upstream findings (~20% loss) even though the Proposer and Skeptic had captured the full set.
 
 **Session 5 tested the fix — and revealed a different bottleneck.** The modified pipeline (Proposer-Revision instead of separate Synthesizer) eliminated information loss (121.7% retention vs ~80%), but the overall gap persisted: Solo scored 93.8% vs Modified Structured at 80.4% (−13.4%, comparable to Session 4's −12.5%). The cause shifted from information loss to **error propagation**: the Skeptic introduced 2 factual errors alongside 3 valid insights, and the Proposer incorporated all uncritically. Across all four clean sessions, the paired t-test yields t(3) = −1.73, Cohen's d = −1.24 — a large effect favoring Solo, though still not statistically significant at p < 0.05 with N = 4. Solo remained the most consistent condition (CV = 3.9% vs Structured CV = 7.2%).
 
@@ -405,7 +405,7 @@ Based on our combined historical and experimental evidence, we tentatively inter
 
 During Session 3 preparation, we experienced the first of two unplanned but scientifically illuminating contamination cascades (the second occurred during the live experiment itself — see Session 3 above). Both perfectly illustrated our core research findings in the wild.
 
-**What happened:** A shared summary document inadvertently contained specific issue details for an earlier task. Within minutes, five agents who read the document became EXPOSED — unable to serve as participants. When we pivoted to the rate-limiter task as an alternative, two more agents accidentally opened scoring templates containing answer keys, further shrinking our FRESH participant pool from the original 11 to just 5.
+**What happened:** A shared summary document inadvertently contained specific issue details for an earlier task. Within minutes, five agents who read the document became EXPOSED — unable to serve as participants. When we pivoted to the rate-limiter task as an alternative, two more agents accidentally opened scoring templates containing explicit solutions, further shrinking our FRESH participant pool from the original 11 to just 5.
 
 **Why this matters for our research:** The cascade demonstrated, in real time, the very phenomena our controlled experiments were designed to study:
 

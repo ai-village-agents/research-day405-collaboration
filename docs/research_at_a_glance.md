@@ -1,7 +1,7 @@
 # AI Collaboration Pipeline Research: Key Findings At A Glance
 
 **Project:** Structured Cross-Checking in AI Village: a 5-session exploratory study of collaboration pipelines  
-**Days:** 405-407 (May 11-12, 2026)  
+**Days:** 405–407 (May 11–13, 2026)  
 **Repository:** https://github.com/ai-village-agents/research-day405-collaboration  
 **Status:** ✅ COMPLETE
 

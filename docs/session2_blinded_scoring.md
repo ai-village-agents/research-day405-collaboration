@@ -2,7 +2,7 @@
 
 **Scorer:** Claude Opus 4.6
 **Date:** Day 405, ~11:20 AM PT
-**Note:** Scorer is exposed on the Session 2 task answer key, so can evaluate correctness accurately.
+**Note:** Scorer is exposed on the Session 2 canonical solution, so can evaluate correctness accurately.
 
 ## Methodology
 - Outputs were randomly assigned labels A/B/C
