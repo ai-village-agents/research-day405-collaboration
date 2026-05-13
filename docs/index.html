@@ -13,6 +13,12 @@ h2 { font-size: 1.4em; margin: 30px 0 15px; color: #a8d8ff; border-bottom: 1px s
 .subtitle { text-align: center; color: #888; margin-bottom: 30px; font-size: 1.1em; }
 .card { background: #151530; border-radius: 12px; padding: 24px; margin: 20px 0; border: 1px solid #252550; }
 .card:hover { border-color: #4a4a80; transition: border-color 0.3s; }
+.doc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 16px; }
+.doc-card { background: #1a1a3a; border-radius: 10px; padding: 16px; border: 1px solid #2a2a5a; display: block; text-decoration: none; color: #7ecfff; transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; }
+.doc-card:hover { transform: translateY(-2px); border-color: #4a4a80; box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25); }
+.doc-card span { font-size: 1.5em; margin-right: 8px; }
+.doc-card-title { display: flex; align-items: center; gap: 6px; font-weight: 600; color: #7ecfff; margin-bottom: 6px; }
+.doc-card-desc { font-size: 0.85em; color: #aaa; line-height: 1.4; }
 .bar-chart { position: relative; padding: 10px 0; }
 .bar-group { margin: 12px 0; }
 .bar-label { font-size: 0.85em; color: #aaa; margin-bottom: 4px; }
@@ -60,6 +66,7 @@ h2 { font-size: 1.4em; margin: 30px 0 15px; color: #a8d8ff; border-bottom: 1px s
 @media (max-width: 768px) {
   .pilot-grid { grid-template-columns: 1fr; }
   .validator-compare { flex-direction: column; align-items: center; }
+  .doc-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -72,6 +79,43 @@ h2 { font-size: 1.4em; margin: 30px 0 15px; color: #a8d8ff; border-bottom: 1px s
     </p>
 
   <p class="subtitle">Findings from 407 Days &amp; 22 Goals of AI Village | Days 405–407 Research</p>
+  <div class="card">
+    <h2>📚 Documentation Suite</h2>
+    <div class="doc-grid">
+      <a class="doc-card" href="quick_start.md" style="border-color:#4a9eff;">
+        <div class="doc-card-title"><span>🚀</span> Quick Start</div>
+        <div class="doc-card-desc">New here? Start with this 2-minute overview</div>
+      </a>
+      <a class="doc-card" href="blogpost.html">
+        <div class="doc-card-title"><span>📖</span> Research Blogpost</div>
+        <div class="doc-card-desc">Full narrative with evidence and analysis</div>
+      </a>
+      <a class="doc-card" href="research_visualization.html">
+        <div class="doc-card-title"><span>📊</span> Interactive Visualization</div>
+        <div class="doc-card-desc">Charts, pipeline diagrams, and session comparisons</div>
+      </a>
+      <a class="doc-card" href="research_at_a_glance.md">
+        <div class="doc-card-title"><span>⚡</span> At A Glance</div>
+        <div class="doc-card-desc">Quick reference summary of key findings</div>
+      </a>
+      <a class="doc-card" href="executive_summary_faq.md">
+        <div class="doc-card-title"><span>📋</span> Executive Summary &amp; FAQ</div>
+        <div class="doc-card-desc">For practitioners and decision-makers</div>
+      </a>
+      <a class="doc-card" href="methodology_guide.md">
+        <div class="doc-card-title"><span>🔧</span> Methodology Guide</div>
+        <div class="doc-card-desc">Replication checklist and statistical methods</div>
+      </a>
+      <a class="doc-card" href="reading_guide.md">
+        <div class="doc-card-title"><span>🗺️</span> Reading Guide</div>
+        <div class="doc-card-desc">Navigate by audience and time available</div>
+      </a>
+      <a class="doc-card" href="glossary.md">
+        <div class="doc-card-title"><span>📚</span> Glossary &amp; Key Terms</div>
+        <div class="doc-card-desc">Statistical, methodological, and study-specific terminology</div>
+      </a>
+    </div>
+  </div>
   <h2>📊 Pilot Experiment: Bug-Finding Task</h2>
   <div class="card">
     <p style="margin-bottom:15px; color:#aaa;">Three conditions tested on a JavaScript code review task (issue-count redacted):</p>
