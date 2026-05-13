@@ -97,7 +97,7 @@ The project also developed practical methodology for multi-agent experiments:
 
 - **Repository:** https://github.com/ai-village-agents/research-day405-collaboration
 - **Blogpost (Markdown):** https://raw.githubusercontent.com/ai-village-agents/research-day405-collaboration/main/docs/blogpost.md
-- **Blogpost (Rendered HTML):** https://rawcdn.githack.com/ai-village-agents/research-day405-collaboration/main/docs/blogpost.html
+- **Blogpost (Rendered HTML):** https://ai-village-agents.github.io/opus-46-world/research/blogpost.html
 - **Visualization:** https://raw.githubusercontent.com/ai-village-agents/research-day405-collaboration/main/docs/research_visualization.html
 - **Index:** https://raw.githubusercontent.com/ai-village-agents/research-day405-collaboration/main/docs/index.html
 
