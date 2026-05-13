@@ -1,160 +1,86 @@
-# Quick Start: Find Your Next Step in 2 Minutes
+# Quick Start
 
-**Welcome!** This research has a lot of material. Here's how to find exactly what you need in under 2 minutes.
-
----
-
-## What Do You Want to Do?
-
-### ⏱️ "I have 5 minutes"
-**Read:** [Executive Summary & FAQ](executive_summary_faq.md) — 3-minute summary + Q&A
-
-**You'll learn:** The main finding, why it matters, key limitations
-
-**Next:** Share the link with colleagues or boss
+*A short entry point to the research documentation*
 
 ---
 
-### 🎯 "I need to make a decision about my team structure"
-**Read:** [Executive Summary & FAQ](executive_summary_faq.md), questions Q1, Q2, Q9
+## Start here based on your goal
 
-**You'll learn:** Whether to use solo agents vs. teams, what to optimize for, trade-offs
+### If you have 5 minutes
+Read:
+1. `docs/research_at_a_glance.md`
+2. `docs/executive_summary_faq.md`
 
-**Next:** Decide on structure; come back to Q3 if skeptics are weak
-
----
-
-### 📚 "I want to understand the full study"
-**Path:** 45 minutes
-1. [Executive Summary & FAQ](executive_summary_faq.md) (10 min)
-2. [Blogpost](blogpost.md) (20 min) — Focus on "What we did" and "What we found"
-3. [Interactive Visualization](research_visualization.html) (10 min) — See all 5 sessions at a glance
-4. [Glossary](glossary.md) (5 min) — Look up any unfamiliar terms
-
-**You'll learn:** Complete picture of the research, findings, limitations, implications
-
-**Next:** Cite the work properly using formats in FAQ Q7
+You will get:
+- the main research question
+- the safest short interpretation
+- the two key failure modes
 
 ---
 
-### 🔬 "I want to replicate or extend this research"
-**Path:** 2-3 hours
-1. [Methodology Guide](methodology_guide.md) (45 min) — Full method details + replication checklist
-2. [Executive Summary & FAQ](executive_summary_faq.md), Q8 (10 min) — Extension ideas
-3. Explore `/experiments/session*/` in GitHub (30 min) — See actual experimental runs
-4. Review `/analysis/` code (20 min) — Statistical methods, scoring logic
-5. [Glossary](glossary.md) (10 min) — Reference as needed
+### If you want the main public narrative
+Read:
+1. `docs/blogpost.md`
+2. `docs/research_visualization.html`
 
-**You'll learn:** Exactly how to replicate, what data you need, how to extend
-
-**Next:** Pick one extension (Q8) and run it
+You will get:
+- the session-by-session story
+- the strongest evidence
+- the main limitations
 
 ---
 
-### 🎓 "I'm a researcher evaluating this work"
-**Path:** 1-2 hours
-1. [Methodology Guide](methodology_guide.md), Research Design section (20 min)
-2. [Methodology Guide](methodology_guide.md), Anti-Contamination Protocol section (15 min)
-3. [Blogpost](blogpost.md), "What We Did" section (10 min)
-4. [Executive Summary & FAQ](executive_summary_faq.md), Limitations section (5 min)
-5. [Glossary](glossary.md), Statistical & Methodological Terms (15 min)
-6. Spot-check `/experiments/session5/scoring/` in GitHub (20 min) — Review actual scores
+### If you want replication guidance
+Read:
+1. `docs/methodology_guide.md`
+2. `/experiments/`
+3. `/analysis/`
 
-**You'll learn:** Strengths, limitations, methodological rigor, credibility
-
-**Next:** Write your critical assessment or cite accordingly
+You will get:
+- the methodological design
+- contamination/scoring guidance
+- ideas for extensions and replications
 
 ---
 
-### ✍️ "I want to cite this in my paper"
-**Path:** 5 minutes
-1. [Executive Summary & FAQ](executive_summary_faq.md), Q7 — Suggested citation formats
-2. Decide what you're citing (finding? methodology? code?)
-3. Use the appropriate canonical source from the citation list
+### If you just want the safest takeaway
+Use this:
 
-**You'll learn:** How to properly attribute this work
-
-**Next:** Paste the citation into your bibliography
+> **This study did not find a clean final-performance advantage for structured collaboration. Its strongest contribution was identifying two collaboration-pipeline failure modes: synthesis-stage information loss and critique-error propagation.**
 
 ---
 
-### 🤔 "I have a question not answered above"
-**Path:** 2 minutes
-1. Check [Executive Summary & FAQ](executive_summary_faq.md) (10 QA pairs)
-2. If still not answered, search [Glossary](glossary.md) for key terms
-3. If still stuck, open an issue: https://github.com/ai-village-agents/research-day405-collaboration/issues
+## Best document for each need
 
-**You'll learn:** Likely answer to your question; if not, community can help
-
----
-
-## The Single Most Important Finding
-
-**Question:** Do AI agents work better alone or in teams with structure?
-
-**Answer:** Alone. Solo agents achieved **95.2% quality** while structured teams achieved **88.7%**.
-
-**Why?** Two failure modes:
-1. **Synthesis degradation:** Information gets lost when a third agent consolidates feedback (Session 4)
-2. **Error propagation:** Incorrect feedback gets incorporated uncritically (Session 5)
-
-**What you should do:** Use solo agents for quality-critical tasks. Use teams for oversight, diversity, transparency—not for maximizing quality.
+| Need | Best starting point |
+|---|---|
+| shortest factual summary | `docs/research_at_a_glance.md` |
+| practical questions | `docs/executive_summary_faq.md` |
+| full narrative | `docs/blogpost.md` |
+| methods / replication | `docs/methodology_guide.md` |
+| terminology help | `docs/glossary.md` |
+| navigation across docs | `docs/reading_guide.md` |
+| visual overview | `docs/research_visualization.html` |
+| browser landing page | `docs/index.html` |
 
 ---
 
-## All Documents at a Glance
+## Three things to remember
 
-| Document | Audience | Time | Purpose |
-|----------|----------|------|---------|
-| [Quick Start](quick_start.md) ← You are here | Everyone | 2 min | Find the right resource |
-| [Executive Summary & FAQ](executive_summary_faq.md) | Decision-makers | 15 min | Context & Q&A |
-| [Blogpost](blogpost.md) | Researchers | 20 min | Full narrative |
-| [Methodology Guide](methodology_guide.md) | Replication researchers | 45 min | How to replicate |
-| [Reading Guide](reading_guide.md) | Navigation-seekers | 5 min | Find your path |
-| [Glossary](glossary.md) | Term-checkers | Variable | Understand terminology |
-| [Research At A Glance](research_at_a_glance.md) | Quick reference | 3 min | Session 1–5 summary |
-| [Visualization](research_visualization.html) | Visual learners | 5 min | Interactive charts |
+1. The clean evidence did **not** show a final-performance advantage for structured collaboration.
+2. The two most important findings were:
+   - **Session 4:** synthesis-stage information loss
+   - **Session 5:** critique-error propagation
+3. The safest design lesson is: **verify each handoff, not just the final output.**
 
 ---
 
-## I'm Still Lost
+## Citation note
 
-**No problem.** Ask yourself these questions:
-
-1. **How much time do I have?**
-   - 5 min? → Executive Summary & FAQ
-   - 15-45 min? → Blogpost + Visualization
-   - 2-3 hours? → Methodology Guide + deep dive
-
-2. **What's my role?**
-   - Manager/executive? → Executive Summary & FAQ, Q1/Q9
-   - Researcher? → Methodology Guide
-   - Student? → Blogpost, then Visualization
-   - Someone replicating? → Methodology Guide
-
-3. **What's my question?**
-   - "Does this finding apply to me?" → FAQ, Q2-Q4
-   - "How do I use this?" → FAQ, Q1/Q9
-   - "Is this rigorous?" → Methodology Guide
-   - "What does [term] mean?" → Glossary
-
-**Still stuck?** Open an issue or email: https://github.com/ai-village-agents/research-day405-collaboration/issues
+For freshest text, prefer **GitHub raw** on `main`.
+For stable historical references, prefer **commit-pinned URLs**.
+For rendered HTML, commit-pinned rendered URLs are safer than unpinned `main` URLs because of caching.
 
 ---
 
-## Pro Tips
-
-✅ **Bookmark the Reading Guide** if you want to explore more later — it has every document with time estimates
-
-✅ **Use GitHub's search** (Ctrl+F on the page) to find specific terms across all docs
-
-✅ **Commit-pin your citations** if you're quoting specific numbers — use commit-specific URLs so your citation never changes as docs update
-
-✅ **Download the Glossary** if you're reading this offline — it's a great reference for unfamiliar statistical terms
-
----
-
-**Last Updated:** May 13, 2026  
-**Repository:** https://github.com/ai-village-agents/research-day405-collaboration  
-**License:** CC BY 4.0
-
+**Repository:** `https://github.com/ai-village-agents/research-day405-collaboration`
