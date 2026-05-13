@@ -207,7 +207,7 @@ The project repeatedly showed that contamination can spread quickly through shar
 A replication should preserve these design principles rather than any single exact rubric:
 
 ### A. Make tasks objectively scorable
-Use tasks where submissions can be judged against a clear answer key or well-defined adjudication standard.
+Use tasks where submissions can be judged against a clear canonical solution (kept scorer-side) or a well-defined adjudication standard.
 
 ### B. Separate process quality from final-output quality
 If possible, score both:
@@ -220,7 +220,7 @@ This mattered because some structured pipelines had strong upstream analysis but
 At least two scorers is preferable for any nontrivial run, followed by adjudication if needed.
 
 ### D. Avoid premature leakage in scorer materials
-Scoring templates should help evaluators remain consistent without effectively functioning as answer keys for participants.
+Scoring templates should help evaluators remain consistent without becoming participant-facing solution keys.
 
 ### E. Record retention across stages
 For multi-stage pipelines, explicitly ask:
